@@ -18,6 +18,11 @@ const Navbar = () => {
     setIsDropdownOpen(false);
   };
 
+  const toggleDropdown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
   return (
     <>
       <style jsx>{`
@@ -93,6 +98,14 @@ const Navbar = () => {
         .nav__logo a {
           display: flex;
           align-items: center;
+        }
+        
+        .logo-desktop {
+          display: flex !important;
+        }
+        
+        .logo-mobile {
+          display: none !important;
         }
 
         .nav__menu {
@@ -258,13 +271,89 @@ const Navbar = () => {
 
         /* Mobile Styles */
         @media (max-width: 768px) {
-          .nav__container {
-            margin: 0 15px;
+          @keyframes liquid {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(10px, -5px) rotate(180deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+          }
+          
+          @keyframes blob {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
           }
 
-          .nav__container::before,
+          .nav {
+            padding: 0;
+            background: transparent;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          }
+
+          .nav__container {
+            margin: 0;
+            width: 100%;
+            height: 70px;
+            border-radius: 0;
+            background: rgba(255, 255, 255, 0.65); /* Extremely liquid/transparent */
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: none;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); /* Soft shadow for liquid feel */
+            justify-content: space-between;
+            padding: 0 20px;
+            max-width: 100%;
+            overflow: visible !important; /* Allow menu expansion! */
+          }
+          
+          /* Amoeba Effects - contained within a pseudo-clipped area via logic or just let flow? 
+             Letting them flow might be weird if they go over main content.
+             Ideally we want them BEHIND the blur.
+             Since container has overflow:visible, the 'before'/'after' will be visible outside.
+             This might actually look cool for "liquid", but lets verify they don't block interactions.
+             z-index: -1 ensures they are behind.
+          */
+          .nav__container::before {
+             content: '';
+             position: absolute;
+             top: -50%;
+             left: -20%;
+             width: 200px;
+             height: 200px;
+             background: rgba(8, 93, 54, 0.15); /* Primary green trace */
+             border-radius: 40%;
+             filter: blur(30px);
+             z-index: -1;
+             display: block;
+             animation: liquid 15s infinite linear, blob 10s infinite ease-in-out alternate;
+          }
+          
           .nav__container::after {
-            display: none;
+             content: '';
+             position: absolute;
+             bottom: -50%;
+             right: -20%;
+             width: 180px;
+             height: 180px;
+             background: rgba(255, 250, 132, 0.2); /* Accent yellow trace */
+             border-radius: 45%;
+             filter: blur(30px);
+             z-index: -1;
+             display: block;
+             animation: liquid 20s infinite reverse linear, blob 12s infinite ease-in-out alternate;
+          }
+
+          .logo-desktop {
+            display: none !important;
+          }
+          
+          .logo-mobile {
+            display: flex !important;
+          }
+
+          .nav__logo {
+            padding: 0;
+            flex-shrink: 0;
+            z-index: 10;
           }
 
           .nav__menu {
@@ -272,19 +361,21 @@ const Navbar = () => {
             top: 100%;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             flex-direction: column;
-            padding: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            border-radius: 0 0 16px 16px;
-            gap: 8px;
-            transform: translateY(-10px);
+            padding: 10px 20px 30px 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            gap: 0;
+            transform: translateY(-20px);
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
-            border: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            min-width: unset;
+            z-index: 999;
           }
 
           .nav__menu.active {
@@ -292,18 +383,52 @@ const Navbar = () => {
             opacity: 1;
             visibility: visible;
           }
+          
+          /* Add amoeba to menu too */
+          .nav__menu::before {
+             content: '';
+             position: absolute;
+             top: 20%;
+             right: -10%;
+             width: 150px;
+             height: 150px;
+             background: rgba(8, 93, 54, 0.08);
+             border-radius: 50%;
+             filter: blur(40px);
+             z-index: -1;
+          }
+
+          .nav__item {
+            width: 100%;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+          }
+          
+          .nav__item:last-child {
+            border-bottom: none;
+          }
+
+          .nav__link {
+            padding: 15px 5px;
+            width: 100%;
+            justify-content: space-between;
+            font-size: 16px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+          }
 
           .dropdown-menu {
             position: static;
-            background: transparent;
+            background: rgba(0, 0, 0, 0.03);
             box-shadow: none;
             border: none;
-            margin-top: 10px;
-            margin-left: 20px;
-            min-width: auto;
+            width: 100%;
+            border-radius: 8px;
             opacity: 1;
             visibility: visible;
             transform: none;
+            display: none;
+            margin-bottom: 10px;
           }
 
           .dropdown-menu.open {
@@ -311,13 +436,26 @@ const Navbar = () => {
           }
 
           .dropdown-link {
-            padding: 8px 15px;
-            border-bottom: none;
-            font-size: 13px;
+            padding: 12px 25px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-size: 14px;
+            background-color: transparent;
+            color: #555;
           }
 
           .nav__toggle {
             display: flex;
+            order: 2;
+            margin-right: 0;
+            padding: 10px;
+            background: transparent;
+            border-radius: 12px;
+            transition: background 0.3s;
+            z-index: 10;
+          }
+          
+          .nav__toggle:hover {
+             background: rgba(0, 0, 0, 0.05);
           }
 
           .nav__toggle.active span:nth-child(1) {
@@ -326,6 +464,7 @@ const Navbar = () => {
 
           .nav__toggle.active span:nth-child(2) {
             opacity: 0;
+            width: 0;
           }
 
           .nav__toggle.active span:nth-child(3) {
@@ -337,18 +476,7 @@ const Navbar = () => {
           }
 
           .onlymobile {
-            display: block;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .nav__container {
-            margin: 0 10px;
-            height: 55px;
-          }
-
-          .nav__logo {
-            padding: 0 12px;
+            display: flex;
           }
         }
       `}</style>
@@ -356,26 +484,28 @@ const Navbar = () => {
       <nav className="nav">
         <div className="nav__container">
           <div className="nav__logo">
-            <a href="/">
+           
+            <Link href="/" className="logo-mobile">
               <Image
-                src="/logo1.png"
+                src="/translogo.png"
                 alt="JIVO ENERGY"
                 width={150}
                 height={50}
-                className="object-contain"
+                className="h-12 w-auto object-contain"
               />
-            </a>
+            </Link>
           </div>
           
           <ul className={`nav__menu ${isMenuOpen ? 'active' : ''}`}>
             <li className="nav__item">
               <a 
                 className="nav__link" 
+                onClick={toggleDropdown}
                 onMouseEnter={openDropdown}
                 onMouseLeave={closeDropdown}
                 style={{ cursor: 'pointer' }}
               >
-                Jivo Energy
+                JIVO Energy
                 <svg 
                   className={`dropdown-arrow ${isDropdownOpen ? 'open' : ''}`}
                   width="12" 
@@ -393,37 +523,34 @@ const Navbar = () => {
                 onMouseLeave={closeDropdown}
               >
                 <li className="dropdown-item">
-                  <a className="dropdown-link" href="/business-areas">Business Areas</a>
+                  <a className="dropdown-link" href="/about">About Us</a>
                 </li>
                 <li className="dropdown-item">
                   <a className="dropdown-link" href="/partners">Partners</a>
                 </li>
                 <li className="dropdown-item">
-                  <a className="dropdown-link" href="/certificate">Certificate</a>
-                </li>
-                {/* <li className="dropdown-item">
-                  <a className="dropdown-link" href="/capabilities">Capabilities</a>
+                  <a className="dropdown-link" href="/certificate">Certifications</a>
                 </li>
                 <li className="dropdown-item">
-                  <a className="dropdown-link" href="/theme">Theme</a>
-                </li> */}
+                  <a className="dropdown-link" href="/esg">ESG</a>
+                </li>
+                <li className="dropdown-item">
+                  <a className="dropdown-link" href="/team">Team</a>
+                </li>
               </ul>
             </li>
-            {/* <li className="nav__item">
-              <a className="nav__link" href="/projects">Projects</a>
-            </li> */}
             <li className="nav__item">
-              <a className="nav__link" href="/gallery">Gallery</a>
+              <a className="nav__link" href="/business-areas">Business Areas</a>
             </li>
-            {/* <li className="nav__item">
-              <a className="nav__link" href="/csr">CSR</a>
+            <li className="nav__item">
+              <a className="nav__link" href="/projects">Projects</a>
+            </li>
+            <li className="nav__item">
+              <a className="nav__link" href="/capabilities">Capabilities</a>
             </li>
             <li className="nav__item">
               <a className="nav__link" href="/media">Media</a>
             </li>
-            <li className="nav__item">
-              <a className="nav__link" href="/esg">ESG</a>
-            </li> */}
             <li className="nav__item">
               <a className="nav__link" href="/careers">Careers</a>
             </li>
@@ -450,8 +577,7 @@ const Navbar = () => {
             </svg>
           </button>
           </Link>
-
-         
+          
         </div>
       </nav>
     </>

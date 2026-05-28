@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
             <Link href="/" className="block">
@@ -38,12 +38,17 @@ const Footer = () => {
                 <FaInstagram size={20} />
               </a>
             </div>
+            <div className="mt-4">
+               <a href="mailto:africa@jivoenergy.com" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2">
+                 <span className="font-semibold text-white">Email:</span> africa@jivoenergy.com
+               </a>
+            </div>
           </div>
 
           {/* Quick Links */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            {/* <ul className="space-y-2">
+            <ul className="space-y-2">
               <li>
                 <Link href="/about" className="text-gray-400 hover:text-white transition-colors duration-200">
                   About Us
@@ -55,27 +60,22 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/esg" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  ESG
+                <Link href="/sustainability" className="text-gray-400 hover:text-white transition-colors duration-200">
+                  Sustainability
                 </Link>
               </li>
-              <li>
-                <Link href="/csr" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  CSR
-                </Link>
-              </li>
-            </ul> */}
+            </ul>
           </div>
 
           {/* Resources */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Resources</h3>
             <ul className="space-y-2">
-              {/* <li>
+              <li>
                 <Link href="/media" className="text-gray-400 hover:text-white transition-colors duration-200">
                   Media
                 </Link>
-              </li> */}
+              </li>
               <li>
                 <Link href="/gallery" className="text-gray-400 hover:text-white transition-colors duration-200">
                   Gallery
@@ -94,14 +94,41 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact Info Column 1 */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-            <ul className="space-y-2 text-gray-400">
-              <li>123 Energy Street</li>
-              <li>Green City, GC 12345</li>
-              <li>Phone: +1 (555) 123-4567</li>
-              <li>Email: info@jivoenergy.com</li>
+            <ul className="space-y-4 text-gray-400 text-sm">
+              <li>
+                <span className="block text-white font-medium">India</span>
+                108 to 111, First Floor, Tower B, Spaze Business Park, Sector-66, Gurgaon, Haryana
+              </li>
+              <li>
+                <span className="block text-white font-medium">Dubai</span>
+                Meydan Grandstand, 6th Floor, Meydan Road, NadEl Sheba, Dubai, U.A.E
+              </li>
+              <li>
+                <span className="block text-white font-medium">Uganda</span>
+                Plot 40, Wanainchi Road, Ministers' Village, Ntinda, Kampala, PO Box 11580
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Info Column 2 */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4 opacity-0 md:opacity-100 select-none">&nbsp;</h3>
+            <ul className="space-y-4 text-gray-400 text-sm">
+              <li>
+                <span className="block text-white font-medium">Mauritius</span>
+                4th Floor Ebene Skies, Rue De L'Institut, Ebene, Mauritius
+              </li>
+              <li>
+                <span className="block text-white font-medium">Ethiopia</span>
+                Office no-1203, Eldasol Building, Mike Leyland Street, Bole Sub-City, Woreda 4, House no. New, Addis Ababa, Ethiopia
+              </li>
+              <li>
+                <span className="block text-white font-medium">Portugal</span>
+                Rua, Joaquim Brandao, 13, Floor 1, Setubal, Portugal
+              </li>
             </ul>
           </div>
         </div>
