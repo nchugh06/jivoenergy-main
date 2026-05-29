@@ -134,7 +134,7 @@ const Careers = () => {
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-up">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-            Careers at <span className="text-[#FFFA84]">JIVO Energy</span>
+            Careers at <span className="text-[#ffffff]">JIVO Energy</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-200 font-light max-w-2xl mx-auto">
             Build your future with a company committed to excellence, integrity, and sustainable growth.
@@ -278,18 +278,18 @@ const Careers = () => {
                 location: "Africa (travel required)",
                 pdf: "/careers/Technical Manager JD for Careers Page.pdf"
               },
-              {
-                title: "Logistics Manager",
-                experience: "4 to 7 years",
-                location: "Gurgaon, India (travel required)",
-                pdf: "/careers/Logistics Manager JD for Careers Page.pdf"
-              },
-              {
-                title: "HSES Manager",
-                experience: "5 to 7 years",
-                location: "Gurgaon, India (travel required)",
-                pdf: "/careers/HSES Manager JD for Careers Page.pdf"
-              }
+              // {
+              //   title: "Logistics Manager",
+              //   experience: "4 to 7 years",
+              //   location: "Gurgaon, India (travel required)",
+              //   pdf: "/careers/Logistics Manager JD for Careers Page.pdf"
+              // },
+              // {
+              //   title: "HSES Manager",
+              //   experience: "5 to 7 years",
+              //   location: "Gurgaon, India (travel required)",
+              //   pdf: "/careers/HSES Manager JD for Careers Page.pdf"
+              // }
             ].map((job, index) => (
               <div key={index} className="bg-white border border-gray-200 p-6 rounded-xl hover:shadow-md transition-shadow flex flex-col md:flex-row md:items-center justify-between group">
                 <div>

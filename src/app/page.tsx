@@ -3,6 +3,8 @@ import Image from "next/image"
 import Navbar from "@/components/Navbar"
 import About from "@/components/About"
 import Projects from "@/components/Projects"
+import Services from "@/components/services"
+import CoreValues from "@/components/CoreValues"
 import Impact from "@/components/Impact"
 import ContactForm from "@/components/ContactForm"
 import Footer from "@/components/Footer"
@@ -35,6 +37,8 @@ export default function Home() {
         </section>
         <About />
         <Projects />
+        <CoreValues />
+        <Services />
         <Impact />
         <Media />
         <ContactForm />

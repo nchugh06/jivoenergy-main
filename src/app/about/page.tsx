@@ -81,17 +81,17 @@ export default function AboutPage() {
             JIVO Energy has been engaged in renewable energy business in Africa & Asia since 2018 focused on Project Development, EPC, O&M and Investments in Renewable Energy Projects, including provision of technical services related to renewable energy to several clients. In addition, JIVO Energy provides Technical Feasibility, EPC and O&M services related to renewable energy to project developers and investors in Europe.
           </p>
           <p>
-            Besides, JIVO Energy is also developing a 25MW Municipal Waste to Energy Project in Kampala, Uganda having completed all technical assessments and now in the process of concluding agreements with the authorities.
+            Besides, We are also developing a 25MW Municipal Waste to Energy Project in Kampala, Uganda having completed all technical assessments and now in the process of concluding agreements with the authorities.
           </p>
           <p>
-            JIVO Energy currently operates in 15+ countries in Africa across East, West, and Southern Africa, with offices & teams in India, Mauritius, Spain, UAE, Uganda, Kenya, Ethiopia, Senegal, Burkina Faso & Cape Verde. Our journey started in Uganda in 2018 with the construction of the 20MWac Kabulasoke Solar PV plant.
+            We are currently operating in 15+ countries in Africa across East, West, and Southern Africa, with offices & teams in India, Mauritius, Spain, UAE, Uganda, Kenya, Ethiopia, Senegal, Burkina Faso & Cape Verde. Our journey started in Uganda in 2018 with the construction of the 20MWac Kabulasoke Solar PV plant.
           </p>
           <p>
-            JIVO Energy, in a short span of time, has created a value proposition around implementation of solar energy and battery energy storage projects and has immense expertise in all technological aspects related to solar energy and battery energy storage projects of all kinds and capacities.
+            In a short span of time we have created a value proposition around implementation of solar energy and battery energy storage projects and has immense expertise in all technological aspects related to solar energy and battery energy storage projects of all kinds and capacities.
           </p>
-          <p>
+          {/* <p>
             We are a leading provider of integrated renewable energy and sustainable solutions, delivering end-to-end services across solar, battery energy storage, hybrid systems, waste-to-energy projects, and Transmission & Distribution infrastructure. Serving commercial, industrial, utility-scale, and community clients, we combine technical expertise, innovative design, and project execution excellence to deliver reliable, efficient, and environmentally responsible energy solutions.
-          </p>
+          </p> */}
         </motion.div>
       </section>
 
@@ -197,7 +197,7 @@ export default function AboutPage() {
             </div>
 
             <div className="text-gray-400 text-sm leading-relaxed border-l-4 border-[#FFFA84] pl-6 italic">
-              "As of today, JIVO Energy has constructed (or has under construction) more than 100MWp of Solar PV and more than 60MWh of Battery Energy Storage Systems (BESS), with another 200MWp+ of Solar PV and 50MWh+ of Battery Energy Storage Systems under development across 12 countries in Africa."
+              As of today, JIVO Energy has constructed (or has under construction) more than 100MWp of Solar PV and more than 60MWh of Battery Energy Storage Systems (BESS), with another 200MWp+ of Solar PV and 50MWh+ of Battery Energy Storage Systems under development across 12 countries in Africa.
             </div>
           </div>
         </section>
