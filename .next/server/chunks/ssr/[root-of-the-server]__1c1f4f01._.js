@@ -1,0 +1,3 @@
+module.exports=[16480,a=>{a.v({className:"inter_b938fbcf-module__CD4Bya__className",variable:"inter_b938fbcf-module__CD4Bya__variable"})},27572,a=>{"use strict";var b=a.i(7997),c=a.i(16480);let d={className:c.default.className,style:{fontFamily:"'Inter', 'Inter Fallback'",fontStyle:"normal"}};function e({children:a}){return(0,b.jsx)("html",{lang:"en",children:(0,b.jsx)("body",{className:`${d.variable} font-inter antialiased`,children:a})})}null!=c.default.variable&&(d.variable=c.default.variable),a.s(["default",()=>e,"metadata",0,{title:"JIVO ENERGY",description:"JIVO ENERGY"}],27572)}];
+
+//# sourceMappingURL=%5Broot-of-the-server%5D__1c1f4f01._.js.map

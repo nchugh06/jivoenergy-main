@@ -1,0 +1,18 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/admin/layout,_N_T_/admin/(protected)/layout,_N_T_/admin/(protected)/projects/layout,_N_T_/admin/(protected)/projects/add-projects/layout,_N_T_/admin/(protected)/projects/add-projects/page,_N_T_/admin/projects/add-projects"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/admin/!KHByb3RlY3RlZCk/projects/add-projects/__PAGE__",
+    "/admin/!KHByb3RlY3RlZCk/projects/add-projects",
+    "/admin/!KHByb3RlY3RlZCk/projects",
+    "/admin/!KHByb3RlY3RlZCk",
+    "/admin",
+    "/_index",
+    "/_head"
+  ]
+}
