@@ -196,3 +196,12 @@ body {
     transform: translateY(0);
   }
 }
+
+.our-services {
+    color: rgb(255, 255, 255);
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    background: rgb(6, 37, 22);
+    padding: 120px 0px;
+}

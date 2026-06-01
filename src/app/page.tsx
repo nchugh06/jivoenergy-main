@@ -9,19 +9,20 @@ import Impact from "@/components/Impact"
 import ContactForm from "@/components/ContactForm"
 import Footer from "@/components/Footer"
 import Media from "@/components/Media"
+import Clients from "@/components/Clients"
 import MapViz from "@/components/MapViz"
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center p-4">
-      <div className="relative w-64 h-32 mb-8">
-        <Image
+      <div className="relative w-64 h-16 mb-8">
+        {/* <Image
           src="/logo1.png"
           alt="JIVO ENERGY"
           fill
           className="object-contain"
           priority
-        />
+        /> */}
       </div>
 
       {/* <h1 className="text-3xl md:text-5xl font-bold text-[#085D36] text-center">
@@ -36,11 +37,12 @@ export default function Home() {
           </div>
         </section>
         <About />
-        <Projects />
+        {/* <Projects /> */}
         <CoreValues />
         <Services />
-        <Impact />
-        <Media />
+        {/* <Impact /> */}
+        {/* <Media /> */}
+        <Clients />
         <ContactForm />
       </main>
       <Footer />

@@ -15,38 +15,45 @@ export default function Services() {
   const services: Service[] = [
     {
       id: "engineering",
-      title: "Engineering and\nConstruction",
+      title: "Solar PV Engineering and Design",
       icon: <Layers className="w-12 h-12" />,
       color: "bg-[#C4D600]",
     },
-    {
-      id: "development",
-      title: "Development and\nManagement",
-      icon: <User className="w-12 h-12" />,
-      color: "bg-[#1a8a8a]",
-    },
-    {
+     {
       id: "battery",
-      title: "Battery Energy\nStorage Systems",
+      title: "Battery Energy Storage Systems",
       icon: <Battery className="w-12 h-12" />,
       color: "bg-[#145f5a]",
     },
     {
+      id: "development",
+      title: "Transmission & Distribution",
+      icon: <User className="w-12 h-12" />,
+      color: "bg-[#1a8a8a]",
+    },
+   
+    {
       id: "operation",
-      title: "Operation and\nMaintenance",
+      title: "Hybrid Energy Systems",
       icon: <Wrench className="w-12 h-12" />,
       color: "bg-[#FFA500]",
     },
     {
       id: "consulting",
-      title: "Consulting and\nStudies",
+      title: "Biogas & Biomethane",
       icon: <Briefcase className="w-12 h-12" />,
       color: "bg-[#1BB5C4]",
+    },
+    {
+      id: "management",
+      title: "Waste Management & Waste-to-Energy",
+      icon: <Briefcase className="w-12 h-12" />,
+      color: "bg-[#C4D600]",
     },
   ]
 
   return (
-    <section className="py-16 md:py-24 bg-[#062d19]">
+    <section className="py-16 md:py-24 our-services">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading - Centered */}
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
@@ -54,7 +61,7 @@ export default function Services() {
         </h2>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
           {services.map((service) => (
             <div
               key={service.id}

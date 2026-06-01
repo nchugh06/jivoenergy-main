@@ -6,22 +6,21 @@ import { CheckCircle2, Sun, Shield, Lightbulb, Users, Zap } from "lucide-react"
 interface CoreValue {
   id: string
   title: string
+  description: string
 }
 
 const valueIcons = {
-  sustainability: <Sun className="w-6 h-6 text-yellow-500" />,
-  integrity: <Shield className="w-6 h-6 text-blue-600" />,
-  innovation: <Lightbulb className="w-6 h-6 text-yellow-400" />,
-  collaboration: <Users className="w-6 h-6 text-teal-600" />,
-  empowerment: <Zap className="w-6 h-6 text-yellow-500" />,
+  quality: <Sun className="w-6 h-6 text-yellow-500" />,
+  commitment: <Shield className="w-6 h-6 text-blue-600" />,
+  relationships: <Users className="w-6 h-6 text-teal-600" />,
+  efficiency: <Zap className="w-6 h-6 text-orange-500" />
 }
 
 const valuesList: CoreValue[] = [
-  { id: "sustainability", title: "Sustainability" },
-  { id: "integrity", title: "Integrity" },
-  { id: "innovation", title: "Innovation" },
-  { id: "collaboration", title: "Collaboration" },
-  { id: "empowerment", title: "Empowerment" },
+  { id: "quality", title: "Quality", description: "We use only Tier 1 materials and maintain uncompromising standards across every project to ensure long-lasting performance, reliability, and safety." },
+  { id: "commitment", title: "Commitment", description: "From initial planning to final execution, we are committed to delivering every project on time with precision, reliability, and seamless coordination, ensuring a smooth experience at every step." },
+  { id: "relationships", title: "Relationships", description: "We believe strong partnerships are built on transparency, trust, and consistent communication, creating lasting relationships with our clients and stakeholders." },
+  { id: "efficiency", title: "Efficiency", description: "Our streamlined processes and innovative approach help us deliver optimized energy solutions with maximum efficiency, cost-effectiveness, and impact." }
 ]
 
 export default function CoreValues() {
@@ -84,6 +83,9 @@ export default function CoreValues() {
                       <span className="text-lg font-medium text-slate-800">
                         {value.title}
                       </span>
+                      <p className="text-sm text-slate-600 mt-1">
+                        {value.description}
+                      </p>
                     </div>
                     <div className="flex-shrink-0">
                       <CheckCircle2

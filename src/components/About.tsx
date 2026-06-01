@@ -6,25 +6,15 @@ const About = () => {
       <div className="about-stats__container">
         <div className="about-stats__header">
           <p className="about-stats__subtitle">About Us</p>
-          <h2 className="about-stats__title">
+          {/* <h2 className="about-stats__title">
             <span>Decades Of </span>
             Expertise Dedicated To Success
-          </h2>
+          </h2> */}
           <p className="about-stats__description">
             {/* With over two decades of experience in renewable energy development, we have established
             ourselves as a trusted partner in the clean energy transition, delivering innovative solutions
             across multiple markets. */}
-            We are Africa’s leading provider of integrated renewable energy and sustainable solutions, delivering end-to-end services across Solar, Battery Energy Storage, Hybrid Systems, Waste-To-Energy projects, and Transmission & Distribution infrastructure. Serving commercial, industrial, utility-scale, and community clients, we combine technical expertise, innovative design, and project execution excellence to deliver reliable, efficient, and environmentally responsible energy solutions.<br></br><br></br>
-            <b>Our 4 Pillars</b><br></br>
-
-<b>Quality</b> - We use only Tier 1 materials and maintain uncompromising standards across every project to ensure long-lasting performance, reliability, and safety.<br></br><br></br>
-
-<b>Commitment</b> - From initial planning to final execution, we are committed to delivering every project on time with precision, reliability, and seamless coordination, ensuring a smooth experience at every step.<br></br><br></br>
-
-<b>Relationships</b> - We believe strong partnerships are built on transparency, trust, and consistent communication, creating lasting relationships with our clients and stakeholders.<br></br><br></br>
-
-<b>Efficiency</b> - Our streamlined processes and innovative approach help us deliver optimized energy solutions with maximum efficiency, cost-effectiveness, and impact.
-
+            We are Africa’s leading provider of integrated renewable energy and sustainable solutions, delivering end-to-end services across Solar, Battery Energy Storage, Hybrid Systems, Waste-To-Energy projects, and Transmission & Distribution infrastructure. Serving commercial, industrial, utility-scale, and community clients, we combine technical expertise, innovative design, and project execution excellence to deliver reliable, efficient, and environmentally responsible energy solutions.<br></br>
           </p>
         </div>
 
