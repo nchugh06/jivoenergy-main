@@ -144,14 +144,14 @@ const countryData = {
     flag: "https://flagcdn.com/w160/ae.png",
     projectImage: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=300&h=200&fit=crop"
   },
-  IN: { 
-    name: "India", 
-    projects: 25, 
-    capacity: "2100 MW", 
-    status: "Multi-Phase Development",
-    flag: "https://flagcdn.com/w160/in.png",
-    projectImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&h=200&fit=crop"
-  },
+  // IN: { 
+  //   name: "India", 
+  //   projects: 25, 
+  //   capacity: "2100 MW", 
+  //   status: "Multi-Phase Development",
+  //   flag: "https://flagcdn.com/w160/in.png",
+  //   projectImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&h=200&fit=crop"
+  // },
 }
 
 export default function MapViz() {
@@ -234,7 +234,8 @@ export default function MapViz() {
         // Africa
         "ET", "KE", "TZ", "UG", "BF", "CV", "LR", "ST", "SN", "SL", "MW", "ZA", "ZW", "LY", "TN",
         // Asia & Middle East
-        "AE", "IN",
+        //  "AE", "IN",
+        "AE",
       ]
 
       // Professional color palette - subtle and clean
@@ -248,7 +249,8 @@ export default function MapViz() {
         ET: "#2563eb", KE: "#3b82f6", TZ: "#1d4ed8", UG: "#1e40af", BF: "#1e3a8a",
         CV: "#059669", LR: "#047857", ST: "#065f46", SN: "#064e3b", SL: "#022c22",
         MW: "#2563eb", ZA: "#3b82f6", ZW: "#1d4ed8", LY: "#1e40af", TN: "#1e3a8a",
-        AE: "#059669", IN: "#047857"
+        // AE: "#059669", IN: "#047857"
+        AE: "#059669"
       }
 
       // Create polygon series for all countries with clean styling
