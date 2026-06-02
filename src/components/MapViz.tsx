@@ -17,17 +17,17 @@ const countryData = {
   // Africa
   ET: { 
     name: "Ethiopia", 
-    projects: 12, 
-    capacity: "850 MW", 
-    status: "Active Development",
+    projects: 1, 
+    capacity: "10 MW", 
+    status: "Ongoing",
     flag: "https://flagcdn.com/w160/et.png",
     projectImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&h=200&fit=crop"
   },
   KE: { 
     name: "Kenya", 
-    projects: 8, 
-    capacity: "620 MW", 
-    status: "Operational",
+    projects: 5, 
+    capacity: "929.2 MW", 
+    status: "Completed",
     flag: "https://flagcdn.com/w160/ke.png",
     projectImage: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=300&h=200&fit=crop"
   },
@@ -41,65 +41,65 @@ const countryData = {
   },
   UG: { 
     name: "Uganda", 
-    projects: 4, 
-    capacity: "320 MW", 
-    status: "Construction",
+    projects: 2, 
+    capacity: "46 MW", 
+    status: "Completed",
     flag: "https://flagcdn.com/w160/ug.png",
     projectImage: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=300&h=200&fit=crop"
   },
   BF: { 
     name: "Burkina Faso", 
-    projects: 3, 
-    capacity: "180 MW", 
-    status: "Early Development",
+    projects: 1, 
+    capacity: "2 MWp", 
+    status: "Ongoing",
     flag: "https://flagcdn.com/w160/bf.png",
     projectImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&h=200&fit=crop"
   },
   CV: { 
-    name: "Cape Verde", 
-    projects: 2, 
-    capacity: "95 MW", 
-    status: "Operational",
+    name: "Cabo Verde", 
+    projects: 1, 
+    capacity: "560.8 kW", 
+    status: "Ongoing",
     flag: "https://flagcdn.com/w160/cv.png",
     projectImage: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=300&h=200&fit=crop"
   },
   LR: { 
     name: "Liberia", 
     projects: 1, 
-    capacity: "45 MW", 
-    status: "Planning",
+    capacity: "20 kWP", 
+    status: "Completed",
     flag: "https://flagcdn.com/w160/lr.png",
     projectImage: "https://images.unsplash.com/photo-1566312087-9b02b5c62c77?w=300&h=200&fit=crop"
   },
   ST: { 
     name: "São Tomé & Príncipe", 
     projects: 1, 
-    capacity: "25 MW", 
-    status: "Feasibility",
+    capacity: "1.2 MWp", 
+    status: "Completed",
     flag: "https://flagcdn.com/w160/st.png",
     projectImage: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=300&h=200&fit=crop"
   },
   SN: { 
     name: "Senegal", 
-    projects: 5, 
-    capacity: "380 MW", 
-    status: "Active Development",
+    projects: 1, 
+    capacity: "650 MW", 
+    status: "Completed",
     flag: "https://flagcdn.com/w160/sn.png",
     projectImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&h=200&fit=crop"
   },
   SL: { 
     name: "Sierra Leone", 
-    projects: 2, 
-    capacity: "120 MW", 
+    projects: 1, 
+    capacity: "954.8 kWP", 
     status: "Construction",
     flag: "https://flagcdn.com/w160/sl.png",
     projectImage: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=300&h=200&fit=crop"
   },
   MW: { 
     name: "Malawi", 
-    projects: 3, 
-    capacity: "200 MW", 
-    status: "Planning Phase",
+    projects: 1, 
+    capacity: "7 MW", 
+    status: "Completed",
     flag: "https://flagcdn.com/w160/mw.png",
     projectImage: "https://images.unsplash.com/photo-1566312087-9b02b5c62c77?w=300&h=200&fit=crop"
   },
@@ -113,9 +113,9 @@ const countryData = {
   },
   ZW: { 
     name: "Zimbabwe", 
-    projects: 4, 
-    capacity: "280 MW", 
-    status: "Development",
+    projects: 1, 
+    capacity: "3.5 MW", 
+    status: "Completed",
     flag: "https://flagcdn.com/w160/zw.png",
     projectImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&h=200&fit=crop"
   },

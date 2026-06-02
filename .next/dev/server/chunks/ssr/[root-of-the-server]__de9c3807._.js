@@ -956,97 +956,49 @@ __turbopack_context__.s([
     ()=>CoreValues
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/image.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle2$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/circle-check.js [app-ssr] (ecmascript) <export default as CheckCircle2>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sun$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Sun$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/sun.js [app-ssr] (ecmascript) <export default as Sun>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Shield$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/shield.js [app-ssr] (ecmascript) <export default as Shield>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/users.js [app-ssr] (ecmascript) <export default as Users>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$zap$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Zap$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/zap.js [app-ssr] (ecmascript) <export default as Zap>");
 "use client";
 ;
 ;
 ;
-;
-const valueIcons = {
-    quality: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sun$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Sun$3e$__["Sun"], {
-        className: "w-6 h-6 text-yellow-500"
-    }, void 0, false, {
-        fileName: "[project]/src/components/CoreValues.tsx",
-        lineNumber: 13,
-        columnNumber: 12
-    }, ("TURBOPACK compile-time value", void 0)),
-    commitment: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Shield$3e$__["Shield"], {
-        className: "w-6 h-6 text-blue-600"
-    }, void 0, false, {
-        fileName: "[project]/src/components/CoreValues.tsx",
-        lineNumber: 14,
-        columnNumber: 15
-    }, ("TURBOPACK compile-time value", void 0)),
-    relationships: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__["Users"], {
-        className: "w-6 h-6 text-teal-600"
-    }, void 0, false, {
-        fileName: "[project]/src/components/CoreValues.tsx",
-        lineNumber: 15,
-        columnNumber: 18
-    }, ("TURBOPACK compile-time value", void 0)),
-    efficiency: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$zap$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Zap$3e$__["Zap"], {
-        className: "w-6 h-6 text-orange-500"
-    }, void 0, false, {
-        fileName: "[project]/src/components/CoreValues.tsx",
-        lineNumber: 16,
-        columnNumber: 15
-    }, ("TURBOPACK compile-time value", void 0))
-};
 const valuesList = [
     {
-        id: "quality",
-        title: "Quality",
-        description: "We use only Tier 1 materials and maintain uncompromising standards across every project to ensure long-lasting performance, reliability, and safety."
+        id: "sustainability",
+        title: "Sustainability",
+        description: "Committed to environmental stewardship and building a cleaner energy future for Africa."
     },
     {
-        id: "commitment",
-        title: "Commitment",
-        description: "From initial planning to final execution, we are committed to delivering every project on time with precision, reliability, and seamless coordination, ensuring a smooth experience at every step."
+        id: "integrity",
+        title: "Integrity",
+        description: "Operating with transparency, honesty, and ethical standards in all our business practices."
     },
     {
-        id: "relationships",
-        title: "Relationships",
-        description: "We believe strong partnerships are built on transparency, trust, and consistent communication, creating lasting relationships with our clients and stakeholders."
+        id: "innovation",
+        title: "Innovation",
+        description: "Pioneering advanced energy technologies and solutions that drive meaningful change."
     },
     {
-        id: "efficiency",
-        title: "Efficiency",
-        description: "Our streamlined processes and innovative approach help us deliver optimized energy solutions with maximum efficiency, cost-effectiveness, and impact."
+        id: "collaboration",
+        title: "Collaboration",
+        description: "Working together with partners, communities, and stakeholders to achieve shared goals."
+    },
+    {
+        id: "empowerment",
+        title: "Empowerment",
+        description: "Enabling communities and businesses to take control of their energy futures."
     }
 ];
 function CoreValues() {
-    const [activeValues, setActiveValues] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(new Set());
-    const [isHydrated, setIsHydrated] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        setActiveValues(new Set(valuesList.map((v)=>v.id)));
-        setIsHydrated(true);
-    }, []);
-    const toggleValue = (id)=>{
-        setActiveValues((prev)=>{
-            const newSet = new Set(prev);
-            if (newSet.has(id)) {
-                newSet.delete(id);
-            } else {
-                newSet.add(id);
-            }
-            return newSet;
-        });
-    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
-        className: "py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white",
+        className: "py-16 md:py-24 bg-white",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center",
+                className: "grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "relative h-96 md:h-[500px] rounded-lg overflow-hidden shadow-lg bg-slate-200",
+                        className: "relative h-96 md:h-[500px] rounded-lg overflow-hidden shadow-xl bg-slate-200",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                 src: "/assets/solar-power.jpg",
@@ -1057,119 +1009,108 @@ function CoreValues() {
                                 priority: true
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CoreValues.tsx",
-                                lineNumber: 52,
+                                lineNumber: 26,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"
+                                className: "absolute inset-0 bg-gradient-to-r from-black/10 to-transparent"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CoreValues.tsx",
-                                lineNumber: 60,
+                                lineNumber: 34,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CoreValues.tsx",
-                        lineNumber: 51,
+                        lineNumber: 25,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "lg:bg-slate-50 lg:p-8 lg:rounded-lg",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                className: "text-4xl md:text-5xl font-bold text-brand-green mb-12",
+                                className: "text-3xl md:text-4xl font-bold text-slate-800 mb-8",
                                 children: "Our core values"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CoreValues.tsx",
-                                lineNumber: 65,
+                                lineNumber: 39,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "space-y-4",
-                                children: valuesList.map((value)=>{
-                                    const isActive = isHydrated ? activeValues.has(value.id) : true;
-                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        onClick: ()=>toggleValue(value.id),
-                                        className: "w-full flex items-center justify-between p-5 rounded-lg bg-white hover:bg-slate-50 transition-colors border border-slate-200 hover:border-brand-green/30 text-left",
+                                children: valuesList.map((value)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-start gap-4 pb-4 border-b border-slate-200 last:border-b-0",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex items-center gap-4",
+                                                className: "flex-1",
                                                 children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "flex-shrink-0",
-                                                        children: valueIcons[value.id]
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/components/CoreValues.tsx",
-                                                        lineNumber: 80,
-                                                        columnNumber: 23
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "text-lg font-medium text-slate-800",
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                        className: "text-lg font-semibold text-slate-800 mb-1",
                                                         children: value.title
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CoreValues.tsx",
-                                                        lineNumber: 83,
-                                                        columnNumber: 23
+                                                        lineNumber: 51,
+                                                        columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-sm text-slate-600 mt-1",
+                                                        className: "text-sm text-slate-600",
                                                         children: value.description
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CoreValues.tsx",
-                                                        lineNumber: 86,
-                                                        columnNumber: 23
+                                                        lineNumber: 54,
+                                                        columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/CoreValues.tsx",
-                                                lineNumber: 79,
-                                                columnNumber: 21
+                                                lineNumber: 50,
+                                                columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex-shrink-0",
+                                                className: "flex-shrink-0 mt-1",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle2$3e$__["CheckCircle2"], {
-                                                    className: `w-6 h-6 transition-all ${isActive ? "text-teal-600 fill-teal-600" : "text-slate-300"}`
+                                                    className: "w-6 h-6 text-teal-600 fill-teal-600"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CoreValues.tsx",
-                                                    lineNumber: 91,
-                                                    columnNumber: 23
+                                                    lineNumber: 59,
+                                                    columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CoreValues.tsx",
-                                                lineNumber: 90,
-                                                columnNumber: 21
+                                                lineNumber: 58,
+                                                columnNumber: 19
                                             }, this)
                                         ]
                                     }, value.id, true, {
                                         fileName: "[project]/src/components/CoreValues.tsx",
-                                        lineNumber: 74,
-                                        columnNumber: 19
-                                    }, this);
-                                })
+                                        lineNumber: 46,
+                                        columnNumber: 17
+                                    }, this))
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CoreValues.tsx",
-                                lineNumber: 70,
+                                lineNumber: 44,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CoreValues.tsx",
-                        lineNumber: 64,
+                        lineNumber: 38,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/CoreValues.tsx",
-                lineNumber: 49,
+                lineNumber: 23,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/components/CoreValues.tsx",
-            lineNumber: 48,
+            lineNumber: 22,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/CoreValues.tsx",
-        lineNumber: 47,
+        lineNumber: 21,
         columnNumber: 5
     }, this);
 }
@@ -2223,13 +2164,13 @@ const Footer = ()=>{
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     className: "block text-white font-medium",
-                                                    children: "Dubai"
+                                                    children: "U.A.E."
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/Footer.tsx",
                                                     lineNumber: 106,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0)),
-                                                "Meydan Grandstand, 6th Floor, Meydan Road, NadEl Sheba, Dubai, U.A.E"
+                                                "Meydan Grandstand, 6th Floor, Meydan Road, Nad El Sheba, Dubai"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/Footer.tsx",
@@ -2246,7 +2187,7 @@ const Footer = ()=>{
                                                     lineNumber: 110,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0)),
-                                                "Plot 40, Wanainchi Road, Ministers' Village, Ntinda, Kampala, PO Box 11580"
+                                                "Unit 10C, The Cube 10th Floor, Plot 5/7, Cooper Road, Kampala"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/Footer.tsx",
@@ -2288,7 +2229,7 @@ const Footer = ()=>{
                                                     lineNumber: 121,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0)),
-                                                "4th Floor Ebene Skies, Rue De L'Institut, Ebene, Mauritius"
+                                                "4th Floor Ebene Skies, Rue De L'Institut, Ebene"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/Footer.tsx",
@@ -2299,13 +2240,13 @@ const Footer = ()=>{
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     className: "block text-white font-medium",
-                                                    children: "Ethiopia"
+                                                    children: "Kenya"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/Footer.tsx",
                                                     lineNumber: 125,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0)),
-                                                "Office no-1203, Eldasol Building, Mike Leyland Street, Bole Sub-City, Woreda 4, House no. New, Addis Ababa, Ethiopia"
+                                                "Office No-309, Third Floor, Kanha Building, 10 Lower Kabete Road, Westlands, Nairobi"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/Footer.tsx",
@@ -2322,7 +2263,7 @@ const Footer = ()=>{
                                                     lineNumber: 129,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0)),
-                                                "Rua, Joaquim Brandao, 13, Floor 1, Setubal, Portugal"
+                                                "Rua, Joaquim Brandao, 13 2900-422, Setubal"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/Footer.tsx",
@@ -2539,17 +2480,17 @@ const countryData = {
     // Africa
     ET: {
         name: "Ethiopia",
-        projects: 12,
-        capacity: "850 MW",
-        status: "Active Development",
+        projects: 1,
+        capacity: "10 MW",
+        status: "Ongoing",
         flag: "https://flagcdn.com/w160/et.png",
         projectImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&h=200&fit=crop"
     },
     KE: {
         name: "Kenya",
-        projects: 8,
-        capacity: "620 MW",
-        status: "Operational",
+        projects: 5,
+        capacity: "929.2 MW",
+        status: "Completed",
         flag: "https://flagcdn.com/w160/ke.png",
         projectImage: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=300&h=200&fit=crop"
     },
@@ -2563,65 +2504,65 @@ const countryData = {
     },
     UG: {
         name: "Uganda",
-        projects: 4,
-        capacity: "320 MW",
-        status: "Construction",
+        projects: 2,
+        capacity: "46 MW",
+        status: "Completed",
         flag: "https://flagcdn.com/w160/ug.png",
         projectImage: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=300&h=200&fit=crop"
     },
     BF: {
         name: "Burkina Faso",
-        projects: 3,
-        capacity: "180 MW",
-        status: "Early Development",
+        projects: 1,
+        capacity: "2 MWp",
+        status: "Ongoing",
         flag: "https://flagcdn.com/w160/bf.png",
         projectImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&h=200&fit=crop"
     },
     CV: {
-        name: "Cape Verde",
-        projects: 2,
-        capacity: "95 MW",
-        status: "Operational",
+        name: "Cabo Verde",
+        projects: 1,
+        capacity: "560.8 kW",
+        status: "Ongoing",
         flag: "https://flagcdn.com/w160/cv.png",
         projectImage: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=300&h=200&fit=crop"
     },
     LR: {
         name: "Liberia",
         projects: 1,
-        capacity: "45 MW",
-        status: "Planning",
+        capacity: "20 kWP",
+        status: "Completed",
         flag: "https://flagcdn.com/w160/lr.png",
         projectImage: "https://images.unsplash.com/photo-1566312087-9b02b5c62c77?w=300&h=200&fit=crop"
     },
     ST: {
         name: "São Tomé & Príncipe",
         projects: 1,
-        capacity: "25 MW",
-        status: "Feasibility",
+        capacity: "1.2 MWp",
+        status: "Completed",
         flag: "https://flagcdn.com/w160/st.png",
         projectImage: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=300&h=200&fit=crop"
     },
     SN: {
         name: "Senegal",
-        projects: 5,
-        capacity: "380 MW",
-        status: "Active Development",
+        projects: 1,
+        capacity: "650 MW",
+        status: "Completed",
         flag: "https://flagcdn.com/w160/sn.png",
         projectImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&h=200&fit=crop"
     },
     SL: {
         name: "Sierra Leone",
-        projects: 2,
-        capacity: "120 MW",
+        projects: 1,
+        capacity: "954.8 kWP",
         status: "Construction",
         flag: "https://flagcdn.com/w160/sl.png",
         projectImage: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=300&h=200&fit=crop"
     },
     MW: {
         name: "Malawi",
-        projects: 3,
-        capacity: "200 MW",
-        status: "Planning Phase",
+        projects: 1,
+        capacity: "7 MW",
+        status: "Completed",
         flag: "https://flagcdn.com/w160/mw.png",
         projectImage: "https://images.unsplash.com/photo-1566312087-9b02b5c62c77?w=300&h=200&fit=crop"
     },
@@ -2635,9 +2576,9 @@ const countryData = {
     },
     ZW: {
         name: "Zimbabwe",
-        projects: 4,
-        capacity: "280 MW",
-        status: "Development",
+        projects: 1,
+        capacity: "3.5 MW",
+        status: "Completed",
         flag: "https://flagcdn.com/w160/zw.png",
         projectImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&h=200&fit=crop"
     },

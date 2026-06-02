@@ -1,160 +1,98 @@
-[00:00:05.392] Server  LOG      ✓ Ready in 3.5s
-[00:00:10.166] Server  LOG      ○ Compiling /business-areas ...
-[00:00:17.964] Server  WARN    Image with src "/partners/client1.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:01.295] Server  LOG      ✓ Ready in 844ms
+[00:00:08.895] Server  WARN    Image with src "/partners/client1.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:17.967] Server  WARN    Image with src "/partners/client2.jpg" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:08.896] Server  WARN    Image with src "/partners/client2.jpg" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:17.968] Server  WARN    Image with src "/partners/client3.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:08.897] Server  WARN    Image with src "/partners/client3.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:17.971] Server  WARN    Image with src "/partners/client4.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:08.898] Server  WARN    Image with src "/partners/client4.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:17.973] Server  WARN    Image with src "/partners/client5.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:08.899] Server  WARN    Image with src "/partners/client5.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:17.974] Server  WARN    Image with src "/partners/client6.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:08.899] Server  WARN    Image with src "/partners/client6.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:17.975] Server  WARN    Image with src "/partners/client7.jpg" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:08.900] Server  WARN    Image with src "/partners/client7.jpg" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:17.979] Server  WARN    Image with src "/partners/client8.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:08.900] Server  WARN    Image with src "/partners/client8.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:17.981] Server  WARN    Image with src "/partners/client9.jpg" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:08.901] Server  WARN    Image with src "/partners/client9.jpg" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:17.982] Server  WARN    Image with src "/partners/client10.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:08.902] Server  WARN    Image with src "/partners/client10.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:17.985] Server  WARN    Image with src "/partners/client11.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:08.902] Server  WARN    Image with src "/partners/client11.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:17.987] Server  WARN    Image with src "/partners/client12.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:08.903] Server  WARN    Image with src "/partners/client12.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:17.988] Server  WARN    Image with src "/partners/client13.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:08.904] Server  WARN    Image with src "/partners/client13.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:19.955] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:20.209] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:20.352] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:22.380] Browser WARN    Image with src "/partners/client1.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:09.390] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:09.964] Browser WARN    Image with src "/partners/client1.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:22.380] Browser WARN    Image with src "/partners/client2.jpg" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:09.964] Browser WARN    Image with src "/partners/client2.jpg" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:22.380] Browser WARN    Image with src "/partners/client3.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:09.964] Browser WARN    Image with src "/partners/client3.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:22.380] Browser WARN    Image with src "/partners/client4.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:09.964] Browser WARN    Image with src "/partners/client4.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:22.380] Browser WARN    Image with src "/partners/client5.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:09.964] Browser WARN    Image with src "/partners/client5.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:22.380] Browser WARN    Image with src "/partners/client6.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:09.964] Browser WARN    Image with src "/partners/client6.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:22.380] Browser WARN    Image with src "/partners/client7.jpg" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:09.964] Browser WARN    Image with src "/partners/client7.jpg" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:22.380] Browser WARN    Image with src "/partners/client8.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:09.964] Browser WARN    Image with src "/partners/client8.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:22.380] Browser WARN    Image with src "/partners/client9.jpg" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:09.964] Browser WARN    Image with src "/partners/client9.jpg" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:22.380] Browser WARN    Image with src "/partners/client10.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:09.964] Browser WARN    Image with src "/partners/client10.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:22.380] Browser WARN    Image with src "/partners/client11.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:09.964] Browser WARN    Image with src "/partners/client11.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:22.380] Browser WARN    Image with src "/partners/client12.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:09.964] Browser WARN    Image with src "/partners/client12.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:22.380] Browser WARN    Image with src "/partners/client13.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+[00:00:09.964] Browser WARN    Image with src "/partners/client13.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:00:22.380] Browser WARN    Image with src "/partners/client1.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:22.380] Browser WARN    Image with src "/partners/client2.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:22.380] Browser WARN    Image with src "/partners/client3.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:22.380] Browser WARN    Image with src "/partners/client4.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:22.380] Browser WARN    Image with src "/partners/client5.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:22.380] Browser WARN    Image with src "/partners/client6.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:22.380] Browser WARN    Image with src "/partners/client7.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:22.380] Browser WARN    Image with src "/partners/client8.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:22.380] Browser WARN    Image with src "/partners/client9.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:22.380] Browser WARN    Image with src "/partners/client10.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:22.380] Browser WARN    Image with src "/partners/client11.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:22.380] Browser WARN    Image with src "/partners/client12.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:22.380] Browser WARN    Image with src "/partners/client13.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:23.379] Browser WARN    Image with src "https://firebasestorage.googleapis.com/v0/b/jivoenergy.firebasestorage.app/o/projects%2F1770716661488_DJI_0040.JPG?alt=media" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:23.379] Browser WARN    Image with src "https://firebasestorage.googleapis.com/v0/b/jivoenergy.firebasestorage.app/o/projects%2F1770716764540_WhatsApp%20Image%202023-10-25%20at%2015.16.24_c5bef946.jpg?alt=media" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:23.379] Browser WARN    Image with src "https://firebasestorage.googleapis.com/v0/b/jivoenergy.firebasestorage.app/o/projects%2F1770717670415_Cape%20Verde%20Project%20Pictures%20(2).jpeg?alt=media" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:23.379] Browser WARN    Image with src "https://firebasestorage.googleapis.com/v0/b/jivoenergy.firebasestorage.app/o/projects%2F1770716812132_DSC_0226.jpg?alt=media" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:23.379] Browser WARN    Image with src "https://firebasestorage.googleapis.com/v0/b/jivoenergy.firebasestorage.app/o/projects%2F1770716943629_Solar-Uganda-Kabulasoke_1.jpg?alt=media" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:23.379] Browser WARN    Image with src "https://firebasestorage.googleapis.com/v0/b/jivoenergy.firebasestorage.app/o/projects%2F1770717710411_Senegal%20Project%20Pictures%20(1).jpg?alt=media" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:23.379] Browser WARN    Image with src "https://firebasestorage.googleapis.com/v0/b/jivoenergy.firebasestorage.app/o/projects%2F1770717259058_IMG-20230109-WA0044.jpg?alt=media" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:23.379] Browser WARN    Image with src "https://firebasestorage.googleapis.com/v0/b/jivoenergy.firebasestorage.app/o/projects%2F1770717747142_Sierra%20Leone%20Project%20Pictures%20(4).jpeg?alt=media" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:23.379] Browser WARN    Image with src "https://firebasestorage.googleapis.com/v0/b/jivoenergy.firebasestorage.app/o/projects%2F1770717456548_WhatsApp%20Image%202022-01-05%20at%2015.33.38.jpeg?alt=media" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:23.379] Browser WARN    Image with src "https://firebasestorage.googleapis.com/v0/b/jivoenergy.firebasestorage.app/o/projects%2F1770718261106_WhatsApp%20Image%202021-12-24%20at%2017.00.40%20(1).jpeg?alt=media" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:23.379] Browser WARN    Image with src "https://firebasestorage.googleapis.com/v0/b/jivoenergy.firebasestorage.app/o/projects%2F1770716872359_WhatsApp%20Image%202022-07-13%20at%204.40.06%20PM.jpeg?alt=media" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:23.379] Browser WARN    Image with src "https://firebasestorage.googleapis.com/v0/b/jivoenergy.firebasestorage.app/o/projects%2F1770718443587_WhatsApp%20Image%202021-12-22%20at%2007.33.18.jpeg?alt=media" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:23.379] Browser WARN    Image with src "https://firebasestorage.googleapis.com/v0/b/jivoenergy.firebasestorage.app/o/projects%2F1770717611703_WhatsApp%20Image%202026-02-06%20at%2020.16.35.jpeg?alt=media" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:23.379] Browser WARN    Image with src "https://firebasestorage.googleapis.com/v0/b/jivoenergy.firebasestorage.app/o/projects%2F1770717816178_Sao%20Tome%20Project%20Pictures%20(2).jpg?alt=media" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:23.379] Browser WARN    Image with src "https://firebasestorage.googleapis.com/v0/b/jivoenergy.firebasestorage.app/o/projects%2F1770717863432_Liberia%20Project%20Pictures%20(1).jpg?alt=media" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:44.668] Browser WARN    Image with src "/_next/static/media/1.49cc1541.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:44.668] Browser WARN    Image with src "https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=2070&auto=format&fit=crop" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:44.668] Browser WARN    Image with src "/_next/static/media/1.49cc1541.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+[00:02:25.541] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:25.886] Browser WARN    Image with src "/translogo.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
 Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
-[00:00:44.668] Browser WARN    Image with src "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:02:17.843] Server  LOG      ✓ Compiled in 106ms
-[00:02:18.375] Browser ERROR   ./src/app/business-areas/page.tsx:8:8
-Ecmascript file had an error
-   6 | import Footer from '@/components/Footer';
-   7 | import solarPV from '../../../public/gallery/Uganda/NKONGE/1.jpg';
->  8 | import solarPV from '../../../public/gallery/Uganda/NKONGE/1.jpg';
-     |        ^^^^^^^
-   9 | const businessAreas = [
-  10 |   {
-  11 |     title: "Solar PV",
-
-the name `solarPV` is defined multiple times
-
-Import traces:
-  Client Component Browser:
-    ./src/app/business-areas/page.tsx [Client Component Browser]
-    ./src/app/business-areas/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./src/app/business-areas/page.tsx [Client Component SSR]
-    ./src/app/business-areas/page.tsx [Server Component]
-[00:02:18.375] Browser ERROR   ./src/app/business-areas/page.tsx:8:8
-Ecmascript file had an error
-   6 | import Footer from '@/components/Footer';
-   7 | import solarPV from '../../../public/gallery/Uganda/NKONGE/1.jpg';
->  8 | import solarPV from '../../../public/gallery/Uganda/NKONGE/1.jpg';
-     |        ^^^^^^^
-   9 | const businessAreas = [
-  10 |   {
-  11 |     title: "Solar PV",
-
-the name `solarPV` is defined multiple times
-
-Import traces:
-  Client Component Browser:
-    ./src/app/business-areas/page.tsx [Client Component Browser]
-    ./src/app/business-areas/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./src/app/business-areas/page.tsx [Client Component SSR]
-    ./src/app/business-areas/page.tsx [Server Component]
-[00:02:18.376] Browser ERROR   ./src/app/business-areas/page.tsx:8:8
-Ecmascript file had an error
-   6 | import Footer from '@/components/Footer';
-   7 | import solarPV from '../../../public/gallery/Uganda/NKONGE/1.jpg';
->  8 | import solarPV from '../../../public/gallery/Uganda/NKONGE/1.jpg';
-     |        ^^^^^^^
-   9 | const businessAreas = [
-  10 |   {
-  11 |     title: "Solar PV",
-
-the name `solarPV` is defined multiple times
-
-Import traces:
-  Client Component Browser:
-    ./src/app/business-areas/page.tsx [Client Component Browser]
-    ./src/app/business-areas/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./src/app/business-areas/page.tsx [Client Component SSR]
-    ./src/app/business-areas/page.tsx [Server Component]
-[00:03:33.267] Server  LOG      ✓ Compiled in 103ms
-[00:03:34.386] Browser WARN    Image with src "/_next/static/media/1.e5a6bd8f.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:03:45.039] Server  LOG      ✓ Compiled in 70ms
-[00:12:45.736] Browser WARN    Image with src "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:13:24.346] Server  LOG      ✓ Compiled in 1038ms
-[00:13:25.525] Server  LOG      ✓ Compiled in 228ms
-[00:13:40.549] Server  LOG      ✓ Compiled in 100ms
-[00:13:51.901] Server  LOG      ✓ Compiled in 129ms
-[00:14:02.728] Server  LOG      ✓ Compiled in 103ms
+[00:02:25.886] Browser WARN    Image with src "/partners/client1.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:02:25.886] Browser WARN    Image with src "/partners/client2.jpg" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:02:25.886] Browser WARN    Image with src "/partners/client3.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:02:25.886] Browser WARN    Image with src "/partners/client4.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:02:25.886] Browser WARN    Image with src "/partners/client5.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:02:25.886] Browser WARN    Image with src "/partners/client6.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:02:25.886] Browser WARN    Image with src "/partners/client7.jpg" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:02:25.886] Browser WARN    Image with src "/partners/client8.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:02:25.886] Browser WARN    Image with src "/partners/client9.jpg" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:02:25.887] Browser WARN    Image with src "/partners/client10.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:02:25.887] Browser WARN    Image with src "/partners/client11.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:02:25.887] Browser WARN    Image with src "/partners/client12.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:02:25.887] Browser WARN    Image with src "/partners/client13.png" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:02:33.634] Browser WARN    Image with src "/translogo.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:02:54.399] Browser WARN    Image with src "/partners/client4.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:02:54.399] Browser WARN    Image with src "/partners/client2.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:02:54.399] Browser WARN    Image with src "/partners/client6.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:02:54.399] Browser WARN    Image with src "/partners/client3.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:02:54.399] Browser WARN    Image with src "/partners/client5.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:02:54.399] Browser WARN    Image with src "/partners/client1.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:02:54.775] Browser WARN    Image with src "/partners/client7.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:02:54.775] Browser WARN    Image with src "/partners/client8.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:02:54.775] Browser WARN    Image with src "/partners/client9.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:02:54.775] Browser WARN    Image with src "/partners/client10.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:02:54.775] Browser WARN    Image with src "/partners/client11.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:02:54.775] Browser WARN    Image with src "/partners/client12.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:02:54.906] Browser WARN    Image with src "/partners/client13.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes

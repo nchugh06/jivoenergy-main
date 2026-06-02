@@ -16,6 +16,7 @@
   "/api/careers/route": "app/api/careers/route.js",
   "/api/contact/route": "app/api/contact/route.js",
   "/business-areas/page": "app/business-areas/page.js",
+  "/capabilities/page": "app/capabilities/page.js",
   "/careers/page": "app/careers/page.js",
   "/certificate/page": "app/certificate/page.js",
   "/contact/page": "app/contact/page.js",

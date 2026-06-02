@@ -16,6 +16,7 @@
   "/api/careers/route": "/api/careers",
   "/api/contact/route": "/api/contact",
   "/business-areas/page": "/business-areas",
+  "/capabilities/page": "/capabilities",
   "/careers/page": "/careers",
   "/certificate/page": "/certificate",
   "/contact/page": "/contact",

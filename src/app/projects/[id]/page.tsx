@@ -209,7 +209,7 @@ const ProjectDetailPage = () => {
             )}
 
             {/* Impact Section Placeholder */}
-            {project.financing && (
+            {/* {project.financing && (
                 <section className="py-8 px-4">
                     <div className="container mx-auto">
                         <div className="bg-gradient-to-r from-[#062516] to-[#085D36] rounded-[40px] p-12 text-center text-white">
@@ -220,10 +220,10 @@ const ProjectDetailPage = () => {
                         </div>
                     </div>
                 </section>
-            )}
+            )} */}
 
             {/* CTA Section */}
-            <section className="py-8 px-4 mb-8">
+            {/* <section className="py-8 px-4 mb-8">
                 <div className="container mx-auto">
                     <div className="bg-[#FFFA84] rounded-[40px] p-12 flex flex-col md:flex-row items-center justify-between gap-8">
                         <div>
@@ -238,7 +238,7 @@ const ProjectDetailPage = () => {
                         </Link>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             <Footer />
         </div>

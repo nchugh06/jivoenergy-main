@@ -103,12 +103,12 @@ const Footer = () => {
                 108 to 111, First Floor, Tower B, Spaze Business Park, Sector-66, Gurgaon, Haryana
               </li>
               <li>
-                <span className="block text-white font-medium">Dubai</span>
-                Meydan Grandstand, 6th Floor, Meydan Road, NadEl Sheba, Dubai, U.A.E
+                <span className="block text-white font-medium">U.A.E.</span>
+                Meydan Grandstand, 6th Floor, Meydan Road, Nad El Sheba, Dubai
               </li>
               <li>
                 <span className="block text-white font-medium">Uganda</span>
-                Plot 40, Wanainchi Road, Ministers' Village, Ntinda, Kampala, PO Box 11580
+                Unit 10C, The Cube 10th Floor, Plot 5/7, Cooper Road, Kampala
               </li>
             </ul>
           </div>
@@ -119,16 +119,16 @@ const Footer = () => {
             <ul className="space-y-4 text-gray-400 text-sm">
               <li>
                 <span className="block text-white font-medium">Mauritius</span>
-                4th Floor Ebene Skies, Rue De L'Institut, Ebene, Mauritius
+                4th Floor Ebene Skies, Rue De L'Institut, Ebene
               </li>
               <li>
-                <span className="block text-white font-medium">Ethiopia</span>
-                Office no-1203, Eldasol Building, Mike Leyland Street, Bole Sub-City, Woreda 4, House no. New, Addis Ababa, Ethiopia
+                <span className="block text-white font-medium">Kenya</span>
+                Office No-309, Third Floor, Kanha Building, 10 Lower Kabete Road, Westlands, Nairobi
               </li>
               <li>
                 <span className="block text-white font-medium">Portugal</span>
-                Rua, Joaquim Brandao, 13, Floor 1, Setubal, Portugal
-              </li>
+                Rua, Joaquim Brandao, 13 2900-422, Setubal              
+                </li>
             </ul>
           </div>
         </div>

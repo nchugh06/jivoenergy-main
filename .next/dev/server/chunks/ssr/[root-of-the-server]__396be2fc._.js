@@ -751,13 +751,13 @@ const Footer = ()=>{
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     className: "block text-white font-medium",
-                                                    children: "Dubai"
+                                                    children: "U.A.E."
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/Footer.tsx",
                                                     lineNumber: 106,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0)),
-                                                "Meydan Grandstand, 6th Floor, Meydan Road, NadEl Sheba, Dubai, U.A.E"
+                                                "Meydan Grandstand, 6th Floor, Meydan Road, Nad El Sheba, Dubai"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/Footer.tsx",
@@ -774,7 +774,7 @@ const Footer = ()=>{
                                                     lineNumber: 110,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0)),
-                                                "Plot 40, Wanainchi Road, Ministers' Village, Ntinda, Kampala, PO Box 11580"
+                                                "Unit 10C, The Cube 10th Floor, Plot 5/7, Cooper Road, Kampala"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/Footer.tsx",
@@ -816,7 +816,7 @@ const Footer = ()=>{
                                                     lineNumber: 121,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0)),
-                                                "4th Floor Ebene Skies, Rue De L'Institut, Ebene, Mauritius"
+                                                "4th Floor Ebene Skies, Rue De L'Institut, Ebene"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/Footer.tsx",
@@ -827,13 +827,13 @@ const Footer = ()=>{
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     className: "block text-white font-medium",
-                                                    children: "Ethiopia"
+                                                    children: "Kenya"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/Footer.tsx",
                                                     lineNumber: 125,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0)),
-                                                "Office no-1203, Eldasol Building, Mike Leyland Street, Bole Sub-City, Woreda 4, House no. New, Addis Ababa, Ethiopia"
+                                                "Office No-309, Third Floor, Kanha Building, 10 Lower Kabete Road, Westlands, Nairobi"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/Footer.tsx",
@@ -850,7 +850,7 @@ const Footer = ()=>{
                                                     lineNumber: 129,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0)),
-                                                "Rua, Joaquim Brandao, 13, Floor 1, Setubal, Portugal"
+                                                "Rua, Joaquim Brandao, 13 2900-422, Setubal"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/Footer.tsx",
