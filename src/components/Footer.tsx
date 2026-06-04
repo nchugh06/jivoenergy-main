@@ -28,12 +28,12 @@ const Footer = () => {
               <a href="https://www.linkedin.com/company/jivo-energy/" target="_blank" className="text-gray-400 hover:text-white transition-colors duration-200">
                 <FaLinkedin size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+              {/* <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
                 <FaTwitter size={20} />
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
                 <FaFacebook size={20} />
-              </a>
+              </a> */}
               <a href="https://www.instagram.com/jivoenergy?igsh=MTQ4MDN2bDV6NjJhNA==" target="_blank" className="text-gray-400 hover:text-white transition-colors duration-200">
                 <FaInstagram size={20} />
               </a>
@@ -137,7 +137,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} JIVO ENERGY. All rights reserved.
+              © 2026 JIVO ENERGY. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">

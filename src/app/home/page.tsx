@@ -26,7 +26,6 @@ export default function Home() {
           <div className="absolute inset-0 z-0 block md:hidden bg-[#062516]">
             <GlobeViz />
           </div>
-
           
         </section>
         <About />

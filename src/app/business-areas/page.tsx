@@ -149,9 +149,20 @@ Our multidisciplinary team specializes in complete project lifecycle execution â
 
         {/* Business Areas Grid */}
         <div className="space-y-24">
-          {businessAreas.map((area, index) => (
+          {businessAreas.map((area, index) => {
+            const sectionIds = [
+              'solar-pv',
+              'bess',
+              'transmission-distribution',
+              'hybrid-energy',
+              'biogas-biomethane',
+              'waste-management'
+            ];
+            
+            return (
             <div 
               key={index}
+              id={sectionIds[index]}
               className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
                 index % 2 === 1 ? 'lg:flex-row-reverse' : ''
               }`}
@@ -187,7 +198,8 @@ Our multidisciplinary team specializes in complete project lifecycle execution â
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Call to Action */}

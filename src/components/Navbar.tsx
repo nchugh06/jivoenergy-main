@@ -33,7 +33,7 @@ const Navbar = () => {
           <div className={styles.nav__logo}>
             <Link href="/" className={styles.logoDesktop}>
               <Image
-                src="/Logo.png"
+                src="/logo.png"
                 alt="JIVO ENERGY"
                 width={150}
                 height={50}

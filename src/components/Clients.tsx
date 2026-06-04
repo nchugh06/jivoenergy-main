@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Clients = () => {
@@ -11,10 +11,13 @@ const Clients = () => {
     ];
 
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [itemsToShow, setItemsToShow] = useState(6); // Default to desktop for server render
+    const [isHydrated, setIsHydrated] = useState(false);
+
     const itemsPerView = {
         mobile: 1,
-        tablet: 3,
-        desktop: 6
+        tablet: 5,
+        desktop: 7
     };
 
     const getItemsToShow = () => {
@@ -24,14 +27,19 @@ const Clients = () => {
         return itemsPerView.desktop;
     };
 
-    const [itemsToShow, setItemsToShow] = useState(itemsPerView.desktop);
+    // Set correct items on mount and handle resize
+    useEffect(() => {
+        // Update on mount to match actual window size
+        setItemsToShow(getItemsToShow());
+        setIsHydrated(true);
 
-    // Handle window resize
-    if (typeof window !== 'undefined') {
-        window.addEventListener('resize', () => {
+        const handleResize = () => {
             setItemsToShow(getItemsToShow());
-        });
-    }
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const maxIndex = Math.max(0, clientsList.length - itemsToShow);
 
@@ -70,7 +78,7 @@ const Clients = () => {
                                 {visibleItems.map((img, index) => (
                                     <div
                                         key={currentIndex + index}
-                                        className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 relative p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 flex items-center justify-center"
+                                        className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 relative p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 flex items-center justify-center"
                                     >
                                         <Image
                                             src={`/partners/${img}`}
