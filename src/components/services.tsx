@@ -57,7 +57,7 @@ export default function Services() {
     <section className="py-16 md:py-24 our-services">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading - Centered */}
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
+        <h2 className="section-title text-center text-white">
           Business Areas
         </h2>
 

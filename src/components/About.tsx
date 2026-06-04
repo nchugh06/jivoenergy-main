@@ -10,7 +10,7 @@ const About = () => {
             <span>Decades Of </span>
             Expertise Dedicated To Success
           </h2> */}
-          <p className="about-stats__description">
+          <p className="about-stats__description justify-text">
             {/* With over two decades of experience in renewable energy development, we have established
             ourselves as a trusted partner in the clean energy transition, delivering innovative solutions
             across multiple markets. */}

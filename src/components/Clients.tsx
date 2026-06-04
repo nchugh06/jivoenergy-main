@@ -48,7 +48,7 @@ const Clients = () => {
     return (
         <section className="bg-[#fefefe] py-16 w-full">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-3xl font-bold text-[#062516] text-center mb-12 border-b pb-4">
+                <h2 className="section-title text-center text-[#062516]">
                     Clients
                 </h2>
 

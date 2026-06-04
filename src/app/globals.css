@@ -205,3 +205,38 @@ body {
     background: rgb(6, 37, 22);
     padding: 120px 0px;
 }
+
+/* Standardized Section Styles */
+.section-title {
+  font-size: 2.25rem; /* 36px */
+  line-height: 1.2;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  letter-spacing: -0.5px;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 3rem; /* 48px */
+  }
+}
+
+.section-subtitle {
+  font-size: 1rem; /* 16px */
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+/* Justified text for paragraphs */
+.justify-text {
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 1.7;
+}
+
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}

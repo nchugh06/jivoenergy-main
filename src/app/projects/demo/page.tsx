@@ -19,7 +19,7 @@ const DUMMY_PROJECT: Project = {
     capacity: '250 MWp',
     technology: 'Bifacial Solar PV + BESS',
     beneficiary: '1.2 Million Households',
-    financing: 'Jointly funded by Jivo Energy and International Green Climate Fund',
+    financing: 'Jointly funded by JIVO Energy and International Green Climate Fund',
     description: `
         <p>The <strong>Great Rift Solar Oasis</strong> stands as a beacon of sustainable innovation in East Africa. Spanning over 500 hectares of arid land in Nakuru County, this flagship project integrates cutting-edge bifacial solar technology with an advanced Battery Energy Storage System (BESS).</p>
         <p>Since its commissioning in 2025, the facility has consistently outperformed energy yield projections, providing stable and clean electricity to various industrial hubs and over 1.2 million households. The project has also created over 800 local jobs during construction and continues to support 50 permanent technical roles.</p>

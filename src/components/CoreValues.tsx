@@ -36,8 +36,8 @@ export default function CoreValues() {
 
           {/* Right: Content */}
           <div className="lg:bg-slate-50 lg:p-8 lg:rounded-lg">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-8">
-              Our core values
+            <h2 className="section-title text-center text-slate-800">
+              Our Core Values
             </h2>
 
             {/* Values List */}
@@ -51,7 +51,7 @@ export default function CoreValues() {
                     <h3 className="text-lg font-semibold text-slate-800 mb-1">
                       {value.title}
                     </h3>
-                    <p className="text-sm text-slate-600">
+                    <p className="text-sm text-slate-600 justify-text">
                       {value.description}
                     </p>
                   </div>
