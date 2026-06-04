@@ -16,13 +16,13 @@ export default function Services() {
   const services: Service[] = [
     {
       id: "engineering",
-      title: "Solar PV Engineering and Design",
+      title: "Solar PV",
       icon: <Layers className="w-12 h-12" />,
       color: "bg-[#C4D600]",
     },
     {
       id: "battery",
-      title: "Battery Energy Storage Systems",
+      title: "Battery Energy Storage Systems (BESS)",
       icon: <Battery className="w-12 h-12" />,
       color: "bg-[#145f5a]",
     },
@@ -36,7 +36,7 @@ export default function Services() {
     {
       id: "operation",
       title: "Hybrid Energy Systems",
-      icon: <Wrench className="w-12 h-12" />,
+      icon: <Wrench className="w-10 h-10" />,
       color: "bg-[#FFA500]",
     },
     {
@@ -58,7 +58,7 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading - Centered */}
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
-          Our Services
+          Business Areas
         </h2>
 
         {/* Services Grid */}

@@ -184,14 +184,13 @@ const Contact = () => {
                   <span className="ml-2">Email</span>
                 </a>
                 <a 
-                  href="#" 
-                  className="flex items-center text-[#062516] hover:text-[#051e12] transition-colors duration-300"
+                  href="https://www.instagram.com/jivoenergy?igsh=MTQ4MDN2bDV6NjJhNA==" target="_blank" className="flex items-center text-[#062516] hover:text-[#051e12] transition-colors duration-300"
                 >
                   <FaInstagram size={20} />
                   <span className="ml-2">Instagram</span>
                 </a>
                 <a 
-                  href="#" 
+                  href="https://www.linkedin.com/company/jivo-energy/" target="_blank"
                   className="flex items-center text-[#062516] hover:text-[#051e12] transition-colors duration-300"
                 >
                   <FaLinkedin size={20} />

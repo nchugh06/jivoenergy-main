@@ -9,11 +9,11 @@ interface CoreValue {
 }
 
 const valuesList: CoreValue[] = [
-  { id: "sustainability", title: "Sustainability", description: "Committed to environmental stewardship and building a cleaner energy future for Africa." },
-  { id: "integrity", title: "Integrity", description: "Operating with transparency, honesty, and ethical standards in all our business practices." },
-  { id: "innovation", title: "Innovation", description: "Pioneering advanced energy technologies and solutions that drive meaningful change." },
-  { id: "collaboration", title: "Collaboration", description: "Working together with partners, communities, and stakeholders to achieve shared goals." },
-  { id: "empowerment", title: "Empowerment", description: "Enabling communities and businesses to take control of their energy futures." }
+  { id: "sustainability", title: "Quality", description: "We use only Tier 1 materials and maintain uncompromising standards across every project to ensure long-lasting performance, reliability, and safety." },
+  { id: "integrity", title: "Commitment", description: "From initial planning to final execution, we are committed to delivering every project on time with precision, reliability, and seamless coordination, ensuring a smooth experience at every step." },
+  { id: "innovation", title: "Relationships", description: "We believe strong partnerships are built on transparency, trust, and consistent communication, creating lasting relationships with our clients and stakeholders." },
+  { id: "collaboration", title: "Efficiency", description: "Our streamlined processes and innovative approach help us deliver optimized energy solutions with maximum efficiency, cost-effectiveness, and impact." },
+  // { id: "empowerment", title: "Empowerment", description: "Enabling communities and businesses to take control of their energy futures." }
 ]
 
 export default function CoreValues() {
@@ -24,7 +24,7 @@ export default function CoreValues() {
           {/* Left: Image */}
           <div className="relative h-96 md:h-[500px] rounded-lg overflow-hidden shadow-xl bg-slate-200">
             <Image
-              src="/assets/solar-power.jpg"
+              src="/assets/core-values.jpg"
               alt="Solar energy workers with panels"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"

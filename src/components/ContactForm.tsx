@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { FaLinkedin, FaInstagram, FaEnvelope } from 'react-icons/fa';
 
 interface FormData {
   name: string;
@@ -146,14 +147,15 @@ const ContactForm = () => {
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#062516] focus:border-[#062516] outline-none transition-colors text-black"
                 >
                   <option value="">Select an option</option>
-                  <option value="solar">Solar Energy</option>
-                  <option value="wind">Wind Power</option>
-                  <option value="smart-grid">Smart Grid Technology</option>
-                  <option value="consulting">Energy Consulting</option>
+                  <option value="solar">Solar PV</option>
+                  <option value="wind">Battery Energy Storage Systems (BESS)</option>
+                  <option value="smart-grid">Transmission & Distribution</option>
+                  <option value="consulting">Hybrid Energy Systems</option>
+                  <option value="consulting">Biogas & Biomethane</option>
+                  <option value="consulting">Waste Management & Waste-to-Energy</option>
                   <option value="other">Other</option>
                 </select>
               </div>
-
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                   Message *
@@ -211,7 +213,7 @@ const ContactForm = () => {
             
             <div className="relative z-20 h-full flex flex-col justify-between p-8 text-white">
               <div className="space-y-6">
-                <h3 className="text-3xl font-bold">Why Choose Jivo Energy?</h3>
+                <h3 className="text-3xl font-bold">Why Choose JIVO Energy?</h3>
                 <div className="space-y-4">
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0 w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
@@ -220,8 +222,8 @@ const ContactForm = () => {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="text-xl font-semibold mb-2">Sustainable Solutions</h4>
-                      <p className="text-white/80">Leading the way in renewable energy innovation and sustainable practices.</p>
+                      <h4 className="text-xl font-semibold mb-2">End-to-End Expertise</h4>
+                      <p className="text-white/80">From project development and engineering to EPC, commissioning, and O&M, we deliver complete renewable energy solutions under one roof.</p>
                     </div>
                   </div>
 
@@ -232,8 +234,8 @@ const ContactForm = () => {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="text-xl font-semibold mb-2">Expert Team</h4>
-                      <p className="text-white/80">Our experienced professionals are dedicated to delivering excellence.</p>
+                      <h4 className="text-xl font-semibold mb-2">Global Execution Experience</h4>
+                      <p className="text-white/80">With projects across Africa and emerging markets, we understand local challenges and deliver solutions tailored to regional needs.</p>
                     </div>
                   </div>
 
@@ -244,8 +246,20 @@ const ContactForm = () => {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="text-xl font-semibold mb-2">Global Reach</h4>
-                      <p className="text-white/80">Serving clients worldwide with innovative energy solutions.</p>
+                      <h4 className="text-xl font-semibold mb-2">Future-Ready Energy Solutions</h4>
+                      <p className="text-white/80">We combine solar PV, battery energy storage systems (BESS), and smart energy technologies to maximize reliability and long-term value.</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-semibold mb-2">Trusted Project Partner</h4>
+                      <p className="text-white/80">We build lasting relationships through transparency, technical excellence, and a commitment to delivering projects safely and on time.</p>
                     </div>
                   </div>
                 </div>
@@ -254,13 +268,14 @@ const ContactForm = () => {
               <div className="mt-8 p-6 bg-white/10 rounded-xl backdrop-blur-sm">
                 <div className="flex items-center space-x-4">
                   <div className="flex-shrink-0">
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    {/* <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
+                    </svg> */}
+                    <FaEnvelope size={20} />
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold">Need Immediate Assistance?</h4>
-                    <p className="text-white/80">Call us at +1 (555) 123-4567</p>
+                    <p className="text-white/80">africa@jivoenergy.com</p>
                   </div>
                 </div>
               </div>

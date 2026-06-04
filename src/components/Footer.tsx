@@ -25,7 +25,7 @@ const Footer = () => {
               Empowering sustainable energy solutions for a brighter future.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+              <a href="https://www.linkedin.com/company/jivo-energy/" target="_blank" className="text-gray-400 hover:text-white transition-colors duration-200">
                 <FaLinkedin size={20} />
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
@@ -34,7 +34,7 @@ const Footer = () => {
               <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
                 <FaFacebook size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+              <a href="https://www.instagram.com/jivoenergy?igsh=MTQ4MDN2bDV6NjJhNA==" target="_blank" className="text-gray-400 hover:text-white transition-colors duration-200">
                 <FaInstagram size={20} />
               </a>
             </div>
