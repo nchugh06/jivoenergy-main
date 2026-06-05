@@ -19,7 +19,15 @@ export default function Capabilities() {
     <main className="min-h-screen bg-white">
       <Navbar />
 
-      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#085D36] to-[#04301C]">
+      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+        <Image
+          src="/assets/capalilities-banner.jpg"
+          alt="Capabilities Banner"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/50 to-[#04301C]/50"></div>
         <div className="relative z-10 container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
             Capabilities
@@ -34,15 +42,49 @@ export default function Capabilities() {
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#085D36] mb-8">
+            {/* <h2 className="text-3xl md:text-4xl font-bold text-[#085D36] mb-8">
               Our Capabilities
-            </h2>
+            </h2> */}
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
               JIVO Energy delivers integrated energy and infrastructure solutions across the renewable energy, power, and sustainability sectors, supporting utilities, governments, industries, commercial enterprises, and development organizations across emerging markets. With expertise spanning project development, engineering, EPC execution, digital energy integration, and long-term operational support, we develop reliable, scalable, and future-ready infrastructure tailored to complex operating environments.
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
               Our multidisciplinary capabilities enable successful execution of utility-scale, industrial, commercial, rural electrification, and hybrid energy projects across grid-connected, weak-grid, and off-grid applications. By combining technical excellence, advanced power system engineering, and sustainable infrastructure development, JIVO Energy supports energy transition and modernization initiatives across Africa and other developing regions.
             </p>            
+          </div>
+        </div>
+      </section>
+
+{/* Initiative Section */}
+      <section className="md:py-24">
+        <div className="container mx-auto px-4">
+          
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+             <div className="bg-gray-50 p-8 rounded-xl shadow-md border-l-4 border-[#085D36]">
+                <h2 className="text-3xl font-bold text-[#085D36] mb-6">Core Capabilities</h2>
+                <p className="text-gray-600 italic text-lg">
+                  <ul className="list-disc list-inside space-y-2">
+                    <li>Utility-scale renewable energy infrastructure</li>
+                    <li>Solar PV & hybrid power systems</li>
+                    <li>Battery Energy Storage Systems (BESS)</li>
+                    <li>Grid integration & power evacuation systems</li>
+                    <li>LV, MV, HV & EHV infrastructure</li>
+                    <li>SCADA, EMS & digital energy integration</li>
+                    <li>Power system studies & grid compliance</li>
+                    <li>Waste-to-energy & biogas infrastructure</li>
+                    <li>EPC execution & project management</li>
+                    <li>Technical consulting & engineering services</li>
+                    <li>Operations & maintenance support</li>
+                  </ul>
+                </p>
+             </div>
+             <div className="bg-green-50 p-8 rounded-xl shadow-md border-l-4 border-[#085D36]">
+                <h2 className="text-3xl font-bold text-[#085D36] mb-6">Our Approach</h2>
+                <p className="text-gray-600 italic text-lg">
+                  At JIVO Energy, we combine engineering expertise, technical innovation, operational excellence, and sustainable development principles to deliver impactful energy infrastructure solutions across diverse markets and operating environments. Our approach focuses on technical reliability, execution efficiency, environmental responsibility, and long-term value creation while supporting energy security, grid modernization, and sustainable economic growth.<br></br><br></br><br></br>
+              By integrating advanced engineering practices, intelligent energy systems, and scalable infrastructure solutions, we deliver resilient and future-ready projects tailored to evolving energy demands and local market requirements.
+                </p>
+             </div>
           </div>
         </div>
       </section>
@@ -205,39 +247,7 @@ export default function Capabilities() {
         </div>
       </section>
 
-      {/* Initiative Section */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-             <div className="bg-gray-50 p-8 rounded-xl shadow-md border-l-4 border-[#085D36]">
-                <h2 className="text-3xl font-bold text-[#085D36] mb-6">Core Capabilities</h2>
-                <p className="text-gray-600 italic text-lg">
-                  <ul className="list-disc list-inside space-y-2">
-                    <li>Utility-scale renewable energy infrastructure</li>
-                    <li>Solar PV & hybrid power systems</li>
-                    <li>Battery Energy Storage Systems (BESS)</li>
-                    <li>Grid integration & power evacuation systems</li>
-                    <li>LV, MV, HV & EHV infrastructure</li>
-                    <li>SCADA, EMS & digital energy integration</li>
-                    <li>Power system studies & grid compliance</li>
-                    <li>Waste-to-energy & biogas infrastructure</li>
-                    <li>EPC execution & project management</li>
-                    <li>Technical consulting & engineering services</li>
-                    <li>Operations & maintenance support</li>
-                  </ul>
-                </p>
-             </div>
-             <div className="bg-green-50 p-8 rounded-xl shadow-md border-l-4 border-[#085D36]">
-                <h2 className="text-3xl font-bold text-[#085D36] mb-6">Our Approach</h2>
-                <p className="text-gray-600 italic text-lg">
-                  At JIVO Energy, we combine engineering expertise, technical innovation, operational excellence, and sustainable development principles to deliver impactful energy infrastructure solutions across diverse markets and operating environments. Our approach focuses on technical reliability, execution efficiency, environmental responsibility, and long-term value creation while supporting energy security, grid modernization, and sustainable economic growth.<br></br><br></br><br></br>
-              By integrating advanced engineering practices, intelligent energy systems, and scalable infrastructure solutions, we deliver resilient and future-ready projects tailored to evolving energy demands and local market requirements.
-                </p>
-             </div>
-          </div>
-        </div>
-      </section>
+      
 
       <Footer />
     </main>
