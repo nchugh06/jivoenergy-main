@@ -14,16 +14,16 @@ const Footer = () => {
           <div className="space-y-4">
             <Link href="/" className="block">
               <Image
-                src="/translogo.png"
+                src="/logo.png"
                 alt="JIVO ENERGY"
                 width={150}
                 height={50}
                 className="h-12 w-auto"
               />
             </Link>
-            <p className="text-gray-400 text-sm">
+            {/* <p className="text-gray-400 text-sm">
               Empowering sustainable energy solutions for a brighter future.
-            </p>
+            </p> */}
             <div className="flex space-x-4">
               <a href="https://www.linkedin.com/company/jivo-energy/" target="_blank" className="text-gray-400 hover:text-white transition-colors duration-200">
                 <FaLinkedin size={20} />
