@@ -18,7 +18,7 @@ const businessAreas = [
 const geographies = [
   {
     region: "East Africa",
-    countries: ["Uganda", "Ethiopia", "Kenya"],
+    countries: ["Uganda", "Ethiopia", "Kenya", "Rwanda", "Tanzania"],
   },
   {
     region: "West Africa",
@@ -26,7 +26,7 @@ const geographies = [
   },
   {
     region: "Southern Africa",
-    countries: ["Malawi", "Zimbabwe", "Zambia"],
+    countries: ["Malawi", "Zimbabwe", "Zambia", "South Africa"],
   },
 ];
 
@@ -56,7 +56,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="text-5xl md:text-7xl font-bold tracking-tight mb-4"
           >
-            Powering Tomorrow
+            About Us
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
@@ -64,7 +64,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl font-light"
           >
-            Sustainable Energy Solutions for Africa & Beyond
+            {/* Sustainable Energy Solutions for Africa & Beyond */}
           </motion.p>
         </div>
       </section>
@@ -78,16 +78,16 @@ export default function AboutPage() {
             className="prose prose-lg mx-auto text-gray-600 space-y-6 text-justify"
         >
           <p>
-            JIVO Energy has been engaged in renewable energy business in Africa & Asia since 2018 focused on Project Development, EPC, O&M and Investments in Renewable Energy Projects, including provision of technical services related to renewable energy to several clients. In addition, JIVO Energy provides Technical Feasibility, EPC and O&M services related to renewable energy to project developers and investors in Europe.
+            JIVO Energy is a renewable energy and infrastructure company focused on delivering sustainable, reliable, and future-ready energy solutions across Africa and emerging markets. Since 2018, we have been actively engaged in project development, engineering, procurement and construction (EPC), operations & maintenance, battery energy storage systems (BESS), and energy infrastructure development.
           </p>
           <p>
-            Besides, We are also developing a 25MW Municipal Waste to Energy Project in Kampala, Uganda having completed all technical assessments and now in the process of concluding agreements with the authorities.
+            With expertise spanning utility-scale renewable energy, hybrid power systems, transmission and distribution infrastructure, waste-to-energy solutions, and digital energy integration, we support governments, utilities, industries, commercial enterprises, and development organizations in achieving their energy and sustainability objectives.
           </p>
           <p>
-            We are currently operating in 15+ countries in Africa across East, West, and Southern Africa, with offices & teams in India, Mauritius, Spain, UAE, Uganda, Kenya, Ethiopia, Senegal, Burkina Faso & Cape Verde. Our journey started in Uganda in 2018 with the construction of the 20MWac Kabulasoke Solar PV plant.
+            Over the years, JIVO Energy has established a strong presence across multiple countries in Africa, successfully delivering and developing solar PV, battery storage, and energy infrastructure projects. Our integrated approach combines technical excellence, innovative engineering, quality execution, and long-term operational support to create resilient and impactful energy solutions.
           </p>
           <p>
-            In a short span of time we have created a value proposition around implementation of solar energy and battery energy storage projects and has immense expertise in all technological aspects related to solar energy and battery energy storage projects of all kinds and capacities.
+            Driven by a commitment to sustainability, safety, and innovation, we partner with clients and stakeholders to accelerate energy transition, strengthen infrastructure, and contribute to long-term economic and environmental development.
           </p>
           {/* <p>
             We are a leading provider of integrated renewable energy and sustainable solutions, delivering end-to-end services across solar, battery energy storage, hybrid systems, waste-to-energy projects, and Transmission & Distribution infrastructure. Serving commercial, industrial, utility-scale, and community clients, we combine technical expertise, innovative design, and project execution excellence to deliver reliable, efficient, and environmentally responsible energy solutions.
@@ -95,10 +95,43 @@ export default function AboutPage() {
         </motion.div>
       </section>
 
+      {/* Vision and Mission Section */}
+      <section className="py-20 px-6 md:px-12 bg-gradient-to-br from-[#085D36]/5 to-[#04301C]/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Vision */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-[#085D36]"
+            >
+              <h3 className="text-3xl font-bold text-[#085D36] mb-6">Our Vision</h3>
+              <p className="text-gray-600 leading-relaxed text-lg">
+                To lead the transition toward a cleaner, smarter, and more sustainable world by driving sustainable infrastructure and clean energy transformation. We strive to deliver innovative, reliable, and high-impact solutions that empower communities, industries, and utilities while creating a greener, more resilient future for generations to come.
+              </p>
+            </motion.div>
+
+            {/* Mission */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-[#FFFA84]"
+            >
+              <h3 className="text-3xl font-bold text-[#085D36] mb-6">Our Mission</h3>
+              <p className="text-gray-600 leading-relaxed text-lg">
+                Our mission is to deliver sustainable energy and infrastructure solutions that create long-term value for our clients, communities, and stakeholders. Through excellence in project development, engineering, EPC execution, operations and maintenance, and environmental responsibility, we support renewable energy adoption, infrastructure modernization, and climate goals while maintaining the highest standards of safety, integrity, quality, and customer satisfaction.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Split Layout Section: Business Areas & Geographies */}
       <div className="flex flex-col lg:flex-row w-full">
         {/* Business Areas (Left Column) */}
-        <section className="w-full lg:w-1/2 bg-white py-20 px-6 md:px-12">
+        {/* <section className="w-full lg:w-1/2 bg-white py-20 px-6 md:px-12">
           <div className="max-w-2xl mx-auto lg:mx-0 lg:ml-auto lg:pr-8">
             <h2 className="text-4xl font-bold text-center lg:text-left mb-12 text-[#085D36]">OUR BUSINESS AREAS</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -127,15 +160,15 @@ export default function AboutPage() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Geographies (Right Column) */}
-        <section className="w-full lg:w-1/2 bg-[#062516] text-white py-20 px-6 md:px-12 relative overflow-hidden">
+        <section className="w-full bg-[#062516] text-white py-20 px-6 md:px-12 relative overflow-hidden">
           {/* Decorative Background Elements */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#085D36] opacity-20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#085D36] opacity-10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
           
-          <div className="max-w-2xl mx-auto lg:mx-0 lg:mr-auto lg:pl-8 relative z-10">
+          <div className="max-w-4xl mx-auto relative z-10">
             <h2 className="text-4xl font-bold text-center lg:text-left mb-12 flex items-center justify-center lg:justify-start gap-4">
               <span className="w-2 h-12 bg-[#FFFA84] rounded-full hidden lg:block" />
               GEOGRAPHIES
@@ -197,7 +230,7 @@ export default function AboutPage() {
             </div>
 
             <div className="text-gray-400 text-sm leading-relaxed border-l-4 border-[#FFFA84] pl-6 italic">
-              As of today, JIVO Energy has constructed (or has under construction) more than 100MWp of Solar PV and more than 60MWh of Battery Energy Storage Systems (BESS), with another 200MWp+ of Solar PV and 50MWh+ of Battery Energy Storage Systems under development across 12 countries in Africa.
+              Today, JIVO Energy has developed, constructed, or is currently delivering over 100 MWp of Solar PV and 60 MWh of Battery Energy Storage Systems (BESS), with a growing pipeline of renewable energy and infrastructure projects across Africa. Our commitment to engineering excellence, innovation, and sustainability continues to drive impactful energy solutions for communities, industries, and utilities.
             </div>
           </div>
         </section>
