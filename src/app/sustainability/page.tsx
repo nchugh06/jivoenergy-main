@@ -33,7 +33,7 @@ export default function SustainabilityPage() {
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#085D36] mb-8">
+            <h2 className="section-title text-center text-[#085D36] mb-8">
               Our Commitment
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
@@ -61,7 +61,7 @@ export default function SustainabilityPage() {
               </div>
             </div>
             <div className="w-full md:w-1/2">
-              <h3 className="text-3xl font-bold text-[#085D36] mb-6">QHSE</h3>
+              <h3 className="section-title text-[#085D36] mb-6">QHSE</h3>
               <h4 className="text-xl font-semibold text-gray-800 mb-4">Quality, Health, Safety, and Environment</h4>
               <p className="text-gray-600 leading-relaxed mb-6">
                 Quality, Health, Safety, and Environment (QHSE) are fundamental to JIVO’s project execution and operational culture. We are committed to delivering high-quality renewable energy projects while ensuring safe working conditions, environmental protection, and full compliance with applicable standards and regulations.

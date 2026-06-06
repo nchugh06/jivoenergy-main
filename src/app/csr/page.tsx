@@ -54,7 +54,7 @@ export default function CSRPage() {
               </div>
             </div>
             <div className="w-full md:w-1/2">
-              <h2 className="text-3xl font-bold text-[#085D36] mb-6">Our Commitment to Social Responsibility</h2>
+              <h2 className="section-title text-[#085D36] mb-6">Our Commitment to Social Responsibility</h2>
               <h3 className="text-xl font-semibold text-gray-800 mb-4">What CSR Means to Us</h3>
               <p className="text-gray-600 leading-relaxed mb-6">
                 At JIVO Energy, Corporate Social Responsibility (CSR) is an integral part of who we are. We believe that meaningful growth goes hand in hand with giving back to society. Our responsibility extends beyond business. We believe in empowering communities, supporting education, and contributing to social well-being.
@@ -71,7 +71,7 @@ export default function CSRPage() {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#085D36] mb-6">Our First Voluntary CSR Initiative</h2>
+            <h2 className="section-title text-center text-[#085D36] mb-6">Our First Voluntary CSR Initiative</h2>
             <p className="text-lg text-gray-700 leading-relaxed">
               As part of our commitment to social responsibility, JIVO Energy conducted its first voluntary CSR activity in collaboration with Dream Girl Foundation, an organization dedicated to supporting children from less fortunate backgrounds. This initiative was a meaningful step towards encouraging learning, nourishment, and hope among young students.
             </p>

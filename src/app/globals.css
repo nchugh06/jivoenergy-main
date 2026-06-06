@@ -216,8 +216,11 @@ body {
 }
 
 @media (min-width: 768px) {
-  .section-title {
-    font-size: 3rem; /* 48px */
+  h2.section-title {
+    font-size: 2.5rem; /* 48px */
+  }
+  h3.section-title {
+    font-size: 1.75rem; /* 48px */
   }
 }
 

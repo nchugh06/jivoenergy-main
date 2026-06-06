@@ -145,9 +145,9 @@ const Careers = () => {
       {/* Introduction Section */}
       <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-4xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#062516] mb-8">
+          {/* <h2 className="section-title text-center text-[#062516] mb-8">
             Join Our Vision
-          </h2>
+          </h2> */}
           <p className="text-lg text-gray-600 leading-relaxed">
             At JIVO Energy, we are committed to building a highly skilled, diverse, and performance-driven workforce. 
             As we broaden our portfolio and expand our presence across the region, we continue to seek professionals 
@@ -159,7 +159,7 @@ const Careers = () => {
         {/* Why Work With Us */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
           <div className="space-y-8">
-            <h3 className="text-3xl font-bold text-[#062516] border-l-4 border-[#FFFA84] pl-4">
+            <h3 className="section-title text-[#062516] border-l-4 border-[#FFFA84] pl-4">
               Why Work With Us?
             </h3>
             <p className="text-gray-600 mb-6">
@@ -196,7 +196,7 @@ const Careers = () => {
 
         {/* Our Culture & Values */}
         <div className="mb-24">
-          <h3 className="text-3xl font-bold text-[#062516] text-center mb-12">Our Culture & Values</h3>
+          <h3 className="section-title text-center text-[#062516] mb-12">Our Culture & Values</h3>
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
             {[
               { icon: Shield, title: "Integrity", desc: "Doing what’s right, consistently and transparently." },

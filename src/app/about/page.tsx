@@ -106,7 +106,7 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-[#085D36]"
             >
-              <h3 className="text-3xl font-bold text-[#085D36] mb-6">Our Vision</h3>
+              <h3 className="section-title text-[#085D36] mb-6">Our Vision</h3>
               <p className="text-gray-600 leading-relaxed text-lg">
                 To lead the transition toward a cleaner, smarter, and more sustainable world by driving sustainable infrastructure and clean energy transformation. We strive to deliver innovative, reliable, and high-impact solutions that empower communities, industries, and utilities while creating a greener, more resilient future for generations to come.
               </p>
@@ -119,7 +119,7 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-[#FFFA84]"
             >
-              <h3 className="text-3xl font-bold text-[#085D36] mb-6">Our Mission</h3>
+              <h3 className="section-title text-[#085D36] mb-6">Our Mission</h3>
               <p className="text-gray-600 leading-relaxed text-lg">
                 Our mission is to deliver sustainable energy and infrastructure solutions that create long-term value for our clients, communities, and stakeholders. Through excellence in project development, engineering, EPC execution, operations and maintenance, and environmental responsibility, we support renewable energy adoption, infrastructure modernization, and climate goals while maintaining the highest standards of safety, integrity, quality, and customer satisfaction.
               </p>
@@ -169,7 +169,7 @@ export default function AboutPage() {
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#085D36] opacity-10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
           
           <div className="max-w-4xl mx-auto relative z-10">
-            <h2 className="text-4xl font-bold text-center lg:text-left mb-12 flex items-center justify-center lg:justify-start gap-4">
+            <h2 className="section-title text-center lg:text-left text-white mb-12 flex items-center justify-center lg:justify-start gap-4">
               <span className="w-2 h-12 bg-[#FFFA84] rounded-full hidden lg:block" />
               GEOGRAPHIES
             </h2>

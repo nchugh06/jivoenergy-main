@@ -11,6 +11,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "JIVO ENERGY",
   description: "JIVO ENERGY",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

@@ -179,10 +179,10 @@ const ProjectsPage = () => {
              </div>
         ) : (
           <div>
-            <div className="flex justify-between items-end py-8 px-2 pt-30">
+            <div className="py-8 px-2 pt-30">
                 <div>
-                    <h2 className="text-4xl md:text-5xl font-black text-[#062516] tracking-tight mb-2">Project Portfolio</h2>
-                    <p className="text-black font-bold uppercase text-[10px] tracking-widest opacity-60">Showing {allProjects.length} projects across Africa</p>
+                    <h2 className="section-title text-[#062516] mb-2 text-center">Project Portfolio</h2>
+                    <h6 className="text-black font-bold uppercase text-[10px] tracking-widest opacity-60 text-center">Showing {allProjects.length} projects across Africa</h6>
                 </div>
             </div>
 

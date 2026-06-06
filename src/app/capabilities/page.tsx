@@ -61,7 +61,7 @@ export default function Capabilities() {
           
           <div className="grid md:grid-cols-2 gap-8 items-center">
              <div className="bg-gray-50 p-8 rounded-xl shadow-md border-l-4 border-[#085D36]">
-                <h2 className="text-3xl font-bold text-[#085D36] mb-6">Core Capabilities</h2>
+                <h2 className="section-title text-[#085D36] mb-6">Core Capabilities</h2>
                 <p className="text-gray-600 italic text-lg">
                   <ul className="list-disc list-inside space-y-2">
                     <li>Utility-scale renewable energy infrastructure</li>
