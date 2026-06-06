@@ -10,8 +10,8 @@ import ContactForm from "@/components/ContactForm"
 import Footer from "@/components/Footer"
 import Media from "@/components/Media"
 import Clients from "@/components/Clients"
-import MapViz from "@/components/MapViz"
-// import GlobeViz from "@/components/GlobeViz";
+// import MapViz from "@/components/MapViz"
+import GlobeViz from "@/components/GlobeViz";
 
 export default function Home() {
   return (
@@ -20,8 +20,8 @@ export default function Home() {
       <main className="flex flex-col w-full">
         <section id="hero-section" className="relative w-full h-[100vh] overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <MapViz />
-            {/* <GlobeViz /> */}
+            {/* <MapViz /> */}
+            <GlobeViz />
           </div>
         </section>
         <About />

@@ -104,7 +104,7 @@ const Footer = () => {
               </li>
               <li>
                 <span className="block text-white font-medium">U.A.E.</span>
-                Meydan Grandstand, 6th Floor, Meydan Road, Nad El Sheba, Dubai
+                Meydan Grandstand, 6th Floor, Meydan Road, Nad El Sheba, Dubai<br></br><br></br>
               </li>
               <li>
                 <span className="block text-white font-medium">Uganda</span>

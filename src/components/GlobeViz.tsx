@@ -182,6 +182,7 @@ export default function GlobeViz() {
         ref={globeEl}
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
         backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
+        //backgroundColor="#ffffff"
         hexPolygonsData={countries.features}
         hexPolygonResolution={3}
         hexPolygonMargin={0.2}
