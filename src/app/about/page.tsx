@@ -38,36 +38,24 @@ export default function AboutPage() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative h-[80vh] w-full overflow-hidden flex items-center justify-center">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover z-0"
-        >
-          <source src="/about_vid.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute top-0 left-0 w-full h-full bg-black/40 z-10" />
-        <div className="relative z-20 text-center text-white px-4">
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-bold tracking-tight mb-4"
-          >
-            About Us
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl font-light"
-          >
-            {/* Sustainable Energy Solutions for Africa & Beyond */}
-          </motion.p>
-        </div>
-      </section>
+      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+              <Image
+                src="/assets/about-banner.jpg"
+                alt="About Banner"
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/50 to-[#04301C]/50"></div>
+              <div className="relative z-10 container mx-auto px-4 text-center">
+                <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+                  About Us
+                </h1>
+                {/* <p className="text-xl text-white/90 max-w-2xl mx-auto">
+                  Creating lasting value through environmental stewardship, social responsibility, and strong governance.
+                </p> */}
+              </div>
+            </section>
 
       {/* Company Overview */}
       <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto">

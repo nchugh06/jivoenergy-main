@@ -164,11 +164,11 @@ const Media = ({ limit }: MediaProps) => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <div className="inline-block">
+          {/* <div className="inline-block">
             <span className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm text-white text-sm font-medium rounded-full border border-white/20 mb-6">
               Media & Resources
             </span>
-          </div>
+          </div> */}
           <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
             <span className="block">Stay Informed With Our</span>
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-green-100">
@@ -197,22 +197,24 @@ const Media = ({ limit }: MediaProps) => {
               </div>
               
               {/* Image Container */}
-              <div className="relative h-56 w-full overflow-hidden">
+              <div className="relative w-full h-56 overflow-hidden bg-gray-200">
                 <div className="absolute inset-0 bg-gradient-to-t from-[#062516]/40 via-transparent to-transparent z-10"></div>
                 <Image
                   src={card.image}
                   alt={card.title}
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  priority={false}
+                  className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
               
               {/* Content */}
-              <div className="p-8">
-                <h3 className="text-2xl font-bold text-[#062516] mb-4 group-hover:text-green-600 transition-colors duration-300">
+              <div className="p-8 h-96 flex flex-col">
+                <h3 className="text-2xl font-bold text-[#062516] mb-4 group-hover:text-green-600 transition-colors duration-300 line-clamp-2">
                   {card.title}
                 </h3>
-                <p className="text-gray-700 mb-6 leading-relaxed">
+                <p className="text-gray-700 mb-6 leading-relaxed flex-1 overflow-hidden">
                   {card.description}
                 </p>
                 

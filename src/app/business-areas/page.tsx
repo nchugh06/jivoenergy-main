@@ -118,23 +118,24 @@ const BusinessAreas = () => {
     <div className="min-h-screen bg-white">
       <Navbar />
       
-      {/* Hero Section */}
-      <div className="relative w-full h-[65vh] bg-[#062516] overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-90"
-        >
-          <source src="/power.mp4" type="video/mp4" />
-        </video>
-        <div className="relative z-10 h-full flex items-center justify-center">
-          <h1 className="text-7xl font-bold text-white text-center px-4">
-            BUSINESS AREAS
-          </h1>
-        </div>
-      </div>
+      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+                    <Image
+                      src="/assets/business-areas-banner.jpg"
+                      alt="Business Areas"
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/50 to-[#04301C]/50"></div>
+                    <div className="relative z-10 container mx-auto px-4 text-center">
+                      <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+                        Business Areas
+                      </h1>
+                      {/* <p className="text-xl text-white/90 max-w-2xl mx-auto">
+                        Creating lasting value through environmental stewardship, social responsibility, and strong governance.
+                      </p> */}
+                    </div>
+                  </section>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-16">

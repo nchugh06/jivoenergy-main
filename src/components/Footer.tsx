@@ -116,11 +116,11 @@ const Footer = () => {
           {/* Contact Info Column 2 */}
           <div>
             <h3 className="text-lg font-semibold mb-4 opacity-0 md:opacity-100 select-none">&nbsp;</h3>
-            <ul className="space-y-4 text-gray-400 text-sm">
+            <ul className="space-y-4 text-gray-400 text-sm">              
               <li>
                 <span className="block text-white font-medium">Mauritius</span>
-                4th Floor Ebene Skies, Rue De L'Institut, Ebene
-              </li>
+                4th Floor Ebene Skies, Rue De L'Institut, Ebene<br></br><br></br>
+              </li>              
               <li>
                 <span className="block text-white font-medium">Kenya</span>
                 Office No-309, Third Floor, Kanha Building, 10 Lower Kabete Road, Westlands, Nairobi

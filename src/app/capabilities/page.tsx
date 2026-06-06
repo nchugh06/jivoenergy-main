@@ -30,7 +30,7 @@ export default function Capabilities() {
         <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/50 to-[#04301C]/50"></div>
         <div className="relative z-10 container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-            Capabilities
+            Our Capabilities
           </h1>
           {/* <p className="text-xl text-white/90 max-w-2xl mx-auto">
             Creating lasting value through environmental stewardship, social responsibility, and strong governance.
