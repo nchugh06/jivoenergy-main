@@ -18,7 +18,7 @@ const businessAreas = [
       "Solar farm development",
       "EPC, testing & commissioning services",
       "Operations & maintenance (O&M) solutions",
-      "Operations & maintenance (O&M) solutions"
+      "Rooftop and Distributed Solar Systems"
     ]
   },
   {
