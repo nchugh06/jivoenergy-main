@@ -197,6 +197,13 @@ Our multidisciplinary team specializes in complete project lifecycle execution â
                     </div>
                   ))}
                 </div>
+
+                <a 
+                  href={`/business-areas/${sectionIds[index]}`}
+                  className="inline-block mt-6 px-6 py-3 bg-[#062516] text-white rounded-lg font-medium hover:bg-[#051e12] transition-colors duration-300"
+                >
+                  Read More
+                </a>
               </div>
             </div>
             );

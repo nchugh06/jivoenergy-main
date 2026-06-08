@@ -137,22 +137,23 @@ const Contact = () => {
       <Navbar />
       
       {/* Hero Section - Reduced height */}
-      <div className="relative w-full h-[65vh] bg-[#062516] overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-90"
-        >
-          <source src="/power.mp4" type="video/mp4" />
-        </video>
-        <div className="relative z-10 h-full flex items-center justify-center">
-          <h1 className="text-7xl font-bold text-white text-center px-4">
-            CONTACT US
-          </h1>
-        </div>
-      </div>
+      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+                    <Image
+                      src="/assets/contact-banner.jpg" alt="Contact Banner"
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/50 to-[#04301C]/50"></div>
+                    <div className="relative z-10 container mx-auto px-4 text-center">
+                      <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+                        Contact Us
+                      </h1>
+                      {/* <p className="text-xl text-white/90 max-w-2xl mx-auto">
+                        Creating lasting value through environmental stewardship, social responsibility, and strong governance.
+                      </p> */}
+                    </div>
+                  </section>
 
       {/* Main Content - Optimized spacing */}
       <div className="max-w-7xl mx-auto px-4 py-8">
@@ -295,10 +296,12 @@ const Contact = () => {
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#062516] focus:border-[#062516] outline-none transition-colors text-black"
                 >
                   <option value="">Select an option</option>
-                  <option value="solar">Solar Energy</option>
-                  <option value="wind">Wind Power</option>
-                  <option value="smart-grid">Smart Grid Technology</option>
-                  <option value="consulting">Energy Consulting</option>
+                  <option value="solar">Solar PV</option>
+                  <option value="wind">Battery Energy Storage Systems (BESS)</option>
+                  <option value="smart-grid">Transmission & Distribution</option>
+                  <option value="consulting">Hybrid Energy Systems</option>
+                  <option value="biogas">Biogas & Biomethane</option>
+                  <option value="waste-management">Waste Management & Waste-to-Energy</option>
                   <option value="other">Other</option>
                 </select>
               </div>
