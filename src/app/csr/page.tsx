@@ -25,7 +25,7 @@ export default function CSRPage() {
             src="/bgjve.png"
             alt="CSR Background"
             fill
-            className="object-cover brightness-50"
+            className="object-cover brightness-75"
             priority
           />
         </div>

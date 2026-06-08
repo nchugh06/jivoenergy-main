@@ -64,7 +64,7 @@ export default function MalawiGallery() {
               className="object-cover opacity-40"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#062516] to-[#051e12] opacity-80"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#062516] to-[#051e12] opacity-40"></div>
           </div>
           <div className="relative z-10 h-full flex items-center justify-center">
             <div className="text-center">
