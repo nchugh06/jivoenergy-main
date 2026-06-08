@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -133,8 +131,9 @@ const businessAreasData: {
   }
 };
 
-export default function BusinessAreaDetail({ params }: { params: { slug: string } }) {
-  const area = businessAreasData[params.slug];
+export default async function BusinessAreaDetail({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const area = businessAreasData[slug];
 
   if (!area) {
     return (
