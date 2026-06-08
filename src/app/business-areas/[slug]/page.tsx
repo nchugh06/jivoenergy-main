@@ -3,8 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import solarPV from '../../../../public/gallery/Uganda/NKONGE/1.jpg';
-import BESS from '../../../../public/gallery/MALAWI/1.jpg';
+import solarPV from '../../../../public/assets/business-areas/solar-pv.jpg';
+import BESS from '../../../../public/assets/business-areas/bess.jpg';
 
 const businessAreasData: {
   [key: string]: {
@@ -167,7 +167,7 @@ export default async function BusinessAreaDetail({ params }: { params: Promise<{
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/50 to-[#04301C]/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/50 to-[#04301C]/0"></div>
         <div className="relative z-10 container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
             {area.title}
@@ -188,9 +188,10 @@ export default async function BusinessAreaDetail({ params }: { params: Promise<{
         </div>
 
         {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
+        <div className="grid grid-cols-1 gap-12 items-start mb-16">
+          {/* lg:grid-cols-2 */}
           {/* Image Section */}
-          <div>
+          {/* <div>
             <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
               <Image
                 src={typeof area.image === 'string' ? area.image : area.image}
@@ -200,11 +201,11 @@ export default async function BusinessAreaDetail({ params }: { params: Promise<{
               />
             </div>
             <p className="text-center text-gray-700 font-medium mt-4">{area.imageTitle}</p>
-          </div>
+          </div> */}
 
           {/* Description Section */}
           <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-[#062516]">{area.title}</h2>
+            {/* <h2 className="text-3xl font-bold text-[#062516]">{area.title}</h2> */}
             <div className="text-gray-600 leading-relaxed space-y-4">
               {area.fullDescription.split('\n\n').map((paragraph, idx) => (
                 <p key={idx}>{paragraph}</p>

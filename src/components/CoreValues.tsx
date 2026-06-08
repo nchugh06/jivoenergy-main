@@ -55,11 +55,11 @@ export default function CoreValues() {
                       {value.description}
                     </p>
                   </div>
-                  {/* <div className="flex-shrink-0 mt-1">
-                    <CheckCircle2
+                  <div className="flex-shrink-0 mt-1">
+                    {/* <CheckCircle2
                       className="w-6 h-6 text-teal-600 fill-teal-600"
-                    />
-                  </div> */}
+                    /> */}
+                  </div>
                 </div>
               ))}
             </div>

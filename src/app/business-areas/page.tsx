@@ -11,7 +11,7 @@ const businessAreas = [
     title: "Solar PV",
     description: "JIVO Energy delivers high-performance Solar PV solutions engineered for diverse grid conditions, harsh environmental climates, and evolving energy demands across Africa. Our expertise combines advanced engineering, optimized plant performance, intelligent energy integration, and reliable project execution to develop scalable renewable energy infrastructure for utilities, industries, institutions, and remote applications.",
     image: solarPV,
-    imageTitle: "Africa’s leading Solar EPC & O&M solutions providers",  
+    imageTitle: "Africa’s leading Solar EPC & O&M solutions providers",
     features: [
       "Utility-scale solar PV power plants",
       "Commercial & industrial (C&I) solar solutions",
@@ -117,33 +117,33 @@ const BusinessAreas = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-      
+
       <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
-                    <Image
-                      src="/assets/business-areas-banner.jpg"
-                      alt="Business Areas"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/25 to-[#04301C]/25"></div>
-                    <div className="relative z-10 container mx-auto px-4 text-center">
-                      <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-                        Business Areas
-                      </h1>
-                      {/* <p className="text-xl text-white/90 max-w-2xl mx-auto">
+        <Image
+          src="/assets/business-areas-banner.jpg"
+          alt="Business Areas"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/25 to-[#04301C]/25"></div>
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+            Business Areas
+          </h1>
+          {/* <p className="text-xl text-white/90 max-w-2xl mx-auto">
                         Creating lasting value through environmental stewardship, social responsibility, and strong governance.
                       </p> */}
-                    </div>
-                  </section>
+        </div>
+      </section>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="text-center mb-16">
           {/* <h2 className="text-4xl font-bold text-[#062516] mb-4">Our Expertise</h2> */}
-          <p className="text-gray-600 max-w-3xl mx-auto">
+          <p className="text-gray-600 px-6 md:px-12 max-w-7xl mx-auto">
             JIVO Energy delivers integrated renewable energy and sustainable infrastructure solutions across Africa, combining advanced engineering, project development, EPC execution, energy storage technologies, and long-term operational support. With expertise spanning utility-scale Solar PV, Battery Energy Storage Systems (BESS), hybrid energy systems, transmission & distribution infrastructure, and waste-to-energy solutions, we develop reliable, efficient, and future-ready energy ecosystems tailored for emerging markets.<br></br><br></br>
-Our multidisciplinary team specializes in complete project lifecycle execution — from feasibility studies, detailed engineering, grid integration, procurement, construction, commissioning, SCADA integration, and operations & maintenance — ensuring technically optimized and bankable energy solutions for utilities, governments, industries, commercial clients, and development agencies.
+            Our multidisciplinary team specializes in complete project lifecycle execution — from feasibility studies, detailed engineering, grid integration, procurement, construction, commissioning, SCADA integration, and operations & maintenance — ensuring technically optimized and bankable energy solutions for utilities, governments, industries, commercial clients, and development agencies.
 
           </p>
         </div>
@@ -159,34 +159,33 @@ Our multidisciplinary team specializes in complete project lifecycle execution �
               'biogas-biomethane',
               'waste-management'
             ];
-            
-            return (
-            <div 
-              key={index}
-              id={sectionIds[index]}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-              }`}
-            >
-              {/* Image Section */}
-              <div>
-                <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
-                  <Image
-                    src={area.image}
-                    alt={area.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <h3 className="text-center text-gray-700 font-medium mt-2">{area.imageTitle}</h3>
-              </div>
 
-              {/* Content Section */}
-              <div className="space-y-6">
-                <h3 className="text-3xl font-bold text-[#062516]">{area.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{area.description}</p>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            return (
+              <div
+                key={index}
+                id={sectionIds[index]}
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+                  }`}
+              >
+                {/* Image Section */}
+                <div>
+                  <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
+                    <Image
+                      src={area.image}
+                      alt={area.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+
+                {/* Content Section */}
+                <div className="space-y-6">
+                  <h3 className="text-3xl font-bold text-[#062516]">{area.title}</h3>
+                  <h3 className="text-left text-gray-700 font-medium mt-2">{area.imageTitle}</h3>
+                  <p className="text-gray-600 leading-relaxed">{area.description}</p>
+
+                  {/*<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {area.features.map((feature, featureIndex) => (
                     <div 
                       key={featureIndex}
@@ -196,16 +195,16 @@ Our multidisciplinary team specializes in complete project lifecycle execution �
                       <span className="text-gray-700">{feature}</span>
                     </div>
                   ))}
-                </div>
+                </div> */}
 
-                <a 
-                  href={`/business-areas/${sectionIds[index]}`}
-                  className="inline-block mt-6 px-6 py-3 bg-[#062516] text-white rounded-lg font-medium hover:bg-[#051e12] transition-colors duration-300"
-                >
-                  Read More
-                </a>
+                  <a
+                    href={`/business-areas/${sectionIds[index]}`}
+                    className="inline-block mt-6 px-6 py-3 bg-[#062516] text-white rounded-lg font-medium hover:bg-[#051e12] transition-colors duration-300"
+                  >
+                    Read More
+                  </a>
+                </div>
               </div>
-            </div>
             );
           })}
         </div>
@@ -216,7 +215,7 @@ Our multidisciplinary team specializes in complete project lifecycle execution �
             Ready to Transform Your Energy Future?
           </h2>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            Contact us today to learn more about our services and how we can help you 
+            Contact us today to learn more about our services and how we can help you
             achieve your energy goals.
           </p>
           <a

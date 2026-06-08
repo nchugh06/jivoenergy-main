@@ -26,9 +26,10 @@ export default function MediaPage() {
                              </p> */}
         </div>
       </section>
-      <div className='pt-20'>
-        <Media />
-      </div>
+      {/* <div className='pt-20'>
+        
+      </div> */}
+      <Media />
       <Footer />
     </main>
   )

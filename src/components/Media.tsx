@@ -153,7 +153,7 @@ const Media = ({ limit }: MediaProps) => {
   const displayedCards = limit ? sortedCards.slice(0, limit) : sortedCards;
 
   return (
-    <section className="w-full py-20 bg-[#062516] relative overflow-hidden">
+    <section className="w-full py-15 bg-[#062516] relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-96 h-96 bg-green-400 rounded-full blur-3xl"></div>

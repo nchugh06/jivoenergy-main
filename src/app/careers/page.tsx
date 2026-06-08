@@ -3,14 +3,14 @@
 import React, { useState, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { 
-  Briefcase, 
-  Users, 
-  TrendingUp, 
-  Award, 
-  Heart, 
-  Shield, 
-  Globe, 
+import {
+  Briefcase,
+  Users,
+  TrendingUp,
+  Award,
+  Heart,
+  Shield,
+  Globe,
   Zap,
   CheckCircle2,
   ArrowRight
@@ -42,7 +42,7 @@ const Careers = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Create FormData object
     const data = new FormData();
     data.append('fullName', formData.fullName);
@@ -117,12 +117,13 @@ const Careers = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white font-sans text-gray-800">
+    <main className="relative min-h-screen w-full bg-[#062516]">
+      {/* <div className="min-h-screen bg-white font-sans text-gray-800"> */}
       <Navbar />
-      
+
       {/* Hero Section */}
       <div className="relative w-full h-[50vh] bg-[#062516] flex items-center justify-center overflow-hidden">
-        <div 
+        <div
           className="absolute inset-0 z-0 opacity-120"
           style={{
             backgroundImage: 'url("https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80")',
@@ -131,7 +132,7 @@ const Careers = () => {
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#062516]/60 to-[#062516] z-0" />
-        
+
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-up">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
             Careers at <span className="text-[#ffffff]">JIVO Energy</span>
@@ -148,10 +149,10 @@ const Careers = () => {
           {/* <h2 className="section-title text-center text-[#062516] mb-8">
             Join Our Vision
           </h2> */}
-          <p className="text-lg text-gray-600 leading-relaxed">
-            At JIVO Energy, we are committed to building a highly skilled, diverse, and performance-driven workforce. 
-            As we broaden our portfolio and expand our presence across the region, we continue to seek professionals 
-            who demonstrate excellence, integrity, and a commitment to delivering results. If you aspire to be part 
+          <p className="text-lg text-white leading-relaxed">
+            At JIVO Energy, we are committed to building a highly skilled, diverse, and performance-driven workforce.
+            As we broaden our portfolio and expand our presence across the region, we continue to seek professionals
+            who demonstrate excellence, integrity, and a commitment to delivering results. If you aspire to be part
             of a reputable and future-focused organisation, we welcome you to explore career opportunities with us.
           </p>
         </div>
@@ -159,11 +160,11 @@ const Careers = () => {
         {/* Why Work With Us */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
           <div className="space-y-8">
-            <h3 className="section-title text-[#062516] border-l-4 border-[#FFFA84] pl-4">
+            <h3 className="section-title text-[#fafafa] border-l-4 border-[#FFFA84] pl-4">
               Why Work With Us?
             </h3>
-            <p className="text-gray-600 mb-6">
-              Working with JIVO Energy means becoming part of a stable, growth-oriented company that values 
+            <p className="text-white mb-6">
+              Working with JIVO Energy means becoming part of a stable, growth-oriented company that values
               professionalism and long-term career development. We are committed to:
             </p>
             <ul className="space-y-4">
@@ -174,15 +175,15 @@ const Careers = () => {
                 "Recognising and rewarding strong performance and dedication.",
                 "Promoting work-life balance and offering a competitive compensation package."
               ].map((item, index) => (
-                <li key={index} className="flex items-start space-x-3">
-                  <CheckCircle2 className="w-6 h-6 text-[#062516] flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">{item}</span>
+                <li key={index} className="flex items-start space-x-3 text-white">
+                  <CheckCircle2 className="w-6 h-6 text-[#fafafa] flex-shrink-0 mt-0.5" />
+                  <span className="text-white">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
           <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl group">
-             <div 
+            <div
               className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
               style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80")' }}
             />
@@ -196,7 +197,7 @@ const Careers = () => {
 
         {/* Our Culture & Values */}
         <div className="mb-24">
-          <h3 className="section-title text-center text-[#062516] mb-12">Our Culture & Values</h3>
+          <h3 className="section-title text-center text-[#fafafa] mb-12">Our Culture & Values</h3>
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
             {[
               { icon: Shield, title: "Integrity", desc: "Doing what’s right, consistently and transparently." },
@@ -210,7 +211,7 @@ const Careers = () => {
                   <value.icon className="w-6 h-6 text-[#062516] group-hover:text-white transition-colors duration-300" />
                 </div>
                 <h4 className="text-lg font-bold text-[#062516] mb-2">{value.title}</h4>
-                <p className="text-sm text-gray-600">{value.desc}</p>
+                <p className="text-sm text-black">{value.desc}</p>
               </div>
             ))}
           </div>
@@ -265,11 +266,11 @@ const Careers = () => {
         {/* Job Openings */}
         <div className="mb-24">
           <h3 className="text-3xl font-bold text-[#062516] mb-4">Current Job Openings</h3>
-          <p className="text-gray-600 mb-8">
-            Be part of a future-focused team where innovation, collaboration, and purpose come together to create exceptional work. 
+          <p className="text-white mb-8">
+            Be part of a future-focused team where innovation, collaboration, and purpose come together to create exceptional work.
             Ready to take the next step in your career? <span className="font-semibold text-[#062516]">Apply Now!</span>
           </p>
-          
+
           <div className="grid gap-6">
             {[
               {
@@ -301,7 +302,7 @@ const Careers = () => {
                     <span className="flex items-center"><Globe className="w-4 h-4 mr-1" /> {job.location}</span>
                   </div>
                 </div>
-                <a 
+                <a
                   href={job.pdf}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -321,17 +322,15 @@ const Careers = () => {
               <h3 className="text-3xl font-bold text-[#062516] mb-6">
                 Be Part of Our Growth Story
               </h3>
-              <p className="text-gray-600 mb-8 leading-relaxed">
-                We are always looking for passionate, hardworking, and talented individuals who want to grow with us. 
+              <p className="text-white mb-8 leading-relaxed">
+                We are always looking for passionate, hardworking, and talented individuals who want to grow with us.
                 Even if the role listed here doesn’t match your profile, feel free to send us CV. We’re always open to great talent!
               </p>
-              
-             
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-2xl shadow-lg">
               <h4 className="text-xl font-bold text-[#062516] mb-4">Submit Your Application</h4>
-              
+
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
@@ -371,21 +370,21 @@ const Careers = () => {
                       >
                         {countries.map((country) => (
                           <option key={`${country.code}-${country.dial_code}`} value={country.dial_code}>
-                             {country.code} ({country.dial_code})
+                            {country.code} ({country.dial_code})
                           </option>
                         ))}
                       </select>
                     </div>
-                     <input
-                       type="tel"
-                       id="phone"
-                       className="flex-1 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#062516] focus:border-transparent outline-none transition-all"
-                       placeholder="5550000000"
-                       required
-                       value={formData.phone}
-                       onChange={handlePhoneChange} // Strict numeric validation
-                     />
-                   </div>
+                    <input
+                      type="tel"
+                      id="phone"
+                      className="flex-1 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#062516] focus:border-transparent outline-none transition-all"
+                      placeholder="5550000000"
+                      required
+                      value={formData.phone}
+                      onChange={handlePhoneChange} // Strict numeric validation
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -419,7 +418,7 @@ const Careers = () => {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Attach CV</label>
-                <div 
+                <div
                   onClick={handleFileButtonClick}
                   className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-[#062516] hover:bg-gray-50 transition-all group"
                 >
@@ -449,7 +448,7 @@ const Careers = () => {
               >
                 Submit Application
               </button>
-              
+
               <p className="text-center text-xs text-gray-500 mt-4">
                 Thank you for considering a career with JIVO Energy!
               </p>
@@ -457,9 +456,10 @@ const Careers = () => {
           </div>
         </div>
       </section>
-      
+
       <Footer />
-    </div>
+      {/* </div> */}
+    </main>
   );
 };
 

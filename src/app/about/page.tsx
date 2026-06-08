@@ -36,34 +36,34 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white text-gray-800 font-sans">
       <Navbar />
-      
+
       {/* Hero Section */}
       <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
-              <Image
-                src="/assets/about-banner.jpg"
-                alt="About Banner"
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/25 to-[#04301C]/25"></div>
-              <div className="relative z-10 container mx-auto px-4 text-center">
-                <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-                  About Us
-                </h1>
-                {/* <p className="text-xl text-white/90 max-w-2xl mx-auto">
+        <Image
+          src="/assets/about-banner.jpg"
+          alt="About Banner"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/25 to-[#04301C]/5"></div>
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+            About Us
+          </h1>
+          {/* <p className="text-xl text-white/90 max-w-2xl mx-auto">
                   Creating lasting value through environmental stewardship, social responsibility, and strong governance.
                 </p> */}
-              </div>
-            </section>
+        </div>
+      </section>
 
       {/* Company Overview */}
       <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto">
-        <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="prose prose-lg mx-auto text-gray-600 space-y-6 text-justify"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="prose prose-lg mx-auto text-gray-600 space-y-6 text-justify"
         >
           <p>
             JIVO Energy is a renewable energy and infrastructure company focused on delivering sustainable, reliable, and future-ready energy solutions across Africa and emerging markets. Since 2018, we have been actively engaged in project development, engineering, procurement and construction (EPC), operations & maintenance, battery energy storage systems (BESS), and energy infrastructure development.
@@ -155,13 +155,13 @@ export default function AboutPage() {
           {/* Decorative Background Elements */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#085D36] opacity-20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#085D36] opacity-10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
-          
+
           <div className="max-w-4xl mx-auto relative z-10">
             <h2 className="section-title text-center lg:text-left text-white mb-12 flex items-center justify-center lg:justify-start gap-4">
               <span className="w-2 h-12 bg-[#FFFA84] rounded-full hidden lg:block" />
               GEOGRAPHIES
             </h2>
-            
+
             <div className="space-y-8 mb-16">
               {geographies.map((geo, index) => (
                 <motion.div
@@ -184,8 +184,8 @@ export default function AboutPage() {
                       </h3>
                       <div className="flex flex-wrap gap-2">
                         {geo.countries.map((country, idx) => (
-                          <span 
-                            key={idx} 
+                          <span
+                            key={idx}
                             className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-white/5 text-gray-300 border border-white/5"
                           >
                             {country}
@@ -207,7 +207,7 @@ export default function AboutPage() {
                 className="flex flex-wrap gap-3"
               >
                 {otherRegions.map((region, index) => (
-                  <div 
+                  <div
                     key={index}
                     className="px-4 py-2 rounded-lg bg-[#085D36] border border-[#085D36] text-gray-200 text-sm font-medium hover:bg-[#0a4f2e] hover:border-[#FFFA84]/50 transition-colors cursor-default"
                   >
