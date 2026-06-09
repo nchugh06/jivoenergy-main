@@ -15,11 +15,11 @@ const Footer = () => {
           <div className="space-y-4">
             <Link href="/" className="block">
               <Image
-                src="/logo.png"
+                src="/JIVO-Energy-logo-white.png"
                 alt="JIVO ENERGY"
                 width={150}
-                height={50}
-                className="h-12 w-auto"
+                height={35}
+                className=""
               />
             </Link>
             {/* <p className="text-gray-400 text-sm">

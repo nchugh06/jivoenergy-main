@@ -38,7 +38,7 @@ export default function AboutPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[30vh] w-full flex items-center justify-center overflow-hidden">
         <Image
           src="/assets/about-banner.jpg"
           alt="About Banner"
