@@ -7,7 +7,7 @@ import BESS from '../../public/gallery/MALAWI/1.jpg'
 import transmission from '../../public/assets/business-transmission.jpg'
 import hybrid from '../../public/assets/business-hybrid.jpg'
 import biogas from '../../public/assets/business-biogas.jpg'
-import wasteManagement from '../../public/assets/business-wastemanagement.jpg'
+import wasteManagement from '../../public/assets/business-waste-mgmt.jpg'
 
 interface Service {
   id: string
