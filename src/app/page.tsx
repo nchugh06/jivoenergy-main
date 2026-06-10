@@ -3,7 +3,7 @@ import Image from "next/image"
 import Navbar from "@/components/Navbar"
 import About from "@/components/About"
 import Projects from "@/components/Projects"
-import Services from "@/components/services"
+//import Services from "@/components/services"
 import CoreValues from "@/components/CoreValues"
 import Impact from "@/components/Impact"
 import ContactForm from "@/components/ContactForm"
@@ -12,6 +12,7 @@ import Media from "@/components/Media"
 import Clients from "@/components/Clients"
 // import MapViz from "@/components/MapViz"
 import GlobeViz from "@/components/GlobeViz";
+import BusinessAreasServices from '@/components/BusinessAreasServices';
 
 export default function Home() {
   return (
@@ -27,7 +28,7 @@ export default function Home() {
         <About />
         {/* <Projects /> */}
         <CoreValues />
-        <Services />
+        <BusinessAreasServices />
         {/* <Impact /> */}
         {/* <Media /> */}
         <Clients />
