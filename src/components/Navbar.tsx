@@ -39,8 +39,8 @@ const Navbar = () => {
                 alt="JIVO ENERGY"
                 width={150}
                 height={50}
-                className="h-12 w-auto object-contain"
-              />
+                className="w-auto object-contain"
+               />
             </Link>
             <Link href="/" className={styles.logoMobile}>
               <Image
@@ -48,11 +48,11 @@ const Navbar = () => {
                 alt="JIVO ENERGY"
                 width={150}
                 height={50}
-                className="h-12 w-auto object-contain"
+                className="w-auto object-contain"
               />
             </Link>
           </div>
-          
+          {/* h-12 in desktop & mobile both*/}
           <ul className={`${styles.nav__menu} ${isMenuOpen ? styles.active : ''}`}>
             <li className={styles.nav__item}>
               <a 
