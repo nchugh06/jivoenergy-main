@@ -39,16 +39,16 @@ export default function Capabilities() {
       </section>
 
       {/* Introduction Section */}
-      <section className="py-16">
+      <section className="py-5">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             {/* <h2 className="text-3xl md:text-4xl font-bold text-[#085D36] mb-8">
               Our Capabilities
             </h2> */}
-            <p className="text-lg text-gray-700 leading-relaxed mb-6">
+            <p className="text-gray-700 leading-relaxed mb-6">
               JIVO Energy delivers integrated energy and infrastructure solutions across the renewable energy, power, and sustainability sectors, supporting utilities, governments, industries, commercial enterprises, and development organizations across emerging markets. With expertise spanning project development, engineering, EPC execution, digital energy integration, and long-term operational support, we develop reliable, scalable, and future-ready infrastructure tailored to complex operating environments.
             </p>
-            <p className="text-lg text-gray-700 leading-relaxed">
+            <p className="text-gray-700 leading-relaxed">
               Our multidisciplinary capabilities enable successful execution of utility-scale, industrial, commercial, rural electrification, and hybrid energy projects across grid-connected, weak-grid, and off-grid applications. By combining technical excellence, advanced power system engineering, and sustainable infrastructure development, JIVO Energy supports energy transition and modernization initiatives across Africa and other developing regions.
             </p>            
           </div>

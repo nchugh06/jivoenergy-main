@@ -19,6 +19,8 @@ const businessAreasData: {
     image: any;
     imageTitle: string;
     features: string[];
+    bessStandaloneHeader?: string | null;
+    bessStandaloneDescription?: string | null;
     technicalDescription?: string | null;
     technicalDetails: string[];
   };
@@ -60,6 +62,8 @@ const businessAreasData: {
       "Advanced battery management systems",
       "Thermal & safety management integration"
     ],
+    bessStandaloneHeader: "Standalone BESS Systems",
+    bessStandaloneDescription: "Our standalone BESS solutions are designed to function as independent energy assets supporting grid stabilization, energy optimization, and critical power continuity applications.",
     technicalDescription: "Our standalone BESS solutions are designed to function as independent energy assets supporting grid stabilization, energy optimization, and critical power continuity applications.",
     technicalDetails: [
       "Systems ranging from kW to utility-scale MW applications",
@@ -237,7 +241,7 @@ export default async function BusinessAreaDetail({ params }: { params: Promise<{
             </div>
             <p className="text-center text-gray-700 font-medium mt-4">{area.imageTitle}</p>
           </div> */}
-          <h1 className="text-center text-gray-700 text-xl text-bold mt-4">{area.imageTitle}</h1>
+          {/* <h1 className="text-center text-gray-700 text-xl text-bold mt-4">{area.imageTitle}</h1> */}
           {/* Description Section */}
           <div className="space-y-6">
             {/* <h2 className="text-3xl font-bold text-[#062516]">{area.title}</h2> */}
@@ -248,6 +252,20 @@ export default async function BusinessAreaDetail({ params }: { params: Promise<{
             </div>
           </div>
         </div>
+
+        {/* Technical Description Section */}
+        {area.bessStandaloneDescription && (
+          <div className="mb-8">
+            <h3 className="text-2xl font-bold text-[#062516] mb-4">Standalone BESS Systems</h3>
+            <div className="space-y-6">
+              <div className="text-gray-600 leading-relaxed space-y-4">
+                {area.bessStandaloneDescription.split('\n\n').map((paragraph, idx) => (
+                  <p key={idx}>{paragraph}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Features Section */}
         <div className="mb-16">

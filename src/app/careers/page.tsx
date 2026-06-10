@@ -144,7 +144,7 @@ const Careers = () => {
       </div>
 
       {/* Introduction Section */}
-      <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+      <section className="py-5 px-4 md:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-4xl mx-auto mb-16">
           {/* <h2 className="section-title text-center text-[#062516] mb-8">
             Join Our Vision

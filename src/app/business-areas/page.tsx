@@ -6,6 +6,10 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import solarPV from '../../../public/gallery/Uganda/NKONGE/1.jpg';
 import BESS from '../../../public/gallery/MALAWI/1.jpg';
+import transmission from '../../../public/assets/business-transmission.jpg';
+import hybrid from '../../../public/assets/business-hybrid.jpg';
+import biogas from '../../../public/assets/business-biogas.jpg';
+import wasteManagement from '../../../public/assets/business-wastemanagement.jpg';
 const businessAreas = [
   {
     title: "Solar PV",
@@ -39,8 +43,8 @@ const businessAreas = [
   },
   {
     title: "Transmission & Distribution",
-    description: "JIVO Energy delivers robust power transmission and distribution infrastructure engineered for high availability, operational resilience, and seamless energy transfer across complex electrical networks. Our expertise spans utility interconnections, renewable power evacuation systems, intelligent substations, and high-capacity transmission corridors supporting industrial, commercial, and national grid expansion projects. From LV distribution systems to MV, HV transmission infrastructure, we provide technically optimized solutions integrating advanced protection schemes, digital substation technologies, automation systems, and grid synchronization capabilities for secure and stable power delivery.",
-    image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop",
+    description: "JIVO Energy delivers robust power transmission and distribution infrastructure engineered for high availability, operational resilience, and seamless energy transfer across complex electrical networks. Our expertise spans utility interconnections, renewable power evacuation systems, intelligent substations, and high-capacity transmission corridors supporting industrial, commercial, and national grid expansion projects.",
+    image: transmission,
     imageTitle: "Efficient Transmission. Reliable Distribution",
     features: [
       "Transmission corridor development & power evacuation systems",
@@ -58,7 +62,7 @@ const businessAreas = [
   {
     title: "Hybrid Energy Systems",
     description: "JIVO Energy designs and implements intelligent hybrid energy systems integrating Grid, Solar PV, DG, and BESS technologies to deliver stable, efficient, and optimized power solutions for utilities, industries, telecom infrastructure, institutions, remote communities, and mission-critical applications. Our hybrid energy architectures are engineered to maximize renewable energy utilization, reduce diesel dependency, improve operational efficiency, and ensure uninterrupted power availability across dynamic operating environments.",
-    image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop",
+    image: hybrid,
     imageTitle: "Integrated Energy Solutions for Reliable & Sustainable Power",
     features: [
       "Renewable energy optimization",
@@ -75,8 +79,8 @@ const businessAreas = [
   },
   {
     title: "Biogas & Biomethane",
-    description: "JIVO Energy develops technically advanced biogas and biomethane infrastructure solutions engineered to convert agricultural residues, industrial effluents, municipal organic waste, and biodegradable feedstock into renewable energy, green fuel, and sustainable thermal power applications. Our integrated waste-to-energy approach combines anaerobic digestion, gas handling, purification, and energy recovery technologies to maximize resource utilization, reduce greenhouse gas emissions, and support circular economy development. We deliver scalable and efficient biogas systems for industrial, municipal, agro-processing, and commercial sectors, supporting decentralized clean energy generation, waste management optimization, and low-carbon infrastructure development.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop",
+    description: "JIVO Energy develops technically advanced biogas and biomethane infrastructure solutions engineered to convert agricultural residues, industrial effluents, municipal organic waste, and biodegradable feedstock into renewable energy, green fuel, and sustainable thermal power applications. Our integrated waste-to-energy approach combines anaerobic digestion, gas handling, purification, and energy recovery technologies to maximize resource utilization, reduce greenhouse gas emissions, and support circular economy development.",
+    image: biogas,
     imageTitle: "Converting Waste into Clean & Sustainable Energy",
     features: [
       "Biogas plant development & process engineering",
@@ -93,8 +97,8 @@ const businessAreas = [
   },
   {
     title: "Waste Management & Waste-to-Energy",
-    description: "JIVO Energy develops integrated Waste Management and Waste-to-Energy (WtE) infrastructure solutions engineered to convert municipal, industrial, commercial, and organic waste streams into renewable power, recoverable resources, and sustainable energy products. Our solutions are designed to minimize landfill dependency, improve environmental sustainability, and support development of modern circular economy infrastructure through advanced waste processing and energy recovery technologies. We specialize in technically optimized waste treatment systems integrating waste segregation, thermal conversion, resource recovery, emissions control, and renewable energy generation for municipalities, industries, utilities, and urban infrastructure projects. Our flagship municipal solid waste-to-energy initiatives are developed using environmentally compliant technologies aligned with international environmental and operational standards.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop",
+    description: "JIVO Energy develops integrated Waste Management and Waste-to-Energy (WtE) infrastructure solutions engineered to convert municipal, industrial, commercial, and organic waste streams into renewable power, recoverable resources, and sustainable energy products. Our solutions are designed to minimize landfill dependency, improve environmental sustainability, and support development of modern circular economy infrastructure through advanced waste processing and energy recovery technologies.",
+    image: wasteManagement,
     imageTitle: "Transforming Waste into Sustainable Energy Solutions",
     features: [
       "Municipal Solid Waste (MSW) processing infrastructure",
@@ -138,7 +142,7 @@ const BusinessAreas = () => {
       </section>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 py-16">
+      <div className="max-w-7xl mx-auto px-4 py-5">
         <div className="text-center mb-16">
           {/* <h2 className="text-4xl font-bold text-[#062516] mb-4">Our Expertise</h2> */}
           <p className="text-gray-600 px-6 md:px-12 max-w-7xl mx-auto">

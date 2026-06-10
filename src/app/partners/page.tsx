@@ -73,7 +73,7 @@ const Partners = () => {
       </div>
 
       {/* Main Partnership Content */}
-      <div className="max-w-7xl mx-auto px-4 py-20">
+      <div className="max-w-7xl mx-auto px-4 py-5">
         {renderSection('Clients', clients)}
         {renderSection('Financers', financers)}
         {renderSection('Technology Providers', technologyProviders)}

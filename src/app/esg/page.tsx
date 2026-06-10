@@ -31,7 +31,7 @@ export default function SustainabilityPage() {
       </section>
 
       {/* Introduction Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-5 md:py-5">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="section-title text-center text-[#085D36] mb-8">
