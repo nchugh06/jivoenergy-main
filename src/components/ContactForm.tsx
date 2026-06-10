@@ -61,12 +61,12 @@ const ContactForm = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="section-title text-center text-[#062516]">Contact Us</h2>
-          <p className="text-lg text-gray-700 justify-text">
+          {/* <p className="text-lg text-gray-700 justify-text">
             Get in touch with our team to learn more about our sustainable energy solutions
-          </p>
+          </p> */}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div className="grid md:grid-cols-2 gap-12">
           {/* Form Section */}
           <div className="bg-white rounded-2xl shadow-xl p-8">
             <form onSubmit={handleSubmit} className="space-y-6">

@@ -19,7 +19,7 @@ const businessAreasData: {
     image: any;
     imageTitle: string;
     features: string[];
-    technicalDescription: string;
+    technicalDescription?: string | null;
     technicalDetails: string[];
   };
 } = {
@@ -40,7 +40,7 @@ const businessAreasData: {
       "Energy yield forecasting & analysis"
     ],
     technicalDescription: "",
-    technicalDetails: [ ]
+    technicalDetails: []
   },
   'bess': {
     title: "Battery Energy Storage Systems (BESS)",
@@ -68,7 +68,7 @@ const businessAreasData: {
       "SCADA, EMS & PMS integration",
       "Grid-connected and islanded operation capability",
       "Advanced monitoring, automation & control systems",
-     ]
+    ]
   },
   'transmission-distribution': {
     title: "Transmission & Distribution",
@@ -89,7 +89,7 @@ const businessAreasData: {
       "Testing, energization & system reliability enhancement"
     ],
     technicalDescription: "",
-    technicalDetails: [ ]
+    technicalDetails: []
   },
   'hybrid-energy': {
     title: "Hybrid Energy Systems",
@@ -117,7 +117,7 @@ const businessAreasData: {
       "Synchronization & load sharing systems",
       "Utility, industrial & remote infrastructure applications",
       "Sustainable and resilient energy infrastructure",
-     ]
+    ]
   },
 
   'biogas-biomethane': {
@@ -139,7 +139,7 @@ const businessAreasData: {
       "Sustainable waste management & circular economy integration"
     ],
     technicalDescription: "",
-    technicalDetails: [ ]
+    technicalDetails: []
   },
   'waste-management': {
     title: "Waste Management & Waste-to-Energy",
@@ -162,7 +162,7 @@ const businessAreasData: {
       "Environmentally Compliant Waste Treatment Technologies"
     ],
     technicalDescription: "",
-    technicalDetails: [ ]
+    technicalDetails: []
   }
 };
 
@@ -265,32 +265,36 @@ export default async function BusinessAreaDetail({ params }: { params: Promise<{
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-12 items-start mb-16">          
-          {/* Description Section */}
-          <div className="space-y-6">
-            <div className="text-gray-600 leading-relaxed space-y-4">
-              {area.technicalDescription.split('\n\n').map((paragraph, idx) => (
-                <p key={idx}>{paragraph}</p>
+        {/* Technical Description Section */}
+        {area.technicalDescription && (
+          <div className="grid grid-cols-1 gap-12 items-start mb-16">
+            <div className="space-y-6">
+              <div className="text-gray-600 leading-relaxed space-y-4">
+                {area.technicalDescription.split('\n\n').map((paragraph, idx) => (
+                  <p key={idx}>{paragraph}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Technical details Section */}
+        {area.technicalDescription && (
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold text-[#062516] mb-8">Technical Expertise</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {area.technicalDetails.map((td, tIndex) => (
+                <div
+                  key={tIndex}
+                  className="flex items-start space-x-4 bg-[#062516]/5 p-6 rounded-lg hover:shadow-md transition-shadow duration-300"
+                >
+                  <div className="w-3 h-3 bg-[#062516] rounded-full mt-2 flex-shrink-0" />
+                  <span className="text-gray-700">{td}</span>
+                </div>
               ))}
             </div>
           </div>
-        </div>
-
-        {/* Technical details Section */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-[#062516] mb-8">Technical Expertise</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {area.technicalDetails.map((td, tIndex) => (
-              <div
-                key={tIndex}
-                className="flex items-start space-x-4 bg-[#062516]/5 p-6 rounded-lg hover:shadow-md transition-shadow duration-300"
-              >
-                <div className="w-3 h-3 bg-[#062516] rounded-full mt-2 flex-shrink-0" />
-                <span className="text-gray-700">{td}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+        )}
 
         {/* Call to Action */}
         <div className="bg-[#062516]/5 rounded-lg p-12 text-center">

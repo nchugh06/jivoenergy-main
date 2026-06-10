@@ -58,7 +58,7 @@ export default function AboutPage() {
       </section>
 
       {/* Company Overview */}
-      <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+      <section className="py-5 px-6 max-w-7xl mx-auto">{/* md:px-12 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -84,7 +84,7 @@ export default function AboutPage() {
       </section>
 
       {/* Vision and Mission Section */}
-      <section className="py-20 px-6 md:px-12 bg-gradient-to-br from-[#085D36]/5 to-[#04301C]/5">
+      <section className="py-5 px-6 md:px-12 bg-gradient-to-br from-[#085D36]/5 to-[#04301C]/5">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Vision */}
@@ -119,7 +119,7 @@ export default function AboutPage() {
       {/* Split Layout Section: Business Areas & Geographies */}
       <div className="flex flex-col lg:flex-row w-full">
         {/* Business Areas (Left Column) */}
-        {/* <section className="w-full lg:w-1/2 bg-white py-20 px-6 md:px-12">
+        {/* <section className="w-full lg:w-1/2 bg-white py-5 px-6 md:px-12">
           <div className="max-w-2xl mx-auto lg:mx-0 lg:ml-auto lg:pr-8">
             <h2 className="text-4xl font-bold text-center lg:text-left mb-12 text-[#085D36]">OUR BUSINESS AREAS</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -151,7 +151,7 @@ export default function AboutPage() {
         </section> */}
 
         {/* Geographies (Right Column) */}
-        <section className="w-full bg-[#062516] text-white py-20 px-6 md:px-12 relative overflow-hidden">
+        <section className="w-full bg-[#062516] text-white py-5 px-6 md:px-12 relative overflow-hidden">
           {/* Decorative Background Elements */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#085D36] opacity-20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#085D36] opacity-10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
