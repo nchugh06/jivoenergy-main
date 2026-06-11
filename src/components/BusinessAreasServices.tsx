@@ -25,37 +25,37 @@ const DEFAULT_SERVICES: Service[] = [
     id: "solar-pv",
     title: "Solar PV",
     image: solarPV,
-    href: "/business-areas#solar-pv",
+    href: "/business-areas/solar-pv",
   },
   {
     id: "bess",
     title: "Battery Energy Storage Systems (BESS)",
     image: BESS,
-    href: "/business-areas#bess",
+    href: "/business-areas/bess",
   },
   {
     id: "transmission",
     title: "Transmission & Distribution",
     image: transmission,
-    href: "/business-areas#transmission-distribution",
+    href: "/business-areas/transmission-distribution",
   },
   {
     id: "hybrid",
     title: "Hybrid Energy Systems",
     image: hybrid,
-    href: "/business-areas#hybrid-energy",
+    href: "/business-areas/hybrid-energy",
   },
   {
     id: "biogas",
     title: "Biogas & Biomethane",
     image: biogas,
-    href: "/business-areas#biogas-biomethane",
+    href: "/business-areas/biogas-biomethane",
   },
   {
     id: "waste",
     title: "Waste Management & Waste-to-Energy",
     image: wasteManagement,
-    href: "/business-areas#waste-management",
+    href: "/business-areas/waste-management",
   },
 ]
 
