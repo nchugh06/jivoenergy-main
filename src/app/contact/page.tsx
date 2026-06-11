@@ -106,28 +106,28 @@ const Contact = () => {
       tel: ""
     },
     {
-      country: "Dubai",
-      address: "Meydan Grandstand, 6th Floor, Meydan Road, NadEl Sheba, Dubai, U.A.E",
+      country: "U.A.E.",
+      address: "Meydan Grandstand, 6th Floor, Meydan Road, Nad El Sheba, Dubai",
       tel: ""
     },
     {
       country: "Uganda",
-      address: "Plot 40, Wanainchi Road, Ministers' Village, Ntinda, Kampala, PO Box 11580",
+      address: "Unit 10C, The Cube 10th Floor, Plot 5/7, Cooper Road, Kampala",
       tel: ""
     },
     {
       country: "Mauritius",
-      address: "4th Floor Ebene Skies, Rue De L'Institut, Ebene, Mauritius",
+      address: "4th Floor Ebene Skies, Rue De L'Institut, Ebene",
       tel: ""
     },
     {
-      country: "Ethiopia",
-      address: "Office no-1203, Eldasol Building, Mike Leyland Street, Bole Sub-City, Woreda 4, House no. New, Addis Ababa, Ethiopia",
+      country: "Kenya",
+      address: "Office No-309, Third Floor, Kanha Building, 10 Lower Kabete Road, Westlands, Nairobi",
       tel: ""
     },
     {
       country: "Portugal",
-      address: "Rua, Joaquim Brandao, 13, Floor 1, Setubal, Portugal",
+      address: "Rua, Joaquim Brandao, 13 2900-422, Setubal",
       tel: ""
     }
   ];

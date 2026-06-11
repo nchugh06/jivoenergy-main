@@ -169,7 +169,7 @@ const Media = ({ limit }: MediaProps) => {
               Media & Resources
             </span>
           </div> */}
-          <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
+          {/* <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
             <span className="block">Stay Informed With Our</span>
             <span className="block">
               Latest Updates & Insights
@@ -178,7 +178,7 @@ const Media = ({ limit }: MediaProps) => {
           <p className="text-white max-w-3xl mx-auto text-lg leading-relaxed opacity-90">
             Explore our comprehensive collection of industry news, success stories, and expert insights 
             to stay ahead in the renewable energy sector.
-          </p>
+          </p> */}
         </div>
         
         {/* Cards Grid */}

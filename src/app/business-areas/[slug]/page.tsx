@@ -64,7 +64,7 @@ const businessAreasData: {
     ],
     bessStandaloneHeader: "Standalone BESS Systems",
     bessStandaloneDescription: "Our standalone BESS solutions are designed to function as independent energy assets supporting grid stabilization, energy optimization, and critical power continuity applications.",
-    technicalDescription: "Our standalone BESS solutions are designed to function as independent energy assets supporting grid stabilization, energy optimization, and critical power continuity applications.",
+    technicalDescription: "",
     technicalDetails: [
       "Systems ranging from kW to utility-scale MW applications",
       "Energy storage ranging from kWh to multi-MWh installations",

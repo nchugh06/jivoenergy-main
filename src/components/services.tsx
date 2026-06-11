@@ -20,21 +20,22 @@ export default function Services() {
       title: "Solar PV",
       icon: <Layers className="w-12 h-12" />,
       color: "bg-[#C4D600]",
-      href: "/business-areas#solar-pv",
+      href: "/business-areas/solar-pv",
+      // href:`/business-areas/${sectionIds[index]}`
     },
     {
       id: "battery",
       title: "Battery Energy Storage Systems (BESS)",
       icon: <Battery className="w-12 h-12" />,
       color: "bg-[#145f5a]",
-      href: "/business-areas#bess",
+      href: "/business-areas/bess",
     },
     {
       id: "development",
       title: "Transmission & Distribution",
       icon: <User className="w-12 h-12" />,
       color: "bg-[#1a8a8a]",
-      href: "/business-areas#transmission-distribution",
+      href: "/business-areas/transmission-distribution",
     },
 
     {
@@ -42,21 +43,21 @@ export default function Services() {
       title: "Hybrid Energy Systems",
       icon: <Wrench className="w-10 h-10" />,
       color: "bg-[#FFA500]",
-      href: "/business-areas#hybrid-energy",
+      href: "/business-areas/hybrid-energy",
     },
     {
       id: "consulting",
       title: "Biogas & Biomethane",
       icon: <Briefcase className="w-12 h-12" />,
       color: "bg-[#1BB5C4]",
-      href: "/business-areas#biogas-biomethane",
+      href: "/business-areas/biogas-biomethane",
     },
     {
       id: "management",
       title: "Waste Management & Waste-to-Energy",
       icon: <Trash2 className="w-12 h-12" />,
       color: "bg-[#C4D600]",
-      href: "/business-areas#waste-management",
+      href: "/business-areas/waste-management",
     },
   ]
 
