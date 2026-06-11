@@ -1,6 +1,7 @@
 "use client"
 import Image from "next/image"
 import { CheckCircle2 } from "lucide-react"
+import { motion } from "framer-motion"
 
 interface CoreValue {
   id: string
@@ -15,6 +16,29 @@ const valuesList: CoreValue[] = [
   { id: "collaboration", title: "Efficiency", description: "Our streamlined processes and innovative approach help us deliver optimized energy solutions with maximum efficiency, cost-effectiveness, and impact." },
   // { id: "empowerment", title: "Empowerment", description: "Enabling communities and businesses to take control of their energy futures." }
 ]
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, rotateX: -80, y: 20 },
+  visible: {
+    opacity: 1,
+    rotateX: 0,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+}
 
 export default function CoreValues() {
   return (
@@ -35,16 +59,24 @@ export default function CoreValues() {
           </div>
 
           {/* Right: Content */}
-          <div className="lg:bg-slate-50 lg:p-8 lg:rounded-lg">
-            <h2 className="section-title text-center text-slate-800">
+          <motion.div 
+            className="lg:bg-slate-50 lg:p-8 lg:rounded-lg"
+            initial="hidden"
+            style={{ perspective: 1200 }}
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={containerVariants}
+          >
+            <motion.h2 variants={itemVariants} className="section-title text-center text-slate-800">
               Our Core Values
-            </h2>
+            </motion.h2>
 
             {/* Values List */}
             <div className="space-y-4">
               {valuesList.map((value) => (
-                <div
+                <motion.div
                   key={value.id}
+                  variants={itemVariants}
                   className="flex items-start gap-4 pb-4 border-b border-slate-200 last:border-b-0"
                 >
                   <div className="flex-1">
@@ -60,10 +92,10 @@ export default function CoreValues() {
                       className="w-6 h-6 text-teal-600 fill-teal-600"
                     /> */}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
