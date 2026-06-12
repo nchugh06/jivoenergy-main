@@ -117,7 +117,7 @@ const Careers = () => {
   };
 
   return (
-    <main className="relative min-h-screen w-full bg-[#062516]">
+    <div className="min-h-screen bg-white">
       {/* <div className="min-h-screen bg-white font-sans text-gray-800"> */}
       <Navbar />
 
@@ -134,22 +134,22 @@ const Careers = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-[#062516]/60 to-[#062516] z-0" />
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-up">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
             Careers at <span className="text-[#ffffff]">JIVO Energy</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-200 font-light max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-200 font-light max-w-2xl mx-auto text-center">
             Build your future with a company committed to excellence, integrity, and sustainable growth.
           </p>
         </div>
       </div>
 
       {/* Introduction Section */}
-      <section className="py-5 px-4 md:px-8 max-w-7xl mx-auto">
-        <div className="text-center max-w-4xl mx-auto mb-16">
+      <section className="py-5 px-4 max-w-7xl mx-auto">
+        <div className="text-center max-w-7xl mx-auto mb-16">
           {/* <h2 className="section-title text-center text-[#062516] mb-8">
             Join Our Vision
           </h2> */}
-          <p className="text-lg text-white leading-relaxed">
+          <p className="text-lg text-gray-600 leading-relaxed">
             At JIVO Energy, we are committed to building a highly skilled, diverse, and performance-driven workforce.
             As we broaden our portfolio and expand our presence across the region, we continue to seek professionals
             who demonstrate excellence, integrity, and a commitment to delivering results. If you aspire to be part
@@ -160,10 +160,10 @@ const Careers = () => {
         {/* Why Work With Us */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
           <div className="space-y-8">
-            <h3 className="section-title text-[#fafafa] border-l-4 border-[#FFFA84] pl-4">
+            <h3 className="section-title text-[#062516] border-l-4 border-[#FFFA84] pl-4">
               Why Work With Us?
             </h3>
-            <p className="text-white mb-6">
+            <p className="text-gray-600 mb-6">
               Working with JIVO Energy means becoming part of a stable, growth-oriented company that values
               professionalism and long-term career development. We are committed to:
             </p>
@@ -175,9 +175,9 @@ const Careers = () => {
                 "Recognising and rewarding strong performance and dedication.",
                 "Promoting work-life balance and offering a competitive compensation package."
               ].map((item, index) => (
-                <li key={index} className="flex items-start space-x-3 text-white">
-                  <CheckCircle2 className="w-6 h-6 text-[#fafafa] flex-shrink-0 mt-0.5" />
-                  <span className="text-white">{item}</span>
+                <li key={index} className="flex items-start space-x-3 text-gray-600">
+                  <CheckCircle2 className="w-6 h-6 text-[#062516] flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-600">{item}</span>
                 </li>
               ))}
             </ul>
@@ -197,7 +197,7 @@ const Careers = () => {
 
         {/* Our Culture & Values */}
         <div className="mb-24">
-          <h3 className="section-title text-center text-[#fafafa] mb-12">Our Culture & Values</h3>
+          <h3 className="section-title text-center text-[#062516] mb-12">Our Culture & Values</h3>
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
             {[
               { icon: Shield, title: "Integrity", desc: "Doing what’s right, consistently and transparently." },
@@ -322,7 +322,7 @@ const Careers = () => {
               <h3 className="text-3xl font-bold text-[#062516] mb-6">
                 Be Part of Our Growth Story
               </h3>
-              <p className="text-white mb-8 leading-relaxed">
+              <p className="text-gray-600 mb-8 leading-relaxed">
                 We are always looking for passionate, hardworking, and talented individuals who want to grow with us.
                 Even if the role listed here doesn’t match your profile, feel free to send us CV. We’re always open to great talent!
               </p>
@@ -459,7 +459,7 @@ const Careers = () => {
 
       <Footer />
       {/* </div> */}
-    </main>
+    </div>
   );
 };
 

@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image"
 import { CheckCircle2 } from "lucide-react"
-import { motion } from "framer-motion"
+import { motion, Variants } from "framer-motion"
 
 interface CoreValue {
   id: string
@@ -27,7 +27,7 @@ const containerVariants = {
   },
 }
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, rotateX: -80, y: 20 },
   visible: {
     opacity: 1,
@@ -35,7 +35,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.8,
-      ease: "easeOut",
+      ease: "easeInOut",
     },
   },
 }

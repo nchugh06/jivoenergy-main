@@ -4,10 +4,10 @@ import React from 'react';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import solarPV from '../../../public/gallery/Uganda/NKONGE/1.jpg';
+import solarPV from '../../../public/assets/solar-pv-1.jpg';
 import BESS from '../../../public/gallery/MALAWI/1.jpg';
 import transmission from '../../../public/assets/business-transmission.jpg';
-import hybrid from '../../../public/assets/business-hybrid.jpg';
+import hybrid from '../../../public/assets/hybrid-energy.jpg';
 import biogas from '../../../public/assets/business-biogas.jpg';
 import wasteManagement from '../../../public/assets/business-waste-mgmt.jpg';
 const businessAreas = [
