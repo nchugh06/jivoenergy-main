@@ -27,7 +27,7 @@ const Team = () => {
     { name: 'Ivan', image: '/team/Ivan.JPG', linkedin: 'https://www.linkedin.com/in/ivan-muyomba-a61796143?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
     { name: 'Beatrice Kithinji', image: '/team/Beatrice.jpg', linkedin: 'https://www.linkedin.com/in/beatrice-kithinji-mba-30aa448a/' },
     { name: 'Nishank Madaan', image: '/team/Nishank.jpg', linkedin: 'https://www.linkedin.com/in/nishank-madaan-658177146/' },
-    { name: 'Naresh Kumar Singh Ghorla', image: '/team/Naresh.jpg', linkedin: 'https://www.linkedin.com/in/naresh-ghorla-805222150/' },   
+    { name: 'Naresh Kumar Singh Ghorla', image: '/team/Naresh.jpg', linkedin: 'https://www.linkedin.com/in/naresh-ghorla-805222150/' },
     // { name: 'Patrice Yamintare Kounkorgo', image: '/team/Patrice.jpg', linkedin: 'https://www.linkedin.com/in/yamintare-patrice-kounkorgo-058405179/' },
     // { name: 'Boyd', image: '' },
   ];
@@ -38,11 +38,11 @@ const Team = () => {
     { name: 'Rohit Shivaji Nalavade', image: '/team/Rohit.jpg', linkedin: 'https://www.linkedin.com/in/rohit-nalavade-8a6780395/' },
     { name: 'Nitesh Kumar', image: '/team/Nitesh.jpg', linkedin: 'https://www.linkedin.com/in/nitesh-jangra-a9567a278/' },
     { name: 'Tushar Saurabh', image: '/team/Tushar.jpeg', linkedin: 'https://www.linkedin.com/in/tushar-saurabh-02b5277b/' },
-    { name: 'Shashi Kumar', image: '/team/Shashi.jpg', linkedin: 'https://www.linkedin.com/in/shashi-kumar-87449b148/' },    
+    { name: 'Shashi Kumar', image: '/team/Shashi.jpg', linkedin: 'https://www.linkedin.com/in/shashi-kumar-87449b148/' },
     { name: 'Vivek Gupta', image: '/team/Vivek.jpg', linkedin: 'https://www.linkedin.com/in/vivek-vikram-56470a127/' },
-    { name: 'Pauline Wambui Wachira', image: '/team/Pauline.jpg', linkedin: 'https://www.linkedin.com/in/pauline-wachira-9597a777/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app' },       
+    { name: 'Pauline Wambui Wachira', image: '/team/Pauline.jpg', linkedin: 'https://www.linkedin.com/in/pauline-wachira-9597a777/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app' },
     { name: 'Ashok Kumar', image: '/team/Ashok.jpg', linkedin: 'https://www.linkedin.com/in/ashok-kumar-74a07064/' },
-    { name: 'Akshay Sharma', image: '/team/Akahsy.png', linkedin: 'https://www.linkedin.com/in/akshay-sharma-12b8b79a/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app' }, 
+    { name: 'Akshay Sharma', image: '/team/Akahsy.png', linkedin: 'https://www.linkedin.com/in/akshay-sharma-12b8b79a/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app' },
     { name: 'Nitin Kumar', image: '/team/Nitin.jpg', linkedin: 'https://www.linkedin.com/in/nitin-kumar-195675157/' },
     { name: 'Samuel Walusimbi', image: '/team/Samuel.jpg', linkedin: 'https://www.linkedin.com/in/samuel-walusimbi-k/' },
     // { name: 'Alfred', image: '/team/Alfred.jpg' },
@@ -57,7 +57,7 @@ const Team = () => {
     { name: 'Arun Kumar', image: '/team/Arun.jpg', linkedin: 'https://www.linkedin.com/in/arun-sharma-b5504918b/' },
   ];
 
-    const projectCorporate: TeamMember[] = [
+  const projectCorporate: TeamMember[] = [
     { name: 'Ujwal Arora', image: '/team/Ujwal.jpg', linkedin: 'https://www.linkedin.com/in/ca-ujwal-arora-6481108b/' },
     { name: 'Aakanksha', image: '/team/Aakanksha.jpg', linkedin: 'https://www.linkedin.com/in/aakankshachugh/' },
     { name: 'Geetika Sondhi', image: '/team/Geetika.jpg', linkedin: 'https://www.linkedin.com/in/geetika-sondhi-82274520/' },
@@ -98,11 +98,11 @@ const Team = () => {
   const MotionDiv = motion.div as any;
 
   const MemberCard = ({ member, size = "large" }: { member: TeamMember, size?: "large" | "small" }) => (
-    <MotionDiv 
+    <MotionDiv
       variants={itemVariants}
       className="flex flex-col items-center group"
     >
-      <div 
+      <div
         className={`relative ${size === 'large' ? 'w-32 h-32 md:w-48 md:h-48' : 'w-20 h-20 md:w-24 md:h-24'} overflow-hidden rounded-full bg-gray-100 shadow-sm transition-all duration-500 border-2 border-white group-hover:border-[#175d33] ${member.linkedin ? 'cursor-pointer' : ''}`}
         onClick={() => member.linkedin && window.open(member.linkedin, '_blank')}
       >
@@ -119,14 +119,14 @@ const Team = () => {
             <span className={`${size === 'large' ? 'text-4xl' : 'text-3xl'} font-bold font-serif`}>{member.name.charAt(0)}</span>
           </div>
         )}
-        
+
         {member.linkedin && (
-           <div className="absolute inset-0 bg-[#062516]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <Linkedin className="w-4 h-4 text-white" />
-           </div>
+          <div className="absolute inset-0 bg-[#062516]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <Linkedin className="w-4 h-4 text-white" />
+          </div>
         )}
       </div>
-      
+
       <div className="text-center mt-2 max-w-[120px]">
         <h3 className={`font-bold text-[#062516] ${size === 'large' ? 'text-base' : 'text-xs md:text-sm'} leading-tight`}>
           {member.name.split(' ')[0]}
@@ -138,21 +138,22 @@ const Team = () => {
   return (
     <div className="min-h-screen bg-white font-sans selection:bg-[#175d33] selection:text-[#062516] overflow-x-hidden">
       <Navbar />
-      
+
       <div className="container mx-auto px-4 py-8 md:py-12 mt-20">
-        
+
         {/* Mentor Leader */}
-        <motion.div 
+        <motion.div
           className="flex flex-col items-center mt-20 mb-5"
         >
-          <div 
-            className="relative w-28 h-28 md:w-32 md:h-32 overflow-hidden rounded-full border-4 border-[#175d33] shadow-xl cursor-pointer group mb-4"
+          <div
+            className="relative w-28 h-28 md:w-32 md:h-32 overflow-hidden rounded-full shadow-xl cursor-pointer group mb-4"
             onClick={() => mentor.linkedin && window.open(mentor.linkedin, '_blank')}
           >
-             <Image src={mentor.image} alt={mentor.name} fill className="object-cover object-top transition-transform group-hover:scale-110" />
-             <div className="absolute inset-0 bg-[#062516]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <Linkedin className="w-10 h-10 text-white" />
-             </div>
+            {/* border-4 border-[#175d33] */}
+            <Image src={mentor.image} alt={mentor.name} fill className="object-cover object-top transition-transform group-hover:scale-110" />
+            <div className="absolute inset-0 bg-[#062516]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <Linkedin className="w-10 h-10 text-white" />
+            </div>
           </div>
           <div className="text-center">
             <h1 className="text-2xl md:text-3xl font-black text-[#062516]">{mentor.name}</h1>
@@ -160,14 +161,16 @@ const Team = () => {
         </motion.div>
 
         <div className="space-y-12 max-w-7xl mx-auto">
-        {/* Project Execution */}
+          {/* Project Execution */}
           <section>
-            <h2 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">Execution</h2>
-            <MotionDiv 
+            <h2 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">
+              Execution
+            </h2>
+            <MotionDiv
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-14 gap-6 md:gap-8"
+              className="flex flex-wrap justify-center gap-6 md:gap-8"
             >
               {projectExecution.map((member, index) => (
                 <MemberCard key={index} member={member} size="small" />
@@ -175,15 +178,14 @@ const Team = () => {
             </MotionDiv>
           </section>
 
-
           {/* Project Development */}
           <section>
             <h2 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">Development</h2>
-            <MotionDiv 
+            <MotionDiv
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-6 md:gap-8"
+              className="flex flex-wrap justify-center gap-6 md:gap-8"
             >
               {projectDevelopment.map((member, index) => (
                 <MemberCard key={index} member={member} size="small" />
@@ -191,16 +193,14 @@ const Team = () => {
             </MotionDiv>
           </section>
 
-          
-
           {/* Project Support */}
           <section className='mb-10'>
             <h2 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">Support</h2>
-            <MotionDiv 
+            <MotionDiv
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-6 md:gap-8"
+              className="flex flex-wrap justify-center gap-6 md:gap-8"
             >
               {projectSupport.map((member, index) => (
                 <MemberCard key={index} member={member} size="small" />
@@ -211,11 +211,11 @@ const Team = () => {
           {/* Project Corporate */}
           <section className='mb-10'>
             <h2 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">Corporate</h2>
-            <MotionDiv 
+            <MotionDiv
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-6 md:gap-8"
+              className="flex flex-wrap justify-center gap-6 md:gap-8"
             >
               {projectCorporate.map((member, index) => (
                 <MemberCard key={index} member={member} size="small" />
@@ -223,9 +223,8 @@ const Team = () => {
             </MotionDiv>
           </section>
         </div>
-
       </div>
-      
+
       <Footer />
     </div>
   );
