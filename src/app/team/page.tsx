@@ -52,8 +52,8 @@ const Team = () => {
     { name: 'Manvendra Singh Hada', image: '/team/Manvendra.jpg', linkedin: 'https://www.linkedin.com/in/hadamanvendrasingh/' },
     { name: 'Narendra', image: '/team/Narendra.jpg', linkedin: 'https://www.linkedin.com/in/narendra-mishra-b6a64561/' },
     { name: 'Ravi Kumar', image: '/team/Ravi.jpg', linkedin: 'https://www.linkedin.com/in/ravi-kumar-yadav-36812a308/' },
-    { name: 'Jaideep', image: '/team/Jaideep.jpg' },
-    { name: 'Eric', image: '/team/Eric.jpg' },
+    { name: 'Jaideep', image: '/team/Jaideep.jpg', linkedin: 'https://www.linkedin.com/in/jaideep-dhillon-a0440b398/' },
+    { name: 'Eric', image: '/team/Eric.jpg', linkedin: 'https://www.linkedin.com/in/eric-masai-a8b79b84/' },
     { name: 'Arun Kumar', image: '/team/Arun.jpg', linkedin: 'https://www.linkedin.com/in/arun-sharma-b5504918b/' },
   ];
 
@@ -162,7 +162,7 @@ const Team = () => {
         <div className="space-y-12 max-w-7xl mx-auto">
         {/* Project Execution */}
           <section>
-            <h2 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">Project Execution</h2>
+            <h2 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">Execution</h2>
             <MotionDiv 
               variants={containerVariants}
               initial="hidden"
@@ -178,7 +178,7 @@ const Team = () => {
 
           {/* Project Development */}
           <section>
-            <h2 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">Project Development</h2>
+            <h2 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">Development</h2>
             <MotionDiv 
               variants={containerVariants}
               initial="hidden"
@@ -195,7 +195,7 @@ const Team = () => {
 
           {/* Project Support */}
           <section className='mb-10'>
-            <h2 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">Project Support</h2>
+            <h2 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">Support</h2>
             <MotionDiv 
               variants={containerVariants}
               initial="hidden"
@@ -210,7 +210,7 @@ const Team = () => {
 
           {/* Project Corporate */}
           <section className='mb-10'>
-            <h2 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">Project Corporate</h2>
+            <h2 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">Corporate</h2>
             <MotionDiv 
               variants={containerVariants}
               initial="hidden"

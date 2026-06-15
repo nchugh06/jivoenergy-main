@@ -5,9 +5,9 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Clients = () => {
     const clientsList = [
-        'client1.png', 'client2.jpg', 'client3.png', 'client4.png', 'client5.png',
-        'client6.png', 'client7.jpg', 'client8.png', 'client9.jpg', 'client10.png',
-        'client11.png', 'client12.png', 'client13.png'
+        'client1.jpg', 'client2.jpg', 'client3.jpg', 'client4.jpg', 'client5.jpg',
+        'client6.jpg', 'client7.jpg', 'client8.jpg', 'client9.jpg', 'client10.jpg',
+        'client11.jpg', 'client12.jpg', 'client13.jpg'
     ];
 
     const [currentIndex, setCurrentIndex] = useState(0);
