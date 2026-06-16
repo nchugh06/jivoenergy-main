@@ -66,6 +66,36 @@ export const getProjectBySlug = async (slug: string): Promise<Project | null> =>
     }
 };
 
+export const getProjectsByBusinessArea = async (businessArea: string): Promise<Project[]> => {
+    try {
+        const allProjects = await getProjects();
+        
+        // Map business area slugs to technology keywords
+        const technologyMap: { [key: string]: string[] } = {
+            'solar-pv': ['solar', 'pv', 'photovoltaic'],
+            'bess': ['battery', 'bess', 'energy storage', 'storage system'],
+            'transmission-distribution': ['transmission', 'distribution', 't&d', 'substation'],
+            'hybrid-energy': ['hybrid'],
+            'biogas-biomethane': ['biogas', 'biomethane'],
+            'waste-management': ['waste', 'waste-to-energy', 'wte']
+        };
+        
+        const keywords = technologyMap[businessArea] || [];
+        
+        // Filter projects by matching technology with keywords
+        const filteredProjects = allProjects.filter(project => {
+            if (!project.technology) return false;
+            const tech = project.technology.toLowerCase();
+            return keywords.some(keyword => tech.includes(keyword.toLowerCase()));
+        });
+        
+        return filteredProjects;
+    } catch (error) {
+        console.error("Error fetching projects by business area:", error);
+        return [];
+    }
+};
+
 export const addProject = async (data: Omit<Project, 'id'>) => {
     return await addDoc(collection(db, COLLECTION_NAME), {
         ...data,

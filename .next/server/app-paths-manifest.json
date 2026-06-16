@@ -15,6 +15,7 @@
   "/api/admin/upload/route": "app/api/admin/upload/route.js",
   "/api/careers/route": "app/api/careers/route.js",
   "/api/contact/route": "app/api/contact/route.js",
+  "/business-areas/[slug]/page": "app/business-areas/[slug]/page.js",
   "/business-areas/page": "app/business-areas/page.js",
   "/capabilities/page": "app/capabilities/page.js",
   "/careers/page": "app/careers/page.js",

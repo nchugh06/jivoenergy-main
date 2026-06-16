@@ -37,6 +37,14 @@
       "namedRegex": "^/api/admin/leads/(?<nxtPid>[^/]+?)/remarks(?:/)?$"
     },
     {
+      "page": "/business-areas/[slug]",
+      "regex": "^/business\\-areas/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/business\\-areas/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/projects/[id]",
       "regex": "^/projects/([^/]+?)(?:/)?$",
       "routeKeys": {
