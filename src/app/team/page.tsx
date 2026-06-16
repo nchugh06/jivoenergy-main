@@ -170,7 +170,7 @@ const Team = () => {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap justify-center gap-6 md:gap-8"
+              className="flex flex-wrap justify-center gap-0 md:gap-0"
             >
               {projectExecution.map((member, index) => (
                 <MemberCard key={index} member={member} size="small" />
@@ -185,7 +185,7 @@ const Team = () => {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap justify-center gap-6 md:gap-8"
+              className="flex flex-wrap justify-center gap-0 md:gap-0"
             >
               {projectDevelopment.map((member, index) => (
                 <MemberCard key={index} member={member} size="small" />
@@ -200,7 +200,7 @@ const Team = () => {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap justify-center gap-6 md:gap-8"
+              className="flex flex-wrap justify-center gap-0 md:gap-0"
             >
               {projectSupport.map((member, index) => (
                 <MemberCard key={index} member={member} size="small" />
@@ -215,7 +215,7 @@ const Team = () => {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap justify-center gap-6 md:gap-8"
+              className="flex flex-wrap justify-center gap-0 md:gap-0"
             >
               {projectCorporate.map((member, index) => (
                 <MemberCard key={index} member={member} size="small" />
