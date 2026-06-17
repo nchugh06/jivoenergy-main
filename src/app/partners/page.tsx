@@ -52,25 +52,16 @@ const Partners = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <div className="relative w-full h-[50vh] bg-[#062516] overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-60"
-        >
-          <source src="/partner_vid.mp4" type="video/mp4" />
-        </video>
-        <div className="relative z-10 h-full flex flex-col items-center justify-center">
-          <h1 className="text-6xl md:text-7xl font-bold text-white text-center px-4 tracking-wider">
-            OUR PARTNERS
-          </h1>
-          <p className="text-gray-200 mt-4 text-xl max-w-2xl text-center px-4">
-            Collaborating for a sustainable future
-          </p>
-        </div>
-      </div>
+      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+              <Image
+                src="/assets/banners/partners.webp"
+                alt="Partners Banner"
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/25 to-[#04301C]/25"></div>
+            </section>
 
       {/* Main Partnership Content */}
       <div className="max-w-7xl mx-auto px-4 py-5">

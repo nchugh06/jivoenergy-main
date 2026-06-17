@@ -1,6 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -47,22 +48,14 @@ const Certificate = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <div className="relative w-full h-[65vh] bg-[#062516] overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-90"
-        >
-          <source src="/cert_vid.mp4" type="video/mp4" />
-        </video>
-        <div className="relative z-10 h-full flex items-center justify-center">
-          <h1 className="text-7xl font-bold text-white text-center px-4">
-            CERTIFICATIONS
-          </h1>
-        </div>
-      </div>
+      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+              <Image src="/assets/banners/certifications.webp" alt="Certifications Banner"
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/25 to-[#04301C]/25"></div>              
+            </section>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-5">

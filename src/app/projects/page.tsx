@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
+import Image from 'next/image';
 import Footer from '@/components/Footer';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Project } from '@/types/project';
@@ -169,6 +170,16 @@ const ProjectsPage = () => {
     <div className="min-h-screen bg-gray-50 font-sans selection:bg-[#FFFA84] selection:text-[#062516]">
       <Navbar />
      
+     <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+                   <Image
+                     src="/assets/banners/projects.webp"
+                     alt="Projects Banner"
+                     fill
+                     className="object-cover"
+                     priority
+                   />
+                   <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/25 to-[#04301C]/25"></div>
+                 </section>
 
       {/* Main Content Area */}
       <main className="container mx-auto px-6 py-24 md:py-32">
@@ -179,7 +190,7 @@ const ProjectsPage = () => {
              </div>
         ) : (
           <div>
-            <div className="py-8 px-2 pt-30">
+            <div className="py-8 px-2">
                 <div>
                     <h2 className="section-title text-[#062516] mb-2 text-center">Project Portfolio</h2>
                     <h6 className="text-black font-bold uppercase text-[10px] tracking-widest opacity-60 text-center">Showing {allProjects.length} projects across Africa</h6>
