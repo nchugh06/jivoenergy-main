@@ -10,7 +10,7 @@ export default function MediaPage() {
       <Navbar />
       <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
         <Image
-          src="/assets/banners/media.webp"
+          src="/assets/banners/Media.webp"
           alt="Media Banner"
           fill
           className="object-cover"

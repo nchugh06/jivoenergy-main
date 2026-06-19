@@ -61,7 +61,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/sustainability" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <Link href="/esg" className="text-gray-400 hover:text-white transition-colors duration-200">
                   Sustainability
                 </Link>
               </li>
@@ -77,11 +77,11 @@ const Footer = () => {
                   Media
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/gallery" className="text-gray-400 hover:text-white transition-colors duration-200">
                   Gallery
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/careers" className="text-gray-400 hover:text-white transition-colors duration-200">
                   Careers

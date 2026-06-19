@@ -135,11 +135,12 @@ const Careers = () => {
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-up">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-            Careers at <span className="text-[#ffffff]">JIVO Energy</span>
+            CAREERS
+            {/* CAREERS at <span className="text-[#ffffff]">JIVO Energy</span> */}
           </h1>
-          <p className="text-xl md:text-2xl text-gray-200 font-light max-w-2xl mx-auto text-center">
+          {/* <p className="text-xl md:text-2xl text-gray-200 font-light max-w-2xl mx-auto text-center">
             Build your future with a company committed to excellence, integrity, and sustainable growth.
-          </p>
+          </p> */}
         </div>
       </div>
 

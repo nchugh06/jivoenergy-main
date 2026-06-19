@@ -21,7 +21,7 @@ export default function SustainabilityPage() {
 
       <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
               <Image
-                src="/assets/banners/esg.webp"
+                src="/assets/banners/ESG.webp"
                 alt="ESG Banner"
                 fill
                 className="object-cover"

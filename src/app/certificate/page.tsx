@@ -49,7 +49,7 @@ const Certificate = () => {
       
       {/* Hero Section */}
       <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
-              <Image src="/assets/banners/certifications.webp" alt="Certifications Banner"
+              <Image src="/assets/banners/Certifications.webp" alt="Certifications Banner"
                 fill
                 className="object-cover"
                 priority

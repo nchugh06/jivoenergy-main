@@ -54,7 +54,7 @@ const Partners = () => {
       {/* Hero Section */}
       <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
               <Image
-                src="/assets/banners/partners.webp"
+                src="/assets/banners/Partners.webp"
                 alt="Partners Banner"
                 fill
                 className="object-cover"
