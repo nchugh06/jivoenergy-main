@@ -131,7 +131,7 @@ const Careers = () => {
             backgroundPosition: 'center',
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#062516]/60 to-[#062516] z-0" />
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-[#062516]/60 to-[#062516] z-0" /> */}
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-up">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">

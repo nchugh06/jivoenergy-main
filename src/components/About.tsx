@@ -14,15 +14,21 @@ const About = () => {
             {/* With over two decades of experience in renewable energy development, we have established
             ourselves as a trusted partner in the clean energy transition, delivering innovative solutions
             across multiple markets. */}
-            We are Africa’s leading provider of integrated renewable energy and sustainable solutions, delivering end-to-end services across Solar, Battery Energy Storage, Hybrid Systems, Waste-To-Energy projects, and Transmission & Distribution infrastructure. Serving commercial, industrial, utility-scale, and community clients, we combine technical expertise, innovative design, and project execution excellence to deliver reliable, efficient, and environmentally responsible energy solutions.<br></br>
+            JIVO Energy is a renewable energy and infrastructure company focused on delivering sustainable, reliable, and future-ready energy solutions across Africa and emerging markets. Since 2018, we have been actively engaged in project development, engineering, procurement and construction (EPC), operations & maintenance, battery energy storage systems (BESS), and energy infrastructure development.<br></br>            
           </p>
+          <a
+                    href={`/about`}
+                    className="inline-block mt-6 px-6 py-3 bg-[#fafafa] text-black rounded-lg font-medium transition-colors duration-300 text-center"
+                  >
+                    Read More
+                  </a>
         </div>
 
         <div className="stats-grid">
           <div className="grid-item" data-counter="">
             <div className="content">
-              <h2 className="stat-number">20 GW</h2>
-              <p className="stat-description">of total pipeline in renewable projects</p>
+              <h2 className="stat-number">100 MWp+</h2>
+              <p className="stat-description">Solar PV Constructed</p>
             </div>
             <div>
               <img src="/logo1.png" alt="Solar panels" />
@@ -32,7 +38,7 @@ const About = () => {
           <div className="grid-item" data-counter="02">
             <div className="content">
               <h2 className="stat-number">1000+</h2>
-              <p className="stat-description">Workforce</p>
+              <p className="stat-description">Employment Opportunities Created</p>
             </div>
             <div>
               <img src="/logo1.png" alt="Team working" />
@@ -41,8 +47,8 @@ const About = () => {
 
           <div className="grid-item" data-counter="03">
             <div className="content">
-              <h2 className="stat-number">400M USD+</h2>
-              <p className="stat-description">Under Construction</p>
+              <h2 className="stat-number">60 MWh</h2>
+              <p className="stat-description">BESS Delivered</p>
             </div>
             <div>
               <img src="/logo1.png" alt="Team working" />
@@ -52,7 +58,7 @@ const About = () => {
           <div className="grid-item" data-counter="04">
             <div className="content">
               <h2 className="stat-number">15+</h2>
-              <p className="stat-description">Countries</p>
+              <p className="stat-description">Countries with Active Projects</p>
             </div>
             <div>
               <img src="/logo1.png" alt="Global map" />
@@ -61,8 +67,8 @@ const About = () => {
 
           <div className="grid-item" data-counter="05">
             <div className="content">
-              <h2 className="stat-number">4+</h2>
-              <p className="stat-description">Continents</p>
+              <h2 className="stat-number">200 MWp+</h2>
+              <p className="stat-description">Solar PV Pipeline</p>
             </div>
             <div>
               <img src="/logo1.png" alt="Earth from space" />
@@ -71,8 +77,8 @@ const About = () => {
 
           <div className="grid-item" data-counter="06">
             <div className="content">
-              <h2 className="stat-number">100M USD+</h2>
-              <p className="stat-description">Projects Completed</p>
+              <h2 className="stat-number">50 Mwh</h2>
+              <p className="stat-description">BESS Pipeline</p>
             </div>
             <div>
               <img src="/logo1.png" alt="Completed solar installation" />

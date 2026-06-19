@@ -27,15 +27,15 @@ export default function Capabilities() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/25 to-[#04301C]/25"></div>
+        {/* <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/25 to-[#04301C]/25"></div>
         <div className="relative z-10 container mx-auto px-4 text-center">
-          {/* <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
             Our Capabilities
-          </h1> */}
-          {/* <p className="text-xl text-white/90 max-w-2xl mx-auto">
+          </h1>
+           <p className="text-xl text-white/90 max-w-2xl mx-auto">
             Creating lasting value through environmental stewardship, social responsibility, and strong governance.
-          </p> */}
-        </div>
+          </p> 
+        </div> */}
       </section>
 
       {/* Introduction Section */}
