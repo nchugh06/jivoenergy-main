@@ -34,7 +34,7 @@ const Team = () => {
 
   const projectExecution: TeamMember[] = [
     { name: 'Prayas Gupta', image: '/team/Prayas.jpg', linkedin: 'https://www.linkedin.com/in/preyas-gupta/' },
-    { name: 'Ankit Srivastava', image: '/team/Ankit.jpg', linkedin: 'https://www.linkedin.com/in/ankit-srivastava14/' },
+    // { name: 'Ankit Srivastava', image: '/team/Ankit.jpg', linkedin: 'https://www.linkedin.com/in/ankit-srivastava14/' },
     { name: 'Rohit Shivaji Nalavade', image: '/team/Rohit.jpg', linkedin: 'https://www.linkedin.com/in/rohit-nalavade-8a6780395/' },
     { name: 'Nitesh Kumar', image: '/team/Nitesh.jpg', linkedin: 'https://www.linkedin.com/in/nitesh-jangra-a9567a278/' },
     { name: 'Tushar Saurabh', image: '/team/Tushar.jpeg', linkedin: 'https://www.linkedin.com/in/tushar-saurabh-02b5277b/' },
@@ -66,7 +66,7 @@ const Team = () => {
     { name: 'Gayatri Mudgil', image: '/team/Gayatri.jpg', linkedin: 'https://www.linkedin.com/in/gayatri-m-92122918b/' },
     { name: 'Dikshita', image: '/team/Dikshita.jpg', linkedin: 'https://www.linkedin.com/in/dikshita-y-7aa3b7110/' },
     { name: 'Anuradha Nehra', image: '/team/Anuradha.jpg', linkedin: 'https://www.linkedin.com/in/graphologistanuradha/' },
-    { name: 'Shivalika Nagpal', image: '/team/Shivalika.jpg', linkedin: 'https://www.linkedin.com/in/shivalikanagpal/' },
+    // { name: 'Shivalika Nagpal', image: '/team/Shivalika.jpg', linkedin: 'https://www.linkedin.com/in/shivalikanagpal/' },
     { name: 'Ainemigisha Martha Tukahirwa Flavia', image: '/team/Martha.jpg', linkedin: 'https://www.linkedin.com/in/martha-ainemigisha-a6a2b4238/' },
     // { name: 'Nidhi', image: '/team/nidhi.jpg' },
     // { name: 'Chavvi Ahuja', image: '/team/Chavvi.jpg', linkedin: 'https://www.linkedin.com/in/chavvi-ahuja-68507b20a/' },
