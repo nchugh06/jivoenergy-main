@@ -45,6 +45,7 @@ export default function AboutPage() {
           fill
           className="object-cover"
           priority
+          sizes="60vw"
         />
         {/* <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/25 to-[#04301C]/5"></div>
         <div className="relative z-10 container mx-auto px-4 text-center">
