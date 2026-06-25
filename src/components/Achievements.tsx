@@ -1,38 +1,34 @@
 import React from 'react';
+import Image from 'next/image';
 
-const About = () => {
+const Achievements = () => {
   return (
     <section className="about-stats">
       <div className="about-stats__container">
+        <h2 className="section-title text-center text-[#062516]">Our Achievements</h2>
         <div className="about-two-col">
           <div className="about-two-col__video">
-            <video
-              src="/about_vid.mp4"
+            <Image
+              src="/assets/our-achievement.jpg"
+              alt="Our Achievements"
+              width={900}
+              height={600}
               className="w-full h-full object-cover rounded-2xl"
-              autoPlay
-              muted
-              loop
-              playsInline
+              priority
             />
           </div>
           <div className="about-two-col__copy">
-            <p className="about-stats__subtitle">Why Choose JIVO Energy</p>
-            <p className="about-stats__description justify-text">
-              JIVO Energy is one of the fastest growing renewable energy companies with a track record of over
-100 MWp of solar power and 60 MWh of battery storage.<br></br>
-Founded to give clients a single team to trust, JIVO handles the whole project from first engineering
-and construction to long-term operations.<br></br>
-JIVO has successfully built clean energy projects across more than 15 countries, using only top-tier
-materials to ensure they stay safe and reliable for decades.<br></br>
-By delivering every project on time and exactly as promised, we build the trusted infrastructure that
-nations need to power their future.
-            </p>
-            <a
-              href="/about"
-              className="inline-block mt-6 px-6 py-3 bg-[#fafafa] text-black rounded-lg font-medium transition-colors duration-300 text-center"
-            >
-              Explore More
-            </a>
+            {/* <p className="about-stats__subtitle">Our Achievements</p> */}
+            <div className="about-stats__description justify-text">
+              <ul className="list-disc pl-6">
+                <li>Successfully executed Hybrid Solar Power PV &amp; Storage projects with varied technologies.</li>
+                <li>Rapid expansion from single country business in 2018 to presence in 15 countries now.</li>
+                <li>100M USD+ Projects completed/under construction in Africa</li>
+                <li>400M USD+ Projects under development in Africa</li>
+                <li>Employment opportunities to 1000+ workmen in Africa on projects.</li>
+              </ul>
+            </div>
+            
           </div>
         </div>
 
@@ -152,4 +148,4 @@ nations need to power their future.
   );
 };
 
-export default About; 
+export default Achievements; 

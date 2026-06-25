@@ -54,9 +54,10 @@ body {
 }
 
 .about-stats {
-  background: url("/about-bg.jpg") no-repeat bottom left #062516;
-  padding: 30px 0; /* 120px 0; */
-  color: #ffffff;
+  background: #ffffff;
+  padding: 30px 0;
+  /* 120px 0; */
+  color: #111827;
   position: relative;
   width: 100%;
   max-width: 100%;
@@ -66,7 +67,16 @@ body {
   text-align: center;
 }
 
-.container, .footer__container, .contact__container, .news__container, .customers__container, .technology__container, .about-stats__container, .who-we-are__container, .hero__container, .nav__container {
+.container,
+.footer__container,
+.contact__container,
+.news__container,
+.customers__container,
+.technology__container,
+.about-stats__container,
+.who-we-are__container,
+.hero__container,
+.nav__container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 5%;
@@ -109,10 +119,8 @@ body {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   border: 1px solid #2d4a2d;
-  border-bottom-color: rgb(45, 74, 45);
-  border-left-color: rgb(45, 74, 45);
-  border-left-color: transparent;
   border-bottom-color: transparent;
+  border-left-color: transparent;
   min-height: 500px;
 }
 
@@ -149,14 +157,14 @@ body {
   font-size: 48px;
   font-weight: 700;
   margin-bottom: 10px;
-  color: #ffffff;
+  color: #111827;
 }
 
 .stat-description {
   font-size: 16px;
   line-height: 1.5;
-  color: #ffffff;
-  opacity: 0.9;
+  color: #111827;
+  opacity: 0.85;
 }
 
 .hover-image {
@@ -191,6 +199,7 @@ body {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -198,17 +207,49 @@ body {
 }
 
 .our-services {
-    color: rgb(255, 255, 255);
-    width: 100%;
-    max-width: 100%;
-    position: relative;
-    background: rgb(6, 37, 22);
-    padding: 120px 0px;
+  background: url("/businessarea-bg.jpg") no-repeat bottom left#062516;
+  color: rgb(255, 255, 255);
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  /* background: rgb(6, 37, 22); */
+  padding: 90px 0px;
+}
+
+.our-services::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  top: 0px;
+  bottom: 0px;
+  bottom: auto;
+  top: -1px;
+  /* background: url("/curve-top.svg") no-repeat bottom center; */
+  background-color: rgba(0, 0, 0, 0);
+  background-position-x: center;
+  background-position-y: bottom;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  /* background-image: url("/curve-top.svg"); */
+  background-size: auto;
+  background-origin: padding-box;
+  background-clip: border-box;
+  width: 100%;
+  height: 290px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.group{
+  background: #fafafa;
+  padding: 10px;
+  color: #111827;
 }
 
 /* Standardized Section Styles */
 .section-title {
-  font-size: 2.25rem; /* 36px */
+  font-size: 2.25rem;
+  /* 36px */
   line-height: 1.2;
   font-weight: 700;
   margin-bottom: 2rem;
@@ -217,15 +258,19 @@ body {
 
 @media (min-width: 768px) {
   h2.section-title {
-    font-size: 2.5rem; /* 48px */
+    font-size: 2.5rem;
+    /* 48px */
   }
+
   h3.section-title {
-    font-size: 1.75rem; /* 48px */
+    font-size: 1.75rem;
+    /* 48px */
   }
 }
 
 .section-subtitle {
-  font-size: 1rem; /* 16px */
+  font-size: 1rem;
+  /* 16px */
   font-weight: 500;
   letter-spacing: 0.5px;
   margin-bottom: 1.25rem;

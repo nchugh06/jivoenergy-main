@@ -4,39 +4,9 @@ const About = () => {
   return (
     <section className="about-stats">
       <div className="about-stats__container">
-        <div className="about-two-col">
-          <div className="about-two-col__video">
-            <video
-              src="/about_vid.mp4"
-              className="w-full h-full object-cover rounded-2xl"
-              autoPlay
-              muted
-              loop
-              playsInline
-            />
-          </div>
-          <div className="about-two-col__copy">
-            <p className="about-stats__subtitle">Why Choose JIVO Energy</p>
-            <p className="about-stats__description justify-text">
-              JIVO Energy is one of the fastest growing renewable energy companies with a track record of over
-100 MWp of solar power and 60 MWh of battery storage.<br></br>
-Founded to give clients a single team to trust, JIVO handles the whole project from first engineering
-and construction to long-term operations.<br></br>
-JIVO has successfully built clean energy projects across more than 15 countries, using only top-tier
-materials to ensure they stay safe and reliable for decades.<br></br>
-By delivering every project on time and exactly as promised, we build the trusted infrastructure that
-nations need to power their future.
-            </p>
-            <a
-              href="/about"
-              className="inline-block mt-6 px-6 py-3 bg-[#fafafa] text-black rounded-lg font-medium transition-colors duration-300 text-center"
-            >
-              Explore More
-            </a>
-          </div>
-        </div>
 
-        {/* <div className="stats-grid" style={{ marginTop: "2rem" }}>
+        <div className="stats-grid" style={{ marginTop: "2rem" }}>
+          {/* Row 1 (3 boxes) */}
           <div className="grid-item">
             <div className="content">
               <div className="stat-icon" aria-hidden="true">
@@ -104,6 +74,7 @@ nations need to power their future.
             </div>
           </div>
 
+          {/* Row 2 (3 boxes) */}
           <div className="grid-item">
             <div className="content">
               <div className="stat-icon" aria-hidden="true">
@@ -115,7 +86,7 @@ nations need to power their future.
               <p className="stat-description">Renewable energy solutions</p>
             </div>
           </div>
-        </div> */}
+        </div>
 
         {/* inline styles for the new layout + icons */}
         <style jsx>{`
@@ -146,6 +117,9 @@ nations need to power their future.
           @media (min-width: 1024px){
             .about-two-col{ grid-template-columns: 1.05fr 0.95fr; }
           }
+
+          /* Ensure 3 boxes per row and 2 rows total */
+          .stats-grid{ grid-template-rows: repeat(2, 1fr); grid-template-columns: repeat(3, 1fr); }
         `}</style>
       </div>
     </section>
