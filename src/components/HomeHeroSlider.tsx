@@ -7,6 +7,8 @@ type Slide = {
   id: string;
   imageSrc: string;
   alt: string;
+  captionTitle: string;
+  captionSubtitle: string;
 };
 
 const AUTO_MS = 4500;
@@ -14,9 +16,30 @@ const AUTO_MS = 4500;
 export default function HomeHeroSlider() {
   const slides: Slide[] = useMemo(
     () => [
-      { id: "s1", imageSrc: "/assets/videos/1.mp4", alt: "JIVO Energy video background 1" },
-      { id: "s2", imageSrc: "/assets/videos/2.mp4", alt: "JIVO Energy video background 2" },
-      { id: "s3", imageSrc: "/assets/videos/3.mp4", alt: "JIVO Energy video background 3" },
+      {
+        id: "s1",
+        imageSrc: "/assets/videos/1.mp4",
+        alt: "JIVO Energy video background 1",
+        captionTitle: "Powering Africa's Energy Transition",
+        captionSubtitle:
+          "Developing and delivering renewable energy infrastructure that drives sustainable growth across Africa",
+      },
+      // {
+      //   id: "s2",
+      //   imageSrc: "/assets/videos/2.mp4",
+      //   alt: "JIVO Energy video background 2",
+      //   captionTitle: "Powering Africa's Energy Transition",
+      //   captionSubtitle:
+      //     "Developing and delivering renewable energy infrastructure that drives sustainable growth across Africa",
+      // },
+      {
+        id: "s3",
+        imageSrc: "/assets/videos/3.mp4",
+        alt: "JIVO Energy video background 3",
+        captionTitle: "Powering Africa's Energy Transition",
+        captionSubtitle:
+          "Developing and delivering renewable energy infrastructure that drives sustainable growth across Africa",
+      },
     ],
     []
   );
@@ -58,6 +81,18 @@ export default function HomeHeroSlider() {
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/10" />
+
+              {/* Caption (above video) */}
+              <div className="absolute top-1/2 left-0 right-0 z-10 -translate-y-1/2 px-4">
+                <div className="mx-auto max-w-4xl rounded-xl bg-black/30 px-4 py-3 backdrop-blur-sm text-center">
+                  <p className="text-white text-2xl sm:text-3xl font-semibold leading-tight">
+                    {slides[index].captionTitle}
+                  </p>
+                  <p className="mt-2 text-white/90 text-sm sm:text-base leading-relaxed">
+                    {slides[index].captionSubtitle}
+                  </p>
+                </div>
+              </div>
             </div>
           </motion.div>
         </AnimatePresence>

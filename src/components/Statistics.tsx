@@ -1,8 +1,8 @@
 import React from 'react';
 
-const About = () => {
+const Statistics = () => {
   return (
-    <section className="about-stats">
+    <section className="about-stats stats-data">
       <div className="about-stats__container">
 
         <div className="stats-grid" style={{ marginTop: "2rem" }}>
@@ -126,4 +126,4 @@ const About = () => {
   );
 };
 
-export default About; 
+export default Statistics; 

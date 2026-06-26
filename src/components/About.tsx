@@ -7,7 +7,7 @@ const About = () => {
         <div className="about-two-col">
           <div className="about-two-col__video">
             <video
-              src="/about_vid.mp4"
+              src="/assets/videos/aboutus.mp4"
               className="w-full h-full object-cover rounded-2xl"
               autoPlay
               muted
@@ -16,16 +16,16 @@ const About = () => {
             />
           </div>
           <div className="about-two-col__copy">
-            <p className="about-stats__subtitle">Why Choose JIVO Energy</p>
-            <p className="about-stats__description justify-text">
+            <h3 className="section-title text-center text-[#062516]">Why Choose JIVO Energy</h3>
+            <p className="about-stats__description">
               JIVO Energy is one of the fastest growing renewable energy companies with a track record of over
-100 MWp of solar power and 60 MWh of battery storage.<br></br>
-Founded to give clients a single team to trust, JIVO handles the whole project from first engineering
-and construction to long-term operations.<br></br>
-JIVO has successfully built clean energy projects across more than 15 countries, using only top-tier
-materials to ensure they stay safe and reliable for decades.<br></br>
-By delivering every project on time and exactly as promised, we build the trusted infrastructure that
-nations need to power their future.
+              100 MWp of solar power and 60 MWh of battery storage.
+              Founded to give clients a single team to trust, JIVO handles the whole project from first engineering
+              and construction to long-term operations.
+              JIVO has successfully built clean energy projects across more than 15 countries, using only top-tier
+              materials to ensure they stay safe and reliable for decades.
+              By delivering every project on time and exactly as promised, we build the trusted infrastructure that
+              nations need to power their future.
             </p>
             <a
               href="/about"
