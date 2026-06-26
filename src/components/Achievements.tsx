@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 const Achievements = () => {
+  const bullets = [
+    'Successfully executed Hybrid Solar Power PV & Storage projects with varied technologies.',
+    'Rapid expansion from single country business in 2018 to presence in 15 countries now.',
+    '100M USD+ Projects completed/under construction in Africa',
+    '400M USD+ Projects under development in Africa',
+    'Employment opportunities to 1000+ workmen in Africa on projects.',
+  ];
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setIndex(i => (i + 1) % bullets.length), 4500);
+    return () => clearInterval(t);
+  }, []);
+
   return (
     <section className="about-stats">
       <div className="about-stats__container">
@@ -20,15 +33,32 @@ const Achievements = () => {
           <div className="about-two-col__copy">
             {/* <p className="about-stats__subtitle">Our Achievements</p> */}
             <div className="about-stats__description justify-text">
-              <ul className="list-disc pl-6">
-                <li>Successfully executed Hybrid Solar Power PV &amp; Storage projects with varied technologies.</li>
-                <li>Rapid expansion from single country business in 2018 to presence in 15 countries now.</li>
-                <li>100M USD+ Projects completed/under construction in Africa</li>
-                <li>400M USD+ Projects under development in Africa</li>
-                <li>Employment opportunities to 1000+ workmen in Africa on projects.</li>
-              </ul>
+              <div className="achievement-carousel">
+                <div className="achievement-item list-disc pl-6">
+                  <span className="sr-only">Achievement</span>
+                  <p className="text-lg">{bullets[index]}</p>
+                </div>
+
+                <div className="carousel-controls mt-4 flex items-center gap-3 pl-6">
+                  <button
+                    aria-label="Previous achievement"
+                    onClick={() => setIndex(i => (i - 1 + bullets.length) % bullets.length)}
+                    className="px-3 py-2 rounded-full bg-gray-100 hover:bg-gray-200"
+                  >
+                    ←
+                  </button>
+
+                  <button
+                    aria-label="Next achievement"
+                    onClick={() => setIndex(i => (i + 1) % bullets.length)}
+                    className="px-3 py-2 rounded-full bg-gray-100 hover:bg-gray-200"
+                  >
+                    →
+                  </button>
+                </div>
+              </div>
             </div>
-            
+
           </div>
         </div>
 

@@ -7,9 +7,9 @@ import Projects from "@/components/Projects"
 //import Services from "@/components/services"
 import CoreValues from "@/components/CoreValues"
 import Impact from "@/components/Impact"
-import ContactForm from "@/components/ContactForm"
+import ContactForm from "@/components/ContactHome"
 import Footer from "@/components/Footer"
-import Media from "@/components/Media"
+import Media from "@/components/MediaHome"
 import Clients from "@/components/Clients"
 import Achievements from "@/components/Achievements"
 import MapViz from "@/components/MapViz";
@@ -41,7 +41,8 @@ export default function Home() {
           </div>
         </section>
         <Clients />
-        <Achievements />        
+        <Achievements /> 
+        <Media />       
         <ContactForm />
       </main>
       <Footer />

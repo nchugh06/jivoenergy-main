@@ -11,7 +11,7 @@ interface MediaCard {
   link?: string;
 }
 
-const mediaCards: MediaCard[] = [
+export const mediaCards: MediaCard[] = [
   {
     id: 1,
     title: "JIVO Energy constrói Central Solar de Santo Amaro em São Tomé",
