@@ -18,15 +18,15 @@ const countryData = {
   ET: { 
     name: "Ethiopia", 
     projects: 1, 
-    capacity: "10 MW", 
-    status: "Ongoing",
+    capacity: "Mini Grids", 
+    status: "Under Development",
     flag: "https://flagcdn.com/w160/et.png",
     projectImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&h=200&fit=crop"
   },
   KE: { 
     name: "Kenya", 
     projects: 5, 
-    capacity: "929.2 MW", 
+    capacity: "Solar PV and Solar PV with BESS", 
     status: "Completed",
     flag: "https://flagcdn.com/w160/ke.png",
     projectImage: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=300&h=200&fit=crop"
@@ -50,23 +50,23 @@ const countryData = {
   BF: { 
     name: "Burkina Faso", 
     projects: 1, 
-    capacity: "2 MWp", 
-    status: "Ongoing",
+    capacity: "Solar PV", 
+    status: "Under Development",
     flag: "https://flagcdn.com/w160/bf.png",
     projectImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&h=200&fit=crop"
   },
   CV: { 
-    name: "Cabo Verde", 
+    name: "Cape Verde", 
     projects: 1, 
-    capacity: "560.8 kW", 
-    status: "Ongoing",
+    capacity: "Solar PV", 
+    status: "Under Development",
     flag: "https://flagcdn.com/w160/cv.png",
     projectImage: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=300&h=200&fit=crop"
   },
   LR: { 
     name: "Liberia", 
     projects: 1, 
-    capacity: "20 kWP", 
+    capacity: "Hybrid", 
     status: "Completed",
     flag: "https://flagcdn.com/w160/lr.png",
     projectImage: "https://images.unsplash.com/photo-1566312087-9b02b5c62c77?w=300&h=200&fit=crop"
@@ -82,7 +82,7 @@ const countryData = {
   SN: { 
     name: "Senegal", 
     projects: 1, 
-    capacity: "650 MW", 
+    capacity: "Solar PV", 
     status: "Completed",
     flag: "https://flagcdn.com/w160/sn.png",
     projectImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&h=200&fit=crop"
@@ -90,16 +90,16 @@ const countryData = {
   SL: { 
     name: "Sierra Leone", 
     projects: 1, 
-    capacity: "954.8 kWP", 
-    status: "Construction",
+    capacity: "Hybrid", 
+    status: "Completed",
     flag: "https://flagcdn.com/w160/sl.png",
     projectImage: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=300&h=200&fit=crop"
   },
   MW: { 
     name: "Malawi", 
-    projects: 1, 
-    capacity: "7 MW", 
-    status: "Completed",
+    projects: 2, 
+    capacity: "BESS and Solar PV", 
+    status: "Under Development",
     flag: "https://flagcdn.com/w160/mw.png",
     projectImage: "https://images.unsplash.com/photo-1566312087-9b02b5c62c77?w=300&h=200&fit=crop"
   },
@@ -114,36 +114,36 @@ const countryData = {
   ZW: { 
     name: "Zimbabwe", 
     projects: 1, 
-    capacity: "3.5 MW", 
+    capacity: "Solar PV", 
     status: "Completed",
     flag: "https://flagcdn.com/w160/zw.png",
     projectImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&h=200&fit=crop"
   },
-  LY: { 
-    name: "Libya", 
-    projects: 6, 
-    capacity: "500 MW", 
-    status: "Planning",
-    flag: "https://flagcdn.com/w160/ly.png",
-    projectImage: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=300&h=200&fit=crop"
-  },
-  TN: { 
-    name: "Tunisia", 
-    projects: 7, 
-    capacity: "420 MW", 
-    status: "Construction",
-    flag: "https://flagcdn.com/w160/tn.png",
-    projectImage: "https://images.unsplash.com/photo-1566312087-9b02b5c62c77?w=300&h=200&fit=crop"
-  },
+  // LY: { 
+  //   name: "Libya", 
+  //   projects: 6, 
+  //   capacity: "500 MW", 
+  //   status: "Planning",
+  //   flag: "https://flagcdn.com/w160/ly.png",
+  //   projectImage: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=300&h=200&fit=crop"
+  // },
+  // TN: { 
+  //   name: "Tunisia", 
+  //   projects: 7, 
+  //   capacity: "420 MW", 
+  //   status: "Construction",
+  //   flag: "https://flagcdn.com/w160/tn.png",
+  //   projectImage: "https://images.unsplash.com/photo-1566312087-9b02b5c62c77?w=300&h=200&fit=crop"
+  // },
   // Asia & Middle East
-  AE: { 
-    name: "UAE", 
-    projects: 10, 
-    capacity: "750 MW", 
-    status: "Operational",
-    flag: "https://flagcdn.com/w160/ae.png",
-    projectImage: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=300&h=200&fit=crop"
-  },
+  // AE: { 
+  //   name: "UAE", 
+  //   projects: 10, 
+  //   capacity: "750 MW", 
+  //   status: "Operational",
+  //   flag: "https://flagcdn.com/w160/ae.png",
+  //   projectImage: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=300&h=200&fit=crop"
+  // },
   // IN: { 
   //   name: "India", 
   //   projects: 25, 
@@ -232,10 +232,10 @@ export default function MapViz() {
       // Target regions - specific countries only
       const targetRegions = [
         // Africa
-        "ET", "KE", "TZ", "UG", "BF", "CV", "LR", "ST", "SN", "SL", "MW", "ZA", "ZW", "LY", "TN",
+        "ET", "KE", "TZ", "UG", "BF", "CV", "LR", "ST", "SN", "SL", "MW", "ZA", "ZW", //"LY", "TN",
         // Asia & Middle East
         //  "AE", "IN",
-        "AE",
+        //"AE",
       ]
 
       // Professional color palette - subtle and clean
@@ -243,14 +243,16 @@ export default function MapViz() {
       const primaryColorLight = "#3b82f6"
       const primaryColorDark = "#1d4ed8"
       const accentColor = "#059669"
+      const lightGreen = "#0AC5B2"
+      const anotherGreen = "#00C758"
       
       // Subtle color variations for target countries
       const countryColors = {
-        ET: "#2563eb", KE: "#3b82f6", TZ: "#1d4ed8", UG: "#1e40af", BF: "#1e3a8a",
-        CV: "#059669", LR: "#047857", ST: "#065f46", SN: "#064e3b", SL: "#022c22",
-        MW: "#2563eb", ZA: "#3b82f6", ZW: "#1d4ed8", LY: "#1e40af", TN: "#1e3a8a",
+        ET: "#0AC5B2", KE: "#064e3b", TZ: "#00C758", UG: "#064e3b", BF: "#0AC5B2",
+        CV: "#0AC5B2", LR: "#064e3b", ST: "#064e3b", SN: "#064e3b", SL: "#064e3b",
+        MW: "#0AC5B2", ZA: "#00C758", ZW: "#064e3b" //LY: "#1e40af", TN: "#1e3a8a",
         // AE: "#059669", IN: "#047857"
-        AE: "#059669"
+        //AE: "#059669"
       }
 
       // Create polygon series for all countries with clean styling
@@ -360,7 +362,7 @@ export default function MapViz() {
               <span style="color: #2563eb; font-weight: 600;">{projects}</span>
             </div>
             <div style="margin-bottom: 4px;">
-              <span style="font-weight: 500;">Capacity:</span> 
+              <span style="font-weight: 500;">Technology:</span> 
               <span style="color: #059669; font-weight: 600;">{capacity}</span>
             </div>
             <div style="margin-bottom: 4px;">
@@ -411,8 +413,9 @@ export default function MapViz() {
             const id = dataContext.id
             if (targetRegions.includes(id)) {
               const data = countryData[id as keyof typeof countryData]
-              // Subtle, professional green for target countries
-              polygon.set("fill", window.am5.color("#1e5c3a")) // muted green
+              const countryColor = countryColors[id as keyof typeof countryColors] || primaryColor
+              // Use the defined palette for each target country
+              polygon.set("fill", window.am5.color(countryColor))
               polygon.set("fillOpacity", 1)
               polygon.set("stroke", window.am5.color("#e5e7eb"))
               polygon.set("strokeWidth", 2)
