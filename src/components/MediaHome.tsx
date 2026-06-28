@@ -38,12 +38,12 @@ export default function MediaHome() {
           {/* <span className="inline-flex items-center px-4 py-2 rounded-full bg-[#062516] text-white text-sm font-semibold tracking-wide">
             Press & Media
           </span> */}
-          <h2 className="section-title text-center text-[#062516]">
-            Press & Media
-          </h2>
-          <p className="mt-4 text-base text-[#43594d] max-w-2xl mx-auto">
+          <h3 className="section-title text-center text-[#062516]">
+            Latest Jivo Energy News
+          </h3>
+          {/* <p className="mt-4 text-base text-[#43594d] max-w-2xl mx-auto">
             Browse our latest press mentions, interviews and coverage from leading media outlets.
-          </p>
+          </p> */}
         </div>
 
         <div

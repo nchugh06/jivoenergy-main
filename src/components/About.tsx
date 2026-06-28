@@ -5,20 +5,22 @@ const About = () => {
     <section className="about-stats">
       <div className="about-stats__container">
         <div className="about-two-col">
-          <div className="about-two-col__video">
-            <video
+          <div className="about-two-col__video">            
+            <video 
               src="/assets/videos/aboutus.mp4"
               className="w-full h-full object-cover rounded-2xl"
               autoPlay
               muted
               loop
               playsInline
+              preload="metadata"
+              controls={true}
             />
           </div>
           <div className="about-two-col__copy">
             <h3 className="section-title text-center text-[#062516]">Why Choose JIVO Energy</h3>
             <p className="about-stats__description">
-              JIVO Energy is one of the fastest growing renewable energy companies with a track record of over
+              <span className="font-bold sm:text-2xl text-[#062516]">JIVO Energy</span> is one of the fastest growing renewable energy companies with a track record of over
               100 MWp of solar power and 60 MWh of battery storage.
               Founded to give clients a single team to trust, JIVO handles the whole project from first engineering
               and construction to long-term operations.

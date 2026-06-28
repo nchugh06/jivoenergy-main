@@ -50,7 +50,7 @@ export default function Clients() {
   return (
     <section className="bg-[#fefefe] py-16 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="section-title text-center text-[#062516]">Clients</h2>
+        <h3 className="section-title text-center text-[#062516]">Our Clients</h3>
 
         <div className="mt-10" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
           <div className="relative">

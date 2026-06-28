@@ -18,7 +18,7 @@ const Achievements = () => {
   return (
     <section className="about-stats">
       <div className="about-stats__container">
-        <h2 className="section-title text-center text-[#062516]">Our Achievements</h2>
+        <h3 className="section-title text-center text-[#062516]">What Sets Us Apart</h3>
         <div className="about-two-col">
           <div className="about-two-col__video">
             <Image
@@ -35,8 +35,8 @@ const Achievements = () => {
             <div className="about-stats__description justify-text">
               <div className="achievement-carousel">
                 <div className="achievement-item list-disc pl-6">
-                  <span className="sr-only">Achievement</span>
-                  <p className="text-lg">{bullets[index]}</p>
+                  <span className="sr-only">Our Achievement</span>
+                  <h3 className="text-lg sm:text-2xl text-[#062516] text-bold">{bullets[index]}</h3>
                 </div>
 
                 <div className="carousel-controls mt-4 flex items-center gap-3 pl-6">

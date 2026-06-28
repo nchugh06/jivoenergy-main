@@ -35,14 +35,15 @@ export default function Home() {
         <BusinessAreasServices />
         {/* <Impact /> */}
         {/* <Media /> */}
+        
+        <Clients />
+        <Achievements /> 
+        <Media /> 
         <section id="hero-section" className="relative w-full h-[100vh] overflow-hidden">
           <div className="absolute inset-0 z-0">
             <MapViz />
           </div>
-        </section>
-        <Clients />
-        <Achievements /> 
-        <Media />       
+        </section>      
         <ContactForm />
       </main>
       <Footer />

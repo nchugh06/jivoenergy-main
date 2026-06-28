@@ -6,12 +6,14 @@ import { AnimatePresence, motion } from "framer-motion";
 type Slide = {
   id: string;
   imageSrc: string;
+  fallbackSrc?: string;
   alt: string;
   captionTitle: string;
   captionSubtitle: string;
 };
 
 const AUTO_MS = 4500;
+const FALLBACK_VIDEO = "/assets/videos/aboutus.mp4";
 
 export default function HomeHeroSlider() {
   const slides: Slide[] = useMemo(
@@ -19,22 +21,16 @@ export default function HomeHeroSlider() {
       {
         id: "s1",
         imageSrc: "/assets/videos/1.mp4",
+        fallbackSrc: FALLBACK_VIDEO,
         alt: "JIVO Energy video background 1",
         captionTitle: "Powering Africa's Energy Transition",
         captionSubtitle:
           "Developing and delivering renewable energy infrastructure that drives sustainable growth across Africa",
       },
-      // {
-      //   id: "s2",
-      //   imageSrc: "/assets/videos/2.mp4",
-      //   alt: "JIVO Energy video background 2",
-      //   captionTitle: "Powering Africa's Energy Transition",
-      //   captionSubtitle:
-      //     "Developing and delivering renewable energy infrastructure that drives sustainable growth across Africa",
-      // },
       {
         id: "s3",
         imageSrc: "/assets/videos/3.mp4",
+        fallbackSrc: FALLBACK_VIDEO,
         alt: "JIVO Energy video background 3",
         captionTitle: "Powering Africa's Energy Transition",
         captionSubtitle:
@@ -46,6 +42,8 @@ export default function HomeHeroSlider() {
 
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [activeVideoSrc, setActiveVideoSrc] = useState(slides[0]?.imageSrc ?? FALLBACK_VIDEO);
+  const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
     if (paused) return;
@@ -55,9 +53,20 @@ export default function HomeHeroSlider() {
     return () => window.clearInterval(t);
   }, [paused, slides.length]);
 
+  useEffect(() => {
+    setActiveVideoSrc(slides[index].imageSrc);
+    setVideoReady(false);
+  }, [index, slides]);
+
+  const handleVideoError = () => {
+    if (activeVideoSrc !== slides[index].fallbackSrc) {
+      setActiveVideoSrc(slides[index].fallbackSrc ?? FALLBACK_VIDEO);
+    }
+  };
+
   return (
     <div
-      className="relative w-full h-full bg-black"
+      className="relative w-full h-full"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -72,27 +81,46 @@ export default function HomeHeroSlider() {
             className="absolute inset-0"
           >
             <div className="relative w-full h-full">
-                <video
-                  src={slides[index].imageSrc}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/10" />
+              <video
+                key={activeVideoSrc}
+                src={activeVideoSrc}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster="/assets/videos/poster.jpg"
+                onCanPlay={() => setVideoReady(true)}
+                onError={handleVideoError}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${videoReady ? "opacity-100" : "opacity-80"}`}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-black/15" />
 
-              {/* Caption (above video) */}
-              <div className="absolute top-1/2 left-0 right-0 z-10 -translate-y-1/2 px-4">
-                <div className="mx-auto max-w-4xl rounded-xl bg-black/30 px-4 py-3 backdrop-blur-sm text-center">
-                  <p className="text-white text-2xl sm:text-3xl font-semibold leading-tight">
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+                className="absolute top-1/2 left-0 right-0 z-10 -translate-y-1/2 px-4"
+              >
+                <div className="mx-auto max-w-4xl px-4 text-center">
+                  <motion.h2
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+                    className="text-5xl font-bold leading-tight text-green sm:text-4xl"
+                  >
                     {slides[index].captionTitle}
-                  </p>
-                  <p className="mt-2 text-white/90 text-sm sm:text-base leading-relaxed">
+                  </motion.h2>
+                  <motion.h5
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
+                    className="mt-2 text-center text-base leading-relaxed text-white sm:text-xl"
+                  >
                     {slides[index].captionSubtitle}
-                  </p>
+                  </motion.h5>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </AnimatePresence>
