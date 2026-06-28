@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 type Slide = {
@@ -44,6 +44,7 @@ export default function HomeHeroSlider() {
   const [paused, setPaused] = useState(false);
   const [activeVideoSrc, setActiveVideoSrc] = useState(slides[0]?.imageSrc ?? FALLBACK_VIDEO);
   const [videoReady, setVideoReady] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     if (paused) return;
@@ -64,6 +65,18 @@ export default function HomeHeroSlider() {
     }
   };
 
+  useEffect(() => {
+    // Try to play the video programmatically once it becomes ready.
+    if (videoReady && videoRef.current) {
+      try {
+        const p = videoRef.current.play();
+        if (p && typeof p.catch === "function") p.catch(() => {});
+      } catch (e) {
+        // ignore playback errors (browsers may still block autoplay)
+      }
+    }
+  }, [videoReady, activeVideoSrc]);
+
   return (
     <div
       className="relative w-full h-full"
@@ -82,12 +95,13 @@ export default function HomeHeroSlider() {
           >
             <div className="relative w-full h-full">
               <video
+                ref={videoRef}
                 key={activeVideoSrc}
                 src={activeVideoSrc}
-                autoPlay
-                muted
-                loop
-                playsInline
+                autoPlay={true}
+                muted={true}
+                loop={true}
+                playsInline={true}
                 preload="metadata"
                 poster="/assets/videos/poster.jpg"
                 onCanPlay={() => setVideoReady(true)}
