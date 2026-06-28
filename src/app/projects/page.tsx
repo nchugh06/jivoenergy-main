@@ -172,7 +172,7 @@ const ProjectsPage = () => {
      
      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
                    <Image
-                     src="/assets/banners/Projects.webp"
+                     src="/assets/banners/Projects.jpg"
                      alt="Projects Banner"
                      fill
                      className="object-cover"

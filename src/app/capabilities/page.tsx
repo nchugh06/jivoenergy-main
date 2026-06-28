@@ -21,7 +21,7 @@ export default function Capabilities() {
 
       <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
         <Image
-          src="/assets/banners/Capabilities.webp"
+          src="/assets/banners/Capabilities.jpg"
           alt="Capabilities Banner"
           fill
           className="object-cover"
