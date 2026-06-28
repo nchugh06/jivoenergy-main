@@ -103,7 +103,7 @@ export default function HomeHeroSlider() {
                 loop={true}
                 playsInline={true}
                 preload="metadata"
-                poster="/assets/videos/poster.jpg"
+                // poster="/assets/videos/poster.jpg"
                 onCanPlay={() => setVideoReady(true)}
                 onError={handleVideoError}
                 className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${videoReady ? "opacity-100" : "opacity-80"}`}

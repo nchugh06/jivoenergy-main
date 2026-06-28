@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useState } from 'react';
 import Image from 'next/image';
@@ -44,7 +44,7 @@ const Navbar = () => {
             </Link>
             <Link href="/" className={styles.logoMobile}>
               <Image
-                src="/translogo.png"
+                src="/logo.png"
                 alt="JIVO ENERGY"
                 width={150}
                 height={50}
