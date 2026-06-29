@@ -42,7 +42,7 @@ const countryData = {
   UG: { 
     name: "Uganda", 
     projects: 2, 
-    capacity: "46 MW", 
+    capacity: "Solar PV", 
     status: "Completed",
     flag: "https://flagcdn.com/w160/ug.png",
     projectImage: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=300&h=200&fit=crop"
@@ -58,7 +58,7 @@ const countryData = {
   CV: { 
     name: "Cape Verde", 
     projects: 1, 
-    capacity: "Solar PV", 
+    capacity: "Solar PV (32 Sites)", 
     status: "Under Development",
     flag: "https://flagcdn.com/w160/cv.png",
     projectImage: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=300&h=200&fit=crop"
@@ -66,7 +66,7 @@ const countryData = {
   LR: { 
     name: "Liberia", 
     projects: 1, 
-    capacity: "Hybrid", 
+    capacity: "Hybrid (39 Sites)", 
     status: "Completed",
     flag: "https://flagcdn.com/w160/lr.png",
     projectImage: "https://images.unsplash.com/photo-1566312087-9b02b5c62c77?w=300&h=200&fit=crop"
@@ -74,7 +74,7 @@ const countryData = {
   ST: { 
     name: "São Tomé & Príncipe", 
     projects: 1, 
-    capacity: "1.2 MWp", 
+    capacity: "Solar PV", 
     status: "Completed",
     flag: "https://flagcdn.com/w160/st.png",
     projectImage: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=300&h=200&fit=crop"
