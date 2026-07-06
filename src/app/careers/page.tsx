@@ -122,7 +122,7 @@ const Careers = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <div className="relative w-full h-[50vh] bg-[#062516] flex items-center justify-center overflow-hidden">
+      <div className="relative w-full h-[40vh] bg-[#062516] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 z-0 opacity-120"
           style={{
@@ -135,10 +135,9 @@ const Careers = () => {
         {/* <div className="absolute inset-0 bg-gradient-to-b from-[#062516]/60 to-[#062516] z-0" /> */}
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-up">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+          {/* <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
             CAREERS
-            {/* CAREERS at <span className="text-[#ffffff]">JIVO Energy</span> */}
-          </h1>
+          </h1> */}
           {/* <p className="text-xl md:text-2xl text-gray-200 font-light max-w-2xl mx-auto text-center">
             Build your future with a company committed to excellence, integrity, and sustainable growth.
           </p> */}
@@ -148,9 +147,7 @@ const Careers = () => {
       {/* Introduction Section */}
       <section className="py-5 px-4 max-w-7xl mx-auto">
         <div className="text-center max-w-7xl mx-auto mb-16">
-          {/* <h2 className="section-title text-center text-[#062516] mb-8">
-            Join Our Vision
-          </h2> */}
+          <h2 className="section-title text-center text-[#062516] mb-10 border-b pb-4 mx-auto max-w-2xl">Careers</h2>
           <p className="text-lg text-gray-600 leading-relaxed">
             At JIVO Energy, we are committed to building a highly skilled, diverse, and performance-driven workforce.
             As we broaden our portfolio and expand our presence across the region, we continue to seek professionals
