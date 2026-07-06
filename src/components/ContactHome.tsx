@@ -8,28 +8,27 @@ export default function ContactHome() {
     <section className="w-full bg-[#2d4a2d] py-16">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-10 px-4 sm:px-6 lg:flex-row lg:items-center">
         <div className="max-w-2xl text-center lg:text-left">
-          <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[#b7d8af]">
+          {/* <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[#b7d8af]">
             Get in touch
-          </p>
+          </p> */}
           <h5 className="mt-4 text-2xl font-semibold leading-tight text-white sm:text-2xl lg:text-3xl">
-            If you would like to know more about our business or our solutions, please visit the contact section to find the most appropriate team to get in touch with.
+            Get in touch with our experts to discuss your next renewable energy project.
           </h5>
           <div className="mt-10 flex justify-center lg:justify-start">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3 text-base font-semibold text-[#2d4a2d] shadow-lg transition duration-300 hover:bg-[#f3f8f0]"
+              className="inline-flex items-center justify-center bg-[#85c54a] px-4 py-2 text-base font-bold text-[#1c4832] shadow-lg transition duration-300 hover:bg-[#f3f8f0]"
             >
               Contact us
             </Link>
           </div>
         </div>
 
-        <div className="relative w-full max-w-sm shrink-0 rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-2xl shadow-black/10 backdrop-blur-sm">
+        <div className="relative w-full max-w-sm shrink-0">
           <div className="relative h-48 w-full">
             <Image
-              src="/logo-original.png"
-              alt="JIVO Energy logo"
-              fill
+              src="/logo-white.png"
+              alt="JIVO Energy" fill             
               className="object-contain"
               priority
             />

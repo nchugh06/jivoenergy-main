@@ -73,14 +73,14 @@ const Statistics = () => {
             <div
               key={stat.label}
               className="grid-item"
-              style={{ backgroundColor: index % 2 === 0 ? '#2d4a2d' : '#059666' }}
+              style={{ backgroundColor: index % 2 === 0 ? '#85c54a' : '#1c4832', color: index % 2 === 0 ? '#125d36' : '#ffffff' }}
             >
               <div className="content">
                 {/* <div className="stat-icon" aria-hidden="true">
                   {stat.icon}
                 </div> */}
-                <h2 className="stat-number text-center">{stat.value}</h2>
-                <h5 className="stat-description text-center">{stat.label}</h5>
+                <h2 className="stat-number text-center" style={{ color: index % 2 === 0 ? '#125d36' : '#ffffff' }}>{stat.value}</h2>
+                <h3 className="stat-description text-center text-bold" style={{ color: index % 2 === 0 ? '#125d36' : '#ffffff' }}>{stat.label}</h3>
               </div>
             </div>
           ))}
@@ -141,11 +141,9 @@ const Statistics = () => {
             font-size: clamp(1.3rem, 2vw, 1.8rem);
             font-weight: 700;
             margin: 0 0 0.35rem;
-            color: #fff;
           }
 
           .stat-description {
-            color: rgba(255, 255, 255, 0.92);
             font-size: 0.95rem;
             line-height: 1.5;
             margin: 0;

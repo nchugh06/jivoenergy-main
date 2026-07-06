@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { mediaCards } from "./Media";
+import { mediaCards } from "./MediaLinksForHome";
 
 const visibleCount = 3;
 const slideInterval = 5000;
@@ -39,7 +39,7 @@ export default function MediaHome() {
             Press & Media
           </span> */}
           <h3 className="section-title text-center text-[#062516]">
-            Latest Jivo Energy News
+            Latest JIVO Energy News
           </h3>
           {/* <p className="mt-4 text-base text-[#43594d] max-w-2xl mx-auto">
             Browse our latest press mentions, interviews and coverage from leading media outlets.

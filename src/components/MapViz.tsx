@@ -15,106 +15,106 @@ declare global {
 // Country-specific data
 const countryData = {
   // Africa
-  ET: { 
-    name: "Ethiopia", 
-    projects: 1, 
-    capacity: "Mini Grids", 
+  ET: {
+    name: "Ethiopia",
+    projects: 1,
+    capacity: "Mini Grids",
     status: "Under Development",
     flag: "https://flagcdn.com/w160/et.png",
     projectImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&h=200&fit=crop"
   },
-  KE: { 
-    name: "Kenya", 
-    projects: 5, 
-    capacity: "Solar PV and Solar PV with BESS", 
+  KE: {
+    name: "Kenya",
+    projects: 5,
+    capacity: "Solar PV and Solar PV with BESS",
     status: "Completed",
     flag: "https://flagcdn.com/w160/ke.png",
     projectImage: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=300&h=200&fit=crop"
   },
-  TZ: { 
-    name: "Tanzania", 
-    projects: 6, 
-    capacity: "450 MW", 
+  TZ: {
+    name: "Tanzania",
+    projects: 6,
+    capacity: "450 MW",
     status: "Planning Phase",
     flag: "https://flagcdn.com/w160/tz.png",
     projectImage: "https://images.unsplash.com/photo-1566312087-9b02b5c62c77?w=300&h=200&fit=crop"
   },
-  UG: { 
-    name: "Uganda", 
-    projects: 2, 
-    capacity: "Solar PV", 
+  UG: {
+    name: "Uganda",
+    projects: 2,
+    capacity: "Solar PV",
     status: "Completed",
     flag: "https://flagcdn.com/w160/ug.png",
     projectImage: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=300&h=200&fit=crop"
   },
-  BF: { 
-    name: "Burkina Faso", 
-    projects: 1, 
-    capacity: "Solar PV", 
+  BF: {
+    name: "Burkina Faso",
+    projects: 1,
+    capacity: "Solar PV",
     status: "Under Development",
     flag: "https://flagcdn.com/w160/bf.png",
     projectImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&h=200&fit=crop"
   },
-  CV: { 
-    name: "Cape Verde", 
-    projects: 1, 
-    capacity: "Solar PV (32 Sites)", 
+  CV: {
+    name: "Cape Verde",
+    projects: 1,
+    capacity: "Solar PV (32 Sites)",
     status: "Under Development",
     flag: "https://flagcdn.com/w160/cv.png",
     projectImage: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=300&h=200&fit=crop"
   },
-  LR: { 
-    name: "Liberia", 
-    projects: 1, 
-    capacity: "Hybrid (39 Sites)", 
+  LR: {
+    name: "Liberia",
+    projects: 1,
+    capacity: "Hybrid (39 Sites)",
     status: "Completed",
     flag: "https://flagcdn.com/w160/lr.png",
     projectImage: "https://images.unsplash.com/photo-1566312087-9b02b5c62c77?w=300&h=200&fit=crop"
   },
-  ST: { 
-    name: "São Tomé & Príncipe", 
-    projects: 1, 
-    capacity: "Solar PV", 
+  ST: {
+    name: "São Tomé & Príncipe",
+    projects: 1,
+    capacity: "Solar PV",
     status: "Completed",
     flag: "https://flagcdn.com/w160/st.png",
     projectImage: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=300&h=200&fit=crop"
   },
-  SN: { 
-    name: "Senegal", 
-    projects: 1, 
-    capacity: "Solar PV", 
+  SN: {
+    name: "Senegal",
+    projects: 1,
+    capacity: "Solar PV",
     status: "Completed",
     flag: "https://flagcdn.com/w160/sn.png",
     projectImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&h=200&fit=crop"
   },
-  SL: { 
-    name: "Sierra Leone", 
-    projects: 1, 
-    capacity: "Hybrid", 
+  SL: {
+    name: "Sierra Leone",
+    projects: 1,
+    capacity: "Hybrid",
     status: "Completed",
     flag: "https://flagcdn.com/w160/sl.png",
     projectImage: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=300&h=200&fit=crop"
   },
-  MW: { 
-    name: "Malawi", 
-    projects: 2, 
-    capacity: "BESS and Solar PV", 
+  MW: {
+    name: "Malawi",
+    projects: 2,
+    capacity: "BESS and Solar PV",
     status: "Under Development",
     flag: "https://flagcdn.com/w160/mw.png",
     projectImage: "https://images.unsplash.com/photo-1566312087-9b02b5c62c77?w=300&h=200&fit=crop"
   },
-  ZA: { 
-    name: "South Africa", 
-    projects: 15, 
-    capacity: "1200 MW", 
+  ZA: {
+    name: "South Africa",
+    projects: 15,
+    capacity: "1200 MW",
     status: "Operational",
     flag: "https://flagcdn.com/w160/za.png",
     projectImage: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=300&h=200&fit=crop"
   },
-  ZW: { 
-    name: "Zimbabwe", 
-    projects: 1, 
-    capacity: "Solar PV", 
+  ZW: {
+    name: "Zimbabwe",
+    projects: 1,
+    capacity: "Solar PV",
     status: "Completed",
     flag: "https://flagcdn.com/w160/zw.png",
     projectImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&h=200&fit=crop"
@@ -163,7 +163,7 @@ export default function MapViz() {
     if (!chartRef.current || !window.am5) return
 
     // Use am5.ready to ensure everything is loaded properly
-    window.am5.ready(function() {
+    window.am5.ready(function () {
       if (!chartRef.current) return
 
       // Create root element
@@ -201,7 +201,7 @@ export default function MapViz() {
       chart.set("homeGeoPoint", { longitude: 30, latitude: 10 })
 
       // Subtle CTRL+scroll zoom functionality
-      chart.events.on("wheel", function(ev: any) {
+      chart.events.on("wheel", function (ev: any) {
         if (ev.originalEvent.ctrlKey) {
           ev.originalEvent.preventDefault();
           chart.set("wheelY", "zoom");
@@ -211,8 +211,8 @@ export default function MapViz() {
       });
 
       // Clean keyboard navigation
-      chart.events.on("keydown", function(ev: any) {
-        switch(ev.originalEvent.key) {
+      chart.events.on("keydown", function (ev: any) {
+        switch (ev.originalEvent.key) {
           case "Home":
             ev.originalEvent.preventDefault();
             chart.goHome();
@@ -242,15 +242,16 @@ export default function MapViz() {
       const primaryColor = "#2563eb"
       const primaryColorLight = "#3b82f6"
       const primaryColorDark = "#1d4ed8"
-      const accentColor = "#059669"
+      // ~const accentColor = "#059669"
+      const primeGreen = "#1c4832"
       const lightGreen = "#0AC5B2"
-      const anotherGreen = "#00C758"
-      
+      const anotherGreen = "#85c54a"
+
       // Subtle color variations for target countries
       const countryColors = {
-        ET: "#0AC5B2", KE: "#064e3b", TZ: "#00C758", UG: "#064e3b", BF: "#0AC5B2",
-        CV: "#0AC5B2", LR: "#064e3b", ST: "#064e3b", SN: "#064e3b", SL: "#064e3b",
-        MW: "#0AC5B2", ZA: "#00C758", ZW: "#064e3b" //LY: "#1e40af", TN: "#1e3a8a",
+        ET: "#0AC5B2", KE: "#1c4832", TZ: "#85c54a", UG: "#1c4832", BF: "#0AC5B2",
+        CV: "#0AC5B2", LR: "#1c4832", ST: "#1c4832", SN: "#1c4832", SL: "#1c4832",
+        MW: "#0AC5B2", ZA: "#85c54a", ZW: "#1c4832" //LY: "#1e40af", TN: "#1e3a8a",
         // AE: "#059669", IN: "#047857"
         //AE: "#059669"
       }
@@ -272,7 +273,7 @@ export default function MapViz() {
       // Removed label bullets to avoid clutter; country names are now shown via tooltips.
 
       // Wait for polygon series to be ready
-      polygonSeries.events.on("datavalidated", function() {
+      polygonSeries.events.on("datavalidated", function () {
         // Create clean location markers for target countries
         targetRegions.forEach((countryId) => {
           const dataItem = polygonSeries.getDataItemById(countryId)
@@ -281,7 +282,7 @@ export default function MapViz() {
             if (polygon) {
               const centroid = polygon.visualCentroid()
               const data = countryData[countryId as keyof typeof countryData]
-              
+
               const pointData = {
                 geometry: {
                   type: "Point",
@@ -290,25 +291,34 @@ export default function MapViz() {
                 countryId: countryId,
                 name: data?.name || countryId
               }
-              
+
               pointSeries.data.push(pointData)
             }
           }
         })
       })
 
+      // console.log(
+      //   polygonSeries.getDataItemById("CV"),
+      //   polygonSeries.getDataItemById("ST")
+      // );
+
+      // polygonSeries.mapPolygons.each((polygon: any) => {
+      //   console.log(polygon.dataItem?.dataContext);
+      // });
+
       // Add clean, spacious labels that only show at zoom level 3+
-      pointSeries.bullets.push(function(root: any, series: any, dataItem: any) {
+      pointSeries.bullets.push(function (root: any, series: any, dataItem: any) {
         const data = dataItem.dataContext as any
-        
+
         // List of countries that should have white text
         const whiteTextCountries = [
           "IN", "AE", "LY", "ET", "UG", "KE", "TZ", "MW", "ZW", "ZA", "BF", "SN", "LR", "SL"
         ]
-        
+
         // Determine text color based on country
         const textColor = whiteTextCountries.includes(data.countryId) ? "#ffffff" : "#000000"
-        
+
         const label = window.am5.Label.new(root, {
           text: data.name,
           centerX: window.am5.p50,
@@ -374,7 +384,7 @@ export default function MapViz() {
       `)
 
       // Add click event to polygons
-      polygonSeries.mapPolygons.template.events.on("click", function(ev: any) {
+      polygonSeries.mapPolygons.template.events.on("click", function (ev: any) {
         const dataItem = ev.target.dataItem
         if (dataItem) {
           const dataContext = dataItem.dataContext as any
@@ -385,9 +395,9 @@ export default function MapViz() {
               longitude: centroid.longitude,
               latitude: centroid.latitude
             })
-            
+
             polygonSeries.zoomToDataItem(dataItem, 1.2, true);
-            
+
             setSelectedCountry(dataContext.id)
             setPopupPosition({
               x: point.x,
@@ -403,10 +413,10 @@ export default function MapViz() {
       })
 
       // Set up clean data styling
-      polygonSeries.events.on("datavalidated", function() {
+      polygonSeries.events.on("datavalidated", function () {
         chart.goHome();
-        
-        polygonSeries.mapPolygons.each(function(polygon: any) {
+
+        polygonSeries.mapPolygons.each(function (polygon: any) {
           const dataItem = polygon.dataItem
           const dataContext = dataItem?.dataContext as any
           if (dataContext) {
@@ -420,7 +430,7 @@ export default function MapViz() {
               polygon.set("stroke", window.am5.color("#e5e7eb"))
               polygon.set("strokeWidth", 2)
               polygon.set("strokeOpacity", 1)
-              
+
               // Add country data to the dataItem for tooltip
               if (data) {
                 dataItem.set("projects", data.projects)
@@ -451,7 +461,7 @@ export default function MapViz() {
       })
 
       // Clean hover and active states
-      polygonSeries.mapPolygons.template.onPrivate("fill", function(this: any) {
+      polygonSeries.mapPolygons.template.onPrivate("fill", function (this: any) {
         const dataItem = this.dataItem
         if (dataItem) {
           const dataContext = dataItem.dataContext as any
@@ -492,7 +502,7 @@ export default function MapViz() {
         y: window.am5.p100,
         centerY: window.am5.p100
       }))
-      
+
       zoomControl.homeButton.set("visible", true)
 
       // Clean button styling
@@ -536,7 +546,7 @@ export default function MapViz() {
         const zoomDataItems = targetRegions
           .map(id => polygonSeries.getDataItemById(id))
           .filter(item => item !== undefined)
-        
+
         if (zoomDataItems.length > 0) {
           polygonSeries.zoomToDataItems(zoomDataItems, 1.2, true);
         }
@@ -562,12 +572,12 @@ export default function MapViz() {
         stroke: window.am5.color("#d1d5db")
       })
 
-      allCountriesButton.events.on("click", function() {
+      allCountriesButton.events.on("click", function () {
         zoomToAllTargetCountries();
       })
 
       // Clean background click handler
-      chart.chartContainer.get("background").events.on("click", function(ev: any) {
+      chart.chartContainer.get("background").events.on("click", function (ev: any) {
         ev.event.stopPropagation();
         chart.goHome();
       })
@@ -588,11 +598,11 @@ export default function MapViz() {
       const target = event.target as Element;
       const popupContainer = document.querySelector('.popup-container');
       const mapBackground = document.querySelector('.am5-background');
-      
-      if (selectedCountry && 
-          popupContainer && 
-          !popupContainer.contains(target) &&
-          !mapBackground?.contains(target)) {
+
+      if (selectedCountry &&
+        popupContainer &&
+        !popupContainer.contains(target) &&
+        !mapBackground?.contains(target)) {
         setSelectedCountry(null);
       }
     }
@@ -627,7 +637,7 @@ export default function MapViz() {
       <Script src="https://cdn.amcharts.com/lib/5/map.js" strategy="beforeInteractive" />
       <Script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js" strategy="beforeInteractive" />
       <Script src="https://cdn.amcharts.com/lib/5/themes/Animated.js" strategy="beforeInteractive" />
-      
+
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         
@@ -660,10 +670,15 @@ export default function MapViz() {
           }
         }
       `}</style>
-      
+
+      <div className="text-center py-8 pb-8 bg-[#d2e4d6]">
+        <h3 className="section-title-spl text-center text-[#062516]">
+          JIVO Energy in Africa
+        </h3>
+      </div>
       <div className="flex justify-center items-start w-full h-full relative overflow-hidden">
-        <div 
-          ref={chartRef} 
+        <div
+          ref={chartRef}
           className="w-full h-full map-container"
           style={{
             overflowX: 'hidden',
@@ -685,7 +700,7 @@ export default function MapViz() {
           }}
         />
         {selectedCountry && (
-          <div 
+          <div
             className="popup-container absolute rounded-lg p-0 overflow-hidden"
             style={{
               left: `${popupPosition.x + 20}px`,
@@ -707,8 +722,8 @@ export default function MapViz() {
                   <div className="flex justify-between items-start p-4 pb-3">
                     <div className="flex items-center gap-3">
                       <div className="relative">
-                        <img 
-                          src={info.flag} 
+                        <img
+                          src={info.flag}
                           alt={`${info.name} flag`}
                           className="w-8 h-6 object-cover rounded border border-gray-200"
                           onError={(e) => {
@@ -719,7 +734,7 @@ export default function MapViz() {
                       </div>
                       <h3 className="text-lg font-semibold text-gray-900">{info.name}</h3>
                     </div>
-                    <button 
+                    <button
                       className="text-gray-400 hover:text-gray-600 text-lg font-light w-6 h-6 flex items-center justify-center rounded hover:bg-gray-100 transition-colors duration-200"
                       onClick={() => setSelectedCountry(null)}
                     >
@@ -730,8 +745,8 @@ export default function MapViz() {
                   {/* Project Image */}
                   <div className="px-4 mb-4">
                     <div className="relative overflow-hidden rounded-lg">
-                      <img 
-                        src={info.projectImage} 
+                      <img
+                        src={info.projectImage}
                         alt={`${info.name} renewable energy project`}
                         className="w-full h-28 object-cover"
                         onError={(e) => {
@@ -758,7 +773,7 @@ export default function MapViz() {
                           <span className="font-medium text-gray-700">Active Projects</span>
                         </div>
                       </div>
-                      
+
                       <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg border border-green-100">
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
@@ -770,7 +785,7 @@ export default function MapViz() {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div className="flex justify-between items-center p-3 bg-orange-50 rounded-lg border border-orange-100">
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
@@ -789,7 +804,7 @@ export default function MapViz() {
                   <div className="p-4 pt-3">
                     <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
                       <p className="text-sm text-gray-600 leading-relaxed">
-                        Comprehensive renewable energy development initiative focused on sustainable power generation, 
+                        Comprehensive renewable energy development initiative focused on sustainable power generation,
                         modern grid infrastructure, and community empowerment through clean energy access.
                       </p>
                     </div>

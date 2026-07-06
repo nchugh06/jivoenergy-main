@@ -29,7 +29,7 @@ export default function HomeHeroSlider() {
       },
       {
         id: "s3",
-        imageSrc: "/assets/videos/3.mp4",
+        imageSrc: "/assets/videos/2.mp4",
         fallbackSrc: FALLBACK_VIDEO,
         alt: "JIVO Energy video background 3",
         captionTitle: "Powering Africa's Energy Transition",
