@@ -30,6 +30,12 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const displayTitle = area.title?.trim() || slug
+    .split('-')
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+
   useEffect(() => {
     const fetchProjects = async () => {
       try {
@@ -53,7 +59,7 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
       <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
         <Image
           src={typeof area.image === 'string' ? area.image : area.image}
-          alt={area.title}
+          alt={displayTitle}
           fill
           className="object-cover"
           priority
@@ -79,7 +85,10 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
         </div>
 
         {/* Content Grid */}
-        <div className="grid grid-cols-1 gap-12 items-start mb-16">
+        <div className="grid grid-cols-1 gap-6 items-start mb-6">
+          <div className="mb-0">
+            <h3 className="section-title-spl text-center text-[#062516]">{displayTitle}</h3>
+          </div>
           {/* Description Section */}
           <div className="space-y-6">
             <div className="text-gray-600 leading-relaxed space-y-4">
@@ -93,7 +102,7 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
         {/* Technical Description Section */}
         {area.bessStandaloneDescription && (
           <div className="mb-8">
-            <h3 className="text-2xl font-bold text-[#062516] mb-4">Standalone BESS Systems</h3>
+            <h3 className="text-2xl font-bold text-[#062516] mb-4 text-center">Standalone BESS Systems</h3>
             <div className="space-y-6">
               <div className="text-gray-600 leading-relaxed space-y-4">
                 {area.bessStandaloneDescription.split('\n\n').map((paragraph, idx) => (
@@ -105,17 +114,17 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
         )}
 
         {/* Features Section */}
-        <section className="py-8 md:py-8 our-services bg-[#f6faf5]">
+        <section className="py-5 px-6 md:px-12 bg-gradient-to-br from-[#085D36]/5 to-[#04301C]/5">
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-[#062516] mb-8 text-center">Key Capabilities</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {area.features.map((feature, featureIndex) => (
                 <div
                   key={featureIndex}
-                  className="flex items-start space-x-4 bg-[#062516]/5 p-6 rounded-lg hover:shadow-md transition-shadow duration-300"
+                  className="flex items-start space-x-4 bg-[#062516] p-6 rounded-lg hover:shadow-md transition-shadow duration-300"
                 >
                   <div className="w-3 h-3 bg-[#062516] rounded-full mt-2 flex-shrink-0" />
-                  <span className="text-gray-700">{feature}</span>
+                  <span className="text-white text-center">{feature}</span>
                 </div>
               ))}
             </div>
@@ -137,26 +146,29 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
 
         {/* Technical details Section */}
         {area.technicalDetails.length > 0 && (
-          <div className="mb-16">
-            <h3 className="text-2xl font-bold text-[#062516] mb-8">Technical Expertise</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {area.technicalDetails.map((td, tIndex) => (
-                <div
-                  key={tIndex}
-                  className="flex items-start space-x-4 bg-[#062516]/5 p-6 rounded-lg hover:shadow-md transition-shadow duration-300"
-                >
-                  <div className="w-3 h-3 bg-[#062516] rounded-full mt-2 flex-shrink-0" />
-                  <span className="text-gray-700">{td}</span>
-                </div>
-              ))}
+          // <hr className="my-12 border-gray-300"></hr>
+          <section className="py-5 px-6 md:px-12 bg-gradient-to-br from-[#085D36]/5 to-[#04301C]/5">
+            <div className="mb-16">
+              <h3 className="text-2xl font-bold text-[#062516] mb-8 text-center">Technical Expertise</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {area.technicalDetails.map((td, tIndex) => (
+                  <div
+                    key={tIndex}
+                    className="flex items-start space-x-4 bg-[#fefefe] border border-[#062516] p-6 rounded-lg hover:shadow-md transition-shadow duration-300"
+                  >
+                    {/* <div className="w-3 h-3 bg-[#062516] rounded-full mt-2 flex-shrink-0" /> */}
+                    <span className="text-[#062516] text-center">{td}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          </section>
         )}
 
         {/* Projects Section */}
         {!loading && projects.length > 0 && (
           <div className="mb-16">
-            <h3 className="text-2xl font-bold text-[#062516] mb-8">Our {area.title} Landmark Projects</h3>
+            <h3 className="text-2xl font-bold text-[#062516] mb-0 text-center py-10">Our {displayTitle} Landmark Projects</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
@@ -168,7 +180,7 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
         {/* Call to Action */}
         <div className="bg-[#062516]/5 rounded-lg p-12 text-center">
           <h3 className="text-2xl font-bold text-[#062516] mb-4">
-            Interested in Our {area.title} Solutions?
+            Interested in Our {displayTitle} Solutions?
           </h3>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
             Contact our team to discuss how we can help you with your energy needs and project requirements.
