@@ -60,7 +60,7 @@ export default function AboutPage() {
 
       {/* Company Overview */}
       <section className="py-5 px-6 max-w-7xl mx-auto">{/* md:px-12 */}
-        <h2 className="section-title text-center text-[#062516] mb-10 mx-auto max-w-2xl">About Us</h2>
+        <h2 className="section-title text-center text-[#062516] mb-10 mx-auto max-w-2xl">About JIVO Energy</h2>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -86,34 +86,112 @@ export default function AboutPage() {
       </section>
 
       {/* Vision and Mission Section */}
-      <section className="py-5 px-6 md:px-12 bg-gradient-to-br from-[#085D36]/5 to-[#04301C]/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Vision */}
+      <section className="py-16 px-6 md:px-12 bg-[#F5FBF5]">
+        <div className="max-w-7xl mx-auto space-y-8">
+          <div className="grid gap-8 lg:grid-cols-2">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-[#085D36]"
+              className="grid gap-6 lg:grid-cols-[1fr_0.95fr] items-start rounded-[32px] bg-white p-6 md:p-8 shadow-lg border border-slate-200"
             >
-              <h3 className="section-title text-[#085D36] mb-6">Our Vision</h3>
-              <p className="text-gray-600 leading-relaxed text-lg">
-                To lead the transition toward a cleaner, smarter, and more sustainable world by driving sustainable infrastructure and clean energy transformation. We strive to deliver innovative, reliable, and high-impact solutions that empower communities, industries, and utilities while creating a greener, more resilient future for generations to come.
-              </p>
+              <div className="space-y-5 text-left">
+                <span className="inline-flex rounded-full bg-[#E8F7E8] px-4 py-2 text-sm font-semibold text-[#0F5A1F]">
+                  Our Vision
+                </span>
+                <p className="text-[#062516] leading-relaxed">
+                  To be the most empowering and responsible integrated environmental solutions provider in Singapore.
+                </p>
+                <p className="text-gray-600 leading-relaxed">
+                  We focus on creating sustainable, resilient environments through thoughtful design, technology, and stakeholder collaboration. Our vision is rooted in responsible growth that balances economic value with social and environmental well-being.
+                </p>
+              </div>
+              <div className="overflow-hidden rounded-[28px] bg-slate-100 shadow-inner">
+                <Image
+                  src="/about/Vision.jpg"
+                  alt="Natural landscape reflecting vision"
+                  width={560}
+                  height={360}
+                  className="h-full w-full object-cover"
+                />
+              </div>
             </motion.div>
 
-            {/* Mission */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-[#FFFA84]"
+              className="grid gap-6 lg:grid-cols-[1fr_0.95fr] items-start rounded-[32px] bg-white p-6 md:p-8 shadow-lg border border-slate-200"
             >
-              <h3 className="section-title text-[#085D36] mb-6">Our Mission</h3>
-              <p className="text-gray-600 leading-relaxed text-lg">
-                Our mission is to deliver sustainable energy and infrastructure solutions that create long-term value for our clients, communities, and stakeholders. Through excellence in project development, engineering, EPC execution, operations and maintenance, and environmental responsibility, we support renewable energy adoption, infrastructure modernization, and climate goals while maintaining the highest standards of safety, integrity, quality, and customer satisfaction.
-              </p>
+              <div className="space-y-5 text-left">
+                <span className="inline-flex rounded-full bg-[#E8F7E8] px-4 py-2 text-sm font-semibold text-[#0F5A1F]">
+                  Our Mission
+                </span>
+                <p className="text-[#062516] leading-relaxed">
+                  To keep all environments well-maintained because everyone deserves a clean and beautiful space to live, work and play.
+                </p>
+                <p className="text-gray-600 leading-relaxed">
+                  We are committed to delivering practical, high-quality solutions that protect the environment while enhancing the comfort and efficiency of every space we serve.
+                </p>
+              </div>
+              <div className="overflow-hidden rounded-[28px] bg-slate-100 shadow-inner">
+                <Image
+                  src="/about/Mission.jpg"
+                  alt="Clean natural environment reflecting mission"
+                  width={560}
+                  height={360}
+                  className="h-full w-full object-cover"
+                />
+              </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Values Section */}
+      <section className="py-16 px-6 md:px-12 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="section-title text-center text-[#062516] mb-10">Our Core Values</h2>
+          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
+              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#085D36]/10 text-[#085D36]">
+                <span className="text-xl font-semibold">Q</span>
+              </div>
+              <h3 className="text-xl font-semibold text-[#062516] mb-3">Quality</h3>
+              <p className="text-gray-600 leading-relaxed">
+                We use only Tier 1 materials and maintain uncompromising standards across every project to ensure long-lasting performance, reliability, and safety.
+              </p>
+            </div>
+
+            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
+              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#085D36]/10 text-[#085D36]">
+                <span className="text-xl font-semibold">C</span>
+              </div>
+              <h3 className="text-xl font-semibold text-[#062516] mb-3">Commitment</h3>
+              <p className="text-gray-600 leading-relaxed">
+                From initial planning to final execution, we are committed to delivering every project on time with precision, reliability, and seamless coordination, ensuring a smooth experience at every step.
+              </p>
+            </div>
+
+            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
+              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#085D36]/10 text-[#085D36]">
+                <span className="text-xl font-semibold">R</span>
+              </div>
+              <h3 className="text-xl font-semibold text-[#062516] mb-3">Relationships</h3>
+              <p className="text-gray-600 leading-relaxed">
+                We believe strong partnerships are built on transparency, trust, and consistent communication, creating lasting relationships with our clients and stakeholders.
+              </p>
+            </div>
+
+            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
+              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#085D36]/10 text-[#085D36]">
+                <span className="text-xl font-semibold">E</span>
+              </div>
+              <h3 className="text-xl font-semibold text-[#062516] mb-3">Efficiency</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Our streamlined processes and innovative approach help us deliver optimized energy solutions with maximum efficiency, cost-effectiveness, and impact.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -172,16 +250,16 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="group"
+                  className="abGroup"
                 >
                   <div className="flex items-start gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-[#FFFA84]/30 transition-all duration-300">
-                    <div className="mt-1 p-2 bg-[#FFFA84]/10 rounded-lg text-[#FFFA84]">
+                    <div className="mt-1 p-2 bg-[#1c4832]/10 rounded-lg text-[#FFFA84]">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#FFFA84] transition-colors">
+                      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#1c4832] transition-colors">
                         {geo.region}
                       </h3>
                       <div className="flex flex-wrap gap-2">
@@ -225,6 +303,48 @@ export default function AboutPage() {
           </div>
         </section>
       </div>
+
+      {/* About Head Section */}
+      <section className="py-10 md:py-12 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] items-stretch bg-white rounded-[32px] shadow-xl overflow-hidden">
+            <div className="relative w-full overflow-hidden rounded-[32px] bg-slate-200">
+              <img
+                src="/about/about-head.jpg"
+                alt="Company leader or executive portrait"
+                className="object-cover w-full h-full"
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/10" />
+            </div>
+
+            <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-between h-full">
+              <div>
+                <div className="inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#085D36] mb-4">
+                  <span className="h-0.5 w-10 bg-[#085D36] inline-block" />
+                  About Head
+                </div>
+                <div className="space-y-4">
+                  <p className="font-semibold text-[#062516] leading-snug">
+                    At JIVO Energy, we believe building trust with every partner starts from clarity, conviction, and a shared vision.
+                  </p>
+                  <p className="text-gray-700 max-w-2xl leading-7">
+                    Our approach combines technical excellence, transparent communication, and client-focused execution. We ensure every engagement is grounded in reliability, collaboration, and measurable outcomes that drive sustainable growth across communities and industries.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-10 border-l-4 border-[#085D36] pl-6">
+                {/* <p className="text-xl sm:text-2xl font-semibold text-[#062516] leading-snug">
+                  “We continue to champion energy solutions that deliver real value, resilience, and long-term impact for our clients and stakeholders.”
+                </p> */}
+                <p className="mt-5 text-sm text-gray-700 tracking-[0.14em] font-semibold uppercase">
+                  Chief Executive Officer, JIVO Energy
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>

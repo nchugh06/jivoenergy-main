@@ -62,7 +62,7 @@ const Navbar = () => {
                 onMouseLeave={closeDropdown}
                 style={{ cursor: 'pointer' }}
               >
-                JIVO Energy
+                About JIVO
                 <svg 
                   className={`${styles.dropdownArrow} ${isDropdownOpen ? styles.open : ''}`}
                   width="12" 
@@ -80,10 +80,10 @@ const Navbar = () => {
                 onMouseLeave={closeDropdown}
               >
                 <li className={styles.dropdownItem}>
-                  <a className={styles.dropdownLink} href="/about">About Us</a>
+                  <a className={styles.dropdownLink} href="/about">Meet JIVO Energy</a>
                 </li>
                 <li className={styles.dropdownItem}>
-                  <a className={styles.dropdownLink} href="/partners">Partners</a>
+                  <a className={styles.dropdownLink} href="/partners">Partner</a>
                 </li>
                 <li className={styles.dropdownItem}>
                   <a className={styles.dropdownLink} href="/certificate">Certifications</a>
@@ -92,7 +92,7 @@ const Navbar = () => {
                   <a className={styles.dropdownLink} href="/esg">ESG</a>
                 </li>
                 <li className={styles.dropdownItem}>
-                  <a className={styles.dropdownLink} href="/team">Team</a>
+                  <a className={styles.dropdownLink} href="/team">Our Team</a>
                 </li>
               </ul>
             </li>

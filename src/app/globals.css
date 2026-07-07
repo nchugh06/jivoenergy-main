@@ -271,6 +271,12 @@ body {
   color: #111827;
 }
 
+.abGroup{
+  background: #1c4832;
+  padding: 10px;
+  color: #111827;
+}
+
 /* Standardized Section Styles */
 .section-title {
   font-size: 2.25rem;
