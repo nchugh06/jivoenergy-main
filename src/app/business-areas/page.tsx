@@ -10,6 +10,8 @@ import transmission from '../../../public/assets/business-transmission.jpg';
 import hybrid from '../../../public/assets/hybrid-energy.jpg';
 import biogas from '../../../public/assets/business-biogas.jpg';
 import wasteManagement from '../../../public/assets/business-waste-mgmt.jpg';
+import BusinessAreasServices from "@/components/BusinessAreasServices";
+
 const businessAreas = [
   {
     title: "Solar PV",
@@ -122,7 +124,7 @@ const BusinessAreas = () => {
     <div className="min-h-screen bg-white">
       <Navbar />
 
-      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
         <Image
           src="/assets/banners/BusinessAreas.jpg"
           alt="Business Areas"
@@ -144,16 +146,16 @@ const BusinessAreas = () => {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-5">
         <div className="text-center mb-16">
-          <h2 className="section-title text-center text-[#062516] mb-10 border-b pb-4 mx-auto max-w-2xl">Business Areas</h2>
+          <h2 className="section-title text-center text-[#062516] mb-10 mx-auto max-w-2xl">Business Areas</h2>
           <p className="text-gray-600 px-6 md:px-12 max-w-7xl mx-auto">
             JIVO Energy delivers integrated renewable energy and sustainable infrastructure solutions across Africa, combining advanced engineering, project development, EPC execution, energy storage technologies, and long-term operational support. With expertise spanning utility-scale Solar PV, Battery Energy Storage Systems (BESS), hybrid energy systems, transmission & distribution infrastructure, and waste-to-energy solutions, we develop reliable, efficient, and future-ready energy ecosystems tailored for emerging markets.<br></br><br></br>
             Our multidisciplinary team specializes in complete project lifecycle execution — from feasibility studies, detailed engineering, grid integration, procurement, construction, commissioning, SCADA integration, and operations & maintenance — ensuring technically optimized and bankable energy solutions for utilities, governments, industries, commercial clients, and development agencies.
 
           </p>
         </div>
-
+            <BusinessAreasServices />
         {/* Business Areas Grid */}
-        <div className="space-y-24">
+        {/* <div className="space-y-24">
           {businessAreas.map((area, index) => {
             const sectionIds = [
               'solar-pv',
@@ -170,8 +172,7 @@ const BusinessAreas = () => {
                 id={sectionIds[index]}
                 className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''
                   }`}
-              >
-                {/* Image Section */}
+              >                
                 <div>
                   <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
                     <Image
@@ -183,23 +184,12 @@ const BusinessAreas = () => {
                   </div>
                 </div>
 
-                {/* Content Section */}
+                
                 <div className="space-y-6">
                   <h3 className="text-3xl font-bold text-[#062516]">{area.title}</h3>
                   <h3 className="text-left text-gray-700 font-medium mt-2">{area.imageTitle}</h3>
                   <p className="text-gray-600 leading-relaxed">{area.description}</p>
 
-                  {/*<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {area.features.map((feature, featureIndex) => (
-                    <div 
-                      key={featureIndex}
-                      className="flex items-center space-x-3 bg-[#062516]/5 p-4 rounded-lg"
-                    >
-                      <div className="w-2 h-2 bg-[#062516] rounded-full" />
-                      <span className="text-gray-700">{feature}</span>
-                    </div>
-                  ))}
-                </div> */}
 
                   <a
                     href={`/business-areas/${sectionIds[index]}`}
@@ -211,7 +201,7 @@ const BusinessAreas = () => {
               </div>
             );
           })}
-        </div>
+        </div> */}
 
         {/* Call to Action */}
         <div className="mt-24 text-center">

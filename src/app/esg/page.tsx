@@ -19,9 +19,9 @@ export default function SustainabilityPage() {
     <main className="min-h-screen bg-white">
       <Navbar />
 
-      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
               <Image
-                src="/assets/banners/ESG.webp"
+                src="/assets/banners/ESG.jpg"
                 alt="ESG Banner"
                 fill
                 className="object-cover"
@@ -35,7 +35,7 @@ export default function SustainabilityPage() {
       <section className="py-5 md:py-5">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="section-title text-center text-[#085D36] mb-8">
+            <h2 className="section-title text-center text-[#062516] mb-10 mx-auto max-w-2xl">
               Our Commitment
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">

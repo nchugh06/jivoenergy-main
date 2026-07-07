@@ -38,9 +38,9 @@ export default function AboutPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
         <Image
-          src="/assets/banners/AboutUs.webp"
+          src="/assets/banners/AboutUs.jpg"
           alt="About Banner"
           fill
           className="object-cover"
@@ -60,6 +60,7 @@ export default function AboutPage() {
 
       {/* Company Overview */}
       <section className="py-5 px-6 max-w-7xl mx-auto">{/* md:px-12 */}
+        <h2 className="section-title text-center text-[#062516] mb-10 mx-auto max-w-2xl">About Us</h2>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

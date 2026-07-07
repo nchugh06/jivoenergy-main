@@ -19,7 +19,7 @@ export default function Capabilities() {
     <main className="min-h-screen bg-white">
       <Navbar />
 
-      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
         <Image
           src="/assets/banners/Capabilities.jpg"
           alt="Capabilities Banner"
@@ -42,9 +42,7 @@ export default function Capabilities() {
       <section className="py-5">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            {/* <h2 className="text-3xl md:text-4xl font-bold text-[#085D36] mb-8">
-              Our Capabilities
-            </h2> */}
+            <h2 className="section-title text-center text-[#062516] mb-10 mx-auto max-w-2xl">Capabilities</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
               JIVO Energy delivers integrated energy and infrastructure solutions across the renewable energy, power, and sustainability sectors, supporting utilities, governments, industries, commercial enterprises, and development organizations across emerging markets. With expertise spanning project development, engineering, EPC execution, digital energy integration, and long-term operational support, we develop reliable, scalable, and future-ready infrastructure tailored to complex operating environments.
             </p>

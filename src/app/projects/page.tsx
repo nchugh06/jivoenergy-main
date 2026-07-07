@@ -170,7 +170,7 @@ const ProjectsPage = () => {
     <div className="min-h-screen bg-gray-50 font-sans selection:bg-[#FFFA84] selection:text-[#062516]">
       <Navbar />
      
-     <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+     <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
                    <Image
                      src="/assets/banners/Projects.jpg"
                      alt="Projects Banner"

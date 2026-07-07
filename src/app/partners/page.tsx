@@ -25,7 +25,7 @@ const Partners = () => {
 
   const renderSection = (title: string, images: string[]) => (
     <div className="mb-16">
-      <h2 className="section-title text-center text-[#062516] mb-10 border-b pb-4 mx-auto max-w-2xl">
+      <h2 className="section-title text-center text-[#062516] mb-10 mx-auto max-w-2xl">
         {title}
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 justify-items-center items-center">
@@ -52,9 +52,9 @@ const Partners = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
               <Image
-                src="/assets/banners/Partners.webp"
+                src="/assets/banners/Partners.jpg"
                 alt="Partners Banner"
                 fill
                 className="object-cover"

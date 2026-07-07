@@ -48,8 +48,8 @@ const Certificate = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
-              <Image src="/assets/banners/Certifications.webp" alt="Certifications Banner"
+      <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
+              <Image src="/assets/banners/Certifications.jpg" alt="Certifications Banner"
                 fill
                 className="object-cover"
                 priority
@@ -59,7 +59,9 @@ const Certificate = () => {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-5">
+        <h2 className="section-title text-center text-[#062516] mb-10 mx-auto max-w-2xl">Certifications</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          
           {certifications.map((cert, index) => (
             <a 
               key={index}

@@ -133,7 +133,7 @@ const ProjectDetailPage = () => {
                                 <div className="space-y-6">
                                     <div className="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
                                         <div className="p-3 bg-white/10 rounded-xl">
-                                            <Zap className="w-6 h-6 text-[#FFFA84]" />
+                                            <Zap className="w-6 h-6 text-[#085D36]" />
                                         </div>
                                         <div>
                                             <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">Capacity</p>

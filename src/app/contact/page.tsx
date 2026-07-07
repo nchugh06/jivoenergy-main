@@ -137,9 +137,9 @@ const Contact = () => {
       <Navbar />
       
       {/* Hero Section - Reduced height */}
-      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
                     <Image
-                      src="/assets/banners/ContactUs.webp" alt="Contact Banner"
+                      src="/assets/banners/ContactUs.jpg" alt="Contact Banner"
                       fill
                       className="object-cover"
                       priority
@@ -149,6 +149,7 @@ const Contact = () => {
 
       {/* Main Content - Optimized spacing */}
       <div className="max-w-7xl mx-auto px-4 py-5">
+        <h2 className="section-title text-center text-[#062516] mb-10 mx-auto max-w-2xl">Contact Us</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Column - Office Locations & Social */}
           <div className="space-y-6">

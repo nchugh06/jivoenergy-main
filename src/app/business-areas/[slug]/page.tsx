@@ -4,12 +4,12 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BusinessAreaDetailClient from './BusinessAreaDetailClient';
-import solarPV from '../../../../public/assets/banners/SolarPV.webp';
-import BESS from '../../../../public/assets/banners/BESS.webp';
-import transmission from '../../../../public/assets/banners/TransmissionDistribution.webp';
-import hybridenergy from '../../../../public/assets/banners/Hybrid.webp';
-import biogas from '../../../../public/assets/banners/BiogasBiomethane.webp';
-import wastemanagement from '../../../../public/assets/banners/Wasteanagement-Waste-to-Energy.webp';
+import solarPV from '../../../../public/assets/banners/SolarPV.jpg';
+import BESS from '../../../../public/assets/banners/BESS.jpg';
+import transmission from '../../../../public/assets/banners/TransmissionDistribution.jpg';
+import hybridenergy from '../../../../public/assets/banners/Hybrid.jpg';
+import biogas from '../../../../public/assets/banners/BiogasBiomethane.jpg';
+import wastemanagement from '../../../../public/assets/banners/Wasteanagement-Waste-to-Energy.jpg';
 import { storage } from '@/lib/firebase';
 
 const businessAreasData: {

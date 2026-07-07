@@ -8,9 +8,9 @@ export default function MediaPage() {
   return (
     <main className="relative min-h-screen w-full bg-[#062516]">
       <Navbar />
-      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
         <Image
-          src="/assets/banners/Media.webp"
+          src="/assets/banners/Media.jpg"
           alt="Media Banner"
           fill
           className="object-cover"
