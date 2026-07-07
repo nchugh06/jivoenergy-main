@@ -105,20 +105,22 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
         )}
 
         {/* Features Section */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-[#062516] mb-8">Key Capabilities</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {area.features.map((feature, featureIndex) => (
-              <div
-                key={featureIndex}
-                className="flex items-start space-x-4 bg-[#062516]/5 p-6 rounded-lg hover:shadow-md transition-shadow duration-300"
-              >
-                <div className="w-3 h-3 bg-[#062516] rounded-full mt-2 flex-shrink-0" />
-                <span className="text-gray-700">{feature}</span>
-              </div>
-            ))}
+        <section className="py-8 md:py-8 our-services bg-[#f6faf5]">
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold text-[#062516] mb-8 text-center">Key Capabilities</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {area.features.map((feature, featureIndex) => (
+                <div
+                  key={featureIndex}
+                  className="flex items-start space-x-4 bg-[#062516]/5 p-6 rounded-lg hover:shadow-md transition-shadow duration-300"
+                >
+                  <div className="w-3 h-3 bg-[#062516] rounded-full mt-2 flex-shrink-0" />
+                  <span className="text-gray-700">{feature}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
 
         {/* Technical Description Section */}
         {area.technicalDescription && (
@@ -181,6 +183,6 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
       </div>
 
       <Footer />
-    </div>
+    </div >
   );
 }
