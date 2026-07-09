@@ -29,11 +29,11 @@ export default function TermsOfService() {
         />
       </section> */}
 
-      
 
-<section className="bg-gray-50 py-16 md:py-24">
+
+      <section className="bg-gray-50 py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <h2 className="mb-8 text-center text-3xl font-bold text-[#085D36] md:text-4xl">
+          <h2 className="section-title text-center text-[#062516] mb-10 mx-auto max-w-2xl">
             Terms of Service
           </h2>
 
@@ -161,7 +161,7 @@ export default function TermsOfService() {
             </TermsSection>
           </div>
         </div>
-      </section>      
+      </section>
 
       <Footer />
     </main>
