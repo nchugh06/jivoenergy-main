@@ -159,7 +159,7 @@ const Careers = () => {
         {/* Why Work With Us */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
           <div className="space-y-8">
-            <h3 className="section-title text-[#062516] border-l-4 border-[#FFFA84] pl-4">
+            <h3 className="section-title text-[#062516] border-l-4 border-[#1c4832] pl-4">
               Why Work With Us?
             </h3>
             <p className="text-gray-600 mb-6">
@@ -218,8 +218,8 @@ const Careers = () => {
 
         {/* Life at JIVO & Benefits */}
         <div className="grid md:grid-cols-2 gap-8 mb-24">
-          <div className="bg-[#062516] text-white p-10 rounded-2xl relative overflow-hidden">
-            <div className="relative z-10">
+          <div className="bg-[#F5FBF5] text-white p-10 rounded-2xl relative overflow-hidden">
+            <div className="relative z-10 text-[#062516]">
               <h3 className="text-2xl font-bold mb-6 flex items-center">
                 <Globe className="mr-3" /> Life at JIVO Energy
               </h3>
@@ -232,7 +232,7 @@ const Careers = () => {
                   "Cross-country or multi-site exposure"
                 ].map((item, index) => (
                   <li key={index} className="flex items-center space-x-3 opacity-90">
-                    <div className="w-1.5 h-1.5 bg-[#FFFA84] rounded-full" />
+                    <div className="w-1.5 h-1.5 bg-[#062516] rounded-full" />
                     <span>{item}</span>
                   </li>
                 ))}
