@@ -159,7 +159,7 @@ const Careers = () => {
         {/* Why Work With Us */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
           <div className="space-y-8">
-            <h3 className="section-title text-[#062516] border-l-4 border-[#1c4832] pl-4">
+            <h3 className="section-title text-[#062516] border-l-4 border-[#062516] pl-4">
               Why Work With Us?
             </h3>
             <p className="text-gray-600 mb-6">
@@ -196,7 +196,7 @@ const Careers = () => {
 
         {/* Our Culture & Values */}
         <div className="mb-24">
-          <h3 className="section-title text-center text-[#062516] mb-12">Our Culture & Values</h3>
+          <h3 className="section-title text-center text-[#062516]">Our Culture & Values</h3>
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
             {[
               { icon: Shield, title: "Integrity", desc: "Doing what’s right, consistently and transparently." },
@@ -220,7 +220,7 @@ const Careers = () => {
         <div className="grid md:grid-cols-2 gap-8 mb-24">
           <div className="bg-[#F5FBF5] text-white p-10 rounded-2xl relative overflow-hidden">
             <div className="relative z-10 text-[#062516]">
-              <h3 className="text-2xl font-bold mb-6 flex items-center">
+              <h3 className="section-title mb-6 flex items-center">
                 <Globe className="mr-3" /> Life at JIVO Energy
               </h3>
               <ul className="space-y-4">
@@ -242,7 +242,7 @@ const Careers = () => {
           </div>
 
           <div className="bg-[#062516] text-white p-10 rounded-2xl relative overflow-hidden">
-            <h3 className="text-2xl font-bold mb-6 flex items-center">
+            <h3 className="section-title mb-6 flex items-center">
               <Award className="mr-3" /> Employee Benefits
             </h3>
             <ul className="space-y-4">
@@ -263,11 +263,11 @@ const Careers = () => {
         </div>
 
         {/* Job Openings */}
-        <div className="mb-24">
-          <h3 className="text-3xl font-bold text-[#062516] mb-4">Current Job Openings</h3>
-          <p className="text-white mb-8">
+        <div className="mb-16">
+          <h3 className="section-title text-[#062516] mb-4">Current Job Openings</h3>
+          <p className="mb-8">
             Be part of a future-focused team where innovation, collaboration, and purpose come together to create exceptional work.
-            Ready to take the next step in your career? <span className="font-semibold text-[#062516]">Apply Now!</span>
+            Ready to take the next step in your career? {/* <span className="font-semibold text-[#062516]">Apply Now!</span> */}
           </p>
 
           <div className="grid gap-6">
@@ -318,7 +318,7 @@ const Careers = () => {
         <div className="bg-gray-50 rounded-3xl p-8 md:p-16 shadow-sm border border-gray-100">
           <div className="grid md:grid-cols-2 gap-16">
             <div>
-              <h3 className="text-3xl font-bold text-[#062516] mb-6">
+              <h3 className="section-title text-[#062516] mb-6">
                 Be Part of Our Growth Story
               </h3>
               <p className="text-gray-600 mb-8 leading-relaxed">
