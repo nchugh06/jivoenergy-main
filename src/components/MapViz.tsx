@@ -7,12 +7,12 @@ declare global {
     am5: any
     am5map: any
     am5geodata_worldLow: any
-    am5geodata_usaLow: any
+    am5geodata_africaLow: any
     am5themes_Animated: any
   }
 }
 
-// Country-specific data
+// Country-specific data - Africa Only
 const countryData = {
   // Africa
   ET: {
@@ -26,7 +26,7 @@ const countryData = {
   KE: {
     name: "Kenya",
     projects: 5,
-    capacity: "Solar PV and Solar PV with BESS",
+    capacity: "1.4MWp + 1.4MWh",
     status: "Completed",
     flag: "https://flagcdn.com/w160/ke.png",
     projectImage: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=300&h=200&fit=crop"
@@ -42,7 +42,7 @@ const countryData = {
   UG: {
     name: "Uganda",
     projects: 2,
-    capacity: "Solar PV",
+    capacity: "46MWp",
     status: "Completed",
     flag: "https://flagcdn.com/w160/ug.png",
     projectImage: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=300&h=200&fit=crop"
@@ -50,7 +50,7 @@ const countryData = {
   BF: {
     name: "Burkina Faso",
     projects: 1,
-    capacity: "Solar PV",
+    capacity: "2MWp",
     status: "Under Development",
     flag: "https://flagcdn.com/w160/bf.png",
     projectImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&h=200&fit=crop"
@@ -58,7 +58,7 @@ const countryData = {
   CV: {
     name: "Cape Verde",
     projects: 1,
-    capacity: "Solar PV (32 Sites)",
+    capacity: "1 MWp + 600kWh",
     status: "Under Development",
     flag: "https://flagcdn.com/w160/cv.png",
     projectImage: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=300&h=200&fit=crop"
@@ -74,7 +74,7 @@ const countryData = {
   ST: {
     name: "São Tomé & Príncipe",
     projects: 1,
-    capacity: "Solar PV",
+    capacity: "1.5 MWp",
     status: "Completed",
     flag: "https://flagcdn.com/w160/st.png",
     projectImage: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=300&h=200&fit=crop"
@@ -90,7 +90,7 @@ const countryData = {
   SL: {
     name: "Sierra Leone",
     projects: 1,
-    capacity: "Hybrid",
+    capacity: "1 MWp + 2 MWh",
     status: "Completed",
     flag: "https://flagcdn.com/w160/sl.png",
     projectImage: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=300&h=200&fit=crop"
@@ -98,7 +98,7 @@ const countryData = {
   MW: {
     name: "Malawi",
     projects: 2,
-    capacity: "BESS and Solar PV",
+    capacity: "1.3MWp + 4.5MWh",
     status: "Under Development",
     flag: "https://flagcdn.com/w160/mw.png",
     projectImage: "https://images.unsplash.com/photo-1566312087-9b02b5c62c77?w=300&h=200&fit=crop"
@@ -106,7 +106,7 @@ const countryData = {
   ZA: {
     name: "South Africa",
     projects: 15,
-    capacity: "1200 MW",
+    capacity: "3 GWp",
     status: "Operational",
     flag: "https://flagcdn.com/w160/za.png",
     projectImage: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=300&h=200&fit=crop"
@@ -114,44 +114,11 @@ const countryData = {
   ZW: {
     name: "Zimbabwe",
     projects: 1,
-    capacity: "Solar PV",
+    capacity: "2.5MWp",
     status: "Completed",
     flag: "https://flagcdn.com/w160/zw.png",
     projectImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&h=200&fit=crop"
   },
-  // LY: { 
-  //   name: "Libya", 
-  //   projects: 6, 
-  //   capacity: "500 MW", 
-  //   status: "Planning",
-  //   flag: "https://flagcdn.com/w160/ly.png",
-  //   projectImage: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=300&h=200&fit=crop"
-  // },
-  // TN: { 
-  //   name: "Tunisia", 
-  //   projects: 7, 
-  //   capacity: "420 MW", 
-  //   status: "Construction",
-  //   flag: "https://flagcdn.com/w160/tn.png",
-  //   projectImage: "https://images.unsplash.com/photo-1566312087-9b02b5c62c77?w=300&h=200&fit=crop"
-  // },
-  // Asia & Middle East
-  // AE: { 
-  //   name: "UAE", 
-  //   projects: 10, 
-  //   capacity: "750 MW", 
-  //   status: "Operational",
-  //   flag: "https://flagcdn.com/w160/ae.png",
-  //   projectImage: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=300&h=200&fit=crop"
-  // },
-  // IN: { 
-  //   name: "India", 
-  //   projects: 25, 
-  //   capacity: "2100 MW", 
-  //   status: "Multi-Phase Development",
-  //   flag: "https://flagcdn.com/w160/in.png",
-  //   projectImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&h=200&fit=crop"
-  // },
 }
 
 export default function MapViz() {
@@ -172,7 +139,7 @@ export default function MapViz() {
       // Set themes with subtle animations
       root.setThemes([window.am5themes_Animated.new(root)])
 
-      // Create the map chart with clean, professional styling
+      // Create the map chart with clean, professional styling - Africa Focus
       const chart = root.container.children.push(
         window.am5map.MapChart.new(root, {
           panX: "translateX",
@@ -180,10 +147,10 @@ export default function MapViz() {
           projection: window.am5map.geoMercator(),
           maxPanOut: 0.15,
           maxZoomLevel: 5,
-          minZoomLevel: 1.2,
-          centerLongitude: 30,
-          centerLatitude: 10,
-          zoomLevel: 2.4, // Reduced zoom to fit labels better
+          minZoomLevel: 1.0,
+          centerLongitude: 20,
+          centerLatitude: -10,
+          zoomLevel: 1.0, // Maximum zoom out to show full continent
           wheelX: "none",
           wheelY: "none",
           pinchZoom: true,
@@ -196,9 +163,9 @@ export default function MapViz() {
         }),
       )
 
-      // Set home position and zoom level
-      chart.set("homeZoomLevel", 2.4) // Reduced zoom to fit labels better
-      chart.set("homeGeoPoint", { longitude: 30, latitude: 10 })
+      // Set home position and zoom level - Africa centered including South Africa
+      chart.set("homeZoomLevel", 1.0) // Maximum zoom out to show full continent
+      chart.set("homeGeoPoint", { longitude: 20, latitude: -10 })
 
       // Subtle CTRL+scroll zoom functionality
       chart.events.on("wheel", function (ev: any) {
@@ -256,11 +223,18 @@ export default function MapViz() {
         //AE: "#059669"
       }
 
-      // Create polygon series for all countries with clean styling
+      // Create polygon series - Africa only
       const polygonSeries = chart.series.push(
         window.am5map.MapPolygonSeries.new(root, {
           geoJSON: window.am5geodata_worldLow,
-          exclude: ["AQ"], // Exclude Antarctica
+          include: [
+            // African countries to include
+            "DZ", "AO", "BJ", "BW", "BF", "BI", "CM", "CV", "CF", "TD", "KM", "CI", "CD",
+            "CG", "DJ", "EG", "GQ", "ER", "ET", "GA", "GM", "GH", "GN", "GW", "KE", "LS",
+            "LR", "LY", "MG", "MW", "ML", "MR", "MU", "YT", "MA", "MZ", "NA", "NE", "NG",
+            "RE", "RW", "SH", "ST", "SN", "SC", "SL", "SO", "ZA", "SS", "SD", "SZ", "TZ",
+            "TG", "TN", "UG", "ZM", "ZW"
+          ]
         }),
       )
 
@@ -307,13 +281,13 @@ export default function MapViz() {
       //   console.log(polygon.dataItem?.dataContext);
       // });
 
-      // Add clean, spacious labels that only show at zoom level 3+
+      // Add clean, spacious labels for African countries
       pointSeries.bullets.push(function (root: any, series: any, dataItem: any) {
         const data = dataItem.dataContext as any
 
-        // List of countries that should have white text
+        // African countries that should have white text
         const whiteTextCountries = [
-          "IN", "AE", "LY", "ET", "UG", "KE", "TZ", "MW", "ZW", "ZA", "BF", "SN", "LR", "SL"
+          "ET", "UG", "KE", "TZ", "MW", "ZW", "ZA", "BF", "SN", "LR", "SL"
         ]
 
         // Determine text color based on country
@@ -324,7 +298,7 @@ export default function MapViz() {
           centerX: window.am5.p50,
           centerY: window.am5.p50,
           fill: window.am5.color(textColor), // Dynamic text color based on country
-          fontSize: "9px", // Smaller font size
+          fontSize: "10px", // Optimized font size for Africa map
           fontWeight: "600",
           fontFamily: "Poppins, system-ui, sans-serif",
           textAlign: "center",
@@ -699,6 +673,26 @@ export default function MapViz() {
             e.currentTarget.parentElement?.dispatchEvent(scrollEvent)
           }}
         />
+        
+        {/* Legend Box */}
+        <div className="absolute top-6 right-6 bg-white rounded-lg shadow-lg p-4 z-50 border border-gray-200">
+          <div className="font-semibold text-gray-900 mb-3 text-sm">Project Status</div>
+          <div className="space-y-2">
+            <div className="flex items-center gap-3">
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: '#1c4832' }}></div>
+              <span className="text-sm text-gray-700">Completed</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: '#0AC5B2' }}></div>
+              <span className="text-sm text-gray-700">Under Development</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: '#85c54a' }}></div>
+              <span className="text-sm text-gray-700">Prospect</span>
+            </div>
+          </div>
+        </div>
+
         {selectedCountry && (
           <div
             className="popup-container absolute rounded-lg p-0 overflow-hidden"
