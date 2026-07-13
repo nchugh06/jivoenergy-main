@@ -68,7 +68,7 @@ export default function AboutPage() {
           className="prose prose-lg mx-auto text-gray-600 space-y-6 text-justify"
         >
           <p>
-            JIVO Energy is a renewable energy and infrastructure company focused on delivering sustainable, reliable, and future-ready energy solutions across Africa and emerging markets. Since 2018, we have been actively engaged in project development, engineering, procurement and construction (EPC), operations & maintenance, battery energy storage systems (BESS), and energy infrastructure development.
+            <b>JIVO Energy</b> is a renewable energy and infrastructure company focused on delivering sustainable, reliable, and future-ready energy solutions across Africa and emerging markets. Since 2018, we have been actively engaged in project development, engineering, procurement and construction (EPC), operations & maintenance, battery energy storage systems (BESS), and energy infrastructure development.
           </p>
           <p>
             With expertise spanning utility-scale renewable energy, hybrid power systems, transmission and distribution infrastructure, waste-to-energy solutions, and digital energy integration, we support governments, utilities, industries, commercial enterprises, and development organizations in achieving their energy and sustainability objectives.
@@ -99,10 +99,10 @@ export default function AboutPage() {
                 <span className="inline-flex rounded-full bg-[#E8F7E8] px-4 py-2 text-sm font-semibold text-[#0F5A1F]">
                   Our Vision
                 </span>
-                <p className="text-[#062516] leading-relaxed">
+                <p className="text-[#062516] align-left">
                   To be the most empowering and responsible integrated environmental solutions provider in Singapore.
                 </p>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600">
                   We focus on creating sustainable, resilient environments through thoughtful design, technology, and stakeholder collaboration. Our vision is rooted in responsible growth that balances economic value with social and environmental well-being.
                 </p>
               </div>
@@ -127,10 +127,10 @@ export default function AboutPage() {
                 <span className="inline-flex rounded-full bg-[#E8F7E8] px-4 py-2 text-sm font-semibold text-[#0F5A1F]">
                   Our Mission
                 </span>
-                <p className="text-[#062516] leading-relaxed">
+                <p className="text-[#062516]">
                   To keep all environments well-maintained because everyone deserves a clean and beautiful space to live, work and play.
                 </p>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600">
                   We are committed to delivering practical, high-quality solutions that protect the environment while enhancing the comfort and efficiency of every space we serve.
                 </p>
               </div>
@@ -153,44 +153,87 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto">
           <h2 className="section-title text-center text-[#062516] mb-10">Our Core Values</h2>
           <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
-              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#085D36]/10 text-[#085D36]">
+            <div className="rounded-3xl border border-slate-200 bg-[#85c54a] p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
+              {/* <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#085D36]/10 text-[#085D36]">
                 <span className="text-xl font-semibold">Q</span>
-              </div>
+              </div> */}
               <h3 className="text-xl font-semibold text-[#062516] mb-3">Quality</h3>
               <p className="text-gray-600 leading-relaxed">
                 We use only Tier 1 materials and maintain uncompromising standards across every project to ensure long-lasting performance, reliability, and safety.
               </p>
             </div>
 
-            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
-              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#085D36]/10 text-[#085D36]">
+            <div className="rounded-3xl border border-slate-200 bg-[#1c4832] p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
+              {/* <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#085D36]/10 text-[#085D36]">
                 <span className="text-xl font-semibold">C</span>
-              </div>
-              <h3 className="text-xl font-semibold text-[#062516] mb-3">Commitment</h3>
-              <p className="text-gray-600 leading-relaxed">
+              </div> */}
+              <h3 className="text-xl font-semibold text-[#ffffff] mb-3">Commitment</h3>
+              <p className="text-white leading-relaxed">
                 From initial planning to final execution, we are committed to delivering every project on time with precision, reliability, and seamless coordination, ensuring a smooth experience at every step.
               </p>
             </div>
 
-            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
-              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#085D36]/10 text-[#085D36]">
+            <div className="rounded-3xl border border-slate-200 bg-[#85c54a] p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
+              {/* <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#085D36]/10 text-[#085D36]">
                 <span className="text-xl font-semibold">R</span>
-              </div>
+              </div> */}
               <h3 className="text-xl font-semibold text-[#062516] mb-3">Relationships</h3>
               <p className="text-gray-600 leading-relaxed">
                 We believe strong partnerships are built on transparency, trust, and consistent communication, creating lasting relationships with our clients and stakeholders.
               </p>
             </div>
 
-            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
-              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#085D36]/10 text-[#085D36]">
+            <div className="rounded-3xl border border-slate-200 bg-[#1c4832] p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
+              {/* <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#085D36]/10 text-[#ffffff]">
                 <span className="text-xl font-semibold">E</span>
-              </div>
-              <h3 className="text-xl font-semibold text-[#062516] mb-3">Efficiency</h3>
-              <p className="text-gray-600 leading-relaxed">
+              </div> */}
+              <h3 className="text-xl font-semibold text-[#ffffff] mb-3">Efficiency</h3>
+              <p className="text-white leading-relaxed">
                 Our streamlined processes and innovative approach help us deliver optimized energy solutions with maximum efficiency, cost-effectiveness, and impact.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Head Section */}
+      <section className="py-10 md:py-12 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] items-stretch bg-white rounded-[32px] shadow-xl overflow-hidden">
+            <div className="relative w-full overflow-hidden rounded-[32px] bg-slate-200">
+              <img
+                src="/about/Rajesh-Chugh-CEO.jpg"
+                alt="Company leader or executive portrait"
+                className="object-cover w-full h-full"
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/10" />
+            </div>
+
+            <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-between h-full">
+              <div>
+                <div className="inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#085D36] mb-4">
+                  <span className="h-0.5 w-10 bg-[#085D36] inline-block" />
+                  About Head
+                </div>
+                <div className="space-y-4">
+                  <p className="font-semibold text-[#062516] leading-snug">
+                    At JIVO Energy, we believe that access to reliable and sustainable energy is the foundation of economic growth and social progress.
+                  </p>
+                  <p className="text-gray-700 max-w-2xl leading-7">
+                    Our commitment is to accelerate Africa's energy transition by delivering innovative, high-quality renewable energy solutions that create lasting value for our partners, communities, and future generations. Together, we are building a cleaner, more sustainable future for Africa.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-10 border-l-4 border-[#085D36] pl-6">
+                {/* <p className="text-xl sm:text-2xl font-semibold text-[#062516] leading-snug">
+                  “We continue to champion energy solutions that deliver real value, resilience, and long-term impact for our clients and stakeholders.”
+                </p> */}
+                <p className="mt-5 text-sm text-gray-700 tracking-[0.14em] font-semibold">
+                  <b>Rajesh Chugh</b><br></br>
+                  Chief Executive Officer, JIVO Energy
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -303,48 +346,6 @@ export default function AboutPage() {
           </div>
         </section>
       </div>
-
-      {/* About Head Section */}
-      <section className="py-10 md:py-12 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] items-stretch bg-white rounded-[32px] shadow-xl overflow-hidden">
-            <div className="relative w-full overflow-hidden rounded-[32px] bg-slate-200">
-              <img
-                src="/about/about-head.jpg"
-                alt="Company leader or executive portrait"
-                className="object-cover w-full h-full"
-              />
-              <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/10" />
-            </div>
-
-            <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-between h-full">
-              <div>
-                <div className="inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#085D36] mb-4">
-                  <span className="h-0.5 w-10 bg-[#085D36] inline-block" />
-                  About Head
-                </div>
-                <div className="space-y-4">
-                  <p className="font-semibold text-[#062516] leading-snug">
-                    At JIVO Energy, we believe building trust with every partner starts from clarity, conviction, and a shared vision.
-                  </p>
-                  <p className="text-gray-700 max-w-2xl leading-7">
-                    Our approach combines technical excellence, transparent communication, and client-focused execution. We ensure every engagement is grounded in reliability, collaboration, and measurable outcomes that drive sustainable growth across communities and industries.
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-10 border-l-4 border-[#085D36] pl-6">
-                {/* <p className="text-xl sm:text-2xl font-semibold text-[#062516] leading-snug">
-                  “We continue to champion energy solutions that deliver real value, resilience, and long-term impact for our clients and stakeholders.”
-                </p> */}
-                <p className="mt-5 text-sm text-gray-700 tracking-[0.14em] font-semibold uppercase">
-                  Chief Executive Officer, JIVO Energy
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <Footer />
     </div>

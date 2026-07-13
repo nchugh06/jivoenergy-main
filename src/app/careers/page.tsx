@@ -254,7 +254,8 @@ const Careers = () => {
                 "Team outings, learning sessions, mentorship programs"
               ].map((item, index) => (
                 <li key={index} className="flex items-start space-x-3 text-white">
-                  <Zap className="w-5 h-5 text-[#062516] mt-0.5 flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 bg-[#ffffff] mt-2.5 rounded-full" />
+                  {/* <div className="w-5 h-5 text-[#ffffff] mt-0.5 flex-shrink-0" /> */}
                   <span>{item}</span>
                 </li>
               ))}
