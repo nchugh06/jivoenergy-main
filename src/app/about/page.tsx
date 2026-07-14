@@ -95,14 +95,14 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="grid gap-6 lg:grid-cols-[1fr_0.95fr] items-start rounded-[32px] bg-white p-6 md:p-8 shadow-lg border border-slate-200"
             >
-              <div className="space-y-5 text-left">
+              <div className="space-y-5">
                 <span className="inline-flex rounded-full bg-[#E8F7E8] px-4 py-2 text-sm font-semibold text-[#0F5A1F]">
                   Our Vision
                 </span>
-                <p className="text-[#062516] align-left">
+                <p className="text-[#062516]" style={{ textAlign: "left" }}>
                   To be the most empowering and responsible integrated environmental solutions provider in Singapore.
                 </p>
-                <p className="text-gray-600">
+                <p className="text-gray-600" style={{ textAlign: "left" }}>
                   We focus on creating sustainable, resilient environments through thoughtful design, technology, and stakeholder collaboration. Our vision is rooted in responsible growth that balances economic value with social and environmental well-being.
                 </p>
               </div>
@@ -127,10 +127,10 @@ export default function AboutPage() {
                 <span className="inline-flex rounded-full bg-[#E8F7E8] px-4 py-2 text-sm font-semibold text-[#0F5A1F]">
                   Our Mission
                 </span>
-                <p className="text-[#062516]">
+                <p className="text-[#062516]" style={{ textAlign: "left" }}>
                   To keep all environments well-maintained because everyone deserves a clean and beautiful space to live, work and play.
                 </p>
-                <p className="text-gray-600">
+                <p className="text-gray-600" style={{ textAlign: "left" }}>
                   We are committed to delivering practical, high-quality solutions that protect the environment while enhancing the comfort and efficiency of every space we serve.
                 </p>
               </div>
@@ -197,14 +197,14 @@ export default function AboutPage() {
       </section>
 
       {/* About Head Section */}
-      <section className="py-10 md:py-12 bg-slate-50">
+      <section className="py-10 md:py-12 bg-[#F5FBF5]">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] items-stretch bg-white rounded-[32px] shadow-xl overflow-hidden">
-            <div className="relative w-full overflow-hidden rounded-[32px] bg-slate-200">
+            <div className="relative w-full overflow-hidden rounded-[32px] bg-slate-200 aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5] lg:max-h-[520px]">
               <img
                 src="/about/Rajesh-Chugh-CEO.jpg"
                 alt="Company leader or executive portrait"
-                className="object-cover w-full h-full"
+                className="h-full w-full object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/10" />
             </div>
@@ -213,26 +213,23 @@ export default function AboutPage() {
               <div>
                 <div className="inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#085D36] mb-4">
                   <span className="h-0.5 w-10 bg-[#085D36] inline-block" />
-                  About Head
+                  CEO's Message
                 </div>
                 <div className="space-y-4">
-                  <p className="font-semibold text-[#062516] leading-snug">
+                  {/* <p className="font-semibold text-[#062516] leading-snug">
                     At JIVO Energy, we believe that access to reliable and sustainable energy is the foundation of economic growth and social progress.
+                  </p> */}
+                  <p className="text-gray-700 max-w-2xl leading-7 italic">
+                    "At JIVO Energy, we believe that access to reliable and sustainable energy is the foundation of economic growth and social progress.<br></br>
+                    Our commitment is to accelerate Africa's energy transition by delivering innovative, high-quality renewable energy solutions that create lasting value for our partners, communities, and future generations. Together, we are building a cleaner, more sustainable future for Africa."
                   </p>
-                  <p className="text-gray-700 max-w-2xl leading-7">
-                    Our commitment is to accelerate Africa's energy transition by delivering innovative, high-quality renewable energy solutions that create lasting value for our partners, communities, and future generations. Together, we are building a cleaner, more sustainable future for Africa.
-                  </p>
+                  <div className="border-l-4 border-[#085D36] pl-6">
+                    <p className="mt-5 text-sm text-gray-700 tracking-[0.14em] font-semibold">
+                      <b>Rajesh Chugh</b><br></br>
+                      Chief Executive Officer, JIVO Energy
+                    </p>
+                  </div>
                 </div>
-              </div>
-
-              <div className="mt-10 border-l-4 border-[#085D36] pl-6">
-                {/* <p className="text-xl sm:text-2xl font-semibold text-[#062516] leading-snug">
-                  “We continue to champion energy solutions that deliver real value, resilience, and long-term impact for our clients and stakeholders.”
-                </p> */}
-                <p className="mt-5 text-sm text-gray-700 tracking-[0.14em] font-semibold">
-                  <b>Rajesh Chugh</b><br></br>
-                  Chief Executive Officer, JIVO Energy
-                </p>
               </div>
             </div>
           </div>
@@ -281,7 +278,7 @@ export default function AboutPage() {
 
           <div className="max-w-4xl mx-auto relative z-10">
             <h2 className="section-title text-center lg:text-left text-white mb-12 flex items-center justify-center lg:justify-start gap-4">
-              <span className="w-2 h-12 bg-[#FFFA84] rounded-full hidden lg:block" />
+              <span className="w-2 h-12 bg-[#ffffff] rounded-full hidden lg:block" />
               GEOGRAPHIES
             </h2>
 
@@ -296,7 +293,7 @@ export default function AboutPage() {
                   className="abGroup"
                 >
                   <div className="flex items-start gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-[#FFFA84]/30 transition-all duration-300">
-                    <div className="mt-1 p-2 bg-[#1c4832]/10 rounded-lg text-[#FFFA84]">
+                    <div className="mt-1 p-2 bg-[#1c4832]/10 rounded-lg text-[#ffffff]">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
@@ -340,9 +337,9 @@ export default function AboutPage() {
               </motion.div>
             </div>
 
-            <div className="text-gray-400 text-sm leading-relaxed border-l-4 border-[#FFFA84] pl-6 italic">
+            {/* <div className="text-gray-400 text-sm leading-relaxed border-l-4 border-[#FFFA84] pl-6 italic">
               Today, JIVO Energy has developed, constructed, or is currently delivering over 100 MWp of Solar PV and 60 MWh of Battery Energy Storage Systems (BESS), with a growing pipeline of renewable energy and infrastructure projects across Africa. Our commitment to engineering excellence, innovation, and sustainability continues to drive impactful energy solutions for communities, industries, and utilities.
-            </div>
+            </div> */}
           </div>
         </section>
       </div>
