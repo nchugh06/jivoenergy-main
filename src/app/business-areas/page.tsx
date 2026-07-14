@@ -153,9 +153,9 @@ const BusinessAreas = () => {
 
           </p>
         </div>
-            <BusinessAreasServices />
+            {/* <BusinessAreasServices /> */}
         {/* Business Areas Grid */}
-        {/* <div className="space-y-24">
+        <div className="space-y-24">
           {businessAreas.map((area, index) => {
             const sectionIds = [
               'solar-pv',
@@ -201,7 +201,7 @@ const BusinessAreas = () => {
               </div>
             );
           })}
-        </div> */}
+        </div>
 
         {/* Call to Action */}
         <div className="mt-24 text-center">

@@ -34,14 +34,14 @@ export default function SustainabilityPage() {
       {/* Introduction Section */}
       <section className="py-5 md:py-5">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="text-center">
             <h2 className="section-title text-center text-[#062516] mb-10 mx-auto max-w-2xl">
               Our Commitment
             </h2>
-            <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              At JIVO Energy, we believe that meaningful growth goes hand in hand with giving back to society. Environmental stewardship, social responsibility, and strong governance are embedded in how we operate and make decisions.
+            <p className="text-lg text-gray-700 mb-6">
+              At <b>JIVO Energy</b>, we believe that meaningful growth goes hand in hand with giving back to society. Environmental stewardship, social responsibility, and strong governance are embedded in how we operate and make decisions.
             </p>
-            <p className="text-lg text-gray-700 leading-relaxed">
+            <p className="text-lg text-gray-700">
               These principles guide the development and delivery of our renewable energy solutions, ensuring we create lasting value for our communities, partners, and stakeholders worldwide while contributing to a brighter future for all.
             </p>
           </div>
@@ -55,7 +55,7 @@ export default function SustainabilityPage() {
             <div className="w-full md:w-1/2">
               <div className="relative h-[400px] w-full rounded-2xl overflow-hidden shadow-xl">
                  <Image
-                    src="/QHSE.png"
+                    src="/esg/QHSE.jpg"
                     alt="QHSE"
                     fill
                     className="object-cover"
@@ -83,7 +83,7 @@ export default function SustainabilityPage() {
             <div className="w-full md:w-1/2">
               <div className="relative h-[400px] w-full rounded-2xl overflow-hidden shadow-xl">
                  <Image
-                    src="/Social.png"
+                    src="/esg/Social.jpg"
                     alt="CSR Activity"
                     fill
                     className="object-cover"
@@ -111,7 +111,7 @@ export default function SustainabilityPage() {
             <div className="w-full md:w-1/2">
                <div className="relative h-[400px] w-full rounded-2xl overflow-hidden shadow-xl">
                  <Image
-                    src="/Sustainblity.png"
+                    src="/esg/Sustainability.jpg"
                     alt="Sustainability"
                     fill
                     className="object-cover"
@@ -131,7 +131,7 @@ export default function SustainabilityPage() {
       {/* Initiative Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
+          <div className="text-center mb-12">
             <h3 className="section-title text-center text-[#085D36] mb-6">Our First Voluntary CSR Initiative</h3>
             <p className="text-lg text-gray-700 leading-relaxed">
               As part of our commitment to social responsibility, JIVO Energy conducted its first voluntary CSR activity in collaboration with Dream Girl Foundation, an organization dedicated to supporting children from less fortunate backgrounds. This initiative was a meaningful step towards encouraging learning, nourishment, and hope among young students.
@@ -159,10 +159,10 @@ export default function SustainabilityPage() {
       {/* Quality Assurance Section */}
       <section className="py-16 bg-[#085D36] text-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="text-center">
             <h3 className="text-3xl font-bold mb-8">Quality Assurance</h3>
             <p className="text-lg opacity-90 leading-relaxed mb-8">
-              At JIVO, Quality Assurance is embedded across every stage of our project lifecycle—from design and procurement to construction, commissioning, and operations. We apply structured quality control systems, rigorous inspections, and compliance checks to ensure all works, materials, and services meet defined technical specifications, industry standards, and regulatory requirements.
+              At JIVO, Quality Assurance is embedded across every stage of our project lifecycle — from design and procurement to construction, commissioning, and operations. We apply structured quality control systems, rigorous inspections, and compliance checks to ensure all works, materials, and services meet defined technical specifications, industry standards, and regulatory requirements.
             </p>
             <p className="text-lg opacity-90 leading-relaxed">
               Through continuous monitoring, documentation, and corrective action processes, we ensure consistent project performance, reliability, and long-term value for our clients and stakeholders.
