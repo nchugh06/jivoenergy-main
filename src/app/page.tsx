@@ -12,7 +12,8 @@ import Footer from "@/components/Footer"
 import Media from "@/components/MediaHome"
 import Clients from "@/components/Clients"
 import Achievements from "@/components/Achievements"
-import MapViz from "@/components/MapViz";
+//import MapViz from "@/components/MapViz";
+import Map from "@/components/MapImage";
 import HomeHeroSlider from "@/components/HomeHeroSlider";
 import BusinessAreasServices from "@/components/BusinessAreasServices";
 
@@ -34,16 +35,16 @@ export default function Home() {
         {/* <CoreValues /> */}
         <BusinessAreasServices />
         {/* <Impact /> */}
-        {/* <Media /> */}
-        
+        {/* <Media /> */}        
         <Clients />
         <Achievements /> 
         <Media /> 
-        <section id="hero-section" className="relative w-full h-[100vh] overflow-hidden">
+        {/* <section id="hero-section" className="relative w-full h-[100vh] overflow-hidden">
           <div className="absolute inset-0 z-0">
             <MapViz />
           </div>
-        </section>      
+        </section>       */}
+        <Map />
         <ContactForm />
       </main>
       <Footer />

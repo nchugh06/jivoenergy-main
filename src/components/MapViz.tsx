@@ -282,37 +282,38 @@ export default function MapViz() {
       // });
 
       // Add clean, spacious labels for African countries
-      pointSeries.bullets.push(function (root: any, series: any, dataItem: any) {
-        const data = dataItem.dataContext as any
+      // Commented out to keep the map visual clean and show only the colored country shapes.
+      // pointSeries.bullets.push(function (root: any, series: any, dataItem: any) {
+      //   const data = dataItem.dataContext as any
 
-        // African countries that should have white text
-        const whiteTextCountries = [
-          "ET", "UG", "KE", "TZ", "MW", "ZW", "ZA", "BF", "SN", "LR", "SL"
-        ]
+      //   // African countries that should have white text
+      //   const whiteTextCountries = [
+      //     "ET", "UG", "KE", "TZ", "MW", "ZW", "ZA", "BF", "SN", "LR", "SL"
+      //   ]
 
-        // Determine text color based on country
-        const textColor = whiteTextCountries.includes(data.countryId) ? "#ffffff" : "#000000"
+      //   // Determine text color based on country
+      //   const textColor = whiteTextCountries.includes(data.countryId) ? "#ffffff" : "#000000"
 
-        const label = window.am5.Label.new(root, {
-          text: data.name,
-          centerX: window.am5.p50,
-          centerY: window.am5.p50,
-          fill: window.am5.color(textColor), // Dynamic text color based on country
-          fontSize: "10px", // Optimized font size for Africa map
-          fontWeight: "600",
-          fontFamily: "Poppins, system-ui, sans-serif",
-          textAlign: "center",
-          visible: true // Always visible like in the reference image
-        })
+      //   const label = window.am5.Label.new(root, {
+      //     text: data.name,
+      //     centerX: window.am5.p50,
+      //     centerY: window.am5.p50,
+      //     fill: window.am5.color(textColor), // Dynamic text color based on country
+      //     fontSize: "10px", // Optimized font size for Africa map
+      //     fontWeight: "600",
+      //     fontFamily: "Poppins, system-ui, sans-serif",
+      //     textAlign: "center",
+      //     visible: true // Always visible like in the reference image
+      //   })
 
-        return window.am5.Bullet.new(root, {
-          locationX: 0.5,
-          locationY: 0.5,
-          sprite: label
-        })
-      })
+      //   return window.am5.Bullet.new(root, {
+      //     locationX: 0.5,
+      //     locationY: 0.5,
+      //     sprite: label
+      //   })
+      // })
 
-      // Remove circle markers - only show country names
+      // Remove circle markers - only show country colors
 
       // Clean polygon styling
       polygonSeries.mapPolygons.template.setAll({
