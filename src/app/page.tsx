@@ -44,7 +44,7 @@ export default function Home() {
             <MapViz />
           </div>
         </section>       */}
-        <Map />
+        {/* <Map /> */}
         <ContactForm />
       </main>
       <Footer />
