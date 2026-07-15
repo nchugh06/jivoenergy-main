@@ -49,7 +49,7 @@ export default function SustainabilityPage() {
       </section>
 
       {/* QHSE Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-[#F5FBF5]">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="w-full md:w-1/2">
@@ -63,7 +63,7 @@ export default function SustainabilityPage() {
               </div>
             </div>
             <div className="w-full md:w-1/2">
-              <h3 className="section-title text-[#085D36] mb-6">QHSE</h3>
+              <h3 className="section-title text-[#062516]">QHSE</h3>
               <h4 className="text-xl font-semibold text-gray-800 mb-4">Quality, Health, Safety, and Environment</h4>
               <p className="text-gray-600 leading-relaxed mb-6">
                 Quality, Health, Safety, and Environment (QHSE) are fundamental to JIVO’s project execution and operational culture. We are committed to delivering high-quality renewable energy projects while ensuring safe working conditions, environmental protection, and full compliance with applicable standards and regulations.
@@ -91,7 +91,7 @@ export default function SustainabilityPage() {
               </div>
             </div>
             <div className="w-full md:w-1/2">
-              <h3 className="section-title text-[#085D36] mb-6">Social Responsibility</h3>
+              <h3 className="section-title text-[#062516] mb-6">Social Responsibility</h3>
               <h4 className="text-xl font-semibold text-gray-800 mb-4">Empowering Communities</h4>
               <p className="text-gray-600 leading-relaxed mb-6">
                 Our responsibility extends beyond business. We believe in empowering communities, supporting education, and contributing to social well-being.
@@ -105,7 +105,7 @@ export default function SustainabilityPage() {
       </section>
 
       {/* Sustainability Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-[#F5FBF5]">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="w-full md:w-1/2">
@@ -119,7 +119,7 @@ export default function SustainabilityPage() {
               </div>
             </div>
             <div className="w-full md:w-1/2">
-              <h3 className="section-title text-[#085D36] mb-6">Sustainability Focus</h3>
+              <h3 className="section-title text-[#062516] mb-6">Sustainability Focus</h3>
               <p className="text-gray-600 leading-relaxed mb-6">
                 Sustainability is integrated into JIVO Energy’s procurement and project delivery approach. Our procurement practices balance economic efficiency with environmental responsibility and social value, ensuring responsible decision-making across the entire project lifecycle.
               </p>
@@ -132,14 +132,14 @@ export default function SustainabilityPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h3 className="section-title text-center text-[#085D36] mb-6">Our First Voluntary CSR Initiative</h3>
+            <h3 className="section-title text-center text-[#062516] mb-6">Our First Voluntary CSR Initiative</h3>
             <p className="text-lg text-gray-700 leading-relaxed">
               As part of our commitment to social responsibility, JIVO Energy conducted its first voluntary CSR activity in collaboration with Dream Girl Foundation, an organization dedicated to supporting children from less fortunate backgrounds. This initiative was a meaningful step towards encouraging learning, nourishment, and hope among young students.
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8 items-center">
-             <div className="bg-gray-50 p-8 rounded-xl shadow-md border-l-4 border-[#085D36]">
+             <div className="bg-[#F5FBF5] p-8 rounded-xl shadow-md border-l-4 border-[#085D36]">
                 <p className="text-gray-600 italic text-lg">
                   "The smiles, enthusiasm, and gratitude we witnessed reaffirmed our belief that even small actions can create meaningful change. This initiative strengthened our resolve to continue supporting community-driven causes and to build a culture of empathy and responsibility within JIVO Energy."
                 </p>
@@ -172,11 +172,11 @@ export default function SustainabilityPage() {
       </section>
 
       {/* Environmental Social Metrics Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-[#F5FBF5]">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-3xl font-bold text-[#085D36] mb-6">Environmental Social Metrics</h3>
+              <h3 className="text-3xl font-bold text-[#062516] mb-6">Environmental Social Metrics</h3>
               <p className="text-gray-600 leading-relaxed mb-6">
                 At JIVO, we track and manage environmental and social performance through defined metrics that support responsible project delivery and continuous improvement. Our approach includes monitoring resource efficiency, emissions reduction, waste management, health and safety performance, and community engagement outcomes across our operations.
               </p>
@@ -209,7 +209,7 @@ export default function SustainabilityPage() {
       {/* Photo Gallery Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-[#085D36] text-center mb-12">Gallery</h2>
+          <h2 className="text-3xl font-bold text-[#062516] text-center mb-12">Gallery</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {galleryImages.map((src, index) => (
               <div key={index} className="relative h-64 rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
