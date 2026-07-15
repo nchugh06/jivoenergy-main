@@ -60,7 +60,7 @@ export default function Impact() {
     <div className="relative py-12 bg-white">
       <div className="w-full max-w-[100vw] overflow-hidden">
         <div className="text-center mb-12 px-4">
-          <h2 className="text-4xl font-sans text-[#062516] mb-4">Our Impact</h2>
+          <h3 className="text-4xl font-sans text-[#062516] mb-4">Our Impact</h3>
           <p className="text-sm tracking-widest uppercase text-[#062516]">DRIVING SUSTAINABLE CHANGE</p>
         </div>
 

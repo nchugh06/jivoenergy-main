@@ -134,7 +134,7 @@ export default function KenyaGallery() {
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div>
-                <h2 className="text-3xl font-bold text-[#062516] mb-4">About Our Work</h2>
+                <h3 className="text-3xl font-bold text-[#062516] mb-4">About Our Work</h3>
                 <p className="text-gray-600 leading-relaxed mb-6">
                   {countryInfo.description}
                 </p>

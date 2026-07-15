@@ -59,9 +59,9 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
             {/* Right Content Section */}
             <div className="w-full md:w-3/5 p-8 md:p-12 bg-white overflow-y-auto">
                 <div className="mb-10">
-                    <h2 className="text-4xl font-bold text-[#062516] mb-2 leading-tight">
+                    <h3 className="text-4xl font-bold text-[#062516] mb-2 leading-tight">
                         {project.title} | {project.capacity}
-                    </h2>
+                    </h3>
                     <div className="h-1 w-20 bg-[#FFFA84] rounded-full"></div>
                 </div>
 

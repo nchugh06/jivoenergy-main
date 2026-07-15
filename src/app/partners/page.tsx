@@ -25,9 +25,9 @@ const Partners = () => {
 
   const renderSection = (title: string, images: string[]) => (
     <div className="mb-16">
-      <h2 className="section-title text-center text-[#062516] mb-10 mx-auto max-w-2xl">
+      <h3 className="section-title-spl text-center text-[#062516] mb-10">
         {title}
-      </h2>
+      </h3>
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 justify-items-center items-center">
         {images.map((img, index) => (
           <div 

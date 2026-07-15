@@ -71,7 +71,7 @@ const Achievements = () => {
                   <path d="M12 11.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" stroke="currentColor" strokeWidth="1.8"/>
                 </svg>
               </div>
-              <h2 className="stat-number">15+ </h2>
+              <h3 className="stat-number">15+ </h3>
               <p className="stat-description">Countries of operation</p>
             </div>
           </div>
@@ -84,7 +84,7 @@ const Achievements = () => {
                   <path d="M8 11h8M8 15h6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
                 </svg>
               </div>
-              <h2 className="stat-number">400M USD+ </h2>
+              <h3 className="stat-number">400M USD+ </h3>
               <p className="stat-description">Development Pipeline</p>
             </div>
           </div>
@@ -97,7 +97,7 @@ const Achievements = () => {
                   <path d="M8 21v-2a4 4 0 014-4 4 4 0 014 4v2" stroke="currentColor" strokeWidth="1.8"/>
                 </svg>
               </div>
-              <h2 className="stat-number">5000+ </h2>
+              <h3 className="stat-number">5000+ </h3>
               <p className="stat-description">Employment opportunities to workmen in Africa</p>
             </div>
           </div>
@@ -111,7 +111,7 @@ const Achievements = () => {
                   <path d="M6.5 20h7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
                 </svg>
               </div>
-              <h2 className="stat-number">100MWp </h2>
+              <h3 className="stat-number">100MWp </h3>
               <p className="stat-description">delivered &amp; 200MWp+ under Development</p>
             </div>
           </div>
@@ -125,7 +125,7 @@ const Achievements = () => {
                   <path d="M7 10H4v10h13v-3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h2 className="stat-number">60MWh </h2>
+              <h3 className="stat-number">60MWh </h3>
               <p className="stat-description">delivered &amp; 50MWh+ under development</p>
             </div>
           </div>
@@ -137,7 +137,7 @@ const Achievements = () => {
                   <path d="M12 2l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-7z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h2 className="stat-number">6+ </h2>
+              <h3 className="stat-number">6+ </h3>
               <p className="stat-description">Renewable energy solutions</p>
             </div>
           </div>

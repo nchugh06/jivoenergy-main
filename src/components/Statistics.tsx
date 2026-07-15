@@ -79,7 +79,7 @@ const Statistics = () => {
                 {/* <div className="stat-icon" aria-hidden="true">
                   {stat.icon}
                 </div> */}
-                <h2 className="stat-number text-center" style={{ color: index % 2 === 0 ? '#125d36' : '#ffffff' }}>{stat.value}</h2>
+                <h3 className="stat-number text-center" style={{ color: index % 2 === 0 ? '#125d36' : '#ffffff' }}>{stat.value}</h3>
                 <h3 className="stat-description text-center text-bold" style={{ color: index % 2 === 0 ? '#125d36' : '#ffffff' }}>{stat.label}</h3>
               </div>
             </div>

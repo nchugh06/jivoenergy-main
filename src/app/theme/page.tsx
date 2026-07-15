@@ -42,7 +42,7 @@ const Theme = () => {
       <div className="max-w-7xl mx-auto px-4 py-12">
         {/* Colors Section */}
         <section className="mb-16">
-          <h2 className="section-title text-[#062516] mb-8">Color Palette</h2>
+          <h3 className="section-title-spl text-[#062516] mb-8">Color Palette</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {colors.map((color, index) => (
               <div key={index} className="bg-white rounded-lg shadow-lg p-6">
@@ -60,7 +60,7 @@ const Theme = () => {
 
         {/* Typography Section */}
         <section className="mb-16">
-          <h2 className="section-title text-[#062516] mb-8">Typography</h2>
+          <h3 className="section-title-spl text-[#062516] mb-8">Typography</h3>
           <div className="bg-white rounded-lg shadow-lg p-8">
             {typography.map((type, index) => (
               <div key={index} className="mb-8 last:mb-0">
@@ -73,7 +73,7 @@ const Theme = () => {
 
         {/* Buttons Section */}
         <section className="mb-16">
-          <h2 className="section-title text-[#062516] mb-8">Buttons</h2>
+          <h3 className="section-title-spl text-[#062516] mb-8">Buttons</h3>
           <div className="bg-white rounded-lg shadow-lg p-8">
             <div className="flex flex-wrap gap-6">
               {buttons.map((button, index) => (
@@ -90,7 +90,7 @@ const Theme = () => {
 
         {/* Form Elements Section */}
         <section className="mb-16">
-          <h2 className="section-title text-[#062516] mb-8">Form Elements</h2>
+          <h3 className="section-title-spl text-[#062516] mb-8">Form Elements</h3>
           <div className="bg-white rounded-lg shadow-lg p-8">
             <div className="max-w-md space-y-6">
               <div>

@@ -52,12 +52,12 @@ const Media = () => {
               Media & Resources
             </span>
           </div>
-          <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
+          <h3 className="text-5xl font-bold text-white mb-6 leading-tight">
             <span className="block">Stay Informed With Our</span>
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-green-100">
               Latest Updates & Insights
             </span>
-          </h2>
+          </h3>
           <p className="text-green-100 max-w-3xl mx-auto text-lg leading-relaxed opacity-90">
             Explore our comprehensive collection of industry news, success stories, and expert insights 
             to stay ahead in the renewable energy sector.

@@ -60,7 +60,7 @@ const ContactForm = () => {
     <div className="w-full py-8 px-4 md:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="section-title text-center text-[#062516]">Contact Us</h2>
+          <h3 className="section-title-spl text-center text-[#062516]">Contact Us</h3>
           {/* <p className="text-lg text-gray-700 justify-text">
             Get in touch with our team to learn more about our sustainable energy solutions
           </p> */}

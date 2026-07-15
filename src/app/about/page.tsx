@@ -60,7 +60,7 @@ export default function AboutPage() {
 
       {/* Company Overview */}
       <section className="py-5 px-6 max-w-7xl mx-auto">{/* md:px-12 */}
-        <h2 className="section-title text-center text-[#062516] mb-10 mx-auto max-w-2xl">About JIVO Energy</h2>
+        <h3 className="section-title text-center text-[#062516] mb-10">About JIVO Energy</h3>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -151,7 +151,7 @@ export default function AboutPage() {
       {/* Core Values Section */}
       <section className="py-16 px-6 md:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="section-title text-center text-[#062516] mb-10">Our Core Values</h2>
+          <h3 className="section-title-spl text-center text-[#062516] mb-10">Our Core Values</h3>
           <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
             <div className="rounded-3xl border border-slate-200 bg-[#85c54a] p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
               {/* <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#085D36]/10 text-[#085D36]">
@@ -241,7 +241,7 @@ export default function AboutPage() {
         {/* Business Areas (Left Column) */}
         {/* <section className="w-full lg:w-1/2 bg-white py-5 px-6 md:px-12">
           <div className="max-w-2xl mx-auto lg:mx-0 lg:ml-auto lg:pr-8">
-            <h2 className="text-4xl font-bold text-center lg:text-left mb-12 text-[#085D36]">OUR BUSINESS AREAS</h2>
+            <h3 className="text-4xl font-bold text-center lg:text-left mb-12 text-[#085D36]">OUR BUSINESS AREAS</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {businessAreas.map((area, index) => (
                 <motion.div
@@ -277,10 +277,10 @@ export default function AboutPage() {
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#085D36] opacity-10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
           <div className="max-w-4xl mx-auto relative z-10">
-            <h2 className="section-title text-center lg:text-left text-white mb-12 flex items-center justify-center lg:justify-start gap-4">
+            <h3 className="section-title-spl text-center lg:text-left text-white mb-12 flex items-center justify-center lg:justify-start gap-4">
               <span className="w-2 h-12 bg-[#ffffff] rounded-full hidden lg:block" />
               GEOGRAPHIES
-            </h2>
+            </h3>
 
             <div className="space-y-8 mb-16">
               {geographies.map((geo, index) => (

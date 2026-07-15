@@ -102,7 +102,7 @@ const DemoProjectPage = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         {/* Main Description */}
                         <div className="lg:col-span-2 bg-white rounded-[40px] p-8 md:p-12 shadow-sm border border-gray-100 italic md:not-italic">
-                            <h2 className="text-3xl font-bold text-[#062516] mb-8 border-b border-gray-100 pb-4">Project Overview</h2>
+                            <h3 className="text-3xl font-bold text-[#062516] mb-8 border-b border-gray-100 pb-4">Project Overview</h3>
                             <div 
                                 className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-4"
                                 dangerouslySetInnerHTML={{ __html: project.description }}
@@ -171,7 +171,7 @@ const DemoProjectPage = () => {
                 <section className="py-8 px-4 bg-white border-y border-gray-100">
                     <div className="container mx-auto">
                         <div className="mb-12">
-                            <h2 className="text-4xl font-black text-[#062516] tracking-tight mb-4 text-center">Visual Progress</h2>
+                            <h3 className="text-4xl font-black text-[#062516] tracking-tight mb-4 text-center">Visual Progress</h3>
                             <div className="h-1.5 w-24 bg-[#FFFA84] mx-auto rounded-full" />
                         </div>
                         
@@ -214,7 +214,7 @@ const DemoProjectPage = () => {
                 <div className="container mx-auto">
                     <div className="bg-[#FFFA84] rounded-[40px] p-12 flex flex-col md:flex-row items-center justify-between gap-8">
                         <div>
-                            <h2 className="text-4xl font-black text-[#062516] mb-4">Invest in Africa's Future?</h2>
+                            <h3 className="text-4xl font-black text-[#062516] mb-4">Invest in Africa's Future?</h3>
                             <p className="text-[#062516]/70 text-lg font-medium">Join us in developing sustainable power solutions across the continent.</p>
                         </div>
                         <Link 

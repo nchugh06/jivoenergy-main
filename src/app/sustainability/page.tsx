@@ -33,9 +33,9 @@ export default function SustainabilityPage() {
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="section-title text-center text-[#085D36] mb-8">
+            <h3 className="section-title-spl text-center text-[#085D36] mb-8">
               Our Commitment
-            </h2>
+            </h3>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
               At JIVO Energy, we believe that meaningful growth goes hand in hand with giving back to society. Environmental stewardship, social responsibility, and strong governance are embedded in how we operate and make decisions.
             </p>
@@ -89,7 +89,7 @@ export default function SustainabilityPage() {
               </div>
             </div>
             <div className="w-full md:w-1/2">
-              <h2 className="text-3xl font-bold text-[#085D36] mb-6">Social Responsibility</h2>
+              <h3 className="text-3xl font-bold text-[#085D36] mb-6">Social Responsibility</h3>
               <h3 className="text-xl font-semibold text-gray-800 mb-4">Empowering Communities</h3>
               <p className="text-gray-600 leading-relaxed mb-6">
                 Our responsibility extends beyond business. We believe in empowering communities, supporting education, and contributing to social well-being.
@@ -130,7 +130,7 @@ export default function SustainabilityPage() {
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#085D36] mb-6">Our First Voluntary CSR Initiative</h2>
+            <h3 className="text-3xl font-bold text-[#085D36] mb-6">Our First Voluntary CSR Initiative</h3>
             <p className="text-lg text-gray-700 leading-relaxed">
               As part of our commitment to social responsibility, JIVO Energy conducted its first voluntary CSR activity in collaboration with Dream Girl Foundation, an organization dedicated to supporting children from less fortunate backgrounds. This initiative was a meaningful step towards encouraging learning, nourishment, and hope among young students.
             </p>
@@ -207,7 +207,7 @@ export default function SustainabilityPage() {
       {/* Photo Gallery Section */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-[#085D36] text-center mb-12">Gallery</h2>
+          <h3 className="text-3xl font-bold text-[#085D36] text-center mb-12">Gallery</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {galleryImages.map((src, index) => (
               <div key={index} className="relative h-64 rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">

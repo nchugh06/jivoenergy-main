@@ -59,7 +59,7 @@ const Certificate = () => {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-5">
-        <h2 className="section-title text-center text-[#062516] mb-10 mx-auto max-w-2xl">Certifications</h2>
+        <h3 className="section-title-spl text-center text-[#062516] mb-10">Certifications</h3>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           
           {certifications.map((cert, index) => (

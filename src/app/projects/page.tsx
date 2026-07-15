@@ -192,7 +192,7 @@ const ProjectsPage = () => {
           <div>
             <div className="py-8 px-2">
                 <div>
-                    <h2 className="section-title text-center text-[#062516] mb-10 mx-auto max-w-2xl">Project Portfolio</h2>
+                    <h3 className="section-title-spl text-center text-[#062516] mb-10">Project Portfolio</h3>
                     <h6 className="text-black font-bold uppercase text-[10px] tracking-widest opacity-60 text-center">Showing {allProjects.length} projects across Africa</h6>
                 </div>
             </div>

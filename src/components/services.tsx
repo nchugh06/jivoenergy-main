@@ -65,9 +65,9 @@ export default function Services() {
     <section className="py-16 md:py-24 our-services">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading - Centered */}
-        <h2 className="section-title text-center text-white">
+        <h3 className="section-title-spl text-center text-white">
           Business Areas
-        </h2>
+        </h3>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">

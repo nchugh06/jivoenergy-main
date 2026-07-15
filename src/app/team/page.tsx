@@ -163,9 +163,9 @@ const Team = () => {
         <div className="space-y-12 max-w-7xl mx-auto">
           {/* Project Execution */}
           <section>
-            <h2 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">
+            <h3 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">
               Execution
-            </h2>
+            </h3>
             <MotionDiv
               variants={containerVariants}
               initial="hidden"
@@ -180,7 +180,7 @@ const Team = () => {
 
           {/* Project Development */}
           <section>
-            <h2 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">Development</h2>
+            <h3 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">Development</h3>
             <MotionDiv
               variants={containerVariants}
               initial="hidden"
@@ -195,7 +195,7 @@ const Team = () => {
 
           {/* Project Support */}
           <section className='mb-10'>
-            <h2 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">Support</h2>
+            <h3 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">Support</h3>
             <MotionDiv
               variants={containerVariants}
               initial="hidden"
@@ -210,7 +210,7 @@ const Team = () => {
 
           {/* Project Corporate */}
           <section className='mb-10'>
-            <h2 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">Corporate</h2>
+            <h3 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">Corporate</h3>
             <MotionDiv
               variants={containerVariants}
               initial="hidden"

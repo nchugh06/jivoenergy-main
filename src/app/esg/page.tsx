@@ -35,9 +35,9 @@ export default function SustainabilityPage() {
       <section className="py-5 md:py-5">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h2 className="section-title text-center text-[#062516] mb-10 mx-auto max-w-2xl">
+            <h3 className="section-title-spl text-center text-[#062516] mb-10">
               Our Commitment
-            </h2>
+            </h3>
             <p className="text-lg text-gray-700 mb-6">
               At <b>JIVO Energy</b>, we believe that meaningful growth goes hand in hand with giving back to society. Environmental stewardship, social responsibility, and strong governance are embedded in how we operate and make decisions.
             </p>
@@ -209,7 +209,7 @@ export default function SustainabilityPage() {
       {/* Photo Gallery Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-[#062516] text-center mb-12">Gallery</h2>
+          <h3 className="text-3xl font-bold text-[#062516] text-center mb-12">Gallery</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {galleryImages.map((src, index) => (
               <div key={index} className="relative h-64 rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
