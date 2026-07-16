@@ -157,10 +157,10 @@ export default function SustainabilityPage() {
       </section>
 
       {/* Quality Assurance Section */}
-      <section className="py-16 bg-[#085D36] text-white">
+      <section className="py-16 bg-[#F5FBF5]">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h3 className="text-3xl font-bold mb-8">Quality Assurance</h3>
+            <h3 className="section-title-spl mb-8">Quality Assurance</h3>
             <p className="text-lg opacity-90 leading-relaxed mb-8">
               At JIVO, Quality Assurance is embedded across every stage of our project lifecycle — from design and procurement to construction, commissioning, and operations. We apply structured quality control systems, rigorous inspections, and compliance checks to ensure all works, materials, and services meet defined technical specifications, industry standards, and regulatory requirements.
             </p>
@@ -172,11 +172,11 @@ export default function SustainabilityPage() {
       </section>
 
       {/* Environmental Social Metrics Section */}
-      <section className="py-16 bg-[#F5FBF5]">
+      <section className="py-16 bg-[#ffffff]">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-3xl font-bold text-[#062516] mb-6">Environmental Social Metrics</h3>
+              <h3 className="section-title-spl text-[#062516] mb-6">Environmental Social Metrics</h3>
               <p className="text-gray-600 leading-relaxed mb-6">
                 At JIVO, we track and manage environmental and social performance through defined metrics that support responsible project delivery and continuous improvement. Our approach includes monitoring resource efficiency, emissions reduction, waste management, health and safety performance, and community engagement outcomes across our operations.
               </p>
@@ -209,7 +209,7 @@ export default function SustainabilityPage() {
       {/* Photo Gallery Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h3 className="text-3xl font-bold text-[#062516] text-center mb-12">Gallery</h3>
+          <h3 className="section-title-spl text-[#062516] text-center mb-12">Gallery</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {galleryImages.map((src, index) => (
               <div key={index} className="relative h-64 rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">

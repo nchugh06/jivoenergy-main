@@ -23,8 +23,11 @@ const Partners = () => {
     'tp14.png', 'tp15.png', 'tp16.png', 'tp17.png', 'tp18.png'
   ];
 
-  const renderSection = (title: string, images: string[]) => (
-    <div className="mb-16">
+  const renderSection = (title: string, images: string[]) => {
+    const isFinancersSection = title === 'Financers';
+
+    return (
+    <div className={`mb-16 ${isFinancersSection ? 'bg-[#F5FBF5] rounded-xl py-8 px-4 md:px-6' : ''}`}>
       <h3 className="section-title-spl text-center text-[#062516] mb-10">
         {title}
       </h3>
@@ -45,7 +48,8 @@ const Partners = () => {
         ))}
       </div>
     </div>
-  );
+    );
+  };
 
   return (
     <div className="min-h-screen bg-white">

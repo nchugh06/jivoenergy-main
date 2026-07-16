@@ -51,7 +51,7 @@ export default function AddProjectPage() {
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           Back to Projects
         </Link>
-        <h1 className="text-3xl font-bold text-gray-800">Add New Project</h1>
+        <h1 className="section-title-spl text-gray-800">Add New Project</h1>
         <p className="text-gray-500 mt-1">Fill in the details below to create a new energy project</p>
       </div>
 

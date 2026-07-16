@@ -171,7 +171,7 @@ const Contact = () => {
               <h3 className="text-lg font-bold text-[#062516] mb-4">Connect with us</h3>
               <div className="flex justify-center space-x-6">
                 <a 
-                  href="mailto:africa@jivoenergy.com" 
+                  href="mailto:info@jivoenergy.com" 
                   className="flex items-center text-[#062516] hover:text-[#051e12] transition-colors duration-300"
                 >
                   <FaEnvelope size={20} />

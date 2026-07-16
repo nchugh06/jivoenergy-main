@@ -98,7 +98,7 @@ export default function CSRPage() {
       {/* Photo Gallery Section */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <h3 className="text-3xl font-bold text-[#085D36] text-center mb-12">Gallery</h3>
+          <h3 className="section-title-spl text-[#085D36] text-center mb-12">Gallery</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {galleryImages.map((src, index) => (
               <div key={index} className="relative h-64 rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">

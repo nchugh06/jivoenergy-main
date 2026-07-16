@@ -84,7 +84,7 @@ export default function ProjectSettingsPage() {
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Back to Projects
           </Link>
-          <h1 className="text-3xl font-bold text-gray-800 tracking-tight">Project Configurator</h1>
+          <h1 className="section-title-spl text-gray-800 tracking-tight">Project Configurator</h1>
           <p className="text-gray-500 mt-1">Manage dynamic dropdown options for project creation</p>
         </div>
         

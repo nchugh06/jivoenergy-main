@@ -194,7 +194,7 @@ export default function PrivacyPolicy() {
                 <br />
                 India Office: 108-111, First Floor, Tower B, Spaze Business Park, Sector-66, Gurugram, Haryana, India
                 <br />
-                Email: <a href="mailto:africa@jivoenergy.com" target="_blank">africa@jivoenergy.com</a>
+                Email: <a href="mailto:info@jivoenergy.com" target="_blank">info@jivoenergy.com</a>
                 <br />
                 Website: <a href="https://www.jivoenergy.com" target="_blank" rel="noopener noreferrer">www.jivoenergy.com</a>
               </p>

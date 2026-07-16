@@ -213,7 +213,7 @@ const ContactForm = () => {
             
             <div className="relative z-20 h-full flex flex-col justify-between p-8 text-white">
               <div className="space-y-6">
-                <h3 className="text-3xl font-bold">Why Choose JIVO Energy?</h3>
+                <h3 className="section-title-spl">Why Choose JIVO Energy?</h3>
                 <div className="space-y-4">
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0 w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
@@ -275,7 +275,7 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold">Need Immediate Assistance?</h4>
-                    <p className="text-white/80">africa@jivoenergy.com</p>
+                    <p className="text-white/80">info@jivoenergy.com</p>
                   </div>
                 </div>
               </div>

@@ -100,11 +100,11 @@ export default function AboutPage() {
                   Our Vision
                 </span>
                 <p className="text-[#062516]" style={{ textAlign: "left" }}>
-                  To be the most empowering and responsible integrated environmental solutions provider in Singapore.
+                  To lead the transition toward a cleaner, smarter, and more sustainable world by driving sustainable infrastructure and clean energy transformation. We strive to deliver innovative, reliable, and high-impact solutions that empower communities, industries, and utilities while creating a greener, more resilient future for generations to come.
                 </p>
-                <p className="text-gray-600" style={{ textAlign: "left" }}>
+                {/* <p className="text-gray-600" style={{ textAlign: "left" }}>
                   We focus on creating sustainable, resilient environments through thoughtful design, technology, and stakeholder collaboration. Our vision is rooted in responsible growth that balances economic value with social and environmental well-being.
-                </p>
+                </p> */}
               </div>
               <div className="overflow-hidden rounded-[28px] bg-slate-100 shadow-inner">
                 <Image
@@ -128,11 +128,11 @@ export default function AboutPage() {
                   Our Mission
                 </span>
                 <p className="text-[#062516]" style={{ textAlign: "left" }}>
-                  To keep all environments well-maintained because everyone deserves a clean and beautiful space to live, work and play.
+                  Our mission is to deliver sustainable energy and infrastructure solutions that create long-term value for our clients, communities, and stakeholders. Through excellence in project development, engineering, EPC execution, operations and maintenance, and environmental responsibility, we support renewable energy adoption, infrastructure modernization, and climate goals while maintaining the highest standards of safety, integrity, quality, and customer satisfaction.
                 </p>
-                <p className="text-gray-600" style={{ textAlign: "left" }}>
+                {/* <p className="text-gray-600" style={{ textAlign: "left" }}>
                   We are committed to delivering practical, high-quality solutions that protect the environment while enhancing the comfort and efficiency of every space we serve.
-                </p>
+                </p> */}
               </div>
               <div className="overflow-hidden rounded-[28px] bg-slate-100 shadow-inner">
                 <Image
@@ -200,7 +200,7 @@ export default function AboutPage() {
       <section className="py-10 md:py-12 bg-[#F5FBF5]">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] items-stretch bg-white rounded-[32px] shadow-xl overflow-hidden">
-            <div className="relative w-full overflow-hidden rounded-[32px] bg-slate-200 aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5] lg:max-h-[520px]">
+            <div className="relative w-full overflow-hidden rounded-[32px] bg-slate-200 aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5] lg:max-h-[450px]">
               <img
                 src="/about/Rajesh-Chugh-CEO.jpg"
                 alt="Company leader or executive portrait"
@@ -212,7 +212,7 @@ export default function AboutPage() {
             <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-between h-full">
               <div>
                 <div className="inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#085D36] mb-4">
-                  <span className="h-0.5 w-10 bg-[#085D36] inline-block" />
+                  <span className="h-0. w-10 bg-[#085D36] inline-block" />
                   CEO's Message
                 </div>
                 <div className="space-y-4">
@@ -220,8 +220,7 @@ export default function AboutPage() {
                     At JIVO Energy, we believe that access to reliable and sustainable energy is the foundation of economic growth and social progress.
                   </p> */}
                   <p className="text-gray-700 max-w-2xl leading-7 italic">
-                    "At JIVO Energy, we believe that access to reliable and sustainable energy is the foundation of economic growth and social progress.<br></br>
-                    Our commitment is to accelerate Africa's energy transition by delivering innovative, high-quality renewable energy solutions that create lasting value for our partners, communities, and future generations. Together, we are building a cleaner, more sustainable future for Africa."
+                    "At JIVO Energy, we believe that access to reliable and sustainable energy is the foundation of economic growth and social progress. Our commitment is to accelerate Africa's energy transition by delivering innovative, high-quality renewable energy solutions that create lasting value for our partners, communities, and future generations. Together, we are building a cleaner, more sustainable future for Africa."
                   </p>
                   <div className="border-l-4 border-[#085D36] pl-6">
                     <p className="mt-5 text-sm text-gray-700 tracking-[0.14em] font-semibold">
@@ -271,7 +270,7 @@ export default function AboutPage() {
         </section> */}
 
         {/* Geographies (Right Column) */}
-        <section className="w-full bg-[#062516] text-white py-5 px-6 md:px-12 relative overflow-hidden">
+        <section className="w-full bg-[#ffffff] text-white py-5 px-6 md:px-12 relative overflow-hidden">
           {/* Decorative Background Elements */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#085D36] opacity-20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#085D36] opacity-10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />

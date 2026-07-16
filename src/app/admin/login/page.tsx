@@ -43,7 +43,7 @@ const LoginPage = () => {
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-[#FFFA84] rounded-full blur-2xl opacity-10 -translate-x-1/2 translate-y-1/2"></div>
             
             <div className="relative z-10">
-                <h1 className="text-3xl font-bold text-white mb-2">Admin Portal</h1>
+                <h1 className="section-title-spl text-white mb-2">Admin Portal</h1>
                 <p className="text-gray-300 text-sm">Sign in to manage JIVO Energy dashboard</p>
             </div>
         </div>

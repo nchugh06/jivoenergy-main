@@ -186,7 +186,7 @@ const BusinessAreas = () => {
 
                 
                 <div className="space-y-6">
-                  <h3 className="text-3xl font-bold text-[#062516]">{area.title}</h3>
+                  <h3 className="section-title-spl text-center text-[#062516] mb-10">{area.title}</h3>
                   <h3 className="text-left text-gray-700 font-medium mt-2">{area.imageTitle}</h3>
                   <p className="text-gray-600 leading-relaxed">{area.description}</p>
 
@@ -205,7 +205,7 @@ const BusinessAreas = () => {
 
         {/* Call to Action */}
         <div className="mt-24 text-center">
-          <h3 className="text-3xl font-bold text-[#062516] mb-6">
+          <h3 className="section-title-spl text-[#062516] mb-6">
             Ready to Transform Your Energy Future?
           </h3>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">

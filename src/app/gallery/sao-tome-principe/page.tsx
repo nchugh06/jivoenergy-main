@@ -134,7 +134,7 @@ export default function SaoTomePrincipeGallery() {
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-3xl font-bold text-[#062516] mb-4">About Our Work</h3>
+                <h3 className="section-title-spl text-[#062516] mb-4">About Our Work</h3>
                 <p className="text-gray-600 leading-relaxed mb-6">
                   {countryInfo.description}
                 </p>
@@ -170,7 +170,7 @@ export default function SaoTomePrincipeGallery() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
-            className="text-3xl font-bold text-[#062516] mb-8 text-center"
+            className="section-title-spl text-[#062516] mb-8 text-center"
           >
             Photo Gallery
           </motion.h2>

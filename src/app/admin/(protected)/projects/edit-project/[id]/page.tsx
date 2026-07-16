@@ -91,7 +91,7 @@ export default function EditProjectPage() {
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           Back to Projects
         </Link>
-        <h1 className="text-3xl font-bold text-gray-800">Edit Project</h1>
+        <h1 className="section-title-spl text-gray-800">Edit Project</h1>
         <p className="text-gray-500 mt-1">Update project details</p>
       </div>
 
