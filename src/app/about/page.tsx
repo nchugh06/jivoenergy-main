@@ -158,7 +158,7 @@ export default function AboutPage() {
                 <span className="text-xl font-semibold">Q</span>
               </div> */}
               <h3 className="text-xl font-semibold text-[#062516] mb-3">Quality</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed" style={{ textAlign: "left" }}>
                 We use only Tier 1 materials and maintain uncompromising standards across every project to ensure long-lasting performance, reliability, and safety.
               </p>
             </div>
@@ -168,7 +168,7 @@ export default function AboutPage() {
                 <span className="text-xl font-semibold">C</span>
               </div> */}
               <h3 className="text-xl font-semibold text-[#ffffff] mb-3">Commitment</h3>
-              <p className="text-white leading-relaxed">
+              <p className="text-white leading-relaxed" style={{ textAlign: "left" }}>
                 From initial planning to final execution, we are committed to delivering every project on time with precision, reliability, and seamless coordination, ensuring a smooth experience at every step.
               </p>
             </div>
@@ -178,7 +178,7 @@ export default function AboutPage() {
                 <span className="text-xl font-semibold">R</span>
               </div> */}
               <h3 className="text-xl font-semibold text-[#062516] mb-3">Relationships</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed" style={{ textAlign: "left" }}>
                 We believe strong partnerships are built on transparency, trust, and consistent communication, creating lasting relationships with our clients and stakeholders.
               </p>
             </div>
@@ -188,7 +188,7 @@ export default function AboutPage() {
                 <span className="text-xl font-semibold">E</span>
               </div> */}
               <h3 className="text-xl font-semibold text-[#ffffff] mb-3">Efficiency</h3>
-              <p className="text-white leading-relaxed">
+              <p className="text-white leading-relaxed" style={{ textAlign: "left" }}>
                 Our streamlined processes and innovative approach help us deliver optimized energy solutions with maximum efficiency, cost-effectiveness, and impact.
               </p>
             </div>
@@ -212,7 +212,7 @@ export default function AboutPage() {
             <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-between h-full">
               <div>
                 <div className="inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#085D36] mb-4">
-                  <span className="h-0. w-10 bg-[#085D36] inline-block" />
+                  <span className="h-0.5 w-10 bg-[#085D36] inline-block" />
                   CEO's Message
                 </div>
                 <div className="space-y-4">
@@ -270,14 +270,14 @@ export default function AboutPage() {
         </section> */}
 
         {/* Geographies (Right Column) */}
-        <section className="w-full bg-[#ffffff] text-white py-5 px-6 md:px-12 relative overflow-hidden">
+        <section className="w-full bg-[#ffffff] py-5 px-6 md:px-12 relative overflow-hidden">
           {/* Decorative Background Elements */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#085D36] opacity-20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#085D36] opacity-10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
           <div className="max-w-4xl mx-auto relative z-10">
-            <h3 className="section-title-spl text-center lg:text-left text-white mb-12 flex items-center justify-center lg:justify-start gap-4">
-              <span className="w-2 h-12 bg-[#ffffff] rounded-full hidden lg:block" />
+            <h3 className="section-title-spl text-center lg:text-left mb-12 flex items-center justify-center lg:justify-start gap-4">
+              <span className="w-2 h-12 bg-[#000000] rounded-full hidden lg:block" />
               GEOGRAPHIES
             </h3>
 
