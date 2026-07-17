@@ -205,7 +205,7 @@ const Careers = () => {
               { icon: TrendingUp, title: "Continuous Improvement", desc: "Embracing learning, growth, and innovation." },
               { icon: Heart, title: "Customer-Focused", desc: "Placing our customers at the heart of everything we do." }
             ].map((value, index) => (
-              <div key={index} className="bg-gray-50 p-6 rounded-xl hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-[#062516]/20 group">
+              <div key={index} className="bg-[#F5FBF5] p-6 rounded-xl hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-[#062516]/20 group">
                 <div className="w-12 h-12 bg-[#062516]/5 rounded-full flex items-center justify-center mb-4 group-hover:bg-[#062516] transition-colors duration-300">
                   <value.icon className="w-6 h-6 text-[#062516] group-hover:text-white transition-colors duration-300" />
                 </div>
@@ -316,7 +316,7 @@ const Careers = () => {
         </div>
 
         {/* Application Form Section */}
-        <div className="bg-gray-50 rounded-3xl p-8 md:p-16 shadow-sm border border-gray-100">
+        <div className="bg-[#F5FBF5] rounded-3xl p-8 md:p-16 shadow-sm border border-gray-100">
           <div className="grid md:grid-cols-2 gap-16">
             <div>
               <h3 className="section-title text-[#062516] mb-6">
