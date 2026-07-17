@@ -167,7 +167,7 @@ const Contact = () => {
             </div>
 
             {/* Social Connect Section - More compact */}
-            <div className="bg-[#062516]/10 rounded-lg p-4">
+            <div className="bg-[#F5FBF5] rounded-lg p-4">
               <h3 className="text-lg font-bold text-[#062516] mb-4">Connect with us</h3>
               <div className="flex justify-center space-x-6">
                 <a 
