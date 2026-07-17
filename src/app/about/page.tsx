@@ -278,7 +278,7 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto relative z-10">
             <h3 className="section-title-spl text-center lg:text-left mb-12 flex items-center justify-center lg:justify-start gap-4">
               <span className="w-2 h-12 bg-[#000000] rounded-full hidden lg:block" />
-              GEOGRAPHIES
+              Geographies 
             </h3>
 
             <div className="space-y-8 mb-16">
