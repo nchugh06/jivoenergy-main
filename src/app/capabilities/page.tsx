@@ -5,21 +5,105 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 
 export default function Capabilities() {
-  const galleryImages = [
-    "/esg/1766384012371.jpg",
-    "/esg/1766384012520.jpg",
-    "/esg/1766384012528.jpg",
-    "/esg/1766384012546.jpg",
-    "/esg/1766384012549.jpg",
-
-    "/esg/IMG_0478.jpg",
+  const capabilityBlocks = [
+    {
+      title: "Originate",
+      eyebrow: "1",
+      intro:
+        "Identify and secure high-potential renewable energy opportunities across Africa and emerging markets.",
+      points: [
+        "Leverage our extensive industry, government, and stakeholder network to source opportunities",
+        "Identify strategic locations for utility-scale and commercial renewable energy projects",
+        "Conduct resource assessment, site screening, and feasibility studies",
+        "Establish strong partnerships with local communities, landowners, and authorities",
+      ],
+      image: "/capabilities/originate.jpg",
+    },
+    {
+      title: "Develop",
+      eyebrow: "2",
+      intro:
+        "From concept to Ready-to-Build status by delivering all technical, regulatory, environmental, and commercial development milestones.",
+      points: [
+        "Secure permits, licenses, and regulatory approvals",
+        "Manage environmental and social impact assessments",
+        "Obtain grid connection and interconnection approvals",
+        "Develop projects through to Ready-to-Build status",
+      ],
+      image: "/capabilities/develop.jpg",
+    },
+    {
+      title: "Finance",
+      eyebrow: "3",
+      intro:
+        "Structure sustainable financing solutions to accelerate project implementation.",
+      points: [
+        "Engage development finance institutions, lenders, and strategic investors",
+        "Structure debt and equity financing solutions",
+        "Support Power Purchase Agreements (PPAs) and commercial negotiations",
+        "Optimize project economics and risk allocation",
+      ],
+      image: "/capabilities/finance.jpg",
+    },
+    {
+      title: "Engineering",
+      eyebrow: "4",
+      intro:
+        "Design efficient, reliable, and future-ready energy infrastructure.",
+      points: [
+        "Detailed engineering and technical design",
+        "Technology selection and optimization",
+        "Solar PV, BESS, and hybrid system design",
+        "Compliance with international technical and safety standards",
+      ],
+      image: "/capabilities/engineering.jpg",
+    },
+    {
+      title: "Procure",
+      eyebrow: "5",
+      intro:
+        "Deliver quality equipment and services through strategic sourcing.",
+      points: [
+        "Global supplier and OEM engagement",
+        "Competitive procurement and contract management",
+        "Quality assurance and supply chain optimization",
+        "Cost-effective sourcing of critical project components",
+      ],
+      image: "/capabilities/procure.jpg",
+    },
+    {
+      title: "Construct",
+      eyebrow: "6",
+      intro:
+        "Execute projects safely, efficiently, and on schedule.",
+      points: [
+        "EPC management and construction supervision",
+        "Health, Safety, Environment & Quality (HSEQ) compliance",
+        "Project scheduling and performance management",
+        "Testing, commissioning, and commercial operation support",
+      ],
+      image: "/capabilities/construct.jpg",
+    },
+    {
+      title: "Operate",
+      eyebrow: "7",
+      intro:
+        "Maximize asset performance throughout the project lifecycle.",
+      points: [
+        "Operations and maintenance management",
+        "Performance monitoring and reporting",
+        "Preventive and corrective maintenance",
+        "Asset optimization and lifecycle management",
+      ],
+      image: "/capabilities/operate.jpg",
+    },
   ];
 
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
 
-      <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[42vh] w-full overflow-hidden">
         <Image
           src="/assets/banners/Capabilities.jpg"
           alt="Capabilities Banner"
@@ -27,217 +111,139 @@ export default function Capabilities() {
           className="object-cover"
           priority
         />
-        {/* <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/25 to-[#04301C]/25"></div>
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-            Our Capabilities
-          </h1>
-           <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            Creating lasting value through environmental stewardship, social responsibility, and strong governance.
-          </p> 
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-[#062516]/85 via-[#062516]/55 to-[#085D36]/35" />
+        <div className="relative z-10 flex h-full items-end">
+          <div className="container mx-auto px-4 pb-12 md:pb-16">
+            <div className="max-w-3xl rounded-[2rem] border border-white/20 bg-white/10 p-6 backdrop-blur-sm md:p-8">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#dff4e6]">
+                Jivo Energy capabilities
+              </p>
+              <h1 className="mt-4 text-3xl font-semibold text-white sm:text-4xl md:text-5xl">
+                Tailored energy solutions across the full project lifecycle.
+              </h1>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-[#f4f8f5] md:text-lg">
+                We combine development expertise, engineering depth, project delivery strength, and long-term operations support to create resilient energy assets across complex markets.
+              </p>
+            </div>
+          </div>
         </div> */}
       </section>
 
-      {/* Introduction Section */}
-      <section className="py-5">
+      <section className="bg-[#f4f8f5] py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h3 className="section-title-spl text-center text-[#062516] mb-10">Capabilities</h3>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              JIVO Energy delivers integrated energy and infrastructure solutions across the renewable energy, power, and sustainability sectors, supporting utilities, governments, industries, commercial enterprises, and development organizations across emerging markets. With expertise spanning project development, engineering, EPC execution, digital energy integration, and long-term operational support, we develop reliable, scalable, and future-ready infrastructure tailored to complex operating environments.
-            </p>
-            <p className="text-gray-700 leading-relaxed">
-              Our multidisciplinary capabilities enable successful execution of utility-scale, industrial, commercial, rural electrification, and hybrid energy projects across grid-connected, weak-grid, and off-grid applications. By combining technical excellence, advanced power system engineering, and sustainable infrastructure development, JIVO Energy supports energy transition and modernization initiatives across Africa and other developing regions.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Initiative Section */}
-      <section>
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="bg-gray-50 p-8 rounded-xl shadow-md border-l-4 border-[#085D36]">
-              <h3 className="section-title text-center text-[#062516]">Core Capabilities</h3>
-              <p className="text-gray-600 italic text-lg">
-                <ul className="list-disc list-inside space-y-2">
-                  <li>Utility-scale renewable energy infrastructure</li>
-                  <li>Solar PV & hybrid power systems</li>
-                  <li>Battery Energy Storage Systems (BESS)</li>
-                  <li>Grid integration & power evacuation systems</li>
-                  <li>LV, MV, HV & EHV infrastructure</li>
-                  <li>SCADA, EMS & digital energy integration</li>
-                  <li>Power system studies & grid compliance</li>
-                  <li>Waste-to-energy & biogas infrastructure</li>
-                  <li>EPC execution & project management</li>
-                  <li>Technical consulting & engineering services</li>
-                  <li>Operations & maintenance support</li>
-                </ul>
+          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+            <div className="max-w-2xl">
+              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#085D36]">
+                Built for impact
+              </p>
+              <h2 className="text-3xl font-semibold text-[#062516] sm:text-4xl">
+                A disciplined journey from opportunity to long-term performance.
+              </h2>
+              <p className="mt-5 text-lg leading-8 text-gray-700">
+                Our capabilities span strategic development, engineering, financing, execution, and ongoing operations, allowing us to support projects through every phase with consistency and focus.
               </p>
             </div>
-            <div className="bg-green-50 p-8 rounded-xl shadow-md border-l-4 border-[#085D36]">
-              <h3 className="section-title text-center text-[#062516]">Our Approach</h3>
-              <p className="text-gray-600 italic text-lg">
-                At JIVO Energy, we combine engineering expertise, technical innovation, operational excellence, and sustainable development principles to deliver impactful energy infrastructure solutions across diverse markets and operating environments. Our approach focuses on technical reliability, execution efficiency, environmental responsibility, and long-term value creation while supporting energy security, grid modernization, and sustainable economic growth.<br></br><br></br><br></br>
-                By integrating advanced engineering practices, intelligent energy systems, and scalable infrastructure solutions, we deliver resilient and future-ready projects tailored to evolving energy demands and local market requirements.
-              </p>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-[1.5rem] border border-[#dce9df] bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+                <p className="text-3xl font-semibold text-[#062516]">20+</p>
+                <p className="mt-2 text-sm leading-6 text-gray-700">Markets and implementation environments supported</p>
+              </div>
+              <div className="rounded-[1.5rem] border border-[#dce9df] bg-[#eaf6ed] p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+                <p className="text-3xl font-semibold text-[#062516]">100%</p>
+                <p className="mt-2 text-sm leading-6 text-gray-700">Focus on reliable, scalable, future-ready infrastructure</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* QHSE Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="bg-white py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <h3 className="section-title-spl text-center text-[#062516] mb-10">
-            What We Do
-          </h3>
-          <div className="flex flex-col md:flex-row items-center gap-12">
-
-            <div className="w-full">
-              <h3 className="section-title text-[#062516]">Project Development</h3>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                JIVO Energy identifies, evaluates, and develops technically and commercially viable energy infrastructure opportunities from concept development through financial close and project implementation. Our development capabilities include resource assessment, technical feasibility studies, environmental and social evaluations, permitting support, stakeholder engagement, land assessment, project structuring, and bankability support for utility-scale and decentralized energy projects.
-              </p>
-              <h4 className="text-xl font-bold text-gray-800 mb-4">Key Capabilities</h4>
-              <p className="text-gray-600 leading-relaxed">
-                <ul className="list-disc list-inside space-y-2">
-                  <li>Feasibility studies & technical due diligence</li>
-                  <li>Site assessment & resource analysis</li>
-                  <li>Project structuring & development support</li>
-                  <li>Regulatory coordination & permitting</li>
-                  <li>Environmental & social assessments</li>
-                  <li>Financial modelling & bankability support</li>
-                </ul>
-              </p>
+          <div className="mb-10 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-3xl">
+              {/* <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#085D36]">
+                Our capability journey
+              </p> */}
+              {/* <h3 className="section-title-spl text-center text-[#062516] mb-10">Capabilities</h3> */}
+              {/* <h2 className="mt-2 text-3xl font-semibold text-[#062516] sm:text-4xl">
+                A service-style view of how we create value.
+              </h2> */}
             </div>
+            <div className="h-px w-full max-w-[220px] bg-[#dce9df] lg:block" />
           </div>
+
+          <div className="space-y-6">
+  {capabilityBlocks.map((item, index) => (
+    <article
+      key={item.title}
+      className="group grid overflow-hidden rounded-[2rem] border border-[#dce9df] bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl md:grid-cols-2"
+    >
+      {/* Content */}
+      <div
+        className={`flex flex-col justify-center p-8 md:p-10 ${
+          index % 2 === 0 ? "md:order-1" : "md:order-2"
+        }`}
+      >
+        <p className="text-lg font-semibold uppercase tracking-[0.3em] text-[#085D36] bg-[#eaf6ed] px-4 py-2 w-fit rounded-[2rem]">
+          {item.eyebrow}
+        </p>
+
+        <h3 className="mt-3 text-2xl font-semibold text-[#062516]">
+          {item.title}
+        </h3>
+
+        <p className="mt-4 text-base leading-7 text-gray-700">
+          {item.intro}
+        </p>
+
+        <ul className="mt-6 space-y-3 text-sm leading-6 text-gray-700">
+          {item.points.map((point) => (
+            <li key={point} className="flex items-start gap-2">
+              <span className="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-[#085D36]" />
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Image */}
+      <div
+        className={`relative h-[420px] overflow-hidden ${
+          index % 2 === 0 ? "md:order-2" : "md:order-1"
+        }`}
+      >
+        <Image
+          src={item.image}
+          alt={item.title}
+          fill
+          className="object-cover transition duration-700 group-hover:scale-105"
+        />
+      </div>
+    </article>
+  ))}
+</div>
         </div>
       </section>
 
-      {/* Social Responsibility Section */}
-      <section className="py-16">
+      <section className="bg-[#f4f8f5] py-16 md:py-20">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row-reverse items-center gap-12">
-            <div className="w-full">
-              <h3 className="section-title text-[#062516]">Engineering & Technical Expertise</h3>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                Our engineering capabilities cover power system engineering, infrastructure planning, technology integration, system optimization, and customized energy solutions designed to meet specific operational, environmental, and grid requirements. We provide technically optimized designs focused on reliability, efficiency, scalability, and long-term operational performance.
-              </p>
-              <h4 className="text-xl font-bold text-gray-800 mb-4">Key Capabilities</h4>
-              <p className="text-gray-600 leading-relaxed">
-                <ul className="list-disc list-inside space-y-2">
-                  <li>Electrical, civil & power system engineering</li>
-                  <li>Detailed engineering & design optimization</li>
-                  <li>Load flow, short circuit & stability studies</li>
-                  <li>Protection coordination & relay engineering</li>
-                  <li>Earthing & lightning protection design</li>
-                  <li>SCADA, EMS, PMS & automation systems</li>
-                  <li>Grid compliance & interconnection studies</li>
-                  <li>Renewable energy integration engineering</li>
-                </ul>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Sustainability Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center gap-12">
-            <div className="w-full">
-              <h3 className="section-title text-[#062516]">EPC & Project Execution</h3>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                JIVO Energy delivers comprehensive Engineering, Procurement, and Construction (EPC) solutions for renewable energy, power, and infrastructure projects with strong focus on quality, safety, technical compliance, execution efficiency, and timely delivery. Our EPC capabilities cover procurement, construction management, installation, testing, commissioning, and energization across complex utility and industrial infrastructure projects.
-              </p>
-              <h4 className="text-xl font-bold text-gray-800 mb-4">Key Capabilities</h4>
-              <p className="text-gray-600 leading-relaxed">
-                <ul className="list-disc list-inside space-y-2">
-                  <li>End-to-end EPC project delivery</li>
-                  <li>Procurement & supply chain management</li>
-                  <li>Construction supervision & QA/QC</li>
-                  <li>Utility-scale installation & integration</li>
-                  <li>Testing, commissioning & energization</li>
-                  <li>HSE management & compliance</li>
-                  <li>Project scheduling & execution control</li>
-                </ul>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row-reverse items-center gap-12">
-            <div className="w-full">
-              <h3 className="section-title text-[#062516]">Energy Infrastructure Integration</h3>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                We specialize in integrating renewable energy systems with utility infrastructure, transmission networks, substations, and industrial power systems to improve grid stability, power quality, operational efficiency, and long-term energy reliability. Our expertise includes grid modernization, power evacuation systems, intelligent substations, and advanced digital integration technologies.
-              </p>
-              <h4 className="text-xl font-bold text-gray-800 mb-4">Key Capabilities</h4>
-              <p className="text-gray-600 leading-relaxed">
-                <ul className="list-disc list-inside space-y-2">
-                  <li>Grid integration & synchronization</li>
-                  <li>Transmission & distribution infrastructure</li>
-                  <li>AIS/GIS substations & switchyards</li>
-                  <li>Renewable power evacuation systems</li>
-                  <li>IEC 61850 & digital substation integration</li>
-                  <li>Metering, protection & automation systems</li>
-                  <li>SCADA & communication architecture</li>
-                </ul>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center gap-12">
-            <div className="w-full">
-              <h3 className="section-title text-[#062516]">Sustainable & Future-Ready Solutions</h3>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                JIVO Energy develops sustainable infrastructure solutions supporting clean energy transition, resource optimization, carbon reduction, and circular economy initiatives. Our approach combines renewable energy technologies, intelligent infrastructure, and environmentally responsible engineering practices to deliver resilient and future-ready energy ecosystems.
-              </p>
-              <h4 className="text-xl font-bold text-gray-800 mb-4">Key Capabilities</h4>
-              <p className="text-gray-600 leading-relaxed">
-                <ul className="list-disc list-inside space-y-2">
-                  <li>Battery Energy Storage Systems (BESS)</li>
-                  <li>Hybrid energy & microgrid systems</li>
-                  <li>Waste-to-energy infrastructure</li>
-                  <li>Biogas & biomethane solutions</li>
-                  <li>Renewable energy optimization</li>
-                  <li>Sustainable infrastructure development</li>
-                  <li>Low-carbon & circular economy solutions</li>
-                </ul>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row-reverse items-center gap-12">
-            <div className="w-full">
-              <h3 className="section-title text-[#062516]">Operations & Maintenance</h3>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                We provide comprehensive operations and maintenance services focused on maximizing asset performance, operational availability, energy yield, equipment reliability, and lifecycle value. Our O&M services combine preventive maintenance, condition monitoring, diagnostics, and digital performance analytics to support long-term operational excellence.
-              </p>
-              <h4 className="text-xl font-bold text-gray-800 mb-4">Key Capabilities</h4>
-              <p className="text-gray-600 leading-relaxed">
-                <ul className="list-disc list-inside space-y-2">
-                  <li>Preventive & corrective maintenance</li>
-                  <li>Performance monitoring & diagnostics</li>
-                  <li>SCADA-enabled remote operations</li>
-                  <li>Asset management & reporting</li>
-                  <li>Reliability & efficiency optimization</li>
-                  <li>Spare parts & technical support</li>
-                  <li>Long-term operational services</li>
-                </ul>
-              </p>
+          <div className="rounded-[2rem] border border-[#dce9df] bg-white p-8 shadow-sm transition duration-300 hover:shadow-md md:p-12">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+              <div className="max-w-2xl">
+                <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-[#085D36]">
+                  Our strength
+                </p>
+                <h2 className="text-3xl font-semibold text-[#062516]">
+                  A multidisciplinary team delivering energy infrastructure with precision and purpose.
+                </h2>
+              </div>
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-full bg-[#085D36] px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-[#062516]"
+              >
+                Contact us
+              </a>
             </div>
           </div>
         </div>

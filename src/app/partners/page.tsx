@@ -27,7 +27,7 @@ const Partners = () => {
     const isFinancersSection = title === 'Financers';
 
     return (
-    <div className={`mb-16 ${isFinancersSection ? 'bg-[#F5FBF5] rounded-xl py-8 px-4 md:px-6' : ''}`}>
+    <div className={`mb-16 ${isFinancersSection ? 'relative left-1/2 -translate-x-1/2 w-screen bg-[#F5FBF5] py-10 px-35' : ''}`}>
       <h3 className="section-title-spl text-center text-[#062516] mb-10">
         {title}
       </h3>
