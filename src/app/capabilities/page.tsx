@@ -228,7 +228,7 @@ export default function Capabilities() {
         </div>
       </section>
 
-      <section className="bg-[#f4f8f5] py-16 md:py-20">
+      {/* <section className="bg-[#f4f8f5] py-16 md:py-20">
         <div className="container mx-auto px-4">
           <div className="rounded-[2rem] border border-[#dce9df] bg-white p-8 shadow-sm transition duration-300 hover:shadow-md md:p-12">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
@@ -249,7 +249,7 @@ export default function Capabilities() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <Footer />
     </main>
   );
