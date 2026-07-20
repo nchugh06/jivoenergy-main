@@ -129,7 +129,7 @@ export default function Capabilities() {
         </div> */}
       </section>
 
-      <section className="bg-[#f4f8f5] py-16 md:py-24">
+      {/* <section className="bg-[#f4f8f5] py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
             <div className="max-w-2xl">
@@ -156,12 +156,14 @@ export default function Capabilities() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="bg-white py-16 md:py-24">
         <div className="container mx-auto px-4">
+          <h3 className="section-title text-center text-[#062516] mb-10">Our Capabilities</h3>
           <div className="mb-10 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
+              
               {/* <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#085D36]">
                 Our capability journey
               </p> */}
@@ -185,7 +187,7 @@ export default function Capabilities() {
           index % 2 === 0 ? "md:order-1" : "md:order-2"
         }`}
       >
-        <p className="text-lg font-semibold uppercase tracking-[0.3em] text-[#085D36] bg-[#eaf6ed] px-4 py-2 w-fit rounded-[2rem]">
+        <p className="text-lg font-semibold uppercase tracking-[0.3em] text-[#ffffff] bg-[#1c4832] px-4 py-2 w-fit rounded-[2rem]">
           {item.eyebrow}
         </p>
 
