@@ -15,7 +15,11 @@ import BusinessAreasServices from "@/components/BusinessAreasServices";
 const businessAreas = [
   {
     title: "Solar PV",
-    description: "JIVO Energy delivers high-performance Solar PV solutions engineered for diverse grid conditions, harsh environmental climates, and evolving energy demands across Africa. Our expertise combines advanced engineering, optimized plant performance, intelligent energy integration, and reliable project execution to develop scalable renewable energy infrastructure for utilities, industries, institutions, and remote applications.",
+    description: (
+      <>
+        <strong>JIVO Energy</strong> delivers high-performance Solar PV solutions engineered for diverse grid conditions, harsh environmental climates, and evolving energy demands across Africa. Our expertise combines advanced engineering, optimized plant performance, intelligent energy integration, and reliable project execution to develop scalable renewable energy infrastructure for utilities, industries, institutions, and remote applications.
+      </>
+    ),
     image: solarPV,
     imageTitle: "Africa’s leading Solar EPC & O&M solutions providers",
     features: [
@@ -29,7 +33,11 @@ const businessAreas = [
   },
   {
     title: "Battery Energy Storage Systems (BESS)",
-    description: "JIVO Energy delivers advanced Battery Energy Storage System (BESS) solutions engineered to enhance grid stability, improve energy reliability, and support modern power infrastructure across utility, commercial, industrial, and renewable energy applications. Our expertise spans scalable standalone storage systems ranging from kWh-based backup applications to utility-scale multi-MWh installations integrated across LV, MV, and HV networks.",
+    description: (
+      <>
+        <strong>JIVO Energy</strong> delivers advanced Battery Energy Storage System (BESS) solutions engineered to enhance grid stability, improve energy reliability, and support modern power infrastructure across utility, commercial, industrial, and renewable energy applications. Our expertise spans scalable standalone storage systems ranging from kWh-based backup applications to utility-scale multi-MWh installations integrated across LV, MV, and HV networks.
+      </>
+    ),
     image: BESS,
     imageTitle: "Smart Energy Storage for a Reliable Tomorrow",
     features: [
@@ -45,7 +53,11 @@ const businessAreas = [
   },
   {
     title: "Transmission & Distribution",
-    description: "JIVO Energy delivers robust power transmission and distribution infrastructure engineered for high availability, operational resilience, and seamless energy transfer across complex electrical networks. Our expertise spans utility interconnections, renewable power evacuation systems, intelligent substations, and high-capacity transmission corridors supporting industrial, commercial, and national grid expansion projects.",
+    description: (
+      <>
+        <strong>JIVO Energy</strong> delivers robust power transmission and distribution infrastructure engineered for high availability, operational resilience, and seamless energy transfer across complex electrical networks. Our expertise spans utility interconnections, renewable power evacuation systems, intelligent substations, and high-capacity transmission corridors supporting industrial, commercial, and national grid expansion projects.
+      </>
+    ),
     image: transmission,
     imageTitle: "Efficient Transmission. Reliable Distribution",
     features: [
@@ -63,7 +75,11 @@ const businessAreas = [
   },
   {
     title: "Hybrid Energy Systems",
-    description: "JIVO Energy designs and implements intelligent hybrid energy systems integrating Grid, Solar PV, DG, and BESS technologies to deliver stable, efficient, and optimized power solutions for utilities, industries, telecom infrastructure, institutions, remote communities, and mission-critical applications. Our hybrid energy architectures are engineered to maximize renewable energy utilization, reduce diesel dependency, improve operational efficiency, and ensure uninterrupted power availability across dynamic operating environments.",
+    description: (
+      <>
+        <strong>JIVO Energy</strong> designs and implements intelligent hybrid energy systems integrating Grid, Solar PV, DG, and BESS technologies to deliver stable, efficient, and optimized power solutions for utilities, industries, telecom infrastructure, institutions, remote communities, and mission-critical applications. Our hybrid energy architectures are engineered to maximize renewable energy utilization, reduce diesel dependency, improve operational efficiency, and ensure uninterrupted power availability across dynamic operating environments.
+      </>
+    ),
     image: hybrid,
     imageTitle: "Integrated Energy Solutions for Reliable & Sustainable Power",
     features: [
@@ -81,7 +97,11 @@ const businessAreas = [
   },
   {
     title: "Biogas & Biomethane",
-    description: "JIVO Energy develops technically advanced biogas and biomethane infrastructure solutions engineered to convert agricultural residues, industrial effluents, municipal organic waste, and biodegradable feedstock into renewable energy, green fuel, and sustainable thermal power applications. Our integrated waste-to-energy approach combines anaerobic digestion, gas handling, purification, and energy recovery technologies to maximize resource utilization, reduce greenhouse gas emissions, and support circular economy development.",
+    description: (
+      <>
+        <strong>JIVO Energy</strong> develops technically advanced biogas and biomethane infrastructure solutions engineered to convert agricultural residues, industrial effluents, municipal organic waste, and biodegradable feedstock into renewable energy, green fuel, and sustainable thermal power applications. Our integrated waste-to-energy approach combines anaerobic digestion, gas handling, purification, and energy recovery technologies to maximize resource utilization, reduce greenhouse gas emissions, and support circular economy development.
+      </>
+    ),
     image: biogas,
     imageTitle: "Converting Waste into Clean & Sustainable Energy",
     features: [
@@ -99,7 +119,11 @@ const businessAreas = [
   },
   {
     title: "Waste Management & Waste-to-Energy",
-    description: "JIVO Energy develops integrated Waste Management and Waste-to-Energy (WtE) infrastructure solutions engineered to convert municipal, industrial, commercial, and organic waste streams into renewable power, recoverable resources, and sustainable energy products. Our solutions are designed to minimize landfill dependency, improve environmental sustainability, and support development of modern circular economy infrastructure through advanced waste processing and energy recovery technologies.",
+    description: (
+      <>
+        <strong>JIVO Energy</strong> develops integrated Waste Management and Waste-to-Energy (WtE) infrastructure solutions engineered to convert municipal, industrial, commercial, and organic waste streams into renewable power, recoverable resources, and sustainable energy products. Our solutions are designed to minimize landfill dependency, improve environmental sustainability, and support development of modern circular economy infrastructure through advanced waste processing and energy recovery technologies.
+      </>
+    ),
     image: wasteManagement,
     imageTitle: "Transforming Waste into Sustainable Energy Solutions",
     features: [
@@ -144,18 +168,19 @@ const BusinessAreas = () => {
       </section>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 py-5">
-        <div className="text-center mb-16">
-          <h3 className="section-title-spl text-center text-[#062516] mb-10">Business Areas</h3>
-          <p className="text-gray-600 px-6 md:px-12 max-w-7xl mx-auto">
-            JIVO Energy delivers integrated renewable energy and sustainable infrastructure solutions across Africa, combining advanced engineering, project development, EPC execution, energy storage technologies, and long-term operational support. With expertise spanning utility-scale Solar PV, Battery Energy Storage Systems (BESS), hybrid energy systems, transmission & distribution infrastructure, and waste-to-energy solutions, we develop reliable, efficient, and future-ready energy ecosystems tailored for emerging markets.<br></br><br></br>
-            Our multidisciplinary team specializes in complete project lifecycle execution — from feasibility studies, detailed engineering, grid integration, procurement, construction, commissioning, SCADA integration, and operations & maintenance — ensuring technically optimized and bankable energy solutions for utilities, governments, industries, commercial clients, and development agencies.
-
-          </p>
+      <div className="py-5">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h3 className="section-title-spl text-center text-[#062516] mb-10">Business Areas</h3>
+            <p className="text-gray-600 px-6 md:px-12 max-w-7xl mx-auto">
+              <b>JIVO Energy</b> delivers integrated renewable energy and sustainable infrastructure solutions across Africa, combining advanced engineering, project development, EPC execution, energy storage technologies, and long-term operational support. With expertise spanning utility-scale Solar PV, Battery Energy Storage Systems (BESS), hybrid energy systems, transmission & distribution infrastructure, and waste-to-energy solutions, we develop reliable, efficient, and future-ready energy ecosystems tailored for emerging markets.<br></br><br></br>
+              Our multidisciplinary team specializes in complete project lifecycle execution — from feasibility studies, detailed engineering, grid integration, procurement, construction, commissioning, SCADA integration, and operations & maintenance — ensuring technically optimized and bankable energy solutions for utilities, governments, industries, commercial clients, and development agencies.
+            </p>
+          </div>
         </div>
-            {/* <BusinessAreasServices /> */}
+        {/* <BusinessAreasServices /> */}
         {/* Business Areas Grid */}
-        <div className="space-y-24">
+        <div className="space-y-0">
           {businessAreas.map((area, index) => {
             const sectionIds = [
               'solar-pv',
@@ -165,38 +190,44 @@ const BusinessAreas = () => {
               'biogas-biomethane',
               'waste-management'
             ];
+            const sectionBg = index % 2 === 0 ? '#f5fbf5' : '#ffffff';
 
             return (
               <div
                 key={index}
                 id={sectionIds[index]}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-                  }`}
-              >                
-                <div>
-                  <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
-                    <Image
-                      src={area.image}
-                      alt={area.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-
-                
-                <div className="space-y-6">
-                  <h3 className="section-title-spl text-center text-[#062516] mb-10">{area.title}</h3>
-                  <h3 className="text-left text-gray-700 font-medium mt-2">{area.imageTitle}</h3>
-                  <p className="text-gray-600 leading-relaxed">{area.description}</p>
-
-
-                  <a
-                    href={`/business-areas/${sectionIds[index]}`}
-                    className="inline-block mt-6 px-6 py-3 bg-[#062516] text-white rounded-lg font-medium hover:bg-[#051e12] transition-colors duration-300"
+                className="w-full"
+                style={{ backgroundColor: sectionBg }}
+              >
+                <div className="max-w-7xl mx-auto px-4 py-16 lg:py-20">
+                  <div
+                    className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+                      }`}
                   >
-                    Read More
-                  </a>
+                    <div>
+                      <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
+                        <Image
+                          src={area.image}
+                          alt={area.title}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-6">
+                      <h3 className="section-title-spl text-[#062516] mb-10">{area.title}</h3>
+                      <h3 className="text-left text-gray-700 font-medium mt-2">{area.imageTitle}</h3>
+                      <p className="text-gray-600 leading-relaxed">{area.description}</p>
+
+                      <a
+                        href={`/business-areas/${sectionIds[index]}`}
+                        className="inline-block mt-6 px-6 py-3 bg-[#062516] text-white rounded-lg font-medium hover:bg-[#051e12] transition-colors duration-300"
+                      >
+                        Read More
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             );
@@ -204,7 +235,7 @@ const BusinessAreas = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="mt-24 text-center">
+        <div className="max-w-7xl mx-auto px-4 mt-24 text-center">
           <h3 className="section-title-spl text-[#062516] mb-6">
             Ready to Transform Your Energy Future?
           </h3>

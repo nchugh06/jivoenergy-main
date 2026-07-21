@@ -47,7 +47,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
         <div className="flex-grow">
           <div className="flex items-center mb-3 text-sm text-gray-500 font-medium">
-            <MapPin className="w-4 h-4 mr-1 text-[#FFFA84]" />
+            <MapPin className="w-4 h-4 mr-1 text-[#085d36]" />
             {project.country}
           </div>
           
@@ -69,7 +69,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           </div>
         </div>
 
-        <div className="mt-4 pt-4 border-t border-gray-50 flex justify-between items-center text-sm font-semibold text-[#062516] group-hover:text-[#FFFA84] group-hover:bg-[#062516] -mx-6 -mb-6 p-6 rounded-b-3xl transition-colors">
+        <div className="mt-4 pt-4 border-t border-gray-50 flex justify-between items-center text-sm font-semibold text-[#062516] group-hover:text-[#F5FBF5] group-hover:bg-[#062516] -mx-6 -mb-6 p-6 rounded-b-3xl transition-colors">
           <span>View Details</span>
           <Zap className="w-4 h-4" />
         </div>

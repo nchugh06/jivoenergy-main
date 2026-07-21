@@ -41,7 +41,7 @@ const Team = () => {
     { name: 'Shashi Kumar', image: '/team/Shashi.jpg', linkedin: 'https://www.linkedin.com/in/shashi-kumar-87449b148/' },
     { name: 'Vivek Gupta', image: '/team/Vivek.jpg', linkedin: 'https://www.linkedin.com/in/vivek-vikram-56470a127/' },
     { name: 'Pauline Wambui Wachira', image: '/team/Pauline.jpg', linkedin: 'https://www.linkedin.com/in/pauline-wachira-9597a777/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app' },
-    { name: 'Ashok Kumar', image: '/team/Ashok.jpg', linkedin: 'https://www.linkedin.com/in/ashok-kumar-74a07064/' },
+    // { name: 'Ashok Kumar', image: '/team/Ashok.jpg', linkedin: 'https://www.linkedin.com/in/ashok-kumar-74a07064/' },
     { name: 'Akshay Sharma', image: '/team/Akahsy.png', linkedin: 'https://www.linkedin.com/in/akshay-sharma-12b8b79a/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app' },
     { name: 'Nitin Kumar', image: '/team/Nitin.jpg', linkedin: 'https://www.linkedin.com/in/nitin-kumar-195675157/' },
     { name: 'Samuel Walusimbi', image: '/team/Samuel.jpg', linkedin: 'https://www.linkedin.com/in/samuel-walusimbi-k/' },
@@ -50,7 +50,7 @@ const Team = () => {
 
   const projectSupport: TeamMember[] = [
     { name: 'Manvendra Singh Hada', image: '/team/Manvendra.jpg', linkedin: 'https://www.linkedin.com/in/hadamanvendrasingh/' },
-    { name: 'Narendra', image: '/team/Narendra.jpg', linkedin: 'https://www.linkedin.com/in/narendra-mishra-b6a64561/' },
+    // { name: 'Narendra', image: '/team/Narendra.jpg', linkedin: 'https://www.linkedin.com/in/narendra-mishra-b6a64561/' },
     { name: 'Ravi Kumar', image: '/team/Ravi.jpg', linkedin: 'https://www.linkedin.com/in/ravi-kumar-yadav-36812a308/' },
     { name: 'Jaideep', image: '/team/Jaideep.jpg', linkedin: 'https://www.linkedin.com/in/jaideep-dhillon-a0440b398/' },
     { name: 'Eric', image: '/team/Eric.jpg', linkedin: 'https://www.linkedin.com/in/eric-masai-a8b79b84/' },

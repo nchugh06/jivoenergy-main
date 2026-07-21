@@ -30,6 +30,17 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const renderRichText = (content?: string | null) => {
+    if (!content) return null;
+
+    return content
+      .split('\n\n')
+      .filter(Boolean)
+      .map((paragraph, idx) => (
+        <p key={idx} dangerouslySetInnerHTML={{ __html: paragraph.replace(/\n/g, '<br />') }} />
+      ));
+  };
+
   const displayTitle = area.title?.trim() || slug
     .split('-')
     .filter(Boolean)
@@ -85,16 +96,14 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
         </div>
 
         {/* Content Grid */}
-        <div className="grid grid-cols-1 gap-6 items-start mb-6">
+        <div className="grid grid-cols-1 gap-6 items-start mb-6 bg">
           <div className="mb-0">
             <h3 className="section-title-spl text-center text-[#062516]">{displayTitle}</h3>
           </div>
           {/* Description Section */}
           <div className="space-y-6">
             <div className="text-gray-600 leading-relaxed space-y-4">
-              {area.fullDescription.split('\n\n').map((paragraph, idx) => (
-                <p key={idx}>{paragraph}</p>
-              ))}
+              {renderRichText(area.fullDescription)}
             </div>
           </div>
         </div>
@@ -105,9 +114,7 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
             <h3 className="text-2xl font-bold text-[#062516] mb-4 text-center">Standalone BESS Systems</h3>
             <div className="space-y-6">
               <div className="text-gray-600 leading-relaxed space-y-4">
-                {area.bessStandaloneDescription.split('\n\n').map((paragraph, idx) => (
-                  <p key={idx}>{paragraph}</p>
-                ))}
+                {renderRichText(area.bessStandaloneDescription)}
               </div>
             </div>
           </div>
@@ -136,9 +143,7 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
           <div className="grid grid-cols-1 gap-12 items-start mb-16">
             <div className="space-y-6">
               <div className="text-gray-600 leading-relaxed space-y-4">
-                {area.technicalDescription.split('\n\n').map((paragraph, idx) => (
-                  <p key={idx}>{paragraph}</p>
-                ))}
+                {renderRichText(area.technicalDescription)}
               </div>
             </div>
           </div>
