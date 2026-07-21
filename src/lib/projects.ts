@@ -69,7 +69,44 @@ export const getProjectBySlug = async (slug: string): Promise<Project | null> =>
 export const getProjectsByBusinessArea = async (businessArea: string): Promise<Project[]> => {
     try {
         const allProjects = await getProjects();
-        
+
+        const normalizeText = (value?: string) =>
+            (value || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+
+        const matchesAnyAlias = (value: string, aliases: string[]) => {
+            const normalizedValue = normalizeText(value);
+            return aliases.some(alias => normalizedValue.includes(normalizeText(alias)));
+        };
+
+        // Solar PV should show only the curated projects requested for this page.
+        const solarPvProjectAliases = [
+            'nkonge solar plant',
+            'kabulasoke',
+            'kabulasoke solar power plant',
+            'pepsi bottling plant',
+            'santo amaro solar pv plant',
+            'santo amaro solar power plant'
+        ];
+
+        // BESS should show only the single curated project for this page.
+        const bessProjectAliases = [
+            'grid-forming bess project',
+            'grid forming bess project',
+            'bess project',
+            'grid-forming bss project'
+        ];
+
+        // Hybrid Energy should show only the two curated projects for this page.
+        const hybridProjectAliases = [
+            'solar pv + bess hybrid systems for health facilities',
+            'solar pv & storage for unops',
+            'solar pv and storage',
+            'solar pv + bess hybrid systems',
+            'solar pv + bess hybrid',
+            'moyamba solar pv + bess hybrid mini-grid',
+            'solar pv + bess hybrid mini-grid'
+        ];
+
         // Map business area slugs to technology keywords
         const technologyMap: { [key: string]: string[] } = {
             'solar-pv': ['solar', 'pv', 'photovoltaic'],
@@ -79,16 +116,52 @@ export const getProjectsByBusinessArea = async (businessArea: string): Promise<P
             'biogas-biomethane': ['biogas', 'biomethane'],
             'waste-management': ['waste', 'waste-to-energy', 'wte']
         };
-        
+
+        if (businessArea === 'solar-pv') {
+            return allProjects.filter(project => {
+                if (project.businessArea === 'solar-pv') return true;
+
+                const title = normalizeText(project.title);
+                const location = normalizeText(project.location);
+                return matchesAnyAlias(title, solarPvProjectAliases) || matchesAnyAlias(location, solarPvProjectAliases);
+            });
+        }
+
+        if (businessArea === 'bess') {
+            return allProjects.filter(project => {
+                if (project.businessArea === 'bess') return true;
+
+                const title = normalizeText(project.title);
+                const location = normalizeText(project.location);
+                const tech = normalizeText(project.technology);
+                return [title, location, tech].some(value =>
+                    matchesAnyAlias(value, bessProjectAliases)
+                );
+            });
+        }
+
+        if (businessArea === 'hybrid-energy') {
+            return allProjects.filter(project => {
+                if (project.businessArea === 'hybrid-energy') return true;
+
+                const title = normalizeText(project.title);
+                const location = normalizeText(project.location);
+                const tech = normalizeText(project.technology);
+                return [title, location, tech].some(value =>
+                    matchesAnyAlias(value, hybridProjectAliases)
+                );
+            });
+        }
+
         const keywords = technologyMap[businessArea] || [];
-        
+
         // Filter projects by matching technology with keywords
         const filteredProjects = allProjects.filter(project => {
             if (!project.technology) return false;
             const tech = project.technology.toLowerCase();
             return keywords.some(keyword => tech.includes(keyword.toLowerCase()));
         });
-        
+
         return filteredProjects;
     } catch (error) {
         console.error("Error fetching projects by business area:", error);
