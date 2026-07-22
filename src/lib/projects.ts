@@ -104,7 +104,9 @@ export const getProjectsByBusinessArea = async (businessArea: string): Promise<P
             'solar pv + bess hybrid systems',
             'solar pv + bess hybrid',
             'moyamba solar pv + bess hybrid mini-grid',
-            'solar pv + bess hybrid mini-grid'
+            'solar pv + bess hybrid mini-grid',
+            '7 Mini Grids',
+            '7 Mini Grids Ethiopia'
         ];
 
         // Map business area slugs to technology keywords
