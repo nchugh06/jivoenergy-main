@@ -276,9 +276,8 @@ export default function AboutPage() {
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#085D36] opacity-10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
           <div className="max-w-4xl mx-auto relative z-10">
-            <h3 className="section-title-spl text-center lg:text-left mb-12 flex items-center justify-center lg:justify-start gap-4">
-              <span className="w-2 h-12 bg-[#000000] rounded-full hidden lg:block" />
-              Geographies 
+            <h3 className="section-title-spl text-center text-[#062516] mb-10">
+          Our Presence 
             </h3>
 
             <div className="space-y-8 mb-16">

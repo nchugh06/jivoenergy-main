@@ -159,7 +159,7 @@ const Careers = () => {
         {/* Why Work With Us */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
           <div className="space-y-8">
-            <h3 className="section-title text-[#062516] border-l-4 border-[#062516] pl-4">
+            <h3 className="section-title text-[#062516]">
               Why Work With Us?
             </h3>
             <p className="text-gray-600 mb-6">

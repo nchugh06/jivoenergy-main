@@ -95,7 +95,7 @@ export default function BusinessAreasServices({
 
                 {/* Content */}
                 <div className="px-6 py-6 flex flex-col items-center">
-                  <h3 className="text-lg md:text-xl font-semibold group-hover:text-[#C4D600] transition-colors duration-300">
+                  <h3 className="text-lg md:text-xl font-semibold group-hover:text-[#085d36] transition-colors duration-300">
                     {service.title}
                   </h3>
                   <p className="mt-3 text-sm md:text-base leading-relaxed">
