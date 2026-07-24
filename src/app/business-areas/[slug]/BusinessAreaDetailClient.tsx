@@ -183,7 +183,7 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
         )}
 
         {/* Call to Action */}
-        <div className="bg-[#062516]/5 rounded-lg p-12 text-center">
+        {/* <div className="bg-[#062516]/5 rounded-lg p-12 text-center">
           <h3 className="text-2xl font-bold text-[#062516] mb-4">
             Interested in Our {displayTitle} Solutions?
           </h3>
@@ -196,7 +196,7 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
           >
             Contact Us
           </a>
-        </div>
+        </div> */}
       </div>
 
       <Footer />

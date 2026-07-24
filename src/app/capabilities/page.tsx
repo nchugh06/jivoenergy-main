@@ -158,7 +158,7 @@ export default function Capabilities() {
         </div>
       </section> */}
 
-      <section className="bg-white py-16 md:py-24">
+      <section className="bg-white py-5">
         <div className="container mx-auto px-4">
           <h3 className="section-title text-center text-[#062516] mb-10">Our Capabilities</h3>
           <div className="mb-10 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">

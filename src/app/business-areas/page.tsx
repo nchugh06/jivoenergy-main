@@ -172,7 +172,7 @@ const BusinessAreas = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h3 className="section-title-spl text-center text-[#062516] mb-10">Business Areas</h3>
-            <p className="text-gray-600 px-6 md:px-12 max-w-7xl mx-auto">
+            <p>
               <b>JIVO Energy</b> delivers integrated renewable energy and sustainable infrastructure solutions across Africa, combining advanced engineering, project development, EPC execution, energy storage technologies, and long-term operational support. With expertise spanning utility-scale Solar PV, Battery Energy Storage Systems (BESS), hybrid energy systems, transmission & distribution infrastructure, and waste-to-energy solutions, we develop reliable, efficient, and future-ready energy ecosystems tailored for emerging markets.<br></br><br></br>
               Our multidisciplinary team specializes in complete project lifecycle execution — from feasibility studies, detailed engineering, grid integration, procurement, construction, commissioning, SCADA integration, and operations & maintenance — ensuring technically optimized and bankable energy solutions for utilities, governments, industries, commercial clients, and development agencies.
             </p>

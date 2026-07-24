@@ -159,7 +159,7 @@ const Careers = () => {
         {/* Why Work With Us */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
           <div className="space-y-8">
-            <h3 className="section-title text-[#062516]">
+            <h3 className="section-title text-[#062516] text-center">
               Why Work With Us?
             </h3>
             <p className="text-gray-600 mb-6">
@@ -195,7 +195,7 @@ const Careers = () => {
         </div>
 
         {/* Our Culture & Values */}
-        <div className="mb-24">
+        <div className="mb-24 ">
           <h3 className="section-title text-center text-[#062516]">Our Culture & Values</h3>
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
             {[
@@ -205,12 +205,12 @@ const Careers = () => {
               { icon: TrendingUp, title: "Continuous Improvement", desc: "Embracing learning, growth, and innovation." },
               { icon: Heart, title: "Customer-Focused", desc: "Placing our customers at the heart of everything we do." }
             ].map((value, index) => (
-              <div key={index} className="bg-[#F5FBF5] p-6 rounded-xl hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-[#062516]/20 group">
-                <div className="w-12 h-12 bg-[#062516]/5 rounded-full flex items-center justify-center mb-4 group-hover:bg-[#062516] transition-colors duration-300">
+              <div key={index} className="bg-[#F5FBF5] p-6 rounded-xl shadow-lg transition-all duration-300 group2">
+                <div className="w-12 h-12 bg-[#F5FBF5] rounded-full flex items-center justify-center mb-4 group2-hover:bg-[#062516] transition-colors duration-300">
                   <value.icon className="w-6 h-6 text-[#062516] group-hover:text-white transition-colors duration-300" />
                 </div>
-                <h4 className="text-lg font-bold text-[#062516] mb-2">{value.title}</h4>
-                <p className="text-sm text-black">{value.desc}</p>
+                <h4 className="text-lg font-bold text-[#062516] mb-2 bg-[#F5FBF5]">{value.title}</h4>
+                <p className="text-sm text-black bg-[#F5FBF5]">{value.desc}</p>
               </div>
             ))}
           </div>
@@ -265,7 +265,7 @@ const Careers = () => {
 
         {/* Job Openings */}
         <div className="mb-16">
-          <h3 className="section-title text-[#062516] mb-4">Current Job Openings</h3>
+          <h3 className="section-title text-[#062516] text-center">Current Job Openings</h3>
           <p className="mb-8">
             Be part of a future-focused team where innovation, collaboration, and purpose come together to create exceptional work.
             Ready to take the next step in your career? {/* <span className="font-semibold text-[#062516]">Apply Now!</span> */}
@@ -293,7 +293,7 @@ const Careers = () => {
               // }
             ].map((job, index) => (
               <div key={index} className="bg-white border border-gray-200 p-6 rounded-xl hover:shadow-md transition-shadow flex flex-col md:flex-row md:items-center justify-between group">
-                <div>
+                <div className="bg-[#F5FBF5] p-4 rounded-lg mb-4 md:mb-0 md:mr-6 flex-1">
                   <h4 className="text-xl font-bold text-[#062516] group-hover:text-[#062516]/80 transition-colors">
                     {job.title}
                   </h4>
