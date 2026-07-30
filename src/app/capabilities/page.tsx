@@ -179,7 +179,7 @@ export default function Capabilities() {
   {capabilityBlocks.map((item, index) => (
     <article
       key={item.title}
-      className="group grid overflow-hidden rounded-[2rem] border border-[#dce9df] bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl md:grid-cols-2"
+      className="grid overflow-hidden rounded-[2rem] border border-[#dce9df] bg-[#F5FBF5] shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl md:grid-cols-2"
     >
       {/* Content */}
       <div
