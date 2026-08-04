@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 
 const Achievements = () => {
@@ -9,11 +9,6 @@ const Achievements = () => {
     '400M USD+ Projects under development in Africa',
     'Employment opportunities to 1000+ workmen in Africa on projects.',
   ];
-  const [index, setIndex] = useState(0);
-  useEffect(() => {
-    const t = setInterval(() => setIndex(i => (i + 1) % bullets.length), 4500);
-    return () => clearInterval(t);
-  }, []);
 
   return (
     <section className="about-stats">
@@ -31,34 +26,15 @@ const Achievements = () => {
             />
           </div>
           <div className="about-two-col__copy">
-            {/* <p className="about-stats__subtitle">Our Achievements</p> */}
             <div className="about-stats__description justify-text">
-              <div className="achievement-carousel">
-                <div className="achievement-item list-disc pl-6">
-                  <span className="sr-only">Our Achievement</span>
-                  <h3 className="text-lg sm:text-2xl text-[#062516] text-bold">{bullets[index]}</h3>
-                </div>
-
-                <div className="carousel-controls mt-4 flex items-center gap-3 pl-6">
-                  <button
-                    aria-label="Previous achievement"
-                    onClick={() => setIndex(i => (i - 1 + bullets.length) % bullets.length)}
-                    className="px-3 py-2 rounded-full bg-gray-100 hover:bg-gray-200"
-                  >
-                    ←
-                  </button>
-
-                  <button
-                    aria-label="Next achievement"
-                    onClick={() => setIndex(i => (i + 1) % bullets.length)}
-                    className="px-3 py-2 rounded-full bg-gray-100 hover:bg-gray-200"
-                  >
-                    →
-                  </button>
-                </div>
-              </div>
+              <ul className="space-y-4 pl-5 text-base sm:text-lg text-[#062516]">
+                {bullets.map((bullet) => (
+                  <li key={bullet} className="list-disc marker:text-[#0b5b35] leading-relaxed">
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
             </div>
-
           </div>
         </div>
 
@@ -143,34 +119,29 @@ const Achievements = () => {
           </div>
         </div> */}
 
-        {/* inline styles for the new layout + icons */}
         <style jsx>{`
-          .about-two-col{
-            display:grid;
+          .about-two-col {
+            display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
-            align-items:center;
+            align-items: center;
             margin-top: 2.25rem;
           }
-          .about-two-col__video{ border-radius: 1rem; overflow:hidden; }
-          .about-two-col__copy{ }
 
-          .stat-icon{
-            width:44px;
-            height:44px;
-            color:#0ea5e9;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            border-radius:14px;
-            background: rgba(14,165,233,0.08);
-            margin-bottom: 0.75rem;
+          .about-two-col__video {
+            border-radius: 1rem;
+            overflow: hidden;
           }
-          .stat-icon svg{ width:24px; height:24px; }
 
-          /* desktop */
-          @media (min-width: 1024px){
-            .about-two-col{ grid-template-columns: 1.05fr 0.95fr; }
+          .about-two-col__copy {
+            display: flex;
+            align-items: center;
+          }
+
+          @media (min-width: 1024px) {
+            .about-two-col {
+              grid-template-columns: 1fr 1fr;
+            }
           }
         `}</style>
       </div>
