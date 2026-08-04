@@ -36,6 +36,7 @@ const Team = () => {
     { name: 'Naresh', image: '/team/Naresh.jpg', linkedin: '' },
     { name: 'Ivan', image: '/team/Ivan.JPG', linkedin: '' },
     { name: 'Samuel T', image: '/team/SamuelT.jpg', linkedin: '' },
+    { name: 'Francis', image: '/team/Francis.jpg', linkedin: '' },
     { name: 'Eric', image: '/team/Eric.jpg', linkedin: '' },
     
     
