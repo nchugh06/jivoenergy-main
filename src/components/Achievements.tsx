@@ -1,7 +1,34 @@
-import React from 'react';
+"use client";
+
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import './Achievements.css';
 
 const Achievements = () => {
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            section.classList.add('is-visible');
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
   const bullets = [
     'Successfully executed Hybrid Solar Power PV & Storage projects with varied technologies.',
     'Rapid expansion from single country business in 2018 to presence in 15 countries now.',
@@ -11,7 +38,7 @@ const Achievements = () => {
   ];
 
   return (
-    <section className="about-stats">
+    <section ref={sectionRef} className="about-stats">
       <div className="about-stats__container">
         <h3 className="section-title text-center text-[#062516]">What Sets Us Apart</h3>
         <div className="about-two-col">
@@ -27,9 +54,13 @@ const Achievements = () => {
           </div>
           <div className="about-two-col__copy">
             <div className="about-stats__description justify-text">
-              <ul className="space-y-4 pl-5 text-base sm:text-lg text-[#062516]">
-                {bullets.map((bullet) => (
-                  <li key={bullet} className="list-disc marker:text-[#0b5b35] leading-relaxed">
+              <ul className="achievement-list">
+                {bullets.map((bullet, index) => (
+                  <li
+                    key={bullet}
+                    className="achievement-item"
+                    style={{ transitionDelay: `${index * 120}ms` }}
+                  >
                     {bullet}
                   </li>
                 ))}
@@ -119,31 +150,7 @@ const Achievements = () => {
           </div>
         </div> */}
 
-        <style jsx>{`
-          .about-two-col {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            align-items: center;
-            margin-top: 2.25rem;
-          }
-
-          .about-two-col__video {
-            border-radius: 1rem;
-            overflow: hidden;
-          }
-
-          .about-two-col__copy {
-            display: flex;
-            align-items: center;
-          }
-
-          @media (min-width: 1024px) {
-            .about-two-col {
-              grid-template-columns: 1fr 1fr;
-            }
-          }
-        `}</style>
+        
       </div>
     </section>
   );

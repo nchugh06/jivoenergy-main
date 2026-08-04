@@ -1,0 +1,64 @@
+.about-stats {
+  position: relative;
+}
+
+.about-stats__container {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.about-two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  margin-top: 2.25rem;
+}
+
+.about-two-col__video {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.about-two-col__copy {
+  display: flex;
+  align-items: center;
+}
+
+.about-stats__description {
+  width: 100%;
+}
+
+.achievement-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-left: 1.25rem;
+  margin: 0;
+  list-style: disc;
+  color: #062516;
+}
+
+.achievement-item {
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  filter: blur(8px);
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s ease,
+    filter 0.65s ease;
+  line-height: 1.7;
+}
+
+.about-stats.is-visible .achievement-item {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+@media (min-width: 1024px) {
+  .about-two-col {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -69,7 +69,7 @@ export default function BusinessAreasServices({
   services = DEFAULT_SERVICES,
 }: BusinessAreasServicesProps) {
   return (
-    <section className="py-12 md:py-18 our-services">
+    <section className="bg-pistachio-green py-12 md:py-18 our-services">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h3 className="section-title text-center text-[#062516]">Our Business Areas</h3>
 
@@ -81,24 +81,24 @@ export default function BusinessAreasServices({
               className="h-full"
               aria-label={service.title}
             >
-              <div className="group h-full flex flex-col items-center text-center rounded-lg border border-white/15 bg-white/5 backdrop-blur-sm overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+              <div className="bg-white h-full flex flex-col overflow-hidden rounded-2xl border border-[#dce9dc] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                 {/* Image */}
-                <div className="relative w-full h-56 bg-gray-200">
+                <div className="relative h-56 w-full overflow-hidden">
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+                    className="object-cover object-center"
+                    sizes="(max-width: 768px) 100vw, (max-wid th: 1200px) 33vw, 33vw"
                   />
                 </div>
 
                 {/* Content */}
-                <div className="px-6 py-6 flex flex-col items-center">
-                  <h3 className="text-lg md:text-xl font-semibold group-hover:text-[#085d36] transition-colors duration-300">
+                <div className="flex flex-1 flex-col px-6 py-6 text-left">
+                  <h3 className="text-lg md:text-xl font-semibold text-[#062516] group-hover:text-[#085d36] transition-colors duration-300">
                     {service.title}
                   </h3>
-                  <p className="mt-3 text-sm md:text-base leading-relaxed">
+                  <p className="mt-3 text-sm md:text-base leading-relaxed text-[#43594d]">
                     {service.description}
                   </p>
                 </div>

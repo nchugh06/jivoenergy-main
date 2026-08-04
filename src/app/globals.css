@@ -3,6 +3,22 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --dark-green-background: #1c4832;
+  --light-green-background: #85c54a;
+  --pistachio-green-background: #f6faf5;
+
+}
+
+.bg-dark-green {
+  background-color: var(--dark-green-background);
+}
+.bg-light-green {
+  background-color: var(--light-green-background);
+}
+
+.bg-pistachio-green {
+  background-color: var(--pistachio-green-background);
 }
 
 @theme inline {
@@ -267,9 +283,10 @@ body {
 
 .group{
   background: #fafafa;
-  padding: 10px;
   color: #111827;
 }
+
+
 
 .group2{
   padding: 10px;
