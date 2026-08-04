@@ -69,7 +69,7 @@ export default function BusinessAreasServices({
   services = DEFAULT_SERVICES,
 }: BusinessAreasServicesProps) {
   return (
-    <section className="py-12 md:py-18 our-services bg-[#f6faf5]">
+    <section className="py-12 md:py-18 our-services">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h3 className="section-title text-center text-[#062516]">Our Business Areas</h3>
 

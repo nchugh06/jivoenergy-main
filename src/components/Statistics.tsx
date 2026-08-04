@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
 
 const stats = [
   {
@@ -64,6 +66,88 @@ const stats = [
   },
 ];
 
+const formatCounterValue = (value: number, suffix: string) => {
+  const formattedValue = new Intl.NumberFormat('en-US', {
+    maximumFractionDigits: 0,
+  }).format(value);
+
+  return `${formattedValue}${suffix}`;
+};
+
+const parseStatValue = (value: string) => {
+  const match = value.match(/^(\d+(?:\.\d+)?)(.*)$/);
+
+  if (!match) {
+    return { target: 0, suffix: value };
+  }
+
+  return {
+    target: Number(match[1]),
+    suffix: match[2],
+  };
+};
+
+const AnimatedStatValue = ({ value, textColor }: { value: string; textColor: string }) => {
+  const [hasStarted, setHasStarted] = useState(false);
+  const [displayValue, setDisplayValue] = useState(0);
+  const valueRef = useRef<HTMLHeadingElement | null>(null);
+  const { target, suffix } = parseStatValue(value);
+
+  useEffect(() => {
+    const node = valueRef.current;
+
+    if (!node) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35 }
+    );
+
+    observer.observe(node);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!hasStarted) {
+      return;
+    }
+
+    let animationFrame: number;
+    const duration = 1600;
+    const startTime = performance.now();
+
+    const animate = (currentTime: number) => {
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      const nextValue = target * easedProgress;
+
+      setDisplayValue(nextValue);
+
+      if (progress < 1) {
+        animationFrame = window.requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame = window.requestAnimationFrame(animate);
+
+    return () => window.cancelAnimationFrame(animationFrame);
+  }, [hasStarted, target]);
+
+  return (
+    <h3 ref={valueRef} className="stat-number text-center" style={{ color: textColor }} aria-label={value}>
+      {formatCounterValue(displayValue, suffix)}
+    </h3>
+  );
+};
+
 const Statistics = () => {
   return (
     <section className="about-stats stats-data bg-white">
@@ -79,7 +163,7 @@ const Statistics = () => {
                 {/* <div className="stat-icon" aria-hidden="true">
                   {stat.icon}
                 </div> */}
-                <h3 className="stat-number text-center" style={{ color: index % 2 === 0 ? '#125d36' : '#ffffff' }}>{stat.value}</h3>
+                <AnimatedStatValue value={stat.value} textColor={index % 2 === 0 ? '#125d36' : '#ffffff'} />
                 <h3 className="stat-description text-center text-bold" style={{ color: index % 2 === 0 ? '#125d36' : '#ffffff' }}>{stat.label}</h3>
               </div>
             </div>

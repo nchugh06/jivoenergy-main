@@ -1,2 +1,15 @@
-.vercel
-.env*.local
+# dependencies
+node_modules/
+
+# next.js
+.next/
+
+# production
+out/
+
+# logs
+*.log
+
+# env
+.env
+.env.local
