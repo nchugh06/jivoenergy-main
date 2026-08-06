@@ -36,7 +36,7 @@
   padding-left: 1.25rem;
   margin: 0;
   list-style: disc;
-  color: #062516;
+  color: var(--color-text-dark);
 }
 
 .achievement-item {

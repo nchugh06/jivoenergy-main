@@ -30,7 +30,7 @@
 }
 
 .about-stats .grid-item .stat-icon {
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 .grid-item .content {

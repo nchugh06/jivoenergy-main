@@ -1,7 +1,7 @@
 .media-home-section {
   position: relative;
   overflow: hidden;
-  background: var(--pistachio-green-background, #f6faf5);
+  background: var(--color-pistachio-green);
   padding: 4rem 0;
 }
 
@@ -13,23 +13,6 @@
   filter: blur(48px);
 }
 
-.media-home-glow-left {
-  left: 0;
-  top: 50%;
-  width: 18rem;
-  height: 18rem;
-  background: #d6efd7;
-  opacity: 0.3;
-}
-
-.media-home-glow-right {
-  right: 0;
-  bottom: 0;
-  width: 24rem;
-  height: 24rem;
-  background: #a5d89f;
-  opacity: 0.3;
-}
 
 .media-home-shell {
   position: relative;
@@ -39,17 +22,17 @@
 }
 
 .media-home-title {
-  text-align: center;
-  color: #062516;
   margin-bottom: 3.5rem;
+  text-align: center;
+  color: var(--color-text-dark);
 }
 
 .media-home-carousel-wrap {
   position: relative;
   overflow: hidden;
   border-radius: 1.5rem;
-  background: #ffffff;
-  box-shadow: 0 20px 80px rgba(6, 37, 22, 0.12);
+  background: var(--color-white);
+  box-shadow: var(--shadow-card);
 }
 
 .media-home-swiper {
@@ -67,24 +50,25 @@
   min-height: 100%;
   overflow: hidden;
   border-radius: 1.5rem;
-  background: #ffffff;
+  border: 1px solid transparent;
+  background: var(--color-white);
   transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.media-home-card:hover {
-  border: 1px solid #1c4832;
-  box-shadow: 0 14px 30px rgba(6, 37, 22, 0.12);
+.media-home-swiper .swiper-slide-next .media-home-card {
+  border-color: var(--color-dark-green);
+  box-shadow: var(--shadow-card-hover);
 }
 
-.media-home-card:hover .media-home-card-image {
-  border-color: #1c4832;
+.media-home-card:hover {
+  box-shadow: none;
 }
 
 .media-home-card-image {
   position: relative;
   height: 18rem;
   overflow: hidden;
-  background: #e9f4e4;
+  background: var(--color-pistachio-green);
 }
 
 .media-home-card-image img {
@@ -110,21 +94,21 @@
   font-weight: 600;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #62a557;
+  color: var(--color-card-accent);
 }
 
 .media-home-card-title {
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.35;
-  color: #062516;
+  color: var(--color-text-dark);
 }
 
 .media-home-card-description {
   margin-top: 1rem;
   font-size: 0.875rem;
   line-height: 1.6;
-  color: #455c4f;
+  color: var(--color-text-muted);
   flex: 1 1 auto;
 }
 
@@ -134,12 +118,12 @@
   align-items: center;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #062516;
+  color: var(--color-text-dark);
   transition: color 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .media-home-card:hover .media-home-card-link {
-  color: #3c7d42;
+  color: var(--color-dark-green);
 }
 
 .media-home-nav {
@@ -160,9 +144,9 @@
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
-  border: 1px solid #d9edd5;
-  background: #ffffff;
-  color: #062516;
+  border: 1px solid var(--color-border-soft);
+  background: var(--color-white);
+  color: var(--color-text-dark);
   box-shadow: 0 8px 20px rgba(6, 37, 22, 0.08);
   transition: background-color 0.3s ease;
   pointer-events: auto;
@@ -178,7 +162,7 @@
 
 .media-home-prev:hover,
 .media-home-next:hover {
-  background: #eef7ed;
+  background: var(--color-pistachio-green);
 }
 
 @media (min-width: 768px) {
