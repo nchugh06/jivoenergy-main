@@ -3,9 +3,9 @@
 }
 
 .about-stats__container {
-  width: min(1120px, 100%);
+  width: min(1400px, 100%);
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 5%;
 }
 
 .about-two-col {
@@ -22,7 +22,6 @@
 }
 
 .about-two-col__copy {
-  display: flex;
   align-items: center;
 }
 
@@ -45,9 +44,9 @@
   transform: translateY(24px) scale(0.98);
   filter: blur(8px);
   transition:
-    opacity 0.65s ease,
-    transform 0.65s ease,
-    filter 0.65s ease;
+    opacity 0.90s ease,
+    transform 0.90s ease,
+    filter 0.90s ease;
   line-height: 1.7;
 }
 

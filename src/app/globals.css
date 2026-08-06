@@ -144,34 +144,6 @@ body {
   opacity: 0.9;
 }
 
-.about-stats .stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(1, 1fr);
-  border: none;
-  border-bottom: none;
-  border-left: none;
-  /* min-height: 500px; */
-  /* background: #2d4a2d; */
-}
-
-.about-stats .grid-item:nth-child(1) {
-  animation-delay: 0s;
-}
-
-.about-stats .grid-item {
-  animation: fadeInUp 0.6s ease forwards;
-  animation-delay: 0s;
-  border: none;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.about-stats .grid-item .stat-icon {
-  color: #ffffff;
-}
 
 /* .about-stats .grid-item .stat-number,
 .about-stats .grid-item .stat-description {
