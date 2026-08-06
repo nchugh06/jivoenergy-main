@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { FaLinkedin, FaInstagram, FaEnvelope } from 'react-icons/fa';
+import { FaLinkedin, FaInstagram, FaYoutube, FaEnvelope } from 'react-icons/fa';
 
 import { countries } from '@/lib/countries';
 
@@ -182,6 +182,13 @@ const Contact = () => {
                 >
                   <FaInstagram size={20} />
                   <span className="ml-2">Instagram</span>
+                </a>
+                <a 
+                  href="https://www.youtube.com/@JIVOEnergy" target="_blank"
+                  className="flex items-center text-[#062516] hover:text-[#051e12] transition-colors duration-300"
+                >
+                  <FaYoutube size={20} />
+                  <span className="ml-2">YouTube</span>
                 </a>
                 <a 
                   href="https://www.linkedin.com/company/jivo-energy/" target="_blank"

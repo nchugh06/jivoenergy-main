@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaLinkedin, FaTwitter, FaFacebook, FaInstagram } from 'react-icons/fa';
+import { FaLinkedin, FaTwitter, FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -37,6 +37,9 @@ const Footer = () => {
               </a> */}
               <a href="https://www.instagram.com/jivoenergy?igsh=MTQ4MDN2bDV6NjJhNA==" target="_blank" className="text-gray-400 hover:text-white transition-colors duration-200">
                 <FaInstagram size={20} />
+              </a>
+              <a href="https://www.youtube.com/@JIVOEnergy" target="_blank" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <FaYoutube size={20} />
               </a>
             </div>
             <div className="mt-4">

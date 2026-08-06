@@ -7,7 +7,7 @@ const About = () => {
         <div className="about-two-col">
           <div className="about-two-col__video">            
             <video 
-              src="/assets/videos/aboutus.mp4"
+              src="/assets/videos/final_video_22mb.mp4"
               className="w-full h-full object-cover rounded-2xl"
               autoPlay
               muted

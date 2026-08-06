@@ -36,7 +36,15 @@ const stats = [
   },
   {
     value: '100MWp',
-    label: 'Delivered & 200MWp+ under Development',
+    label: (
+      <>
+        Delivered &
+        <br />
+        200MWp+
+        <br />
+        under Development
+      </>
+    ),
     icon: (
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M4 14l6-10 6 10H4z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
@@ -47,7 +55,15 @@ const stats = [
   },
   {
     value: '60MWh',
-    label: 'Delivered & 50MWh+ under Development',
+    label: (
+      <>
+        Delivered &
+        <br />
+        50MWh+
+        <br />
+        under Development
+      </>
+    ),
     icon: (
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M7 7h10v10H7V7z" stroke="currentColor" strokeWidth="1.8" />
@@ -156,7 +172,7 @@ const Statistics = () => {
         <div className="stats-grid">
           {stats.map((stat, index) => (
             <div
-              key={stat.label}
+              key={stat.value}
               className="grid-item"
               style={{ backgroundColor: index % 2 === 0 ? '#85c54a' : '#1c4832', color: index % 2 === 0 ? '#125d36' : '#ffffff' }}
             >
