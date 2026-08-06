@@ -77,6 +77,8 @@ body {
   pointer-events: none;
 }
 
+
+
 .animate-fade-up {
   animation: fadeInUp 0.8s ease-out forwards;
 }
