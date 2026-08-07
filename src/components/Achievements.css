@@ -1,7 +1,6 @@
-/* Scoped to Achievements only — avoid about-stats / about-two-col (used elsewhere) */
 .achievements {
   position: relative;
-  padding:30px 0px;
+  padding: 30px 0;
 }
 
 .achievements__container {
@@ -14,6 +13,7 @@
 .achievements__embla {
   width: 100%;
   overflow: hidden;
+  border-radius: 1rem;
 }
 
 .achievements__embla-container {
@@ -23,6 +23,15 @@
 .achievements__embla-slide {
   flex: 0 0 100%;
   min-width: 0;
+  padding: 1.75rem 1.5rem;
+}
+
+.achievements__embla-slide--pistachio {
+  background-color: var(--pistachio-green-background);
+}
+
+.achievements__embla-slide--white {
+  background-color: var(--color-white);
 }
 
 .achievements__grid {
@@ -62,54 +71,6 @@
   justify-content: center;
 }
 
-/* Counter: 01 —— 05 — fixed above the slider, not inside Embla */
-.achievements__counter {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--color-text-dark, #062516);
-  letter-spacing: 0.02em;
-}
-
-.achievements__counter-current {
-  color: var(--dark-green-background);
-}
-
-/* Progress rule: fill animates over autoplay duration; remounted on slide change */
-.achievements__counter-rule {
-  position: relative;
-  display: inline-block;
-  width: 3rem;
-  height: 2px;
-  background: var(--light-green-background);
-  overflow: hidden;
-}
-
-.achievements__counter-rule-fill {
-  position: absolute;
-  inset: 0;
-  background: var(--dark-green-background);
-  transform-origin: left center;
-  animation-name: achievements-rule-fill;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-}
-
-@keyframes achievements-rule-fill {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
-  }
-}
-
-.achievements__counter-total {
-  opacity: 0.55;
-}
-
 .achievements__title {
   margin: 0;
   max-width: 34ch;
@@ -147,8 +108,8 @@
 
 @media (min-width: 1024px) {
   .achievements__grid {
-    grid-template-columns: 60% 40%;
-    gap: 3.5rem;
+    grid-template-columns: 50% 50%;
+    gap: 1.5rem;
   }
 
   .achievements__content {

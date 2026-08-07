@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useRef } from "react";
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import "./Achievements.css";
 
 type Slide = {
+  id:number;
   title: string;
   image: string;
   caption?: string;
@@ -14,38 +15,47 @@ type Slide = {
 
 const slides: Slide[] = [
   {
+    id:1,
     title:
       "Successfully executed Hybrid Solar Power PV & Storage projects with varied technologies.",
     image: "/assets/our-achievement.jpg",
     caption: "Hybrid PV & Storage",
   },
   {
+    id:2,
     title:
       "Rapid expansion from single country business in 2018 to presence in 15 countries now.",
     image: "/assets/our-achievement.jpg",
     caption: "15 Countries",
   },
   {
+    id:3,
     title: "100M USD+ Projects completed/under construction in Africa",
     image: "/assets/our-achievement.jpg",
     caption: "Africa · Completed & Ongoing",
   },
   {
+    id:4,
     title: "400M USD+ Projects under development in Africa",
     image: "/assets/our-achievement.jpg",
     caption: "Africa · Development Pipeline",
   },
   {
+    id:5,
     title: "Employment opportunities to 1000+ workmen in Africa on projects.",
     image: "/assets/our-achievement.jpg",
     caption: "Local Employment",
   },
+  {
+    id:6,
+    title:
+      "Successfully executed Hybrid Solar Power PV & Storage projects with varied technologies.",
+    image: "/assets/our-achievement.jpg",
+    caption: "Hybrid PV & Storage",
+  }
 ];
 
-/** Keep in sync with the rule-fill animation duration. */
 const AUTOPLAY_DELAY_MS = 5000;
-
-const pad = (n: number) => String(n).padStart(2, "0");
 
 const Achievements = () => {
   // Stable plugin instance so Embla doesn't re-init on every render.
@@ -56,27 +66,7 @@ const Achievements = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
     autoplay.current,
   ]);
-  const [activeIndex, setActiveIndex] = useState(0);
 
-  const total = slides.length;
-
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setActiveIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-    onSelect();
-    emblaApi.on("select", onSelect);
-    emblaApi.on("reInit", onSelect);
-    return () => {
-      emblaApi.off("select", onSelect);
-      emblaApi.off("reInit", onSelect);
-    };
-  }, [emblaApi, onSelect]);
-
-  // Restart autoplay timer after manual nav so the fill stays in sync.
   const resetAutoplay = useCallback(() => {
     const plugin = emblaApi?.plugins()?.autoplay;
     if (!plugin) return;
@@ -101,7 +91,6 @@ const Achievements = () => {
         </h3>
 
         <div className="achievements__grid">
-          {/* Static image — not part of the carousel */}
           <div className="achievements__media">
             <div className="achievements__image">
               <Image
@@ -115,29 +104,18 @@ const Achievements = () => {
             </div>
           </div>
 
-          {/* Counter stays fixed above the slider; only the copy scrolls */}
           <div className="achievements__content">
-            <div className="achievements__counter" aria-hidden="true">
-              <span className="achievements__counter-current">
-                {pad(activeIndex + 1)}
-              </span>
-              <span className="achievements__counter-rule">
-                {/* Remount on slide change so the fill restarts from 0 */}
-                <span
-                  key={activeIndex}
-                  className="achievements__counter-rule-fill"
-                  style={{
-                    animationDuration: `${AUTOPLAY_DELAY_MS}ms`,
-                  }}
-                />
-              </span>
-              <span className="achievements__counter-total">{pad(total)}</span>
-            </div>
-
             <div className="achievements__embla" ref={emblaRef}>
               <div className="achievements__embla-container">
-                {slides.map((slide) => (
-                  <div className="achievements__embla-slide" key={slide.title}>
+                {slides.map((slide, index) => (
+                  <div
+                    className={`achievements__embla-slide ${
+                      index % 2 === 0
+                        ? "achievements__embla-slide--pistachio"
+                        : "achievements__embla-slide--white"
+                    }`}
+                    key={slide.id}
+                  >
                     <div className="achievements__copy">
                       <p className="text-lg sm:text-2xl text-[#062516] text-bold">
                         {slide.title}
