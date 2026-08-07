@@ -94,16 +94,16 @@ const Achievements = () => {
   }, [emblaApi, resetAutoplay]);
 
   return (
-    <section className="about-stats">
-      <div className="about-stats__container">
+    <section className="achievements">
+      <div className="achievements__container">
         <h3 className="section-title text-center text-[#062516]">
           What Sets Us Apart
         </h3>
 
-        <div className="about-two-col">
+        <div className="achievements__grid">
           {/* Static image — not part of the carousel */}
-          <div className="about-two-col__media">
-            <div className="about-two-col__video">
+          <div className="achievements__media">
+            <div className="achievements__image">
               <Image
                 src="/assets/our-achievement.jpg"
                 alt="Our Achievements"
@@ -116,29 +116,29 @@ const Achievements = () => {
           </div>
 
           {/* Counter stays fixed above the slider; only the copy scrolls */}
-          <div className="about-two-col__content">
-            <div className="achievement-counter" aria-hidden="true">
-              <span className="achievement-counter__current">
+          <div className="achievements__content">
+            <div className="achievements__counter" aria-hidden="true">
+              <span className="achievements__counter-current">
                 {pad(activeIndex + 1)}
               </span>
-              <span className="achievement-counter__rule">
+              <span className="achievements__counter-rule">
                 {/* Remount on slide change so the fill restarts from 0 */}
                 <span
                   key={activeIndex}
-                  className="achievement-counter__rule-fill"
+                  className="achievements__counter-rule-fill"
                   style={{
                     animationDuration: `${AUTOPLAY_DELAY_MS}ms`,
                   }}
                 />
               </span>
-              <span className="achievement-counter__total">{pad(total)}</span>
+              <span className="achievements__counter-total">{pad(total)}</span>
             </div>
 
-            <div className="achievements-embla" ref={emblaRef}>
-              <div className="achievements-embla__container">
+            <div className="achievements__embla" ref={emblaRef}>
+              <div className="achievements__embla-container">
                 {slides.map((slide) => (
-                  <div className="achievements-embla__slide" key={slide.title}>
-                    <div className="about-two-col__copy">
+                  <div className="achievements__embla-slide" key={slide.title}>
+                    <div className="achievements__copy">
                       <p className="text-lg sm:text-2xl text-[#062516] text-bold">
                         {slide.title}
                       </p>
@@ -148,10 +148,10 @@ const Achievements = () => {
               </div>
             </div>
 
-            <div className="achievement-nav">
+            <div className="achievements__nav">
               <button
                 type="button"
-                className="achievement-nav__btn"
+                className="achievements__nav-btn"
                 aria-label="Previous achievement"
                 onClick={scrollPrev}
               >
@@ -171,7 +171,7 @@ const Achievements = () => {
               </button>
               <button
                 type="button"
-                className="achievement-nav__btn"
+                className="achievements__nav-btn"
                 aria-label="Next achievement"
                 onClick={scrollNext}
               >
