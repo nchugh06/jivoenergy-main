@@ -12,6 +12,7 @@
   --color-light-green: var(--light-green-background);
   --color-pistachio-green: var(--pistachio-green-background);
   --color-white: #ffffff;
+  --color-text-natural:#111827;
   --color-text-dark: #062516;
   --color-text-muted: #455c4f;
   --color-border-soft: #d9edd5;
@@ -20,6 +21,13 @@
   --color-dark-green-rgb: 28, 72, 50;
   --shadow-card: 0 20px 80px rgba(6, 37, 22, 0.12);
   --shadow-card-hover: 0 14px 30px rgba(6, 37, 22, 0.12);
+}
+
+.text-dark-green {
+  color: var(--dark-green-background);
+}
+.text-muted{
+  color: var(--color-text-muted);
 }
 
 .bg-dark-green {
@@ -264,8 +272,8 @@ body {
 }
 
 .group {
-  background: var(--color-pistachio-green);
-  color: var(--color-text-dark);
+  background: var(--color-white);
+  color: var(--color-text-natural);
 }
 
 .group2 {

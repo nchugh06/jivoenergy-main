@@ -81,7 +81,7 @@ export default function BusinessAreasServices({
               className="h-full grid grid-rows-subgrid row-span-3"
               aria-label={service.title}
             >
-              <div className="grid grid-rows-subgrid row-span-3 gap-0 bg-white overflow-hidden rounded-2xl border border-[#dce9dc] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div className="group grid grid-rows-subgrid row-span-3 gap-0 bg-white overflow-hidden rounded-2xl border border-[#dce9dc] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                 {/* Image */}
                 <div className="relative h-56 w-full overflow-hidden">
                   <Image
@@ -94,11 +94,11 @@ export default function BusinessAreasServices({
                 </div>
 
                 {/* Content */}
-                <div className="px-6 py-6 text-left grid grid-rows-subgrid row-span-2 gap-0">
-                  <h3 className="text-lg md:text-xl font-semibold text-[#062516] group-hover:text-[#085d36] transition-colors duration-300 text-center">
+                <div className="px-6 py-6 text-left grid grid-rows-subgrid row-span-2 gap-0 items-start justify-items-center">
+                  <h3 className="text-lg md:text-xl font-semibold group-hover:text-[#085d36] transition-colors duration-300">
                     {service.title}
                   </h3>
-                  <p className="mt-3 text-sm md:text-base leading-relaxed text-[#43594d]">
+                  <p className="mt-3 text-sm md:text-base leading-relaxed">
                     {service.description}
                   </p>
                 </div>
