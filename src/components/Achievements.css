@@ -8,56 +8,179 @@
   padding: 0 5%;
 }
 
+/* Embla viewport/container/slide structure — wraps only the copy column */
+.achievements-embla {
+  width: 100%;
+  overflow: hidden;
+}
+
+.achievements-embla__container {
+  display: flex;
+}
+
+.achievements-embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
 .about-two-col {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 2.5rem;
   align-items: center;
-  margin-top: 2.25rem;
+}
+
+.about-two-col__media {
+  position: relative;
+}
+
+.about-two-col__content {
+  display: flex;
+  flex-direction: column;
 }
 
 .about-two-col__video {
   border-radius: 1rem;
   overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.about-two-col__caption {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: var(--color-text-dark, #062516);
+  opacity: 0.6;
 }
 
 .about-two-col__copy {
-  align-items: center;
-}
-
-.about-stats__description {
-  width: 100%;
-}
-
-.achievement-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding-left: 1.25rem;
+  justify-content: center;
+  gap: 1.75rem;
+}
+
+/* Counter: 06 —— 11 */
+.achievement-counter {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-dark, #062516);
+  letter-spacing: 0.02em;
+}
+
+.achievement-counter__current {
+  color: var(--dark-green-background);
+}
+
+/* The "loading" line: a track with an inner fill that animates
+   left-to-right over the autoplay duration, restarting on every
+   slide change (the fill span is remounted via a React key). */
+.achievement-counter__rule {
+  position: relative;
+  display: inline-block;
+  width: 3rem;
+  height: 2px;
+  background: var(--light-green-background);
+  overflow: hidden;
+}
+
+.achievement-counter__rule-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--dark-green-background);
+  transform-origin: left center;
+  animation-name: achievement-rule-fill;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes achievement-rule-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.achievement-counter__total {
+  opacity: 0.55;
+}
+
+/* Headline */
+.achievement-title {
   margin: 0;
-  list-style: disc;
-  color: var(--color-text-dark);
+  max-width: 34ch;
+  font-size: clamp(1.5rem, 2.4vw, 2.15rem);
+  line-height: 1.35;
+  font-weight: 400;
+  color: var(--color-text-dark, #062516);
 }
 
-.achievement-item {
-  opacity: 0;
-  transform: translateY(24px) scale(0.98);
-  filter: blur(8px);
-  transition:
-    opacity 0.90s ease,
-    transform 0.90s ease,
-    filter 0.90s ease;
-  line-height: 1.7;
+/* Prev / next controls — sits right under the sliding copy */
+.achievement-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
 }
 
-.about-stats.is-visible .achievement-item {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
+.achievement-nav__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  border: none;
+  background: #f2f1ee;
+  color: #062516;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
+
+.achievement-nav__btn svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+
+
+
+
+/* Dots */
+.achievement-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.achievement-dots__dot {
+  display: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  border: none;
+  padding: 0;
+  background: #d8d6d0;
+  cursor: pointer;
+  transition: background 0.25s ease, width 0.25s ease;
+}
+
+
 
 @media (min-width: 1024px) {
   .about-two-col {
     grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+  }
+
+  .about-two-col__copy {
+    padding-left: 1rem;
   }
 }
