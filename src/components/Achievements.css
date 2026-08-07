@@ -37,6 +37,7 @@
 .about-two-col__content {
   display: flex;
   flex-direction: column;
+  gap: 1.75rem;
 }
 
 .about-two-col__video {
@@ -58,10 +59,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1.75rem;
 }
 
-/* Counter: 06 —— 11 */
+/* Counter: 06 —— 11 — fixed above the slider, not inside Embla */
 .achievement-counter {
   display: flex;
   align-items: center;
@@ -126,7 +126,6 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-top: 2rem;
 }
 
 .achievement-nav__btn {
@@ -176,11 +175,11 @@
 
 @media (min-width: 1024px) {
   .about-two-col {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 50% 50%;
     gap: 3.5rem;
   }
 
-  .about-two-col__copy {
+  .about-two-col__content {
     padding-left: 1rem;
   }
 }

@@ -93,14 +93,6 @@ const Achievements = () => {
     resetAutoplay();
   }, [emblaApi, resetAutoplay]);
 
-  const scrollTo = useCallback(
-    (index: number) => {
-      emblaApi?.scrollTo(index);
-      resetAutoplay();
-    },
-    [emblaApi, resetAutoplay]
-  );
-
   return (
     <section className="about-stats">
       <div className="about-stats__container">
@@ -123,86 +115,83 @@ const Achievements = () => {
             </div>
           </div>
 
-          {/* Only the copy column auto-scrolls — nav must stay outside Embla */}
-          <div className="achievements-embla" ref={emblaRef}>
-            <div className="achievements-embla__container">
-              {slides.map((slide, index) => (
-                <div className="achievements-embla__slide" key={slide.title}>
-                  <div className="about-two-col__copy">
-                    <div className="achievement-counter" aria-hidden="true">
-                      <span className="achievement-counter__current">
-                        {pad(index + 1)}
-                      </span>
-                      <span className="achievement-counter__rule">
-                        {/* Remount on slide change so the fill restarts from 0 */}
-                        {index === activeIndex && (
-                          <span
-                            key={activeIndex}
-                            className="achievement-counter__rule-fill"
-                            style={{
-                              animationDuration: `${AUTOPLAY_DELAY_MS}ms`,
-                            }}
-                          />
-                        )}
-                      </span>
-                      <span className="achievement-counter__total">
-                        {pad(total)}
-                      </span>
-                    </div>
-
-                    <p className="text-lg sm:text-2xl text-[#062516] text-bold">{slide.title}</p>
-                  </div>
-                </div>
-              ))}
+          {/* Counter stays fixed above the slider; only the copy scrolls */}
+          <div className="about-two-col__content">
+            <div className="achievement-counter" aria-hidden="true">
+              <span className="achievement-counter__current">
+                {pad(activeIndex + 1)}
+              </span>
+              <span className="achievement-counter__rule">
+                {/* Remount on slide change so the fill restarts from 0 */}
+                <span
+                  key={activeIndex}
+                  className="achievement-counter__rule-fill"
+                  style={{
+                    animationDuration: `${AUTOPLAY_DELAY_MS}ms`,
+                  }}
+                />
+              </span>
+              <span className="achievement-counter__total">{pad(total)}</span>
             </div>
-            <div className="achievement-nav">
-          <button
-            type="button"
-            className="achievement-nav__btn"
-            aria-label="Previous achievement"
-            onClick={scrollPrev}
-          >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M15 6l-6 6 6 6"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-          <button
-            type="button"
-            className="achievement-nav__btn"
-            aria-label="Next achievement"
-            onClick={scrollNext}
-          >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M9 6l6 6-6 6"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
 
-        
-        </div>
+            <div className="achievements-embla" ref={emblaRef}>
+              <div className="achievements-embla__container">
+                {slides.map((slide) => (
+                  <div className="achievements-embla__slide" key={slide.title}>
+                    <div className="about-two-col__copy">
+                      <p className="text-lg sm:text-2xl text-[#062516] text-bold">
+                        {slide.title}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="achievement-nav">
+              <button
+                type="button"
+                className="achievement-nav__btn"
+                aria-label="Previous achievement"
+                onClick={scrollPrev}
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15 6l-6 6 6 6"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+              <button
+                type="button"
+                className="achievement-nav__btn"
+                aria-label="Next achievement"
+                onClick={scrollNext}
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9 6l6 6-6 6"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
-
-        
       </div>
     </section>
   );
