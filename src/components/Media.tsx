@@ -9,6 +9,7 @@ interface MediaCard {
   image: string;
   category: string;
   link?: string;
+  open?: 'tab' | 'iframe';
 }
 
 export const mediaCards: MediaCard[] = [
@@ -26,7 +27,8 @@ export const mediaCards: MediaCard[] = [
     description: "Utility-scale solar and storage installer Jivo Energy said on Tuesday it has launched commercial operations of a 20-MW/40-MWh battery in Malawi.",
     image: "/media_assets/grid_forming.webp",
     category: "News",
-    link: "https://renewablesnow.com/news/jivo-energy-powers-up-20-mw-grid-forming-battery-in-malawi-1299191/"
+    link: "https://renewablesnow.com/news/jivo-energy-powers-up-20-mw-grid-forming-battery-in-malawi-1299191/",
+    open: "tab"
   },
   {
     id: 2,
@@ -211,7 +213,14 @@ const Media = ({ limit }: MediaProps) => {
           {displayedCards.map((card) => (
             <button 
               key={card.id}
-              onClick={() => card.link && setActiveLink(card.link)}
+              onClick={() => {
+                if (!card.link) return;
+                if (card.open === 'tab') {
+                  window.open(card.link, '_blank', 'noopener,noreferrer');
+                  return;
+                }
+                setActiveLink(card.link);
+              }}
               className="group bg-white/95 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl border border-white/20 hover:bg-white hover:shadow-green-500/20 hover:-translate-y-3 hover:scale-105 transition-all duration-500 relative block text-left"
             >
               {/* Category Badge */}
