@@ -1,19 +1,50 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import "./VisionMission.css";
 
 export default function VisionMission() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const animated = section.querySelectorAll(
+      ".vision-card, .mission-card, .center-node, .connector"
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Remove then re-add so the CSS animation restarts every time
+            entry.target.classList.remove("is-visible");
+            // Force reflow so the browser restarts the animation
+            void (entry.target as HTMLElement).offsetWidth;
+            entry.target.classList.add("is-visible");
+          } else {
+            entry.target.classList.remove("is-visible");
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px -40px 0px",
+      }
+    );
+
+    animated.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="py-16 px-6 md:px-12 bg-[#F5FBF5]">
+    <section ref={sectionRef} className="vision-mission py-16 px-6 md:px-12 bg-[#F5FBF5]">
       <div className="max-w-7xl mx-auto space-y-8">
         <div className="grid gap-8 lg:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="grid gap-6 lg:grid-cols-[1fr_0.95fr] items-start rounded-[32px] bg-white p-6 md:p-8 shadow-lg border border-slate-200"
-          >
+          <div className="vision-card grid gap-6 lg:grid-cols-[1fr_0.95fr] items-start rounded-[32px] bg-white p-6 md:p-8 shadow-lg border border-slate-200">
             <div className="space-y-5">
               <span className="inline-flex rounded-full bg-[#E8F7E8] px-4 py-2 text-sm font-semibold text-[#0F5A1F]">
                 Our Vision
@@ -31,17 +62,12 @@ export default function VisionMission() {
                 alt="Natural landscape reflecting vision"
                 width={560}
                 height={360}
-                className="h-full w-full object-cover"
+                className="card-image h-full w-full object-cover"
               />
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="grid gap-6 lg:grid-cols-[1fr_0.95fr] items-start rounded-[32px] bg-white p-6 md:p-8 shadow-lg border border-slate-200"
-          >
+          <div className="mission-card grid gap-6 lg:grid-cols-[1fr_0.95fr] items-start rounded-[32px] bg-white p-6 md:p-8 shadow-lg border border-slate-200">
             <div className="space-y-5 text-left">
               <span className="inline-flex rounded-full bg-[#E8F7E8] px-4 py-2 text-sm font-semibold text-[#0F5A1F]">
                 Our Mission
@@ -59,10 +85,10 @@ export default function VisionMission() {
                 alt="Clean natural environment reflecting mission"
                 width={560}
                 height={360}
-                className="h-full w-full object-cover"
+                className="card-image h-full w-full object-cover"
               />
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
