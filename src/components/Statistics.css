@@ -20,25 +20,7 @@
   overflow: hidden;
   cursor: pointer;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-
-  /* Slight slide from right → left on scroll (no fade) */
-  transform: translateX(90px);
-  transition: transform 0.7s ease;
-  will-change: transform;
-
 }
-
-.about-stats .grid-item.is-visible {
-  transform: translateX(0);
-}
-
-/* Stagger each card so they enter one after another */
-.about-stats .grid-item:nth-child(1) { transition-delay: 0.15s; }
-.about-stats .grid-item:nth-child(2) { transition-delay: 0.3s; }
-.about-stats .grid-item:nth-child(3) { transition-delay: 0.45s; }
-.about-stats .grid-item:nth-child(4) { transition-delay: 0.6s; }
-.about-stats .grid-item:nth-child(5) { transition-delay: 0.75s; }
-.about-stats .grid-item:nth-child(6) { transition-delay: 0.9s; }
 
 .about-stats .grid-item .stat-icon {
   color: var(--color-white);
@@ -86,10 +68,4 @@
   }
 }
 
-/* Respect reduced-motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .about-stats .grid-item {
-    transform: none;
-    transition: none;
-  }
-}
+

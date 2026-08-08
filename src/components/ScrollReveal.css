@@ -1,0 +1,20 @@
+.scroll-reveal {
+  transform: var(--scroll-reveal-offset, translateX(90px));
+  /* Include box-shadow so Tailwind hover:shadow still works smoothly */
+  transition:
+    transform var(--scroll-reveal-duration, 0.7s) ease,
+    box-shadow 0.3s ease;
+  transition-delay: var(--scroll-reveal-delay, 0s);
+  will-change: transform;
+}
+
+.scroll-reveal.is-visible {
+  transform: translateX(0) translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    transform: none;
+    transition: none;
+  }
+}

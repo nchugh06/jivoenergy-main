@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import ScrollReveal from '@/components/ScrollReveal';
 import './Statistics.css';
 
 const stats = [
@@ -84,39 +84,17 @@ const stats = [
 ];
 
 const Statistics = () => {
-  const gridRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const grid = gridRef.current;
-    if (!grid) return;
-
-    const items = grid.querySelectorAll<HTMLElement>('.grid-item');
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.2, rootMargin: '0px 0px -40px 0px' }
-    );
-
-    items.forEach((item) => observer.observe(item));
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section className="about-stats stats-data bg-white">
       <div className="about-stats__container">
-        <div className="stats-grid" ref={gridRef}>
+        <div className="stats-grid">
           {stats.map((stat, index) => (
-            <div
+            <ScrollReveal
               key={stat.value}
               className="grid-item"
+              delay={(index + 1) * 0.15}
+              from="right"
+              distance={90}
               style={{ backgroundColor: index % 2 === 0 ? '#85c54a' : '#1c4832', color: index % 2 === 0 ? '#125d36' : '#ffffff' }}
             >
               <div className="content">
@@ -128,7 +106,7 @@ const Statistics = () => {
                 </h3>
                 <h3 className="stat-description text-center text-bold" style={{ color: index % 2 === 0 ? '#125d36' : '#ffffff' }}>{stat.label}</h3>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
