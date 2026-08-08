@@ -166,6 +166,7 @@ export const mediaCards: MediaCard[] = [
     category: "",
     link: "https://now.solar/2026/02/02/jivo-energy-commissions-sierra-leones-first-hybrid-off-grid-power-system-in-moyamba-solarquarter/"
   }
+  
 ];
 
 interface MediaProps {
