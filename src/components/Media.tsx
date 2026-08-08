@@ -12,6 +12,14 @@ interface MediaCard {
 }
 
 export const mediaCards: MediaCard[] = [
+   {
+    id: 0,
+    title: "JIVO Energy hails Malawi BESS project teams",
+    description: "Renewable energy company JIVO Energy has outlined its role following the recent commissioning of Malawi's first grid-scale battery energy storage system (BESS).",
+    image: "/media_assets/Two-businessmen-BESS-power-plant-Malawi.webp",
+    category: "News",
+    link: "https://africanreview.com/energy/jivo-energy-hails-malawi-bess-project-teams"
+  },
   {
     id: 1,
     title: "JIVO Energy powers up 20-MW grid-forming battery in Malawi",
