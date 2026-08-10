@@ -31,3 +31,14 @@
   border-color: rgba(255, 250, 132, 0.5);
   filter: brightness(1.05);
 }
+
+.region-map{
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  size: 0.8;
+  object-fit: contain;
+  transform: translateY(-50%);
+  opacity: 0.9;
+  z-index: 1;
+}

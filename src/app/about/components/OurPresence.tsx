@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { backIn, motion } from "framer-motion";
 import "./OurPresence.css";
 
 const businessAreas = [
@@ -17,14 +17,21 @@ const geographies = [
   {
     region: "East Africa",
     countries: ["Uganda", "Ethiopia", "Kenya", "Rwanda", "Tanzania"],
+    background_image:"/our-presence/Western-Africa-map.png"
+
+  
   },
   {
     region: "West Africa",
     countries: ["Burkina Faso", "Cape Verde", "Liberia", "Senegal", "Sierra Leone", "São Tome and Principe"],
+          background_image:"/our-presence/Map_of_East_Africa_Countries.png"
+
   },
   {
     region: "Southern Africa",
     countries: ["Malawi", "Zimbabwe", "Zambia", "South Africa"],
+        background_image:"/our-presence/Southern-Africa_new.png"
+
   },
 ];
 
@@ -86,7 +93,7 @@ export default function OurPresence() {
                 transition={{ delay: index * 0.1 }}
                 
               >
-                <div className="our-presence__box flex items-start gap-4 p-6 rounded-2xl">
+                <div className="our-presence__box flex items-start gap-4 p-6 rounded-2xl relative overflow-hidden">
                   <div className="mt-1 p-2 bg-white/10 rounded-lg text-[#ffffff]">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -107,6 +114,14 @@ export default function OurPresence() {
                       ))}
                     </div>
                   </div>
+                    <Image
+                      src={geo.background_image}
+                      alt={`${geo.region} map`}
+                      width={300}
+                      height={120}
+                      className="region-map"
+                    />
+                
                 </div>
               </motion.div>
             ))}
