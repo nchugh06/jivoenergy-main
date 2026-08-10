@@ -1,8 +1,9 @@
 'use client'
 import React from 'react';
 import Image from 'next/image';
+import newsData from '@/data/news.json';
 
-interface MediaCard {
+export interface MediaCard {
   id: number;
   title: string;
   description: string;
@@ -12,165 +13,7 @@ interface MediaCard {
   open?: 'tab' | 'iframe';
 }
 
-export const mediaCards: MediaCard[] = [
-   {
-    id: 0,
-    title: "JIVO Energy hails Malawi BESS project teams",
-    description: "Renewable energy company JIVO Energy has outlined its role following the recent commissioning of Malawi's first grid-scale battery energy storage system (BESS).",
-    image: "/media_assets/Two-businessmen-BESS-power-plant-Malawi.webp",
-    category: "New",
-    link: "https://africanreview.com/energy/jivo-energy-hails-malawi-bess-project-teams"
-  },
-  {
-    id: 1,
-    title: "JIVO Energy powers up 20-MW grid-forming battery in Malawi",
-    description: "Utility-scale solar and storage installer Jivo Energy said on Tuesday it has launched commercial operations of a 20-MW/40-MWh battery in Malawi.",
-    image: "/media_assets/grid_forming.webp",
-    category: "New",
-    link: "https://renewablesnow.com/news/jivo-energy-powers-up-20-mw-grid-forming-battery-in-malawi-1299191/",
-    open: "tab"
-  },
-  {
-    id: 2,
-    title: "Malawi commissions first grid-scale BESS project",
-    description: "Malawi commissioned its first grid-forming utility-scale Battery Energy Storage System (BESS) at the Kanengo Substation in Lilongwe on 24th July.",
-    image: "/media_assets/africa-business-community.jpg",
-    category: "New",
-    link: "https://africabusinesscommunities.com/sustainable-energy/jivo-energy-commissions-malawis-first-grid-scale-bess-project/",
-    open: "tab"
-  },
-  {
-    id: 3,
-    title: "JIVO Energy constrói Central Solar de Santo Amaro em São Tomé",
-    description: "JIVO Energy has built the Santo Amaro solar power plant in Sao Tome, contributing to the country's grid stability and renewable energy goals.",
-    image: "/media_assets/sao_tome_1.png",
-    category: "New",
-    link: "https://www.telanon.info/sociedade/2025/12/27/51256/jivo-energy-constroi-central-solar-de-santo-amaro-em-sao-tome/"
-  },
-  {
-    id: 4,
-    title: "JIVO Energy has built the Santo Amaro solar power plant in Sao Tome",
-    description: "Successful completion of the 1.2 MWp grid-connected solar PV plant in São Tomé and Príncipe by JIVO Energy.",
-    image: "/media_assets/sao_tome_2.png",
-    category: "New",
-    link: "https://www.africanpowerplatform.org/news/press-releases-2/external/4551-jivo-energy-has-built-the-santo-amaro-solar-power-plant-in-sao-tome.html"
-  },
-  {
-    id: 5,
-    title: "JIVO Energy contributes to green energy transition in Liberia",
-    description: "JIVO Energy's significant contribution to the green energy transition in Liberia through solar and BESS systems.",
-    image: "/media_assets/liberia_health.png",
-    category: "New",
-    link: "https://www.africanpowerplatform.org/news/press-releases-2/external/4552-jivo-energy-contributes-to-green-energy-transition-in-liberia.html"
-  },
-  {
-    id: 6,
-    title: "JIVO Energy commissions solar & BESS systems in Liberia",
-    description: "Official commissioning of solar and battery energy storage systems in Liberia by JIVO Energy.",
-    image: "/media_assets/liberia_health.png",
-    category: "New",
-    link: "https://theelectricityhub.com/jivo-energy-commissions-solar-bess-systems-in-liberia/"
-  },
-  {
-    id: 7,
-    title: "JIVO Energy solarizes irrigation water pumps in Northern Senegal",
-    description: "JIVO Energy supports rice farming in Northern Senegal by solarizing irrigation water pumps, enhancing agricultural productivity.",
-    image: "/media_assets/senegal_1.png",
-    category: "",
-    link: "https://africa-energy-portal.org/news/jivo-energy-solarizes-irrigation-water-pumps-support-rice-farming-northern-senegal",
-    open:"tab"
-  },
-  {
-    id: 8,
-    title: "Sierra Leone solar subsidy unique 2024 plan unveiled",
-    description: "UNEP PV Knowhow features Sierra Leone's solar subsidy plan and JIVO Energy's involvement in renewable energy projects.",
-    image: "/media_assets/senegal_social.png",
-    category: "",
-    link: "https://www.pvknowhow.com/news/sierra-leone-solar-subsidy-unique-2024-plan-unveiled/",
-    open:"tab"
-  },
-  {
-    id: 9,
-    title: "JIVO Energy's first hybrid off-grid mini-grid in Moyamba",
-    description: "Salone Messengers reports on JIVO Energy's commissioning of the first hybrid off-grid mini-grid in Moyamba Town, Sierra Leone.",
-    image: "/media_assets/senegal_social.png",
-    category: "",
-    link: "https://salonemessengers.com/jivo-energy-first-hybrid-off-grid-mini-grid-moyamba/"
-  },
-  {
-    id: 10,
-    title: "JIVO Energy adds 1.2 MWp solar capacity in Sao Tome",
-    description: "Solar Quarter highlights JIVO Energy's contribution to reducing load-shedding in Sao Tome with new solar capacity.",
-    image: "/media_assets/sao_tome_3.png",
-    category: "",
-    link: "https://solarquarter.com/2026/01/16/jivo-energy-adds-1-2-mwp-solar-capacity-to-reduce-load-shedding-in-sao-tome/"
-  },
-  {
-    id: 11,
-    title: "JIVO Energy Powers 39 Off-Grid Health Facilities in Liberia with Solar + BESS - SolarQuarter",
-    description: "JIVO Energy provides reliable solar + BESS power to 39 off-grid health facilities in Liberia.",
-    image: "/media_assets/liberia_health.png",
-    category: "",
-    link: "https://solarquarter.com/2026/01/21/jivo-energy-powers-39-off-grid-health-facilities-with-solar-bess-solarquarter/"
-  },
-  {
-    id: 12,
-    title: "JIVO Energy solarizes irrigation water pumps in Northern Senegal",
-    description: "Another feature on JIVO Energy's solar irrigation project in Northern Senegal by Solar Quarter.",
-    image: "/media_assets/senegal_2.png",
-    category: "",
-    link: "https://solarquarter.com/2026/01/28/jivo-energy-solarizes-irrigation-water-pumps-to-support-rice-farming-in-northern-senegal/"
-  },
-  {
-    id: 13,
-    title: "JIVO Energy completes solar PV installations for irrigation in Senegal",
-    description: "Solar Quarter reports on the completion of solar PV installations for irrigation projects by JIVO Energy.",
-    image: "/media_assets/senegal_3.png",
-    category: "",
-    link: "https://solarquarter.com/2026/01/28/jivo-energy-completes-solar-pv-installations-for-irrigation-projects-in-northern-senegal/"
-  },
-  {
-    id: 14,
-    title: "JIVO Energy commissions Sierra Leone's first hybrid off-grid power system",
-    description: "Feature on JIVO Energy's Moyamba project in Sierra Leone by Solar Quarter.",
-    image: "/media_assets/senegal_social.png",
-    category: "",
-    link: "https://solarquarter.com/2026/02/02/jivo-energy-commissions-sierra-leones-first-hybrid-off-grid-power-system-in-moyamba/"
-  },
-  {
-    id: 15,
-    title: "JIVO Energy commissions Sierra Leone's first hybrid mini-grid in Moyamba",
-    description: "Detailed report on the Moyamba hybrid mini-grid commissioning in Sierra Leone.",
-    image: "/media_assets/senegal_social.png",
-    category: "",
-    link: "https://solarquarter.com/2026/02/03/jivo-energy-commissions-sierra-leones-first-hybrid-off-grid-mini-grid-in-moyamba-town/"
-  },
-  {
-    id: 16,
-    title: "JIVO Energy powers 39 health facilities in Liberia",
-    description: "Now Solar features JIVO Energy's healthcare electrification project in Liberia.",
-    image: "/media_assets/liberia_health.png",
-    category: "",
-    link: "https://now.solar/2026/01/21/jivo-energy-powers-39-off-grid-health-facilities-in-liberia-with-solar-bess-solarquarter/"
-  },
-  {
-    id: 17,
-    title: "JIVO Energy completes solar installations in Senegal",
-    description: "Now Solar coverage of JIVO Energy's irrigation projects in Senegal.",
-    image: "/media_assets/senegal_4.png",
-    category: "",
-    link: "https://now.solar/2026/01/28/jivo-energy-completes-solar-pv-installations-for-irrigation-projects-in-northern-senegal-solarquarter/"
-  },
-  {
-    id: 18,
-    title: "JIVO Energy commissions hybrid off-grid system in Moyamba",
-    description: "Now Solar reports on the Moyamba power system commissioning in Sierra Leone.",
-    image: "/media_assets/senegal_social.png",
-    category: "",
-    link: "https://now.solar/2026/02/02/jivo-energy-commissions-sierra-leones-first-hybrid-off-grid-power-system-in-moyamba-solarquarter/"
-  }
-  
-];
+export const mediaCards: MediaCard[] = newsData as MediaCard[];
 
 interface MediaProps {
   limit?: number;
