@@ -34,7 +34,8 @@
 
 .region-map{
   position: absolute;
-  right: -15px;
+  right: -25px;
+  zoom:0.82;
   top: 50%;
   object-fit: contain;
   transform: translateY(-50%);
