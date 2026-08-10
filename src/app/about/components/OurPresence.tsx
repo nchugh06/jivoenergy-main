@@ -30,7 +30,7 @@ const geographies = [
   {
     region: "Southern Africa",
     countries: ["Malawi", "Zimbabwe", "Zambia", "South Africa"],
-        background_image:"/our-presence/Southern-Africa_updated.png"
+        background_image:"/our-presence/Southern_Africa_last.png"
 
   },
 ];
@@ -118,7 +118,7 @@ export default function OurPresence() {
                       src={geo.background_image}
                       alt={`${geo.region} map`}
                       width={300}
-                      height={120}
+                      height={140}
                       className="region-map"
                     />
                 
