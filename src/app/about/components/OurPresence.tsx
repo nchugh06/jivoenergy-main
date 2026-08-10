@@ -30,7 +30,7 @@ const geographies = [
   {
     region: "Southern Africa",
     countries: ["Malawi", "Zimbabwe", "Zambia", "South Africa"],
-        background_image:"/our-presence/Southern-Africa_new.png"
+        background_image:"/our-presence/Southern-Africa_updated.png"
 
   },
 ];
