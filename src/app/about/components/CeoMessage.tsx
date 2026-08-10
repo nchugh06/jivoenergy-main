@@ -3,15 +3,14 @@ export default function CeoMessage() {
     <section className="py-10 md:py-12 bg-[#F5FBF5]">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] items-stretch bg-white rounded-[32px] shadow-xl overflow-hidden">
-          <div className="relative w-full overflow-hidden rounded-[32px] bg-slate-200 aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5] lg:max-h-[450px] p-3">
+          <div className="relative w-full overflow-hidden rounded-[32px] bg-slate-200 aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5] lg:max-h-[450px]">
             <img
-              src="/about/Rajesh-Chugh-CEO.jpg"
+              src="/about/Rajesh-Chugh-CEO.png"
               alt="Company leader or executive portrait"
               className="h-full w-full object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-black-3 via-transparent to-black/10" />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/10" />
           </div>
-
           <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-between h-full">
             <div>
               <div className="inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#085D36] mb-4">
