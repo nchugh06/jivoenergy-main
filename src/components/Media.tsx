@@ -18,7 +18,7 @@ export const mediaCards: MediaCard[] = [
     title: "JIVO Energy hails Malawi BESS project teams",
     description: "Renewable energy company JIVO Energy has outlined its role following the recent commissioning of Malawi's first grid-scale battery energy storage system (BESS).",
     image: "/media_assets/Two-businessmen-BESS-power-plant-Malawi.webp",
-    category: "News",
+    category: "New",
     link: "https://africanreview.com/energy/jivo-energy-hails-malawi-bess-project-teams"
   },
   {
@@ -26,7 +26,7 @@ export const mediaCards: MediaCard[] = [
     title: "JIVO Energy powers up 20-MW grid-forming battery in Malawi",
     description: "Utility-scale solar and storage installer Jivo Energy said on Tuesday it has launched commercial operations of a 20-MW/40-MWh battery in Malawi.",
     image: "/media_assets/grid_forming.webp",
-    category: "News",
+    category: "New",
     link: "https://renewablesnow.com/news/jivo-energy-powers-up-20-mw-grid-forming-battery-in-malawi-1299191/",
     open: "tab"
   },
@@ -35,15 +35,16 @@ export const mediaCards: MediaCard[] = [
     title: "Malawi commissions first grid-scale BESS project",
     description: "Malawi commissioned its first grid-forming utility-scale Battery Energy Storage System (BESS) at the Kanengo Substation in Lilongwe on 24th July.",
     image: "/media_assets/africa-business-community.jpg",
-    category: "News",
-    link: "https://africabusinesscommunities.com/sustainable-energy/jivo-energy-commissions-malawis-first-grid-scale-bess-project/"
+    category: "New",
+    link: "https://africabusinesscommunities.com/sustainable-energy/jivo-energy-commissions-malawis-first-grid-scale-bess-project/",
+    open: "tab"
   },
   {
     id: 3,
     title: "JIVO Energy constrói Central Solar de Santo Amaro em São Tomé",
     description: "JIVO Energy has built the Santo Amaro solar power plant in Sao Tome, contributing to the country's grid stability and renewable energy goals.",
     image: "/media_assets/sao_tome_1.png",
-    category: "News",
+    category: "New",
     link: "https://www.telanon.info/sociedade/2025/12/27/51256/jivo-energy-constroi-central-solar-de-santo-amaro-em-sao-tome/"
   },
   {
@@ -51,7 +52,7 @@ export const mediaCards: MediaCard[] = [
     title: "JIVO Energy has built the Santo Amaro solar power plant in Sao Tome",
     description: "Successful completion of the 1.2 MWp grid-connected solar PV plant in São Tomé and Príncipe by JIVO Energy.",
     image: "/media_assets/sao_tome_2.png",
-    category: "News",
+    category: "New",
     link: "https://www.africanpowerplatform.org/news/press-releases-2/external/4551-jivo-energy-has-built-the-santo-amaro-solar-power-plant-in-sao-tome.html"
   },
   {
@@ -59,7 +60,7 @@ export const mediaCards: MediaCard[] = [
     title: "JIVO Energy contributes to green energy transition in Liberia",
     description: "JIVO Energy's significant contribution to the green energy transition in Liberia through solar and BESS systems.",
     image: "/media_assets/liberia_health.png",
-    category: "News",
+    category: "New",
     link: "https://www.africanpowerplatform.org/news/press-releases-2/external/4552-jivo-energy-contributes-to-green-energy-transition-in-liberia.html"
   },
   {
@@ -67,7 +68,7 @@ export const mediaCards: MediaCard[] = [
     title: "JIVO Energy commissions solar & BESS systems in Liberia",
     description: "Official commissioning of solar and battery energy storage systems in Liberia by JIVO Energy.",
     image: "/media_assets/liberia_health.png",
-    category: "News",
+    category: "New",
     link: "https://theelectricityhub.com/jivo-energy-commissions-solar-bess-systems-in-liberia/"
   },
   {
@@ -76,7 +77,8 @@ export const mediaCards: MediaCard[] = [
     description: "JIVO Energy supports rice farming in Northern Senegal by solarizing irrigation water pumps, enhancing agricultural productivity.",
     image: "/media_assets/senegal_1.png",
     category: "",
-    link: "https://africa-energy-portal.org/news/jivo-energy-solarizes-irrigation-water-pumps-support-rice-farming-northern-senegal"
+    link: "https://africa-energy-portal.org/news/jivo-energy-solarizes-irrigation-water-pumps-support-rice-farming-northern-senegal",
+    open:"tab"
   },
   {
     id: 8,
@@ -84,7 +86,8 @@ export const mediaCards: MediaCard[] = [
     description: "UNEP PV Knowhow features Sierra Leone's solar subsidy plan and JIVO Energy's involvement in renewable energy projects.",
     image: "/media_assets/senegal_social.png",
     category: "",
-    link: "https://www.pvknowhow.com/news/sierra-leone-solar-subsidy-unique-2024-plan-unveiled/"
+    link: "https://www.pvknowhow.com/news/sierra-leone-solar-subsidy-unique-2024-plan-unveiled/",
+    open:"tab"
   },
   {
     id: 9,
