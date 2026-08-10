@@ -1,50 +1,22 @@
 'use client'
 import React from 'react';
 import Image from 'next/image';
+import newsData from '@/data/news.json';
 
-interface MediaCard {
+export interface MediaCard {
   id: number;
   title: string;
   description: string;
   image: string;
   category: string;
   link?: string;
+  open?: 'tab' | 'iframe';
 }
 
-export const mediaCards: MediaCard[] = [
-  {
-    id: 9, //1
-    title: "JIVO Energy Powers 39 Off-Grid Health Facilities in Liberia with Solar + BESS - SolarQuarter",
-    description: "JIVO Energy provides reliable solar + BESS power to 39 off-grid health facilities in Liberia.",
-    image: "/media_assets/liberia_health.png",
-    category: "News",
-    link: "https://solarquarter.com/2026/01/21/jivo-energy-powers-39-off-grid-health-facilities-with-solar-bess-solarquarter/"
-  },
-  {
-    id: 4, //2
-    title: "JIVO Energy commissions solar & BESS systems in Liberia",
-    description: "Official commissioning of solar and battery energy storage systems in Liberia by JIVO Energy.",
-    image: "/media_assets/liberia_health.png",
-    category: "News",
-    link: "https://theelectricityhub.com/jivo-energy-commissions-solar-bess-systems-in-liberia/"
-  },
-  {
-    id: 10, //3
-    title: "JIVO Energy solarizes irrigation water pumps in Northern Senegal",
-    description: "Another feature on JIVO Energy's solar irrigation project in Northern Senegal by Solar Quarter.",
-    image: "/media_assets/senegal_2.png",
-    category: "News",
-    link: "https://solarquarter.com/2026/01/28/jivo-energy-solarizes-irrigation-water-pumps-to-support-rice-farming-in-northern-senegal/"
-  },
-  {
-    id: 8, //4
-    title: "JIVO Energy adds 1.2 MWp solar capacity in Sao Tome",
-    description: "Solar Quarter highlights JIVO Energy's contribution to reducing load-shedding in Sao Tome with new solar capacity.",
-    image: "/media_assets/sao_tome_3.png",
-    category: "News",
-    link: "https://solarquarter.com/2026/01/16/jivo-energy-adds-1-2-mwp-solar-capacity-to-reduce-load-shedding-in-sao-tome/"
-  }
-];
+/** Home page shows only items marked category "New" from the shared news JSON */
+export const mediaCards: MediaCard[] = (newsData as MediaCard[]).filter(
+  (card) => card.category === 'New'
+);
 
 interface MediaProps {
   limit?: number;
@@ -90,14 +62,23 @@ const Media = ({ limit }: MediaProps) => {
           {displayedCards.map((card) => (
             <button 
               key={card.id}
-              onClick={() => card.link && setActiveLink(card.link)}
+              onClick={() => {
+                if (!card.link) return;
+                if (card.open === 'tab') {
+                  window.open(card.link, '_blank', 'noopener,noreferrer');
+                  return;
+                }
+                setActiveLink(card.link);
+              }}
               className="group bg-white/95 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl border border-white/20 hover:bg-white hover:shadow-green-500/20 hover:-translate-y-3 hover:scale-105 transition-all duration-500 relative block text-left"
             >
               {/* Category Badge */}
               <div className="absolute top-4 left-4 z-10">
-                <span className="px-4 py-2 bg-[#062516] text-white text-xs font-semibold rounded-full shadow-lg">
-                  {card.category}
-                </span>
+                {card.category && (
+                  <span className="px-4 py-2 bg-[#062516] text-white text-xs font-semibold rounded-full shadow-lg">
+                    {card.category}
+                  </span>
+                )}
               </div>
               
               {/* Image Container */}
