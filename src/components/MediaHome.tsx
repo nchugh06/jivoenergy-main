@@ -60,11 +60,11 @@ export default function MediaHome() {
                   href={card.link}
                   target="_blank"
                   rel="noreferrer"
-                  className={`group block overflow-hidden rounded-3xl border transition-all duration-500 ${
+                  className={`group flex h-full flex-col overflow-hidden rounded-3xl border transition-all duration-500 ${
                     isCenter ? "border-[#62a557] bg-[#f4fbf2] shadow-lg" : "border-white bg-white"
                   }`}
                 >
-                  <div className="relative h-72 overflow-hidden bg-[#e9f4e4]">
+                  <div className="relative h-72 shrink-0 overflow-hidden bg-[#e9f4e4]">
                     <Image
                       src={card.image}
                       alt={card.title}
@@ -73,22 +73,24 @@ export default function MediaHome() {
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 40vw, 33vw"
                     />
                   </div>
-                  <div className="p-6">
-                    <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#62a557] mb-4">
+                  <div className="flex flex-1 flex-col p-6">
+                    <p className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-[#62a557]">
                       {card.category}
                     </p>
                     <h3 className={`text-xl font-semibold leading-tight text-[#062516] ${isCenter ? "md:text-2xl" : "md:text-xl"}`}>
                       {card.title}
                     </h3>
-                    <p className="mt-4 text-sm leading-6 text-[#455c4f] line-clamp-3">
-                      {card.description}
-                    </p>
-                    <span className="inline-flex items-center mt-6 text-sm font-semibold text-[#062516] transition-colors duration-300 group-hover:text-[#3c7d42]">
-                      Read article
-                      <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </span>
+                    <div className="mt-auto pt-4">
+                      <p className="line-clamp-3 text-sm leading-6 text-[#455c4f]">
+                        {card.description}
+                      </p>
+                      <span className="mt-6 inline-flex items-center text-sm font-semibold text-[#062516] transition-colors duration-300 group-hover:text-[#3c7d42]">
+                        Read article
+                        <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </span>
+                    </div>
                   </div>
                 </a>
               );
