@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import "./OurPresence.css";
 
 const businessAreas = [
   { name: "Solar PV", image: "/about/solar_pv.png" },
@@ -83,23 +84,23 @@ export default function OurPresence() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="abGroup"
+                
               >
-                <div className="flex items-start gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-[#FFFA84]/30 transition-all duration-300">
-                  <div className="mt-1 p-2 bg-[#1c4832]/10 rounded-lg text-[#ffffff]">
+                <div className="our-presence__box flex items-start gap-4 p-6 rounded-2xl">
+                  <div className="mt-1 p-2 bg-white/10 rounded-lg text-[#ffffff]">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#1c4832] transition-colors">
+                    <h3 className="text-xl font-bold text-white mb-3">
                       {geo.region}
                     </h3>
                     <div className="flex flex-wrap gap-2">
                       {geo.countries.map((country, idx) => (
                         <span
                           key={idx}
-                          className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-white/5 text-gray-300 border border-white/5"
+                          className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-white/10 text-white border border-white/15"
                         >
                           {country}
                         </span>
@@ -122,7 +123,7 @@ export default function OurPresence() {
               {otherRegions.map((region, index) => (
                 <div
                   key={index}
-                  className="px-4 py-2 rounded-lg bg-[#085D36] border border-[#085D36] text-gray-200 text-sm font-medium hover:bg-[#0a4f2e] hover:border-[#FFFA84]/50 transition-colors cursor-default"
+                  className="our-presence__chip px-4 py-2 rounded-lg text-gray-200 text-sm font-medium cursor-default"
                 >
                   {region}
                 </div>
