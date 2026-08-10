@@ -1,8 +1,13 @@
 .ceo-message {
   position: relative;
-  /* outerBorderRadius = innerBorderRadius + distance */
+  /*
+   * Nested rounded corners (concentric):
+   * outerBorderRadius = innerBorderRadius + distance
+   * distance = padding between portrait-frame (outer) and portrait (inner)
+   */
   --ceo-inner-radius: 20px;
-  --ceo-distance: 12px;
+  /* Keep in sync with Tailwind p-5 (20px) on frame + panel */
+  --ceo-distance: 20px;
   --ceo-outer-radius: calc(var(--ceo-inner-radius) + var(--ceo-distance));
 }
 
@@ -23,11 +28,12 @@
   transform: translateY(0);
 }
 
-/* Gap between outer card and image */
+/* Gap between outer card edge and portrait = --ceo-distance */
 .ceo-message__portrait-frame {
-  padding: var(--ceo-distance);
   min-height: 0;
   height: 100%;
+  /* Outer curve on the framed side (matches card corners) */
+  border-radius: var(--ceo-outer-radius) 0 0 var(--ceo-outer-radius);
 }
 
 /* Portrait: soft Ken Burns settle — becomes the "source" of the message */
@@ -186,6 +192,11 @@
 
 /* Mobile: message comes down out of the photo above */
 @media (max-width: 1023px) {
+  .ceo-message__portrait-frame {
+    /* Stacked layout: outer curve on top corners */
+    border-radius: var(--ceo-outer-radius) var(--ceo-outer-radius) 0 0;
+  }
+
   .ceo-message__glow {
     background: linear-gradient(
       180deg,

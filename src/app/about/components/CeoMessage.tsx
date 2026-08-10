@@ -29,7 +29,7 @@ export default function CeoMessage() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="ceo-message__card grid gap-0 lg:grid-cols-[1.15fr_0.85fr] items-stretch bg-white shadow-xl">
           {/* Portrait — animation origin; frame padding = distance from outer edge */}
-          <div className="ceo-message__portrait-frame">
+          <div className="ceo-message__portrait-frame p-6 sm:p-8 lg:p-10">
             <div className="ceo-message__portrait relative w-full bg-slate-200">
               <img
                 src="/about/Rajesh_Chugh_CEO.png"
@@ -43,12 +43,8 @@ export default function CeoMessage() {
           </div>
 
           {/* Message emerges from the portrait */}
-          <div className="ceo-message__panel p-8 sm:p-10 lg:p-12 flex flex-col justify-between h-full">
-            <span className="ceo-message__quote-mark" aria-hidden="true">
-              “
-            </span>
-
-            <div className="ceo-message__inner">
+          <div className="ceo-message__panel p-6 sm:p-8 lg:p-10 ">
+            <div className="ceo-message__inner flex flex-col justify-between h-full">
               <div className="ceo-message__label inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#085D36] mb-4">
                 <span className="h-0.5 w-10 bg-[#085D36] inline-block" />
                 CEO&apos;s Message
