@@ -25,10 +25,10 @@ export default function MediaHome() {
               prevEl: ".media-home-prev",
               nextEl: ".media-home-next",
             }}
-            // autoplay={{
-            //   delay: 5000,
-            //   disableOnInteraction: false,
-            // }}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
             loop={true}
             spaceBetween={24}
             slidesPerView={3}
