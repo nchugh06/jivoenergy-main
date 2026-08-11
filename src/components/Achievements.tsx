@@ -46,13 +46,6 @@ const slides: Slide[] = [
     image: "/assets/our-achievement.jpg",
     caption: "Local Employment",
   },
-  {
-    id:6,
-    title:
-      "Successfully executed Hybrid Solar Power PV & Storage projects with varied technologies.",
-    image: "/assets/our-achievement.jpg",
-    caption: "Hybrid PV & Storage",
-  }
 ];
 
 const AUTOPLAY_DELAY_MS = 5000;
