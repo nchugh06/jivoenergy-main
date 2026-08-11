@@ -53,10 +53,12 @@
   top: 5.5rem; /* clear fixed navbar */
   z-index: var(--stack-index, 1);
   width: 100%;
-  background-color: var(--section-bg, #f5fbf5);
-  /* soft separation as the next card covers this one */
-  /* box-shadow: 0 -12px 40px rgba(6, 37, 22, 0.06); */
+  background-color: #ffffff;
   will-change: transform;
+}
+
+.capabilities-section.is-tinted {
+  background-color: var(--pistachio-green-background);
 }
 
 .capabilities-section-inner {

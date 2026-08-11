@@ -133,16 +133,15 @@ export default function Capabilities() {
         <div className="capabilities-stack">
           {capabilityBlocks.map((item, index) => {
             const isReversed = index % 2 === 0;
-            const sectionBg = index % 2 === 0 ? "#f5fbf5" : "#ffffff";
+            const isTinted = index % 2 === 0;
 
             return (
               <section
                 key={item.sectionId}
                 id={item.sectionId}
-                className={`capabilities-section${isReversed ? " is-reversed" : ""}`}
+                className={`capabilities-section${isReversed ? " is-reversed" : ""}${isTinted ? " is-tinted" : ""}`}
                 style={
                   {
-                    "--section-bg": sectionBg,
                     "--stack-index": index + 1,
                   } as CSSProperties
                 }
@@ -163,7 +162,7 @@ export default function Capabilities() {
 
                     <div className="capabilities-body">
                       <span className="capabilities-step">{item.id}</span>
-                      <h3 className="section-title-spl">{item.title}</h3>
+                      <h3 className="mt-3 text-2xl font-semibold text-[#062516]">{item.title}</h3>
                       <p className="capabilities-intro-text">{item.intro}</p>
                       <ul className="capabilities-points">
                         {item.points.map((point) => (
