@@ -25,10 +25,10 @@ export default function MediaHome() {
               prevEl: ".media-home-prev",
               nextEl: ".media-home-next",
             }}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
-            }}
+            // autoplay={{
+            //   delay: 5000,
+            //   disableOnInteraction: false,
+            // }}
             loop={true}
             spaceBetween={24}
             slidesPerView={3}
@@ -69,7 +69,7 @@ export default function MediaHome() {
                     <p className="media-home-card-category">
                       {card.category}
                     </p>
-                    <h3 className="media-home-card-title">
+                    <h3 className="media-home-card-title min-h-[80px]">
                       {card.title}
                     </h3>
                     <p className="media-home-card-description">
