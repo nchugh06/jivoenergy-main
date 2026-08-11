@@ -1,70 +1,62 @@
 "use client";
-import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "./MediaHome.css";
 import { mediaCards } from "./MediaLinksForHome";
 
-const visibleCount = 3;
-const slideInterval = 5000;
-
 export default function MediaHome() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
-
-  useEffect(() => {
-    if (paused) return;
-    const timer = window.setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % mediaCards.length);
-    }, slideInterval);
-    return () => window.clearInterval(timer);
-  }, [paused]);
-
-  const prevSlide = () => setActiveIndex((prev) => (prev - 1 + mediaCards.length) % mediaCards.length);
-  const nextSlide = () => setActiveIndex((prev) => (prev + 1) % mediaCards.length);
-
-  const displaySlides = Array.from({ length: visibleCount }).map((_, offset) => {
-    const index = (activeIndex + offset - 1 + mediaCards.length) % mediaCards.length;
-    return mediaCards[index];
-  });
 
   return (
-    <section className="relative overflow-hidden bg-[#f6faf5] py-16">
-      <div className="absolute inset-0 opacity-30 pointer-events-none">
-        <div className="absolute left-0 top-1/2 w-72 h-72 rounded-full bg-[#d6efd7] blur-3xl"></div>
-        <div className="absolute right-0 bottom-0 w-96 h-96 rounded-full bg-[#a5d89f] blur-3xl"></div>
-      </div>
+    <section className="media-home-section">
+      <div className="media-home-glow-left"></div>
+      <div className="media-home-glow-right"></div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          {/* <span className="inline-flex items-center px-4 py-2 rounded-full bg-[#062516] text-white text-sm font-semibold tracking-wide">
-            Press & Media
-          </span> */}
-          <h3 className="section-title text-center text-[#062516]">
-            Latest JIVO Energy News
-          </h3>
-          {/* <p className="mt-4 text-base text-[#43594d] max-w-2xl mx-auto">
-            Browse our latest press mentions, interviews and coverage from leading media outlets.
-          </p> */}
+      <div className="media-home-shell">
+        <div className="media-home-title">
+          <h3 className="section-title">Latest JIVO Energy News</h3>
         </div>
 
-        <div
-          className="relative overflow-hidden rounded-3xl bg-white shadow-[0_20px_80px_rgba(6,37,22,0.12)]"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3 p-6 md:p-8">
-            {displaySlides.map((card, idx) => {
-              const isCenter = idx === 1;
-              return (
+          <Swiper
+            modules={[Navigation, Autoplay]}
+            navigation={{
+              prevEl: ".media-home-prev",
+              nextEl: ".media-home-next",
+            }}
+            // autoplay={{
+            //   delay: 5000,
+            //   disableOnInteraction: false,
+            // }}
+            loop={true}
+            spaceBetween={24}
+            slidesPerView={3}
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+                spaceBetween: 16,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 24,
+              },
+            }}
+            className="media-home-swiper"
+          >
+            {mediaCards.map((card) => (
+              <SwiperSlide key={card.id} className="swiper-slide">
                 <a
-                  key={card.id}
                   href={card.link}
                   target="_blank"
                   rel="noreferrer"
-                  className={`group flex h-full flex-col overflow-hidden rounded-3xl border transition-all duration-500 ${
-                    isCenter ? "border-[#62a557] bg-[#f4fbf2] shadow-lg" : "border-white bg-white"
-                  }`}
+                  className="media-home-card"
                 >
-                  <div className="relative h-72 shrink-0 overflow-hidden bg-[#e9f4e4]">
+                  <div className="media-home-card-image">
                     <Image
                       src={card.image}
                       alt={card.title}
@@ -77,7 +69,7 @@ export default function MediaHome() {
                     <p className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-[#62a557]">
                       {card.category}
                     </p>
-                    <h3 className={`text-xl font-semibold leading-tight text-[#062516] ${isCenter ? "md:text-2xl" : "md:text-xl"}`}>
+                    <h3 className="media-home-card-title min-h-[80px]">
                       {card.title}
                     </h3>
                     <div className="mt-auto pt-4">
@@ -93,30 +85,27 @@ export default function MediaHome() {
                     </div>
                   </div>
                 </a>
-              );
-            })}
-          </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
-          <div className="absolute inset-x-0 bottom-6 flex items-center justify-center gap-4">
+          <div className="media-home-nav">
             <button
               type="button"
-              onClick={prevSlide}
+              className="media-home-prev"
               aria-label="Previous media item"
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-[#d9edd5] bg-white text-[#062516] shadow-sm transition hover:bg-[#eef7ed]"
             >
               ‹
             </button>
             <button
               type="button"
-              onClick={nextSlide}
+              className="media-home-next"
               aria-label="Next media item"
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-[#d9edd5] bg-white text-[#062516] shadow-sm transition hover:bg-[#eef7ed]"
             >
               ›
             </button>
           </div>
         </div>
-      </div>
     </section>
   );
 }

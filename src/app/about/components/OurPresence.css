@@ -1,0 +1,44 @@
+/* Region cards */
+.our-presence__box {
+  background: linear-gradient(
+    135deg,
+    #2e4d33 0%,
+    #217338 50%,
+    #1a8c47 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+.our-presence__box:hover {
+  border-color: rgba(255, 250, 132, 0.3);
+  box-shadow: 0 12px 28px rgba(26, 140, 71, 0.25);
+}
+
+/* Other-region chips use the same gradient */
+.our-presence__chip {
+  background: linear-gradient(
+    135deg,
+    #2e4d33 0%,
+    #217338 50%,
+    #1a8c47 100%
+  );
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease, filter 0.3s ease;
+}
+
+.our-presence__chip:hover {
+  border-color: rgba(255, 250, 132, 0.5);
+  filter: brightness(1.05);
+}
+
+.region-map{
+  position: absolute;
+  right: -25px;
+  zoom:0.82;
+  top: 50%;
+  object-fit: contain;
+  transform: translateY(-50%);
+  opacity: 0.9;
+  z-index: 1;
+}

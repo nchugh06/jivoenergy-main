@@ -17,7 +17,7 @@
   height: 60px;
   padding: 0;
   margin: 0 80px;
-  background: rgba(255, 255, 255, 1.00);
+  background: var(--color-white);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   display: flex;
@@ -115,8 +115,8 @@
 }
 
 .nav__link:hover {
-  background-color: rgba(245, 245, 245, 0.8);
-  color: #062516;
+  background-color: var(--color-pistachio-green);
+  color: var(--color-text-dark);
 }
 
 .dropdownArrow {
@@ -133,7 +133,7 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background: rgba(255, 255, 255, 1.00);
+  background: var(--color-white);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 8px;
@@ -176,8 +176,8 @@
 }
 
 .dropdownLink:hover {
-  background-color: rgba(8, 93, 54, 0.1);
-  color: #085D36;
+  background-color: rgba(var(--color-dark-green-rgb), 0.1);
+  color: var(--color-dark-green);
 }
 
 .nav__toggle {
@@ -200,8 +200,8 @@
 }
 
 .nav__cta {
-  background: #085D36;
-  color: #fff;
+  background: var(--color-dark-green);
+  color: var(--color-white);
   border: none;
   padding: 10px 25px;
   border-radius: 8px 8px 32px 8px;
@@ -226,7 +226,7 @@
   top: 0;
   width: 50px;
   height: 100%;
-  background: #085D36;
+  background: var(--color-dark-green);
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
   z-index: -1;
@@ -234,7 +234,7 @@
 }
 
 .nav__cta:hover {
-  background-color: #051e12;
+  background-color: color-mix(in srgb, var(--color-dark-green) 80%, black 20%);
   transform: translateY(-1px);
 }
 

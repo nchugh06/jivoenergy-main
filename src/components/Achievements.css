@@ -1,0 +1,118 @@
+.achievements {
+  position: relative;
+  padding: 30px 0;
+}
+
+.achievements__container {
+  width: min(1400px, 100%);
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+/* Embla viewport/container/slide structure — wraps only the copy column */
+.achievements__embla {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.achievements__embla-container {
+  display: flex;
+}
+
+.achievements__embla-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  padding: 1.75rem 1.5rem;
+}
+
+.achievements__embla-slide--pistachio {
+  background-color: var(--pistachio-green-background);
+}
+
+.achievements__embla-slide--white {
+  background-color: var(--color-white);
+}
+
+.achievements__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.achievements__media {
+  position: relative;
+}
+
+.achievements__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.achievements__image {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.achievements__caption {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: var(--color-text-dark, #062516);
+  opacity: 0.6;
+}
+
+.achievements__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.achievements__title {
+  margin: 0;
+  max-width: 34ch;
+  font-size: clamp(1.5rem, 2.4vw, 2.15rem);
+  line-height: 1.35;
+  font-weight: 400;
+  color: var(--color-text-dark, #062516);
+}
+
+/* Prev / next under the sliding copy */
+.achievements__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.achievements__nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  border: none;
+  background: #f2f1ee;
+  color: #062516;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.achievements__nav-btn svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+@media (min-width: 1024px) {
+  .achievements__grid {
+    grid-template-columns: 50% 50%;
+    gap: 1.5rem;
+  }
+
+  .achievements__content {
+    padding-left: 1rem;
+  }
+}

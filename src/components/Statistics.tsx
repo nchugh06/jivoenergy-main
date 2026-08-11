@@ -1,4 +1,7 @@
-import React from 'react';
+'use client';
+
+import ScrollReveal from '@/components/ScrollReveal';
+import './Statistics.css';
 
 const stats = [
   {
@@ -33,7 +36,15 @@ const stats = [
   },
   {
     value: '100MWp',
-    label: 'Delivered & 200MWp+ under Development',
+    label: (
+      <>
+        Delivered &
+        <br />
+        200MWp+
+        <br />
+        under Development
+      </>
+    ),
     icon: (
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M4 14l6-10 6 10H4z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
@@ -44,7 +55,15 @@ const stats = [
   },
   {
     value: '60MWh',
-    label: 'Delivered & 50MWh+ under Development',
+    label: (
+      <>
+        Delivered &
+        <br />
+        50MWh+
+        <br />
+        under Development
+      </>
+    ),
     icon: (
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M7 7h10v10H7V7z" stroke="currentColor" strokeWidth="1.8" />
@@ -70,112 +89,29 @@ const Statistics = () => {
       <div className="about-stats__container">
         <div className="stats-grid">
           {stats.map((stat, index) => (
-            <div
-              key={stat.label}
+            <ScrollReveal
+              key={stat.value}
               className="grid-item"
+              delay={(index + 1) * 0.15}
+              from="right"
+              distance={90}
               style={{ backgroundColor: index % 2 === 0 ? '#85c54a' : '#1c4832', color: index % 2 === 0 ? '#125d36' : '#ffffff' }}
             >
               <div className="content">
                 {/* <div className="stat-icon" aria-hidden="true">
                   {stat.icon}
                 </div> */}
-                <h3 className="stat-number text-center" style={{ color: index % 2 === 0 ? '#125d36' : '#ffffff' }}>{stat.value}</h3>
+                <h3 className="stat-number text-center" style={{ color: index % 2 === 0 ? '#125d36' : '#ffffff' }}>
+                  {stat.value}
+                </h3>
                 <h3 className="stat-description text-center text-bold" style={{ color: index % 2 === 0 ? '#125d36' : '#ffffff' }}>{stat.label}</h3>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
-
-        <style jsx>{`
-          .about-two-col {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            align-items: center;
-            margin-top: 2.25rem;
-          }
-          .about-two-col__video {
-            border-radius: 1rem;
-            overflow: hidden;
-          }
-
-          .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(6, minmax(0, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-          }
-
-          .grid-item {
-            border-radius: 1rem;
-            padding: 1.25rem;
-            min-height: 180px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-          }
-
-          .content {
-            width: 100%;
-            color: #fff;
-          }
-
-          .stat-icon {
-            width: 44px;
-            height: 44px;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 14px;
-            background: rgba(255, 255, 255, 0.16);
-            margin-bottom: 0.75rem;
-          }
-
-          .stat-icon svg {
-            width: 24px;
-            height: 24px;
-          }
-
-          .stat-number {
-            font-size: clamp(1.3rem, 2vw, 1.8rem);
-            font-weight: 700;
-            margin: 0 0 0.35rem;
-          }
-
-          .stat-description {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin: 0;
-          }
-
-          @media (min-width: 1024px) {
-            .about-two-col {
-              grid-template-columns: 1.05fr 0.95fr;
-            }
-          }
-
-          @media (max-width: 1023px) {
-            .stats-grid {
-              grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-          }
-
-          @media (max-width: 640px) {
-            .stats-grid {
-              grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-          }
-
-          @media (max-width: 480px) {
-            .stats-grid {
-              grid-template-columns: 1fr;
-            }
-          }
-        `}</style>
       </div>
     </section>
   );
 };
 
-export default Statistics; 
+export default Statistics;

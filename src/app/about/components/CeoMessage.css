@@ -1,0 +1,261 @@
+.ceo-message {
+  position: relative;
+  /*
+   * Nested rounded corners (concentric):
+   * outerBorderRadius = innerBorderRadius + distance
+   * distance = padding between portrait-frame (outer) and portrait (inner)
+   */
+  --ceo-inner-radius: 20px;
+  /* Keep in sync with Tailwind p-5 (20px) on frame + panel */
+  --ceo-distance: 20px;
+  --ceo-outer-radius: calc(var(--ceo-inner-radius) + var(--ceo-distance));
+}
+
+.ceo-message__card {
+  position: relative;
+  border-radius: var(--ceo-outer-radius);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
+}
+
+.ceo-message.is-visible .ceo-message__card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gap between outer card edge and portrait = --ceo-distance */
+.ceo-message__portrait-frame {
+  min-height: 0;
+  height: 100%;
+  /* Outer curve on the framed side (matches card corners) */
+  border-radius: var(--ceo-outer-radius) 0 0 var(--ceo-outer-radius);
+}
+
+/* Portrait: soft Ken Burns settle — becomes the "source" of the message */
+.ceo-message__portrait {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  min-height: 280px;
+  border-radius: var(--ceo-inner-radius);
+}
+
+.ceo-message__portrait img {
+  transform: scale(1.12);
+  transition: transform 1.25s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.ceo-message.is-visible .ceo-message__portrait img {
+  transform: scale(1);
+}
+
+/* Soft light that bleeds from the photo toward the quote */
+.ceo-message__glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 40%,
+    rgba(8, 93, 54, 0.08) 75%,
+    rgba(8, 93, 54, 0.18) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.9s ease 0.15s;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ceo-message.is-visible .ceo-message__glow {
+  opacity: 1;
+}
+
+/* Green seam that "draws" from image into the message panel */
+.ceo-message__seam {
+  position: absolute;
+  top: 12%;
+  bottom: 12%;
+  right: 0;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    #085d36 20%,
+    #85c54a 50%,
+    #085d36 80%,
+    transparent
+  );
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+  z-index: 2;
+  box-shadow: 0 0 18px rgba(133, 197, 74, 0.55);
+}
+
+.ceo-message.is-visible .ceo-message__seam {
+  transform: scaleY(1);
+}
+
+/* Content panel: emerges from the portrait edge */
+.ceo-message__panel {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Oversized quote mark — peels out of the image */
+.ceo-message__quote-mark {
+  position: absolute;
+  top: 1.25rem;
+  left: 0.5rem;
+  font-size: clamp(5rem, 12vw, 8rem);
+  line-height: 1;
+  font-family: Georgia, "Times New Roman", serif;
+  color: rgba(8, 93, 54, 0.1);
+  pointer-events: none;
+  user-select: none;
+  transform: translateX(-40px) scale(0.7);
+  opacity: 0;
+  transition:
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.35s,
+    opacity 0.65s ease 0.35s;
+  z-index: 0;
+}
+
+.ceo-message.is-visible .ceo-message__quote-mark {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+}
+
+.ceo-message__inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Staggered “spoken words” cascade from the image side */
+.ceo-message__label,
+.ceo-message__quote,
+.ceo-message__attribution {
+  opacity: 0;
+  transform: translateX(-48px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.ceo-message.is-visible .ceo-message__label {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.4s;
+}
+
+.ceo-message.is-visible .ceo-message__quote {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.55s;
+}
+
+.ceo-message.is-visible .ceo-message__attribution {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.75s;
+}
+
+/* Accent bar on attribution grows in after the name appears */
+.ceo-message__attribution {
+  position: relative;
+}
+
+.ceo-message__attribution::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #085d36;
+  border-radius: 2px;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.9s;
+}
+
+.ceo-message.is-visible .ceo-message__attribution::before {
+  transform: scaleY(1);
+}
+
+/* Mobile: message comes down out of the photo above */
+@media (max-width: 1023px) {
+  .ceo-message__portrait-frame {
+    /* Stacked layout: outer curve on top corners */
+    border-radius: var(--ceo-outer-radius) var(--ceo-outer-radius) 0 0;
+  }
+
+  .ceo-message__glow {
+    background: linear-gradient(
+      180deg,
+      transparent 35%,
+      rgba(8, 93, 54, 0.1) 70%,
+      rgba(8, 93, 54, 0.2) 100%
+    );
+  }
+
+  .ceo-message__seam {
+    top: auto;
+    bottom: 0;
+    left: 12%;
+    right: 12%;
+    width: auto;
+    height: 3px;
+    transform: scaleX(0);
+    transform-origin: center;
+  }
+
+  .ceo-message.is-visible .ceo-message__seam {
+    transform: scaleX(1);
+  }
+
+  .ceo-message__quote-mark {
+    top: 0.5rem;
+    left: 1rem;
+    transform: translateY(-24px) scale(0.7);
+  }
+
+  .ceo-message.is-visible .ceo-message__quote-mark {
+    transform: translateY(0) scale(1);
+  }
+
+  .ceo-message__label,
+  .ceo-message__quote,
+  .ceo-message__attribution {
+    transform: translateY(36px);
+  }
+
+  .ceo-message.is-visible .ceo-message__label,
+  .ceo-message.is-visible .ceo-message__quote,
+  .ceo-message.is-visible .ceo-message__attribution {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ceo-message__card,
+  .ceo-message__portrait img,
+  .ceo-message__glow,
+  .ceo-message__seam,
+  .ceo-message__quote-mark,
+  .ceo-message__label,
+  .ceo-message__quote,
+  .ceo-message__attribution,
+  .ceo-message__attribution::before {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
