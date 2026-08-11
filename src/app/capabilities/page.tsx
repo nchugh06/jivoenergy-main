@@ -1,12 +1,14 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import "./Capabilities.css";
 
 const capabilityBlocks = [
   {
-    id:1,
+    id: 1,
     title: "Originate",
     intro:
       "Identify and secure high-potential renewable energy opportunities across Africa and emerging markets.",
@@ -20,7 +22,7 @@ const capabilityBlocks = [
     sectionId: "originate",
   },
   {
-    id:2,
+    id: 2,
     title: "Develop",
     intro:
       "From concept to Ready-to-Build status by delivering all technical, regulatory, environmental, and commercial development milestones.",
@@ -34,7 +36,7 @@ const capabilityBlocks = [
     sectionId: "develop",
   },
   {
-    id:3,
+    id: 3,
     title: "Finance",
     intro:
       "Structure sustainable financing solutions to accelerate project implementation.",
@@ -48,7 +50,7 @@ const capabilityBlocks = [
     sectionId: "finance",
   },
   {
-    id:4,
+    id: 4,
     title: "Engineering",
     intro:
       "Design efficient, reliable, and future-ready energy infrastructure.",
@@ -62,7 +64,7 @@ const capabilityBlocks = [
     sectionId: "engineering",
   },
   {
-    id:5,
+    id: 5,
     title: "Procure",
     intro:
       "Deliver quality equipment and services through strategic sourcing.",
@@ -76,7 +78,7 @@ const capabilityBlocks = [
     sectionId: "procure",
   },
   {
-    id:6,
+    id: 6,
     title: "Construct",
     intro:
       "Execute projects safely, efficiently, and on schedule.",
@@ -90,7 +92,7 @@ const capabilityBlocks = [
     sectionId: "construct",
   },
   {
-    id:7,
+    id: 7,
     title: "Operate",
     intro:
       "Maximize asset performance throughout the project lifecycle.",
@@ -107,10 +109,10 @@ const capabilityBlocks = [
 
 export default function Capabilities() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="capabilities-page">
       <Navbar />
 
-      <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="capabilities-banner">
         <Image
           src="/assets/banners/Capabilities.jpg"
           alt="Capabilities"
@@ -120,80 +122,53 @@ export default function Capabilities() {
         />
       </section>
 
-      {/* Main Content */}
       <div className="py-5">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h3 className="section-title-spl text-center text-[#062516] mb-10">
-              Capabilities
-            </h3>
-            <p>
-              <b>JIVO Energy</b> delivers tailored energy solutions across the
-              full project lifecycle — from opportunity origination and
-              development through financing, engineering, procurement,
-              construction, and long-term operations. We combine development
-              expertise, engineering depth, project delivery strength, and
-              ongoing asset support to create resilient energy infrastructure
-              across complex markets.
-              <br />
-              <br />
-              Our multidisciplinary team supports projects through every phase
-              with consistency and focus, ensuring technically sound, bankable,
-              and future-ready energy assets for utilities, governments,
-              industries, and development partners across Africa and emerging
-              markets.
-            </p>
+        <div className="capabilities-intro-wrap">
+          <div className="capabilities-intro">
+            <h3 className="section-title-spl text-center">Capabilities</h3>
+         
           </div>
         </div>
 
-        {/* Capability Sections */}
-        <div className="space-y-0">
+        <div className="capabilities-stack">
           {capabilityBlocks.map((item, index) => {
+            const isReversed = index % 2 === 0;
             const sectionBg = index % 2 === 0 ? "#f5fbf5" : "#ffffff";
 
             return (
-              <div
+              <section
                 key={item.sectionId}
-                id={String(item.id)}
-                className="w-full"
-                style={{ backgroundColor: sectionBg }}
+                id={item.sectionId}
+                className={`capabilities-section${isReversed ? " is-reversed" : ""}`}
+                style={
+                  {
+                    "--section-bg": sectionBg,
+                    "--stack-index": index + 1,
+                  } as CSSProperties
+                }
               >
-                <div className="max-w-7xl mx-auto px-4 py-16 lg:py-20">
-                  <div
-                    className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                      index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                    }`}
-                  >
-                    <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                      <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
+                <div className="capabilities-section-inner">
+                  <div className="capabilities-section-grid">
+                    <div className="capabilities-media">
+                      <div className="capabilities-media-frame">
                         <Image
                           src={item.image}
                           alt={item.title}
                           fill
                           className="object-cover"
+                          sizes="(max-width: 1024px) 100vw, 50vw"
                         />
                       </div>
                     </div>
 
-                    <div
-                      className={`space-y-6 ${
-                        index % 2 === 1 ? "lg:order-1" : ""
-                      }`}
-                    >
-                      <p className="min-w-10 w-fit h-10 px-2 flex items-center justify-center text-lg font-semibold text-white bg-[#1c4832] rounded-full">
-                        {item.id}
-</p>
-                      <h3 className="section-title-spl text-[#062516] mb-10">
-                        {item.title}
-                      </h3>
-                      <p className="text-gray-600 leading-relaxed">
-                        {item.intro}
-                      </p>
-
-                      <ul className="space-y-3 text-sm leading-6 text-gray-700">
+                    <div className="capabilities-body">
+                      <span className="capabilities-step">{item.id}</span>
+                      <h3 className="section-title-spl">{item.title}</h3>
+                      <p className="capabilities-intro-text">{item.intro}</p>
+                      <ul className="capabilities-points">
                         {item.points.map((point) => (
-                          <li key={point} className="flex items-start gap-2">
-                            <span className="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-[#085D36]" />
+                          <li key={point}>
+                            <span className="dot" aria-hidden />
                             <span>{point}</span>
                           </li>
                         ))}
@@ -201,24 +176,20 @@ export default function Capabilities() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </section>
             );
           })}
         </div>
 
-        {/* Call to Action */}
-        <div className="max-w-7xl mx-auto px-4 mt-24 text-center">
-          <h3 className="section-title-spl text-[#062516] mb-6">
+        <div className="capabilities-cta">
+          <h3 className="section-title-spl">
             Ready to Transform Your Energy Future?
           </h3>
-          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p>
             Contact us today to learn more about our capabilities and how we can
             help you achieve your energy goals.
           </p>
-          <a
-            href="/contact"
-            className="inline-block px-8 py-4 bg-[#062516] text-white rounded-lg font-medium hover:bg-[#051e12] transition-colors duration-300"
-          >
+          <a href="/contact" className="capabilities-cta-btn">
             Get in Touch
           </a>
         </div>

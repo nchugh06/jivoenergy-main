@@ -1,0 +1,223 @@
+/* ── Capabilities page ─────────────────────────────────────────── */
+
+.capabilities-page {
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+/* Banner */
+.capabilities-banner {
+  position: relative;
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Intro */
+.capabilities-intro-wrap {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 0;
+}
+
+.capabilities-intro {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.capabilities-intro .section-title-spl {
+  color: #062516;
+  margin-bottom: 2.5rem;
+}
+
+.capabilities-intro p {
+  color: #374151;
+  line-height: 1.75;
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+/* ── Sticky stack ────────────────────────────────────────────────
+   Each section pins under the navbar; the next one slides over it.
+   z-index is set via --stack-index from the component. */
+.capabilities-stack {
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.capabilities-section {
+  position: sticky;
+  top: 5.5rem; /* clear fixed navbar */
+  z-index: var(--stack-index, 1);
+  width: 100%;
+  background-color: var(--section-bg, #f5fbf5);
+  /* soft separation as the next card covers this one */
+  /* box-shadow: 0 -12px 40px rgba(6, 37, 22, 0.06); */
+  will-change: transform;
+}
+
+.capabilities-section-inner {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+}
+
+@media (min-width: 1024px) {
+  .capabilities-section-inner {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+.capabilities-section-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .capabilities-section-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Image / content order on large screens */
+.capabilities-section.is-reversed .capabilities-media {
+  order: 2;
+}
+
+.capabilities-section.is-reversed .capabilities-body {
+  order: 1;
+}
+
+.capabilities-media-frame {
+  position: relative;
+  height: 400px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(6, 37, 22, 0.12);
+}
+
+.capabilities-media-frame img {
+  object-fit: cover;
+}
+
+.capabilities-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.capabilities-step {
+  min-width: 2.5rem;
+  width: fit-content;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: #1c4832;
+  border-radius: 9999px;
+  line-height: 1;
+}
+
+.capabilities-body .section-title-spl {
+  color: #062516;
+  margin-bottom: 0;
+}
+
+.capabilities-intro-text {
+  color: #4b5563;
+  line-height: 1.7;
+}
+
+.capabilities-points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #374151;
+}
+
+.capabilities-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.capabilities-points .dot {
+  margin-top: 0.5rem;
+  height: 0.625rem;
+  width: 0.625rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background: #085d36;
+}
+
+/* CTA */
+.capabilities-cta {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 6rem 1rem 4rem;
+  text-align: center;
+}
+
+.capabilities-cta .section-title-spl {
+  color: #062516;
+  margin-bottom: 1.5rem;
+}
+
+.capabilities-cta p {
+  color: #4b5563;
+  margin: 0 auto 2rem;
+  max-width: 36rem;
+}
+
+.capabilities-cta-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: #062516;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.capabilities-cta-btn:hover {
+  background: #051e12;
+}
+
+/* Motion-safe: disable sticky stack when reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .capabilities-section {
+    position: relative;
+    top: auto;
+    box-shadow: none;
+  }
+}
+
+/* Slightly lower sticky offset on small screens (compact nav) */
+@media (max-width: 767px) {
+  .capabilities-section {
+    top: 4.25rem;
+  }
+
+  .capabilities-media-frame {
+    height: 260px;
+  }
+
+  .capabilities-section-inner {
+    padding: 2.5rem 1rem;
+  }
+}
