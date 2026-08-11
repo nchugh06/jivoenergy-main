@@ -65,24 +65,22 @@ export default function MediaHome() {
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 40vw, 33vw"
                     />
                   </div>
-                  <div className="flex flex-1 flex-col p-6">
-                    <p className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-[#62a557]">
+                  <div className="media-home-card-content">
+                    <p className="media-home-card-category">
                       {card.category}
                     </p>
-                    <h3 className="media-home-card-title min-h-[80px]">
+                    <h3 className="media-home-card-title min-h-[50px]">
                       {card.title}
                     </h3>
-                    <div className="mt-auto pt-4">
-                      <p className="line-clamp-3 text-sm leading-6 text-[#455c4f]">
-                        {card.description}
-                      </p>
-                      <span className="mt-6 inline-flex items-center text-sm font-semibold text-[#062516] transition-colors duration-300 group-hover:text-[#3c7d42]">
-                        Read article
-                        <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </span>
-                    </div>
+                    <p className="media-home-card-description">
+                      {card.description}
+                    </p>
+                    <span className="media-home-card-link">
+                      Read article
+                      <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </span>
                   </div>
                 </a>
               </SwiperSlide>
