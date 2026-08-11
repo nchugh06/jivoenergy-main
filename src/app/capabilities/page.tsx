@@ -179,19 +179,6 @@ export default function Capabilities() {
             );
           })}
         </div>
-
-        <div className="capabilities-cta">
-          <h3 className="section-title-spl">
-            Ready to Transform Your Energy Future?
-          </h3>
-          <p>
-            Contact us today to learn more about our capabilities and how we can
-            help you achieve your energy goals.
-          </p>
-          <a href="/contact" className="capabilities-cta-btn">
-            Get in Touch
-          </a>
-        </div>
       </div>
 
       <Footer />
