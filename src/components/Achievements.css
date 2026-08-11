@@ -52,8 +52,45 @@
 }
 
 .achievements__image {
+  position: relative;
   border-radius: 1rem;
   overflow: hidden;
+}
+
+/* Text overlay on achievement photo */
+.achievements__image-overlay {
+  position: absolute;
+  width: fit-content;
+  margin-inline:auto 0;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  opacity: 0.9;
+  padding: 0.85rem 1.1rem;
+  border-radius: 0.75rem;
+  background-color: var(--pistachio-green-background,#f6faf5);
+  color: var(--color-text-dark, #062516);
+  box-shadow: 0 8px 24px rgba(6, 37, 22, 0.12);
+}
+
+.achievements__image-overlay-title {
+  margin: 0;
+  font-size: clamp(0.95rem, 1.6vw, 1.125rem);
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: left;
+  text-justify: auto;
+}
+
+.achievements__image-overlay-meta {
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  opacity: 0.85;
+  text-align: left;
+  text-justify: auto;
 }
 
 .achievements__caption {

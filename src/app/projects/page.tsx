@@ -1,120 +1,65 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Project } from '@/types/project';
 import { getProjects } from '@/lib/projects';
-import { getProjectSettings, ProjectSettings } from '@/lib/projectSettings';
 import ProjectCard from '@/components/projects/ProjectCard';
-import { ChevronDown, Filter, X, Zap } from 'lucide-react';
-import Link from 'next/link';
+import { Zap } from 'lucide-react';
 
-interface FilterState {
-  countries: string[];
-  regions: string[];
-  statuses: string[];
-  technologies: string[];
-  capacities: string[];
+/** Region sections — ids match navbar / URL (`?region=` or `#id`) */
+export const PROJECT_REGIONS = [
+  { id: 'east-africa', label: 'East Africa' },
+  { id: 'west-africa', label: 'West Africa' },
+  { id: 'southern-africa', label: 'Southern Africa' },
+] as const;
+
+export type ProjectRegionId = (typeof PROJECT_REGIONS)[number]['id'];
+
+function normalizeRegion(value?: string) {
+  return (value || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
 }
 
-const FilterDropdown = ({ 
-    label, 
-    options, 
-    selected, 
-    onChange 
-}: { 
-    label: string, 
-    options: string[], 
-    selected: string[], 
-    onChange: (val: string) => void 
-}) => {
-    const [isOpen, setIsOpen] = useState(false);
+/** Match Firestore `project.region` to a section (label or id style). */
+function projectMatchesRegion(project: Project, region: { id: string; label: string }) {
+  const pr = normalizeRegion(project.region);
+  if (!pr) return false;
+  const label = normalizeRegion(region.label);
+  const idAsWords = normalizeRegion(region.id.replace(/-/g, ' '));
+  return pr === label || pr === idAsWords || pr.includes(label) || label.includes(pr);
+}
 
-    return (
-        <div className="relative">
-            <button 
-                onClick={() => setIsOpen(!isOpen)}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-xl border transition-all text-sm font-medium ${
-                    selected.length > 0 
-                    ? 'bg-[#062516] text-[#FFFA84] border-[#062516]' 
-                    : 'bg-white text-gray-700 border-gray-200 hover:border-gray-300'
-                }`}
-            >
-                {label} {selected.length > 0 && `(${selected.length})`}
-                <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-            </button>
-
-            <AnimatePresence>
-                {isOpen && (
-                    <>
-                        <div className="fixed inset-0 z-30" onClick={() => setIsOpen(false)} />
-                        <motion.div 
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 10 }}
-                            className="absolute left-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 z-40 max-h-80 overflow-y-auto p-2"
-                        >
-                            {options.sort().map(opt => (
-                                <button
-                                    key={opt}
-                                    onClick={() => onChange(opt)}
-                                    className={`w-full text-left px-4 py-2 rounded-lg text-sm transition-colors flex items-center justify-between ${
-                                        selected.includes(opt)
-                                        ? 'bg-[#062516]/5 text-[#062516] font-bold'
-                                        : 'text-gray-600 hover:bg-gray-50'
-                                    }`}
-                                >
-                                    {opt}
-                                    {selected.includes(opt) && (
-                                        <div className="w-2 h-2 rounded-full bg-[#062516]" />
-                                    )}
-                                </button>
-                            ))}
-                        </motion.div>
-                    </>
-                )}
-            </AnimatePresence>
-        </div>
-    );
-};
+function resolveRegionIdFromParam(param: string | null): ProjectRegionId | null {
+  if (!param) return null;
+  const found = PROJECT_REGIONS.find(
+    (r) =>
+      r.id === param ||
+      normalizeRegion(r.label) === normalizeRegion(param)
+  );
+  return found ? found.id : null;
+}
 
 const ProjectsPage = () => {
+  const searchParams = useSearchParams();
+  const regionParam = searchParams.get('region');
+  const focusRegionId = resolveRegionIdFromParam(regionParam);
+
   const [allProjects, setAllProjects] = useState<Project[]>([]);
-  const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
-  const [settings, setSettings] = useState<ProjectSettings | null>(null);
   const [loading, setLoading] = useState(true);
-
-  const [filters, setFilters] = useState<FilterState>({
-    countries: [],
-    regions: [],
-    statuses: [],
-    technologies: [],
-    capacities: []
-  });
-
-  const [availableCapacities, setAvailableCapacities] = useState<string[]>([]);
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        const [projectsData, settingsData] = await Promise.all([
-          getProjects(),
-          getProjectSettings()
-        ]);
-        
+        const projectsData = await getProjects();
         setAllProjects(projectsData);
-        setSettings(settingsData);
-        
-        // Extract unique capacities
-        const capacities = Array.from(new Set(projectsData.map(p => p.capacity).filter(Boolean))) as string[];
-        setAvailableCapacities(capacities);
-        
-        setFilteredProjects(projectsData);
       } catch (error) {
-        console.error("Failed to load data:", error);
+        console.error('Failed to load data:', error);
       } finally {
         setLoading(false);
       }
@@ -122,114 +67,166 @@ const ProjectsPage = () => {
     loadData();
   }, []);
 
+  // Scroll to region section when URL has ?region=east-africa or #east-africa
   useEffect(() => {
-    let result = allProjects;
+    if (loading) return;
 
-    if (filters.regions.length > 0) {
-      result = result.filter(p => filters.regions.includes(p.region));
-    }
-    if (filters.countries.length > 0) {
-      result = result.filter(p => filters.countries.includes(p.country));
-    }
-    if (filters.statuses.length > 0) {
-      result = result.filter(p => filters.statuses.includes(p.status));
-    }
-    if (filters.technologies.length > 0) {
-      result = result.filter(p => filters.technologies.includes(p.technology || ''));
-    }
-    if (filters.capacities.length > 0) {
-      result = result.filter(p => filters.capacities.includes(p.capacity || ''));
-    }
+    const scrollToId =
+      focusRegionId ||
+      (typeof window !== 'undefined' ? window.location.hash.replace('#', '') : '');
 
-    setFilteredProjects(result);
-  }, [filters, allProjects]);
+    if (!scrollToId) return;
 
-  const toggleFilter = (category: keyof FilterState, value: string) => {
-    setFilters(prev => {
-      const current = prev[category];
-      const updated = current.includes(value)
-        ? current.filter(v => v !== value)
-        : [...current, value];
-      return { ...prev, [category]: updated };
-    });
-  };
+    const el = document.getElementById(scrollToId);
+    if (el) {
+      // Offset for fixed navbar
+      const top = el.getBoundingClientRect().top + window.scrollY - 100;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  }, [loading, focusRegionId]);
 
-  const clearFilters = () => {
-    setFilters({
-      countries: [],
-      regions: [],
-      statuses: [],
-      technologies: [],
-      capacities: []
-    });
-  };
+  const projectsByRegion = useMemo(() => {
+    return PROJECT_REGIONS.map((region) => ({
+      ...region,
+      projects: allProjects.filter((p) => projectMatchesRegion(p, region)),
+    }));
+  }, [allProjects]);
 
-  const activeFiltersCount = Object.values(filters).reduce((acc, curr) => acc + curr.length, 0);
+  const unassignedProjects = useMemo(() => {
+    return allProjects.filter(
+      (p) => !PROJECT_REGIONS.some((region) => projectMatchesRegion(p, region))
+    );
+  }, [allProjects]);
+
+  const sectionsToShow = focusRegionId
+    ? projectsByRegion.filter((s) => s.id === focusRegionId)
+    : projectsByRegion;
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans selection:bg-[#FFFA84] selection:text-[#062516]">
       <Navbar />
-     
-     <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
-                   <Image
-                     src="/assets/banners/Projects.jpg"
-                     alt="Projects Banner"
-                     fill
-                     className="object-cover"
-                     priority
-                   />
-                   {/* <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/25 to-[#04301C]/25"></div> */}
-                 </section>
 
-      {/* Main Content Area */}
+      <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
+        <Image
+          src="/assets/banners/Projects.jpg"
+          alt="Projects Banner"
+          fill
+          className="object-cover"
+          priority
+        />
+      </section>
+
       <main className="container mx-auto px-6 py-24 md:py-32">
         {loading ? (
-             <div className="flex flex-col items-center justify-center py-40 gap-4">
-                <Loader2 className="w-10 h-10 animate-spin text-[#062516]" />
-                <p className="text-black font-bold tracking-widest uppercase text-xs">Loading Projects Library</p>
-             </div>
+          <div className="flex flex-col items-center justify-center py-40 gap-4">
+            <Loader2 className="w-10 h-10 animate-spin text-[#062516]" />
+            <p className="text-black font-bold tracking-widest uppercase text-xs">
+              Loading Projects Library
+            </p>
+          </div>
         ) : (
           <div>
             <div className="py-8 px-2">
-                <div>
-                    <h3 className="section-title-spl text-center text-[#062516] mb-10">Project Portfolio</h3>
-                    <h6 className="text-black font-bold uppercase text-[10px] tracking-widest opacity-60 text-center">Showing {allProjects.length} projects across Africa</h6>
-                </div>
+              <h3 className="section-title-spl text-center text-[#062516] mb-4">
+                Project Portfolio
+              </h3>
+              <h6 className="text-black font-bold uppercase text-[10px] tracking-widest opacity-60 text-center mb-10">
+                Showing {allProjects.length} projects across Africa
+              </h6>
+
+      
             </div>
 
-            {allProjects.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pb-8">
-                    {allProjects.map((project) => (
-                        <ProjectCard 
-                            key={project.id} 
-                            project={project} 
-                        />
-                    ))}
+            {allProjects.length === 0 ? (
+              <div className="text-center py-40 bg-white rounded-[40px] border border-dashed border-gray-200">
+                <div className="p-6 rounded-full bg-gray-50 w-fit mx-auto mb-6">
+                  <Zap className="w-12 h-12 text-gray-300" />
                 </div>
+                <h3 className="text-2xl font-bold text-gray-800 mb-2">No projects found</h3>
+              </div>
             ) : (
-                <div className="text-center py-40 bg-white rounded-[40px] border border-dashed border-gray-200">
-                    <div className="p-6 rounded-full bg-gray-50 w-fit mx-auto mb-6">
-                        <Zap className="w-12 h-12 text-gray-300" />
+              <div className="space-y-20">
+                {sectionsToShow.map((section) => (
+                  <section
+                    key={section.id}
+                    id={section.id}
+                    className="scroll-mt-28"
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8 border-b border-gray-200 pb-4">
+                      <h3 className="section-title-spl text-[#062516] mb-0">
+                        {section.label}
+                      </h3>
+                      <span className="text-xs font-bold uppercase tracking-widest text-gray-500">
+                        {section.projects.length}{' '}
+                        {section.projects.length === 1 ? 'project' : 'projects'}
+                      </span>
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-800 mb-2">No projects found</h3>
-                </div>
+
+                    {section.projects.length > 0 ? (
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        {section.projects.map((project) => (
+                          <ProjectCard key={project.id} project={project} />
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-gray-500 text-sm py-8">
+                        No projects in this region yet.
+                      </p>
+                    )}
+                  </section>
+                ))}
+
+                {/* Projects whose region does not match the three sections */}
+                {!focusRegionId && unassignedProjects.length > 0 && (
+                  <section id="other-regions" className="scroll-mt-28">
+                    <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8 border-b border-gray-200 pb-4">
+                      <h3 className="section-title-spl text-[#062516] mb-0">
+                        Other regions
+                      </h3>
+                      <span className="text-xs font-bold uppercase tracking-widest text-gray-500">
+                        {unassignedProjects.length}{' '}
+                        {unassignedProjects.length === 1 ? 'project' : 'projects'}
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                      {unassignedProjects.map((project) => (
+                        <ProjectCard key={project.id} project={project} />
+                      ))}
+                    </div>
+                  </section>
+                )}
+              </div>
             )}
           </div>
         )}
       </main>
-
 
       <Footer />
     </div>
   );
 };
 
-// Simple Loader component
 const Loader2 = ({ className }: { className?: string }) => (
-    <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-    </svg>
+  <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+    <path
+      className="opacity-75"
+      fill="currentColor"
+      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+    />
+  </svg>
 );
 
-export default ProjectsPage;
+export default function ProjectsPageWithSuspense() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          <Loader2 className="w-10 h-10 animate-spin text-[#062516]" />
+        </div>
+      }
+    >
+      <ProjectsPage />
+    </Suspense>
+  );
+}

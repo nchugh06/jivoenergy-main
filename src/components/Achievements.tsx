@@ -88,12 +88,20 @@ const Achievements = () => {
             <div className="achievements__image">
               <Image
                 src="/assets/our-achievement.jpg"
-                alt="Our Achievements"
+                alt="Solar PV for Pepsi Bottling Plant, Zimbabwe, 2022"
                 width={900}
                 height={600}
                 className="w-full h-full object-cover rounded-2xl"
                 priority
               />
+              <div className="achievements__image-overlay">
+                <p className="achievements__image-overlay-title">
+                  Solar PV for Pepsi Bottling Plant
+                </p>
+                <p className="achievements__image-overlay-meta">
+                  Zimbabwe, 2022
+                </p>
+              </div>
             </div>
           </div>
 

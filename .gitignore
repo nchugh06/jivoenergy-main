@@ -13,3 +13,6 @@ out/
 # env
 .env
 .env.local
+
+# local docs (not committed)
+docs/
