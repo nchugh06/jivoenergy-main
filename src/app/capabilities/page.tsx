@@ -125,7 +125,7 @@ export default function Capabilities() {
       <div className="py-5">
         <div className="capabilities-intro-wrap">
           <div className="capabilities-intro">
-            <h3 className="section-title-spl text-center">Capabilities</h3>
+            <h3 className="section-title-spl text-center">Our Capabilities</h3>
          
           </div>
         </div>
