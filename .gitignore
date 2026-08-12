@@ -14,5 +14,7 @@ out/
 .env
 .env.local
 
+rememberText.txt
+
 # local docs (not committed)
 docs/

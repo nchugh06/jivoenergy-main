@@ -88,7 +88,6 @@ const Achievements = () => {
             <div className="achievements__image">
               <Image
                 src="/assets/Solar-Uganda-Kabulasoke_1.jpg"
-                // src="/assets/DJI_0040.JPG"
                 alt="Solar PV for Pepsi Bottling Plant, Zimbabwe, 2022"
                 width={900}
                 height={600}
@@ -97,10 +96,10 @@ const Achievements = () => {
               />
               <div className="achievements__image-overlay">
                 <p className="achievements__image-overlay-title">
-                  Solar PV for Pepsi Bottling Plant
+                  23 MWp Kabulasoke Solar Plant
                 </p>
                 <p className="achievements__image-overlay-meta">
-                  Zimbabwe, 2022
+                  Uganda, 2019
                 </p>
               </div>
             </div>

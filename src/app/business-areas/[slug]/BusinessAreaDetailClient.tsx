@@ -3,9 +3,11 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import 'swiper/css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ProjectCard from '@/components/projects/ProjectCard';
 import { Project } from '@/types/project';
 import { getProjectsByBusinessArea } from '@/lib/projects';
 
@@ -170,14 +172,64 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
           </section>
         )}
 
-        {/* Projects Section */}
+        {/* Projects Section — image + subtitle carousel */}
         {!loading && projects.length > 0 && (
           <div className="mb-16">
-            <h3 className="text-2xl font-bold text-[#062516] mb-0 text-center py-10">Our {displayTitle} Landmark Projects</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
+            <h3 className="text-2xl font-bold text-[#062516] mb-0 text-center py-10">
+              Our {displayTitle} Landmark Projects
+            </h3>
+
+            <div className="relative px-2">
+              <Swiper
+                modules={[Autoplay]}
+                autoplay={{
+                  delay: 4500,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                }}
+                loop={projects.length > 3}
+                spaceBetween={24}
+                slidesPerView={1}
+                breakpoints={{
+                  640: { slidesPerView: 1, spaceBetween: 16 },
+                  768: { slidesPerView: 2, spaceBetween: 20 },
+                  1024: { slidesPerView: 3, spaceBetween: 24 },
+                }}
+              >
+                {projects.map((project) => (
+                  <SwiperSlide key={project.id}>
+                    <Link
+                      href={project.id ? `/projects/${project.id}` : '/projects'}
+                      className="group block h-full"
+                    >
+                      <div className="overflow-hidden rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-shadow duration-300">
+                        <div className="relative h-56 w-full bg-gray-100">
+                          {project.imageUrl ? (
+                            <Image
+                              src={project.imageUrl}
+                              alt={project.sub_title || project.title}
+                              fill
+                              className="object-cover transition-transform duration-500 group-hover:scale-105"
+                              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            />
+                          ) : (
+                            <div className="absolute inset-0 flex items-center justify-center bg-[#062516]/5 text-[#062516]/40 text-sm font-medium">
+                              No image
+                            </div>
+                          )}
+                        </div>
+                        {project.sub_title && (
+                          <div className="px-5 py-4">
+                            <p className="text-center text-[#062516] font-semibold text-base leading-snug line-clamp-2">
+                              {project.sub_title}
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    </Link>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
           </div>
         )}
