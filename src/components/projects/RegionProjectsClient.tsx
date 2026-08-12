@@ -73,7 +73,7 @@ export default function RegionProjectsClient({ regionId }: RegionProjectsClientP
       
       </section>
 
-      <main className="py-5 bg-pistachio-green">
+      <main className="py-5">
         {loading ? (
           <div className="flex flex-col items-center justify-center py-40 gap-4">
             <Loader2 className="w-10 h-10 animate-spin text-[#062516]" />
@@ -82,10 +82,10 @@ export default function RegionProjectsClient({ regionId }: RegionProjectsClientP
             </p>
           </div>
         ) : (
-          <section className="bg-pistachio-green">
+          <section className="">
             <div className="container mx-auto px-6">
               <h3 className="section-title-spl text-center text-[#062516] mb-10">
-                {region.label} Project Portfolio
+                Project Portfolio in {region.label}
               </h3>
 
               {projects.length > 0 ? (
