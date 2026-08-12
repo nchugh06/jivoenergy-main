@@ -19,11 +19,72 @@ export const PROJECT_REGIONS = [
 
 export type ProjectRegionId = (typeof PROJECT_REGIONS)[number]['id'];
 
-function normalizeRegion(value?: string) {
+/**
+ * Display order within each region (1-based list from product).
+ * Matched against project.title with flexible includes (aliases allowed).
+ * Unlisted projects sort after these, by title.
+ */
+const PROJECT_ORDER_BY_REGION: Record<ProjectRegionId, string[]> = {
+  'east-africa': [
+    'Kabulasoke Solar Plant',
+    'Nkonge Solar Plant',
+    'Mini Grids for EEU', // matches "7 Mini Grids for EEU"
+    'Solar PV Plants for Mall, Offices & Factories at Chepkumia County',
+    'Rooftop Solar PV Plant at Embu County',
+    'Solar PV & Storage in Kakuma Refugee Camp',
+    'Solar PV system with BESS in Kakuma Biashara',
+    'Solar PV Solution at Machakos County',
+  ],
+  'west-africa': [
+    'Solar PV + BESS Hybrid Systems for Health Facilities',
+    'Solar PV & Storage for UNOPS',
+    'Solar PV for Water Pumping in 5 Irrigation schemes',
+    'Rooftop Solar PV & Energy Efficiency Project',
+    'Santo Amaro Solar Power Plant',
+    'Solar PV Plant',
+  ],
+  'southern-africa': [
+    'Grid-forming BESS Project in Lilongwe',
+    'Solar PV for Pepsi Bottling Plant', // also matches "Soar PV..." if renamed
+    'Solar PV & Storage in Mzuzu',
+  ],
+};
+
+function normalizeText(value?: string) {
   return (value || '')
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, ' ')
     .trim();
+}
+
+function normalizeRegion(value?: string) {
+  return normalizeText(value);
+}
+
+/** Index in ordered list for a project title; lower = first. Unknown → large number. */
+function projectOrderIndex(regionId: ProjectRegionId, title?: string): number {
+  const order = PROJECT_ORDER_BY_REGION[regionId] || [];
+  const t = normalizeText(title);
+  if (!t) return Number.MAX_SAFE_INTEGER;
+
+  let best = Number.MAX_SAFE_INTEGER;
+  order.forEach((entry, index) => {
+    const e = normalizeText(entry);
+    // Prefer exact / mutual includes so short titles like "Solar PV Plant" still rank
+    if (t === e || t.includes(e) || e.includes(t)) {
+      best = Math.min(best, index);
+    }
+  });
+  return best;
+}
+
+function sortProjectsInRegion(regionId: ProjectRegionId, projects: Project[]): Project[] {
+  return [...projects].sort((a, b) => {
+    const ai = projectOrderIndex(regionId, a.title);
+    const bi = projectOrderIndex(regionId, b.title);
+    if (ai !== bi) return ai - bi;
+    return (a.title || '').localeCompare(b.title || '');
+  });
 }
 
 /** Match Firestore `project.region` to a section (label or id style). */
@@ -86,10 +147,13 @@ const ProjectsPage = () => {
   }, [loading, focusRegionId]);
 
   const projectsByRegion = useMemo(() => {
-    return PROJECT_REGIONS.map((region) => ({
-      ...region,
-      projects: allProjects.filter((p) => projectMatchesRegion(p, region)),
-    }));
+    return PROJECT_REGIONS.map((region) => {
+      const inRegion = allProjects.filter((p) => projectMatchesRegion(p, region));
+      return {
+        ...region,
+        projects: sortProjectsInRegion(region.id, inRegion),
+      };
+    });
   }, [allProjects]);
 
   const unassignedProjects = useMemo(() => {
@@ -130,9 +194,7 @@ const ProjectsPage = () => {
               <h3 className="section-title-spl text-center text-[#062516] mb-4">
                 Project Portfolio
               </h3>
-              <h6 className="text-black font-bold uppercase text-[10px] tracking-widest opacity-60 text-center mb-10">
-                Showing {allProjects.length} projects across Africa
-              </h6>
+              
 
       
             </div>
