@@ -13,3 +13,7 @@ out/
 # env
 .env
 .env.local
+
+docs
+rememberText.txt
+

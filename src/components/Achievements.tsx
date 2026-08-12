@@ -87,13 +87,21 @@ const Achievements = () => {
           <div className="achievements__media">
             <div className="achievements__image">
               <Image
-                src="/assets/our-achievement.jpg"
-                alt="Our Achievements"
+                src="/assets/Solar-Uganda-Kabulasoke_1.jpg"
+                alt="23 MWp Kabulasoke Solar Plant, Uganda, 2019"
                 width={900}
                 height={600}
                 className="w-full h-full object-cover rounded-2xl"
                 priority
               />
+              <div className="achievements__image-overlay">
+                <p className="achievements__image-overlay-title">
+                  23 MWp Kabulasoke Solar Plant
+                </p>
+                <p className="achievements__image-overlay-meta">
+                  Uganda, 2019
+                </p>
+              </div>
             </div>
           </div>
 
