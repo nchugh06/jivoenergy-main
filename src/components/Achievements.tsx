@@ -87,7 +87,8 @@ const Achievements = () => {
           <div className="achievements__media">
             <div className="achievements__image">
               <Image
-                src="/assets/our-achievement.jpg"
+                src="/assets/Solar-Uganda-Kabulasoke_1.jpg"
+                // src="/assets/DJI_0040.JPG"
                 alt="Solar PV for Pepsi Bottling Plant, Zimbabwe, 2022"
                 width={900}
                 height={600}

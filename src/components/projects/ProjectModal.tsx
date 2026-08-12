@@ -60,9 +60,12 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
             <div className="w-full md:w-3/5 p-8 md:p-12 bg-white overflow-y-auto">
                 <div className="mb-10">
                     <h3 className="text-4xl font-bold text-[#062516] mb-2 leading-tight">
-                        {project.title} | {project.capacity}
+                        {project.title}{project.capacity ? ` | ${project.capacity}` : ''}
                     </h3>
-                    <div className="h-1 w-20 bg-[#FFFA84] rounded-full"></div>
+                    {project.sub_title && (
+                        <p className="text-lg text-gray-500 mt-2 leading-relaxed">{project.sub_title}</p>
+                    )}
+                    <div className="h-1 w-20 bg-[#FFFA84] rounded-full mt-4"></div>
                 </div>
 
                 <div className="space-y-8 mb-10">
@@ -70,6 +73,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                         <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Project Name:</h4>
                         <p className="text-xl font-semibold text-[#062516]">{project.title}</p>
                     </div>
+
+                    {project.sub_title && (
+                        <div>
+                            <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Subtitle:</h4>
+                            <p className="text-xl font-semibold text-[#062516]">{project.sub_title}</p>
+                        </div>
+                    )}
 
                     <div>
                         <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Location:</h4>

@@ -15,9 +15,11 @@ interface ProjectFormProps {
 const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoading }) => {
   const [settings, setSettings] = useState<ProjectSettings | null>(null);
   const [fetchingSettings, setFetchingSettings] = useState(true);
-  
+
   const [formData, setFormData] = useState<Partial<Project>>({
     title: initialData?.title || '',
+    sub_title: initialData?.sub_title || '',
+    order: initialData?.order ?? 0,
     country: initialData?.country || '',
     region: initialData?.region || '',
     status: initialData?.status || 'Planned',
@@ -29,7 +31,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoad
     financing: initialData?.financing || '',
     ...initialData
   });
-  
+
   const [coverImage, setCoverImage] = useState<File | null>(null);
   const [galleryImages, setGalleryImages] = useState<File[]>([]);
 
@@ -46,12 +48,20 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoad
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.title || !formData.country) return;
-    await onSubmit(formData as Omit<Project, 'id'>, coverImage, galleryImages);
+    // Ensure order is always a number in Firestore (inputs can leave it as string)
+    const payload = {
+      ...formData,
+      order: Number(formData.order ?? 0),
+    } as Omit<Project, 'id'>;
+    await onSubmit(payload, coverImage, galleryImages);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData(prev => ({
+      ...prev,
+      [name]: name === 'order' ? (value === '' ? 0 : Number(value)) : value,
+    }));
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -80,6 +90,29 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoad
         <div className="col-span-2">
           <label className={labelClass}>Project Name</label>
           <input name="title" value={formData.title} onChange={handleChange} required className={`${inputClass} text-lg py-3`} placeholder="e.g. Kleibrok Solar Project" />
+        </div>
+        <div className="col-span-2">
+          <label className={labelClass}>Project Subtitle</label>
+          <input
+            name="sub_title"
+            value={formData.sub_title || ''}
+            onChange={handleChange}
+            className={`${inputClass} text-lg py-3`}
+            placeholder="e.g. 38 MWp Solar PV plant"
+          />
+        </div>
+         <div>
+          <label className={labelClass}>Display Order</label>
+          <input
+            name="order"
+            type="number"
+            min={0}
+            value={formData.order ?? 0}
+            onChange={handleChange}
+            className={inputClass}
+            placeholder="0"
+          />
+          <p className="text-[10px] text-gray-400 mt-1 ml-1">Lower numbers appear first</p>
         </div>
 
         <div className="relative">
@@ -129,8 +162,8 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoad
         <div className="relative">
           <label className={labelClass}>Infrastructure Technology</label>
           <select name="technology" value={formData.technology} onChange={handleChange} className={inputClass}>
-              <option value="">Select Tech</option>
-              {(settings?.technologies || []).map(v => <option key={v} value={v}>{v}</option>)}
+            <option value="">Select Tech</option>
+            {(settings?.technologies || []).map(v => <option key={v} value={v}>{v}</option>)}
           </select>
           <ChevronDown className="absolute right-4 top-9 w-4 h-4 text-gray-400 pointer-events-none" />
         </div>
@@ -150,6 +183,8 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoad
           <TiptapEditor content={formData.description || ''} onChange={(newContent) => setFormData(prev => ({ ...prev, description: newContent }))} className="w-full rounded-2xl border border-gray-100 focus:ring-2 focus:ring-[#062516]/10 focus:border-[#062516]/20 transition-all min-h-[400px] shadow-sm overflow-hidden" />
         </div>
 
+       
+
         <div className="col-span-1">
           <label className={labelClass}>Primary Cover Image</label>
           <div className="relative group">
@@ -157,18 +192,18 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoad
           </div>
           {formData.imageUrl && !coverImage && (
             <div className="relative mt-2 inline-block">
-               <img src={formData.imageUrl} alt="Current Cover" className="h-20 w-auto rounded-lg border border-gray-200" />
-               <button
-                 type="button"
-                 onClick={() => setFormData(prev => ({ ...prev, imageUrl: '' }))}
-                 className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-colors shadow-sm"
-                 title="Remove Image"
-               >
-                 <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
-                   <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                 </svg>
-               </button>
-               <p className="text-[10px] text-gray-400 mt-1 font-medium px-1">Current Image</p>
+              <img src={formData.imageUrl} alt="Current Cover" className="h-20 w-auto rounded-lg border border-gray-200" />
+              <button
+                type="button"
+                onClick={() => setFormData(prev => ({ ...prev, imageUrl: '' }))}
+                className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-colors shadow-sm"
+                title="Remove Image"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
+              <p className="text-[10px] text-gray-400 mt-1 font-medium px-1">Current Image</p>
             </div>
           )}
         </div>
@@ -178,7 +213,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoad
           <div className="relative group">
             <input type="file" onChange={handleGalleryChange} accept="image/*" multiple className="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-6 file:rounded-xl file:border-0 file:text-sm file:font-bold file:bg-blue-600 file:text-white hover:file:bg-blue-700 transition-all cursor-pointer bg-gray-50 p-2 rounded-2xl border border-dashed border-gray-200" />
           </div>
-          
+
           {formData.galleryUrls && formData.galleryUrls.length > 0 && (
             <div className="mt-3 grid grid-cols-4 gap-2">
               {formData.galleryUrls.map((url, index) => (
@@ -198,7 +233,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoad
               ))}
             </div>
           )}
-          
+
           {galleryImages.length > 0 && <p className="text-[10px] text-blue-600 mt-2 font-bold px-1 uppercase tracking-wider">{galleryImages.length} new items selected</p>}
         </div>
       </div>

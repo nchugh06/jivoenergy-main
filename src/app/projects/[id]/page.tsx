@@ -103,7 +103,8 @@ const ProjectDetailPage = () => {
                             {project.title}
                         </h1>
                         <p className="text-xl text-white/90 max-w-2xl leading-relaxed font-light">
-                            Leading the transition to sustainable energy through innovative infrastructure and community-focused solutions.
+                            {project.sub_title ||
+                                'Leading the transition to sustainable energy through innovative infrastructure and community-focused solutions.'}
                         </p>
                     </motion.div>
                 </div>

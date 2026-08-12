@@ -37,11 +37,15 @@ export default function AdminProjectsPage() {
     }
   };
 
-  const filteredProjects = projects.filter(p => 
-    p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    p.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    (p.technology?.toLowerCase() ?? '').includes(searchTerm.toLowerCase())
-  );
+  const filteredProjects = projects
+    .filter(p =>
+      p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      p.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (p.technology?.toLowerCase() ?? '').includes(searchTerm.toLowerCase()) ||
+      (p.sub_title?.toLowerCase() ?? '').includes(searchTerm.toLowerCase())
+    )
+    // Keep list ordered by display order (lower first); missing order at end
+    .sort((a, b) => (Number(a.order ?? 9999)) - (Number(b.order ?? 9999)));
 
   return (
     <div className="p-8">
@@ -98,6 +102,7 @@ export default function AdminProjectsPage() {
             <table className="w-full text-left">
               <thead>
                 <tr className="bg-gray-50 border-b border-gray-100">
+                  <th className="px-4 py-4 text-sm font-semibold text-gray-600 w-20 text-center">Order</th>
                   <th className="px-6 py-4 text-sm font-semibold text-gray-600">Project</th>
                   <th className="px-6 py-4 text-sm font-semibold text-gray-600">Country</th>
                   <th className="px-6 py-4 text-sm font-semibold text-gray-600">Power</th>
@@ -108,6 +113,13 @@ export default function AdminProjectsPage() {
               <tbody className="divide-y divide-gray-50">
                 {filteredProjects.map((project) => (
                   <tr key={project.id} className="hover:bg-gray-50/50 transition-colors group">
+                    <td className="px-4 py-4 text-center">
+                      <span className="inline-flex items-center justify-center min-w-[2rem] h-8 px-2 rounded-lg bg-[#062516]/5 text-[#062516] text-sm font-bold tabular-nums">
+                        {project.order != null && !Number.isNaN(Number(project.order))
+                          ? Number(project.order)
+                          : '—'}
+                      </span>
+                    </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-4">
                         <div className="h-12 w-16 relative flex-shrink-0 bg-gray-100 rounded overflow-hidden border border-gray-100">
@@ -119,7 +131,10 @@ export default function AdminProjectsPage() {
                         </div>
                         <div>
                           <div className="font-bold text-gray-800">{project.title}</div>
-                          <div className="text-xs text-gray-500">{project.status}</div>
+                          {project.sub_title && (
+                            <div className="text-xs text-gray-500 line-clamp-1">{project.sub_title}</div>
+                          )}
+                          <div className="text-xs text-gray-400">{project.status}</div>
                         </div>
                       </div>
                     </td>
