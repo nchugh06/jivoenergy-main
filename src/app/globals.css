@@ -352,3 +352,15 @@ p {
   animation: marquee 50s linear infinite;
 }
 
+
+
+.tag {
+  background: linear-gradient(
+    135deg,
+    #2e4d33 0%,
+    #217338 50%,
+    #1a8c47 100%
+  );
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease, filter 0.3s ease;
+}

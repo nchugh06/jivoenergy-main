@@ -176,7 +176,7 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
         {!loading && projects.length > 0 && (
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-[#062516] mb-0 text-center py-10">
-              Our {displayTitle} Landmark Projects
+              Landmark Projects
             </h3>
 
             <div className="relative px-2">
@@ -218,11 +218,18 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
                             </div>
                           )}
                         </div>
-                        {project.sub_title && (
+                        {(project.sub_title || project.country) && (
                           <div className="px-5 py-4">
-                            <p className="text-center text-[#062516] font-semibold text-base leading-snug line-clamp-2">
-                              {project.sub_title}
-                            </p>
+                            {project.sub_title && (
+                              <p className="text-center text-[#062516] font-semibold text-base leading-snug line-clamp-2">
+                                {project.sub_title}
+                              </p>
+                            )}
+                            {project.country && (
+                              <p className="text-center text-gray-500 text-sm font-medium mt-1.5">
+                                {project.country}
+                              </p>
+                            )}
                           </div>
                         )}
                       </div>

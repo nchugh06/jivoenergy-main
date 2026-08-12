@@ -137,7 +137,6 @@ const Navbar = () => {
                 onMouseEnter={() => openMenu('projects')}
                 onMouseLeave={closeMenu}
               >
-                
                 {projectRegions.map((region) => (
                   <li className={styles.dropdownItem} key={region.id}>
                     <a

@@ -53,25 +53,25 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               {project.country}
             </div>
 
-            <h3 className="text-xl font-bold text-[#062516] mb-2 line-clamp-2 leading-tight">
+            <h3 className="text-xl font-bold text-[#062516] mb-2 line-clamp-2 leading-tight min-h-13">
               {project.title}
             </h3>
 
             <div className="flex flex-wrap gap-2 mb-4">
               {project.capacity && (
-                <span className="text-xs bg-gray-50 text-gray-600 px-2 py-1 rounded-md border border-gray-100">
+                <span className="tag text-xs text-white px-2 py-1 rounded-md border border-gray-100">
                   {project.capacity}
                 </span>
               )}
               {project.technology && (
-                <span className="text-xs bg-gray-50 text-gray-600 px-2 py-1 rounded-md border border-gray-100">
+                <span className="tag text-xs text-white px-2 py-1 rounded-md border border-gray-100">
                   {project.technology}
                 </span>
               )}
             </div>
           </div>
 
-          <div className="mt-auto -mx-6 border-t border-gray-50 flex justify-between items-center text-sm font-semibold text-[#062516] group-hover:text-[#F5FBF5] group-hover:bg-[#062516] p-6 rounded-b-3xl transition-colors">
+          <div className="mt-auto -mx-6 border-t border-gray-50 flex justify-between items-center text-sm font-semibold text-[#062516] group-hover:text-[#F5FBF5] group-hover:bg-[#1c4832] p-6 rounded-b-3xl transition-colors">
             <span>View Details</span>
             <Zap className="w-4 h-4" />
           </div>
