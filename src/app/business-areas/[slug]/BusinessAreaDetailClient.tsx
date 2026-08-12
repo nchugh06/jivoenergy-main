@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
+import { motion, Variants } from 'framer-motion';
 import 'swiper/css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -27,6 +28,41 @@ interface BusinessAreaDetailClientProps {
   slug: string;
   area: BusinessAreaData;
 }
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: 'easeOut',
+    },
+  },
+};
+
+const headingVariants: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.45,
+      ease: 'easeOut',
+    },
+  },
+};
 
 export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDetailClientProps) {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -124,20 +160,34 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
 
         {/* Features Section */}
         <section className="py-5 px-6 md:px-12 bg-gradient-to-br from-[#085D36]/5 to-[#04301C]/5">
-          <div className="mb-16">
-            <h3 className="text-2xl font-bold text-[#062516] mb-8 text-center">Key Capabilities</h3>
+          <motion.div
+            className="mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            variants={containerVariants}
+          >
+            <motion.h3
+              variants={headingVariants}
+              className="text-2xl font-bold text-[#062516] mb-8 text-center"
+            >
+              Key Capabilities
+            </motion.h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {area.features.map((feature, featureIndex) => (
-                <div
+                <motion.div
                   key={featureIndex}
-                  className="flex items-start space-x-4 bg-[#062516] p-6 rounded-lg hover:shadow-md transition-shadow duration-300"
+                  variants={itemVariants}
+                  whileHover={{ y: -6, scale: 1.02 }}
+                  transition={{ type: 'spring', stiffness: 320, damping: 22 }}
+                  className="flex items-start space-x-4 bg-[#062516] p-6 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300"
                 >
                   <div className="w-3 h-3 bg-[#062516] rounded-full mt-2 flex-shrink-0" />
                   <span className="text-white text-center">{feature}</span>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* Technical Description Section */}
@@ -155,20 +205,34 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
         {area.technicalDetails.length > 0 && (
           // <hr className="my-12 border-gray-300"></hr>
           <section className="py-5 px-6 md:px-12 bg-gradient-to-br from-[#085D36]/5 to-[#04301C]/5">
-            <div className="mb-16">
-              <h3 className="text-2xl font-bold text-[#062516] mb-8 text-center">Technical Expertise</h3>
+            <motion.div
+              className="mb-16"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-80px' }}
+              variants={containerVariants}
+            >
+              <motion.h3
+                variants={headingVariants}
+                className="text-2xl font-bold text-[#062516] mb-8 text-center"
+              >
+                Technical Expertise
+              </motion.h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {area.technicalDetails.map((td, tIndex) => (
-                  <div
+                  <motion.div
                     key={tIndex}
-                    className="flex items-start space-x-4 bg-[#fefefe] border border-[#062516] p-6 rounded-lg hover:shadow-md transition-shadow duration-300"
+                    variants={itemVariants}
+                    whileHover={{ y: -6, scale: 1.02 }}
+                    transition={{ type: 'spring', stiffness: 320, damping: 22 }}
+                    className="flex items-start space-x-4 bg-[#fefefe] border border-[#062516] p-6 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300"
                   >
                     {/* <div className="w-3 h-3 bg-[#062516] rounded-full mt-2 flex-shrink-0" /> */}
                     <span className="text-[#062516] text-center">{td}</span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </section>
         )}
 
