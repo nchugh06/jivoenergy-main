@@ -22,7 +22,6 @@
 }
 
 .ba-intro {
-  text-align: center;
   margin-bottom: 4rem;
 }
 
@@ -31,9 +30,14 @@
   margin-bottom: 2.5rem;
 }
 
-.ba-intro p {
-  color: #374151;
+.ba-intro .prose {
+  max-width: 65ch;
+}
+
+.ba-intro .prose p {
+  color: #4b5563;
   line-height: 1.75;
+  margin: 0;
 }
 
 .ba-scroll-container {

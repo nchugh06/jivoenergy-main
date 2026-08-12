@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import solarPV from "../../../public/assets/solar-pv-1.jpg";
@@ -239,30 +240,38 @@ const BusinessAreas = () => {
 
       <div className="">
         <div className="ba-intro-wrap max-w-7xl mx-auto px-4">
-          <div className="ba-intro text-center mb-16">
+          <div className="ba-intro mb-16">
             <h3 className="section-title-spl text-center text-[#062516] mb-10">
               Business Areas
             </h3>
-            <p>
-              <b>JIVO Energy</b> delivers integrated renewable energy and
-              sustainable infrastructure solutions across Africa, combining
-              advanced engineering, project development, EPC execution, energy
-              storage technologies, and long-term operational support. With
-              expertise spanning utility-scale Solar PV, Battery Energy Storage
-              Systems (BESS), hybrid energy systems, transmission & distribution
-              infrastructure, and waste-to-energy solutions, we develop reliable,
-              efficient, and future-ready energy ecosystems tailored for emerging
-              markets.
-              <br />
-              <br />
-              Our multidisciplinary team specializes in complete project
-              lifecycle execution — from feasibility studies, detailed
-              engineering, grid integration, procurement, construction,
-              commissioning, SCADA integration, and operations & maintenance —
-              ensuring technically optimized and bankable energy solutions for
-              utilities, governments, industries, commercial clients, and
-              development agencies.
-            </p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className=" text-gray-600 space-y-6 text-justify"
+            >
+              <p>
+                <b>JIVO Energy</b> delivers integrated renewable energy and
+                sustainable infrastructure solutions across Africa, combining
+                advanced engineering, project development, EPC execution, energy
+                storage technologies, and long-term operational support. With
+                expertise spanning utility-scale Solar PV, Battery Energy Storage
+                Systems (BESS), hybrid energy systems, transmission &amp;
+                distribution infrastructure, and waste-to-energy solutions, we
+                develop reliable, efficient, and future-ready energy ecosystems
+                tailored for emerging markets.
+              </p>
+              <p>
+                Our multidisciplinary team specializes in complete project
+                lifecycle execution — from feasibility studies, detailed
+                engineering, grid integration, procurement, construction,
+                commissioning, SCADA integration, and operations &amp;
+                maintenance — ensuring technically optimized and bankable energy
+                solutions for utilities, governments, industries, commercial
+                clients, and development agencies.
+              </p>
+            </motion.div>
           </div>
         </div>
 
