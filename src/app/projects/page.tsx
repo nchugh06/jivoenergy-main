@@ -145,7 +145,7 @@ const ProjectsPage = () => {
                 <h3 className="text-2xl font-bold text-gray-800 mb-2">No projects found</h3>
               </div>
             ) : (
-              <div className="space-y-20">
+              <div className="space-y-20 mb-16">
                 {sectionsToShow.map((section) => (
                   <section
                     key={section.id}
