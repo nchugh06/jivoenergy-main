@@ -149,9 +149,9 @@ const ProjectsPage = () => {
               <h3 className="section-title-spl text-center text-[#062516] mb-4">
                 Project Portfolio
               </h3>
-              
 
-      
+
+
             </div>
 
             {allProjects.length === 0 ? (
@@ -170,13 +170,10 @@ const ProjectsPage = () => {
                     className="scroll-mt-28"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8 border-b border-gray-200 pb-4">
-                      <h3 className="section-title-spl text-[#062516] mb-0">
+                      <h3 className="text-xl font-bold text-[#062516] mb-0 line-clamp-2 leading-tight">
                         {section.label}
                       </h3>
-                      <span className="text-xs font-bold uppercase tracking-widest text-gray-500">
-                        {section.projects.length}{' '}
-                        {section.projects.length === 1 ? 'project' : 'projects'}
-                      </span>
+                     
                     </div>
 
                     {section.projects.length > 0 ? (

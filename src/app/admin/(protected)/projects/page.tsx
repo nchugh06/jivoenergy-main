@@ -146,7 +146,7 @@ export default function AdminProjectsPage() {
                       </span>
                     </td>
                     <td className="px-6 py-4 text-right">
-                      <div className="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="flex justify-end gap-2  transition-opacity">
                         <Link
                           href={`/admin/projects/edit-project/${project.id}`}
                           className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"

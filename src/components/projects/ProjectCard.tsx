@@ -24,15 +24,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     <Link href={`/projects/${project.id}`}>
       <motion.div
         whileHover={{ y: -5 }}
-        className="group bg-white rounded-3xl p-6 shadow-lg border border-gray-100 hover:shadow-xl hover:border-[#062516]/20 transition-all duration-300 cursor-pointer flex flex-col h-full"
+        className="group bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl hover:border-[#062516]/20 transition-all duration-300 cursor-pointer flex flex-col h-full"
       >
-        {/* Image / Icon Header */}
-        <div className="mb-6 relative h-48 w-full rounded-2xl overflow-hidden bg-gray-100">
+        {/* Image flush to card edges (no padding) */}
+        <div className="relative h-48 w-full overflow-hidden bg-gray-100">
           {project.imageUrl ? (
-            <Image 
-              src={project.imageUrl} 
-              alt={project.title} 
-              fill 
+            <Image
+              src={project.imageUrl}
+              alt={project.title}
+              fill
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
@@ -40,40 +40,41 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               {getIcon(project.technology || '')}
             </div>
           )}
-          <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-[#062516] shadow-sm">
+          <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-[#062516] shadow-sm opacity-80">
             {project.status}
           </div>
         </div>
 
-        <div className="flex-grow">
-          <div className="flex items-center mb-3 text-sm text-gray-500 font-medium">
-            <MapPin className="w-4 h-4 mr-1 text-[#085d36]" />
-            {project.country}
-          </div>
-          
-          <h3 className="text-xl font-bold text-[#062516] mb-2 line-clamp-2 leading-tight">
-            {project.title}
-          </h3>
+        {/* Padding only on bottom content */}
+        <div className="flex flex-col flex-grow px-6 pt-5">
+          <div className="flex-grow">
+            <div className="flex items-center mb-3 text-sm text-gray-500 font-medium">
+              <MapPin className="w-4 h-4 mr-1 text-[#085d36]" />
+              {project.country}
+            </div>
 
-        
-          
-          <div className="flex flex-wrap gap-2 mb-4">
-            {project.capacity && (
-              <span className="text-xs bg-gray-50 text-gray-600 px-2 py-1 rounded-md border border-gray-100">
-                {project.capacity}
-              </span>
-            )}
-             {project.technology && (
-              <span className="text-xs bg-gray-50 text-gray-600 px-2 py-1 rounded-md border border-gray-100">
-                {project.technology}
-              </span>
-            )}
-          </div>
-        </div>
+            <h3 className="text-xl font-bold text-[#062516] mb-2 line-clamp-2 leading-tight">
+              {project.title}
+            </h3>
 
-        <div className="mt-4 pt-4 border-t border-gray-50 flex justify-between items-center text-sm font-semibold text-[#062516] group-hover:text-[#F5FBF5] group-hover:bg-[#062516] -mx-6 -mb-6 p-6 rounded-b-3xl transition-colors">
-          <span>View Details</span>
-          <Zap className="w-4 h-4" />
+            <div className="flex flex-wrap gap-2 mb-4">
+              {project.capacity && (
+                <span className="text-xs bg-gray-50 text-gray-600 px-2 py-1 rounded-md border border-gray-100">
+                  {project.capacity}
+                </span>
+              )}
+              {project.technology && (
+                <span className="text-xs bg-gray-50 text-gray-600 px-2 py-1 rounded-md border border-gray-100">
+                  {project.technology}
+                </span>
+              )}
+            </div>
+          </div>
+
+          <div className="mt-auto -mx-6 border-t border-gray-50 flex justify-between items-center text-sm font-semibold text-[#062516] group-hover:text-[#F5FBF5] group-hover:bg-[#062516] p-6 rounded-b-3xl transition-colors">
+            <span>View Details</span>
+            <Zap className="w-4 h-4" />
+          </div>
         </div>
       </motion.div>
     </Link>
