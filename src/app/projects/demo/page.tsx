@@ -73,7 +73,7 @@ const DemoProjectPage = () => {
                         transition={{ duration: 0.8 }}
                         className="max-w-4xl"
                     >
-                        <Link href="/projects" className="inline-flex items-center text-[#FFFA84] mb-6 hover:underline font-medium">
+                        <Link href="/projects/east-africa" className="inline-flex items-center text-[#FFFA84] mb-6 hover:underline font-medium">
                             <ArrowLeft className="w-4 h-4 mr-2" />
                             Back to Portfolio
                         </Link>

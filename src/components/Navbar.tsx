@@ -141,7 +141,7 @@ const Navbar = () => {
                   <li className={styles.dropdownItem} key={region.id}>
                     <a
                       className={styles.dropdownLink}
-                      href={`/projects#${region.id}`}
+                      href={`/projects/${region.id}`}
                       onClick={closeAll}
                     >
                       {region.label}

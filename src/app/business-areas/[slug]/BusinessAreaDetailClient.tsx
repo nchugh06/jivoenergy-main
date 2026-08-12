@@ -247,7 +247,7 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
               <Swiper
                 modules={[Autoplay]}
                 autoplay={{
-                  delay: 4500,
+                  delay: 3000,
                   disableOnInteraction: false,
                   pauseOnMouseEnter: true,
                 }}
@@ -263,7 +263,7 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
                 {projects.map((project) => (
                   <SwiperSlide key={project.id}>
                     <Link
-                      href={project.id ? `/projects/${project.id}` : '/projects'}
+                      href={project.id ? `/projects/${project.id}` : '/projects/east-africa'}
                       className="group block h-full"
                     >
                       <div className="overflow-hidden rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-shadow duration-300">
