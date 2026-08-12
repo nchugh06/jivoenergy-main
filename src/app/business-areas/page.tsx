@@ -237,7 +237,7 @@ const BusinessAreas = () => {
         />
       </section>
 
-      <div className="py-5">
+      <div className="">
         <div className="ba-intro-wrap max-w-7xl mx-auto px-4">
           <div className="ba-intro text-center mb-16">
             <h3 className="section-title-spl text-center text-[#062516] mb-10">

@@ -121,8 +121,10 @@ const ProjectsPage = () => {
     ? projectsByRegion.filter((s) => s.id === focusRegionId)
     : projectsByRegion;
 
+  const unassignedSectionIndex = sectionsToShow.length;
+
   return (
-    <div className="min-h-screen bg-gray-50 font-sans selection:bg-[#FFFA84] selection:text-[#062516]">
+    <div className="min-h-screen bg-white font-sans selection:bg-[#FFFA84] selection:text-[#062516]">
       <Navbar />
 
       <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
@@ -135,7 +137,7 @@ const ProjectsPage = () => {
         />
       </section>
 
-      <main className="container mx-auto px-6 py-24 md:py-32">
+      <main className="py-5 bg-pistachio-green">
         {loading ? (
           <div className="flex flex-col items-center justify-center py-40 gap-4">
             <Loader2 className="w-10 h-10 animate-spin text-[#062516]" />
@@ -144,74 +146,88 @@ const ProjectsPage = () => {
             </p>
           </div>
         ) : (
-          <div>
-            <div className="py-8 px-2">
-              <h3 className="section-title-spl text-center text-[#062516] mb-4">
+          <>
+            <div className="container mx-auto px-6 pt-16 pb-8 md:pt-24">
+              <h3 className="section-title text-center text-[#062516] mb-10">
                 Project Portfolio
               </h3>
-
-
-
             </div>
 
             {allProjects.length === 0 ? (
-              <div className="text-center py-40 bg-white rounded-[40px] border border-dashed border-gray-200">
-                <div className="p-6 rounded-full bg-gray-50 w-fit mx-auto mb-6">
-                  <Zap className="w-12 h-12 text-gray-300" />
+              <div className="container mx-auto px-6 pb-24">
+                <div className="text-center py-40 bg-white rounded-[40px] border border-dashed border-gray-200">
+                  <div className="p-6 rounded-full bg-gray-50 w-fit mx-auto mb-6">
+                    <Zap className="w-12 h-12 text-gray-300" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-2">No projects found</h3>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-2">No projects found</h3>
               </div>
             ) : (
-              <div className="space-y-20 mb-16">
-                {sectionsToShow.map((section) => (
-                  <section
-                    key={section.id}
-                    id={section.id}
-                    className="scroll-mt-28"
-                  >
-                    <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8 border-b border-gray-200 pb-4">
-                      <h3 className="text-xl font-bold text-[#062516] mb-0 line-clamp-2 leading-tight">
-                        {section.label}
-                      </h3>
-                     
-                    </div>
+              <>
+                {sectionsToShow.map((section, index) => {
+                  const isPistachio = index % 2 === 0;
+                  return (
+                    <section
+                      key={section.id}
+                      id={section.id}
+                      className={`scroll-mt-28 py-16 md:py-20 ${
+                        isPistachio ? 'bg-pistachio-green' : 'bg-white'
+                      }`}
+                    >
+                      <div className="container mx-auto px-6">
+                        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8 border-b border-gray-200 pb-4">
+                          <h3 className="text-xl font-bold text-[#062516] mb-0 line-clamp-2 leading-tight">
+                            {section.label}
+                          </h3>
+                        </div>
 
-                    {section.projects.length > 0 ? (
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                        {section.projects.map((project) => (
-                          <ProjectCard key={project.id} project={project} />
-                        ))}
+                        {section.projects.length > 0 ? (
+                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                            {section.projects.map((project) => (
+                              <ProjectCard key={project.id} project={project} />
+                            ))}
+                          </div>
+                        ) : (
+                          <p className="text-gray-500 text-sm py-8">
+                            No projects in this region yet.
+                          </p>
+                        )}
                       </div>
-                    ) : (
-                      <p className="text-gray-500 text-sm py-8">
-                        No projects in this region yet.
-                      </p>
-                    )}
-                  </section>
-                ))}
+                    </section>
+                  );
+                })}
 
                 {/* Projects whose region does not match the three sections */}
                 {!focusRegionId && unassignedProjects.length > 0 && (
-                  <section id="other-regions" className="scroll-mt-28">
-                    <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8 border-b border-gray-200 pb-4">
-                      <h3 className="section-title-spl text-[#062516] mb-0">
-                        Other regions
-                      </h3>
-                      <span className="text-xs font-bold uppercase tracking-widest text-gray-500">
-                        {unassignedProjects.length}{' '}
-                        {unassignedProjects.length === 1 ? 'project' : 'projects'}
-                      </span>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                      {unassignedProjects.map((project) => (
-                        <ProjectCard key={project.id} project={project} />
-                      ))}
+                  <section
+                    id="other-regions"
+                    className={`scroll-mt-28 py-16 md:py-20 ${
+                      unassignedSectionIndex % 2 === 0
+                        ? 'bg-pistachio-green'
+                        : 'bg-white'
+                    }`}
+                  >
+                    <div className="container mx-auto px-6">
+                      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8 border-b border-gray-200 pb-4">
+                        <h3 className="section-title-spl text-[#062516] mb-0">
+                          Other regions
+                        </h3>
+                        <span className="text-xs font-bold uppercase tracking-widest text-gray-500">
+                          {unassignedProjects.length}{' '}
+                          {unassignedProjects.length === 1 ? 'project' : 'projects'}
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        {unassignedProjects.map((project) => (
+                          <ProjectCard key={project.id} project={project} />
+                        ))}
+                      </div>
                     </div>
                   </section>
                 )}
-              </div>
+              </>
             )}
-          </div>
+          </>
         )}
       </main>
 
