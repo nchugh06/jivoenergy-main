@@ -96,34 +96,44 @@ const businessAreasData: {
     technicalDescription: "",
     technicalDetails: []
   },
-  'hybrid-energy': {
-    title: "Hybrid Energy Systems",
-    //description: "<strong>JIVO Energy</strong> designs and implements intelligent hybrid energy systems integrating Grid, Solar PV, DG, and BESS technologies to deliver stable, efficient, and optimized power solutions.",
-    fullDescription: "<strong>JIVO Energy</strong> designs and implements intelligent hybrid energy systems integrating Grid, Solar PV, DG, and BESS technologies to deliver stable, efficient, and optimized power solutions for utilities, industries, telecom infrastructure, institutions, remote communities, and mission-critical applications. Our hybrid energy architectures are engineered to maximize renewable energy utilization, reduce diesel dependency, improve operational efficiency, and ensure uninterrupted power availability across dynamic operating environments.\n\nOur hybrid systems intelligently manage multiple energy sources using advanced control algorithms and energy management software to optimize power supply based on real-time demand, resource availability, and operational requirements. Whether for grid-connected or off-grid applications, our solutions provide superior reliability, cost efficiency, and environmental performance.\n\nWe deliver complete hybrid energy solutions from design and engineering through implementation, SCADA integration, operator training, and long-term support. Our systems have successfully powered telecom networks, data centers, industrial facilities, healthcare institutions, and remote communities across Africa with proven reliability and performance.",
-    image: hybridenergy,
-    imageTitle: "Integrated Energy Solutions for Reliable & Sustainable Power",
-    features: [
-      "Renewable energy optimization",
-      "Intelligent hybrid power management",
-      "Diesel reduction & fuel optimization",
-      "Microgrid & off-grid energy systems",
-      "Critical infrastructure power reliability",
-      "Industrial & telecom hybrid applications",
-      "Remote community electrification",
-      "Islanded and grid-connected operation",
-      "Load balancing & energy management",
-      "Smart automation & remote monitoring"
-    ],
-    technicalDescription: "",
-    technicalDetails: [
-      "Hybrid power plant design & engineering",
-      "Solar PV & BESS integrated systems",
-      "EMS, PMS & SCADA integration",
-      "Synchronization & load sharing systems",
-      "Utility, industrial & remote infrastructure applications",
-      "Sustainable and resilient energy infrastructure",
-    ]
-  },
+ 'hybrid-energy': {
+  title: "Hybrid Energy Systems",
+
+  fullDescription: `
+    <strong>JIVO Energy</strong> designs and implements intelligent hybrid energy systems integrating Grid, Solar PV, DG, and BESS technologies to deliver stable, efficient, and optimized power solutions for utilities, industries, telecom infrastructure, institutions, remote communities, and mission-critical applications. Our expertise also includes the design and deployment of off-grid and mini-grid power systems that provide reliable, clean, and sustainable electricity to underserved and remote locations where grid infrastructure is limited or unavailable. Our hybrid energy architectures are engineered to maximize renewable energy utilization, reduce diesel dependency, improve operational efficiency, and ensure uninterrupted power availability across dynamic operating environments.
+
+    Our hybrid systems intelligently manage multiple energy sources using advanced control algorithms and energy management software to optimize power supply based on real-time demand, resource availability, and operational requirements. From grid-connected hybrid plants to standalone off-grid and mini-grid systems, our solutions are engineered to deliver reliable, scalable, and cost-effective power while maximizing renewable energy, minimizing fuel consumption, and supporting long-term energy access for commercial, industrial, and rural communities.
+
+    We deliver complete hybrid energy solutions from design and engineering through implementation, SCADA integration, operator training, and long-term support. Our technical expertise covers the complete lifecycle of off-grid and mini-grid projects, including feasibility studies, system design, EPC execution, intelligent energy management, commissioning, and long-term operation & maintenance, enabling sustainable electrification across Africa.
+  `,
+
+  image: hybridenergy,
+  imageTitle: "Integrated Energy Solutions for Reliable & Sustainable Power",
+
+  features: [
+    "Renewable energy optimization",
+    "Intelligent hybrid power management",
+    "Diesel reduction & fuel optimization",
+    "Microgrid & off-grid energy systems",
+    "Critical infrastructure power reliability",
+    "Industrial & telecom hybrid applications",
+    "Remote community electrification",
+    "Islanded and grid-connected operation",
+    "Load balancing & energy management",
+    "Smart automation & remote monitoring"
+  ],
+
+  technicalDescription: "",
+
+  technicalDetails: [
+    "Hybrid power plant design & engineering",
+    "Solar PV & BESS integrated systems",
+    "EMS, PMS & SCADA integration",
+    "Synchronization & load sharing systems",
+    "Utility, industrial & remote infrastructure applications",
+    "Sustainable and resilient energy infrastructure",
+  ]
+},
 
   'biogas-biomethane': {
     title: "Biogas & Biomethane",

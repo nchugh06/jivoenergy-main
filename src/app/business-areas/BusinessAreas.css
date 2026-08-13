@@ -43,7 +43,7 @@
 .ba-scroll-container {
   position: relative;
   display: grid;
-  /* Image column left (fits 600px), text right */
+  /* Image column left (fits 600px), text right — two children so sticky spans all sections */
   grid-template-columns: minmax(280px, 600px) minmax(0, 1fr);
   column-gap: 3rem;
   max-width: 80rem;
@@ -51,13 +51,23 @@
   padding: 0 1rem;
 }
 
+.ba-swatch-col {
+  min-width: 0;
+}
+
+.ba-scroll-sections {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
 .ba-scroll-section {
-  grid-column: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 100dvh;
+  min-height: 60vh;
   padding: 4rem 0;
+  scroll-margin-top: 6rem;
 }
 
 .ba-scroll-section .section-title-spl {
@@ -95,14 +105,16 @@
   background: #051e12;
 }
 
+/* Per-section photo — mobile listing only */
+.ba-section-photo {
+  display: none;
+}
+
 /* Sticky image — active layer set by IntersectionObserver */
 .ba-swatch {
   --ba-swatch-width: 600px;
   --ba-swatch-height: 400px;
 
-  grid-column: 1;
-  grid-row: 1 / -1;
-  align-self: start;
   position: sticky;
   top: calc(50% - (var(--ba-swatch-height) / 2));
   width: var(--ba-swatch-width);
@@ -166,28 +178,35 @@
   background: #051e12;
 }
 
-/* Mobile: single column; sticky image stays under the nav */
+/* Mobile: simple listing — image then copy in each section */
 @media (max-width: 1023px) {
   .ba-scroll-container {
-    display: flex;
-    flex-direction: column;
+    display: block;
+  }
+
+  .ba-swatch-col {
+    display: none;
   }
 
   .ba-scroll-section {
-    min-height: auto;
-    padding: 3rem 0;
-    order: 2;
+    min-height: 0;
+    padding: 2rem 0;
+    justify-content: flex-start;
   }
 
-  .ba-swatch {
-    --ba-swatch-width: min(100%, 600px);
-    --ba-swatch-height: min(66.67vw, 400px);
-    order: 1;
-    position: sticky;
-    top: 5.5rem;
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    z-index: 2;
+  .ba-section-photo {
+    display: block;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    margin-bottom: 1.25rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: var(--pistachio-green-background, #f6faf5);
+  }
+
+  .ba-section-photo img {
+    object-fit: cover;
   }
 }
 

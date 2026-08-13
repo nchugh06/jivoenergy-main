@@ -108,14 +108,7 @@ const businessAreas = [
     title: "Hybrid Energy Systems",
     description: (
       <>
-        <strong>JIVO Energy</strong> designs and implements intelligent hybrid
-        energy systems integrating Grid, Solar PV, DG, and BESS technologies to
-        deliver stable, efficient, and optimized power solutions for utilities,
-        industries, telecom infrastructure, institutions, remote communities,
-        and mission-critical applications. Our hybrid energy architectures are
-        engineered to maximize renewable energy utilization, reduce diesel
-        dependency, improve operational efficiency, and ensure uninterrupted
-        power availability across dynamic operating environments.
+        <strong>JIVO Energy</strong> designs and implements intelligent hybrid energy systems integrating Grid, Solar PV, DG, and BESS technologies to deliver stable, efficient, and optimized power solutions for utilities, industries, telecom infrastructure, institutions, remote communities, and mission-critical applications. Our expertise also includes the design and deployment of off-grid and mini-grid power systems that provide reliable, clean, and sustainable electricity to underserved and remote locations where grid infrastructure is limited or unavailable.
       </>
     ),
     image: hybrid,
@@ -201,27 +194,103 @@ const businessAreas = [
 const BusinessAreas = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
+  const swatchRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (!visible) return;
-        const index = Number(
-          (visible.target as HTMLElement).dataset.baIndex ?? 0
-        );
-        setActiveIndex(index);
-      },
-      { threshold: [0.35, 0.5, 0.65], rootMargin: "-10% 0px -10% 0px" }
-    );
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    let cleanupDesktop: (() => void) | undefined;
 
-    sectionRefs.current.forEach((el) => {
-      if (el) observer.observe(el);
-    });
+    const bindDesktop = () => {
+      const sections = sectionRefs.current.filter(
+        (el): el is HTMLElement => el != null
+      );
+      if (sections.length === 0) return;
 
-    return () => observer.disconnect();
+      const ratios = new Array(sections.length).fill(0);
+
+      const focusY = () => {
+        const swatch = swatchRef.current;
+        if (!swatch) return window.innerHeight / 2;
+        const rect = swatch.getBoundingClientRect();
+        return rect.top + rect.height / 2;
+      };
+
+      const syncActive = () => {
+        const y = focusY();
+        let next = 0;
+        let bestDist = Number.POSITIVE_INFINITY;
+
+        for (const el of sections) {
+          const index = Number(el.dataset.baIndex ?? 0);
+          const rect = el.getBoundingClientRect();
+          const dist =
+            y >= rect.top && y <= rect.bottom
+              ? 0
+              : y < rect.top
+                ? rect.top - y
+                : y - rect.bottom;
+
+          if (
+            dist < bestDist ||
+            (dist === bestDist && ratios[index] > ratios[next])
+          ) {
+            bestDist = dist;
+            next = index;
+          }
+        }
+
+        setActiveIndex((prev) => (prev === next ? prev : next));
+      };
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            const index = Number(
+              (entry.target as HTMLElement).dataset.baIndex ?? 0
+            );
+            ratios[index] = entry.intersectionRatio;
+          }
+          syncActive();
+        },
+        { threshold: Array.from({ length: 21 }, (_, i) => i / 20) }
+      );
+
+      sections.forEach((el) => observer.observe(el));
+      syncActive();
+
+      let frame = 0;
+      const onScrollOrResize = () => {
+        if (frame) return;
+        frame = window.requestAnimationFrame(() => {
+          frame = 0;
+          syncActive();
+        });
+      };
+
+      window.addEventListener("scroll", onScrollOrResize, { passive: true });
+      window.addEventListener("resize", onScrollOrResize);
+
+      cleanupDesktop = () => {
+        observer.disconnect();
+        window.removeEventListener("scroll", onScrollOrResize);
+        window.removeEventListener("resize", onScrollOrResize);
+        if (frame) window.cancelAnimationFrame(frame);
+      };
+    };
+
+    const onBreakpoint = () => {
+      cleanupDesktop?.();
+      cleanupDesktop = undefined;
+      if (desktop.matches) bindDesktop();
+    };
+
+    onBreakpoint();
+    desktop.addEventListener("change", onBreakpoint);
+
+    return () => {
+      desktop.removeEventListener("change", onBreakpoint);
+      cleanupDesktop?.();
+    };
   }, []);
 
   return (
@@ -277,49 +346,62 @@ const BusinessAreas = () => {
 
         {/* Sticky image + sections; image swaps via IntersectionObserver */}
         <div className="ba-scroll-container">
-          {businessAreas.map((area, index) => (
-            <section
-              key={sectionIds[index]}
-              id={sectionIds[index]}
-              data-ba-index={index}
-              ref={(el) => {
-                sectionRefs.current[index] = el;
-              }}
-              className="ba-scroll-section"
-            >
-              <h3 className="section-title-spl text-[#062516] mb-10">
-                {area.title}
-              </h3>
-              <h3 className="ba-scroll-section-kicker text-left text-gray-700 font-medium mt-2">
-                {area.imageTitle}
-              </h3>
-              <p className="ba-scroll-section-desc text-gray-600 leading-relaxed">
-                {area.description}
-              </p>
-              <a
-                href={`/business-areas/${sectionIds[index]}`}
-                className="ba-scroll-section-cta inline-block mt-6 px-6 py-3 bg-[#062516] text-white rounded-lg font-medium hover:bg-[#051e12] transition-colors duration-300"
-              >
-                Read More
-              </a>
-            </section>
-          ))}
+          <div className="ba-swatch-col">
+            <div className="ba-swatch" ref={swatchRef} aria-hidden="true">
+              {businessAreas.map((area, index) => (
+                <div
+                  key={sectionIds[index]}
+                  className={`ba-swatch-layer${index === activeIndex ? " is-active" : ""}`}
+                >
+                  <Image
+                    src={area.image}
+                    alt=""
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 90vw, 600px"
+                    priority={index === 0}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
 
-          <div className="ba-swatch" aria-hidden="true">
+          <div className="ba-scroll-sections">
             {businessAreas.map((area, index) => (
-              <div
+              <section
                 key={sectionIds[index]}
-                className={`ba-swatch-layer${index === activeIndex ? " is-active" : ""}`}
+                id={sectionIds[index]}
+                data-ba-index={index}
+                ref={(el) => {
+                  sectionRefs.current[index] = el;
+                }}
+                className="ba-scroll-section"
               >
-                <Image
-                  src={area.image}
-                  alt=""
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 90vw, 600px"
-                  priority={index === 0}
-                />
-              </div>
+                <div className="ba-section-photo">
+                  <Image
+                    src={area.image}
+                    alt={area.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1023px) 100vw, 600px"
+                  />
+                </div>
+                <h3 className="section-title-spl text-[#062516] mb-10">
+                  {area.title}
+                </h3>
+                <h3 className="ba-scroll-section-kicker text-left text-gray-700 font-medium mt-2">
+                  {area.imageTitle}
+                </h3>
+                <p className="ba-scroll-section-desc text-gray-600 leading-relaxed">
+                  {area.description}
+                </p>
+                <a
+                  href={`/business-areas/${sectionIds[index]}`}
+                  className="ba-scroll-section-cta inline-block mt-6 px-6 py-3 bg-[#062516] text-white rounded-lg font-medium hover:bg-[#051e12] transition-colors duration-300"
+                >
+                  Read More
+                </a>
+              </section>
             ))}
           </div>
         </div>

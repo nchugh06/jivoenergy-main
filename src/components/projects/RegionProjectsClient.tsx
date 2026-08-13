@@ -85,7 +85,7 @@ export default function RegionProjectsClient({ regionId }: RegionProjectsClientP
           <section className="">
             <div className="container mx-auto px-6">
               <h3 className="section-title-spl text-center text-[#062516] mb-10">
-                Project Portfolio in {region.label}
+                Our Project in {region.label}
               </h3>
 
               {projects.length > 0 ? (
