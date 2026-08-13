@@ -1,9 +1,12 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import type { Swiper as SwiperInstance } from 'swiper';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import 'swiper/css';
 import 'photoswipe/style.css';
 
 type GalleryItem = {
@@ -13,6 +16,7 @@ type GalleryItem = {
 };
 
 const DEFAULT_SIZE = { width: 1600, height: 1200 };
+const MIN_LOOP_SLIDES = 6;
 
 const loadImageSize = (url: string): Promise<GalleryItem> =>
     new Promise((resolve) => {
@@ -36,6 +40,8 @@ const ProjectGallery = ({ urls, title }: ProjectGalleryProps) => {
     const [items, setItems] = useState<GalleryItem[]>(
         urls.map((url) => ({ url, ...DEFAULT_SIZE }))
     );
+    const lightboxRef = useRef<PhotoSwipeLightbox | null>(null);
+    const swiperRef = useRef<SwiperInstance | null>(null);
 
     useEffect(() => {
         let cancelled = false;
@@ -51,49 +57,90 @@ const ProjectGallery = ({ urls, title }: ProjectGalleryProps) => {
 
     useEffect(() => {
         const lightbox = new PhotoSwipeLightbox({
-            gallery: '#project-visual-progress',
-            children: 'a',
             pswpModule: () => import('photoswipe'),
+            dataSource: items.map((item, index) => ({
+                src: item.url,
+                width: item.width,
+                height: item.height,
+                alt: `${title} Gallery ${index + 1}`,
+            })),
             padding: { top: 24, bottom: 40, left: 16, right: 16 },
         });
 
+        lightbox.on('close', () => {
+            swiperRef.current?.autoplay?.start();
+        });
+
         lightbox.init();
+        lightboxRef.current = lightbox;
 
         return () => {
             lightbox.destroy();
+            lightboxRef.current = null;
         };
-    }, [items]);
+    }, [items, title]);
+
+    const canLoop = items.length > 1;
+    const slides =
+        canLoop && items.length < MIN_LOOP_SLIDES
+            ? Array.from(
+                  { length: Math.ceil(MIN_LOOP_SLIDES / items.length) },
+                  () => items
+              ).flat()
+            : items;
+
+    const openLightbox = (index: number) => {
+        if (!items.length) return;
+        swiperRef.current?.autoplay?.stop();
+        lightboxRef.current?.loadAndOpen(index % items.length);
+    };
 
     return (
-        <div
-            id="project-visual-progress"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-            {items.map((item, index) => (
-                <motion.div
-                    key={`${item.url}-${index}`}
-                    whileHover={{ scale: 1.02, rotate: index % 2 === 0 ? 1 : -1 }}
-                    className="relative h-72 rounded-3xl overflow-hidden shadow-lg border-4 border-white"
-                >
-                    <a
-                        href={item.url}
-                        data-pswp-width={item.width}
-                        data-pswp-height={item.height}
-                        data-cropped="true"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="absolute inset-0 cursor-zoom-in"
-                    >
-                        <Image
-                            src={item.url}
-                            alt={`${title} Gallery ${index + 1}`}
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        />
-                    </a>
-                </motion.div>
-            ))}
+        <div className="relative px-2">
+            <Swiper
+                modules={[Autoplay]}
+                autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                }}
+                loop={canLoop}
+                spaceBetween={24}
+                slidesPerView={1}
+                breakpoints={{
+                    640: { slidesPerView: 1, spaceBetween: 16 },
+                    768: { slidesPerView: 2, spaceBetween: 20 },
+                    1024: { slidesPerView: 3, spaceBetween: 24 },
+                }}
+                onSwiper={(swiper) => {
+                    swiperRef.current = swiper;
+                }}
+            >
+                {slides.map((item, index) => (
+                    <SwiperSlide key={`${item.url}-${index}`}>
+                        <div className="relative h-72 rounded-3xl overflow-hidden shadow-lg border-4 border-white">
+                            <a
+                                href={item.url}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="absolute inset-0 cursor-zoom-in"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    openLightbox(index);
+                                }}
+                            >
+                                <Image
+                                    src={item.url}
+                                    alt={`${title} Gallery ${(index % items.length) + 1}`}
+                                    fill
+                                    className="object-cover"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                />
+                            </a>
+                        </div>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
         </div>
     );
 };
