@@ -87,11 +87,8 @@ const ProjectDetailPage = () => {
                         transition={{ duration: 0.8 }}
                         className="max-w-4xl"
                     >
-                        <Link href={getRegionPathForProject(project)} className="inline-flex items-center text-[#FFFA84] mb-6 hover:underline font-medium">
-                            <ArrowLeft className="w-4 h-4 mr-2" />
-                            Back to Portfolio
-                        </Link>
-                        <div className="flex items-center gap-3 mb-4">
+                      
+                        {/* <div className="flex items-center gap-3 mb-4">
                             <span className="bg-[#FFFA84] text-[#062516] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                                 {project.status}
                             </span>
@@ -102,7 +99,7 @@ const ProjectDetailPage = () => {
                         </div>
                         <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight tracking-tight">
                             {project.title}
-                        </h1>
+                        </h1> */}
                       
                     </motion.div>
                 </div>
@@ -111,6 +108,10 @@ const ProjectDetailPage = () => {
             {/* Overview & Quick Stats */}
             <section className="py-8 px-4">
                 <div className="container mx-auto">
+                      <Link href={getRegionPathForProject(project)} className="inline-flex items-center text-[#062516] mb-6 hover:underline font-medium">
+                            <ArrowLeft className="w-4 h-4 mr-2" />
+                            Back to Portfolio
+                        </Link>
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         {/* Main Description */}
                         <div className="lg:col-span-2 bg-white rounded-[40px] p-8 md:p-12 shadow-sm border border-gray-100 italic md:not-italic">
@@ -126,14 +127,14 @@ const ProjectDetailPage = () => {
                             <div className="bg-[#062516] text-white rounded-[40px] p-8 shadow-xl sticky top-32">
                                 <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
                                     <Cpu className="text-[#FFFA84]" />
-                                    Technical Specs
+                                    Project Specs
                                 </h3>
                                 
                                 <div className="space-y-6">
                                     <div className="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
-                                        <div className="p-3 bg-white/10 rounded-xl">
+                                        {/* <div className="p-3 bg-white/10 rounded-xl">
                                             <Zap className="w-6 h-6 text-[#085D36]" />
-                                        </div>
+                                        </div> */}
                                         <div>
                                             <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">Capacity</p>
                                             <p className="text-xl font-bold">{project.capacity || 'N/A'}</p>
@@ -141,9 +142,9 @@ const ProjectDetailPage = () => {
                                     </div>
 
                                     <div className="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
-                                        <div className="p-3 bg-white/10 rounded-xl">
+                                        {/* <div className="p-3 bg-white/10 rounded-xl">
                                             <Factory className="w-6 h-6 text-[#FFFA84]" />
-                                        </div>
+                                        </div> */}
                                         <div>
                                             <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">Technology</p>
                                             <p className="text-lg font-bold">{project.technology || 'Infrastructure'}</p>
@@ -151,9 +152,9 @@ const ProjectDetailPage = () => {
                                     </div>
 
                                     <div className="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
-                                        <div className="p-3 bg-white/10 rounded-xl">
+                                        {/* <div className="p-3 bg-white/10 rounded-xl">
                                             <Globe className="w-6 h-6 text-[#FFFA84]" />
-                                        </div>
+                                        </div> */}
                                         <div>
                                             <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">Region</p>
                                             <p className="text-lg font-bold">{project.region}</p>
@@ -184,7 +185,6 @@ const ProjectDetailPage = () => {
                     <div className="container mx-auto">
                         <div className="mb-12">
                             <h3 className="text-4xl font-black text-[#062516] tracking-tight mb-4 text-center">Visual Progress</h3>
-                            <div className="h-1.5 w-24 bg-[#FFFA84] mx-auto rounded-full" />
                         </div>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
