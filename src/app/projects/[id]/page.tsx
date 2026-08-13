@@ -126,7 +126,7 @@ const ProjectDetailPage = () => {
                 {project.galleryUrls && project.galleryUrls.length > 0 && (
                     <div className="mt-16">
                         <div className="mb-12">
-                            <h3 className="text-4xl font-black text-[#062516] tracking-tight mb-4 text-center">Visual Progress</h3>
+                            <h3 className="section-title-spl text-center text-[#062516]">Visual Progress</h3>
                         </div>
                         <ProjectGallery urls={project.galleryUrls} title={project.title} />
                     </div>
