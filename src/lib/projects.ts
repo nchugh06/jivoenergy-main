@@ -21,12 +21,25 @@ const COLLECTION_NAME = "projects";
 
 export const getProjects = async (): Promise<Project[]> => {
     try {
-        const q = query(collection(db, COLLECTION_NAME)); // Add orderBy when we have field
+        const q = query(collection(db, COLLECTION_NAME));
         const querySnapshot = await getDocs(q);
-        return querySnapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data()
-        } as Project));
+        // Client-side sort so docs without `order` still appear (missing → end).
+        // Coerce with Number() in case older docs stored order as a string.
+        return querySnapshot.docs
+            .map(doc => {
+                const data = doc.data();
+                const orderRaw = data.order;
+                const order =
+                    orderRaw === undefined || orderRaw === null || orderRaw === ''
+                        ? undefined
+                        : Number(orderRaw);
+                return {
+                    id: doc.id,
+                    ...data,
+                    order: order !== undefined && !Number.isNaN(order) ? order : undefined,
+                } as Project;
+            })
+            .sort((a, b) => (a.order ?? 9999) - (b.order ?? 9999));
     } catch (error) {
         console.error("Error fetching projects:", error);
         return [];

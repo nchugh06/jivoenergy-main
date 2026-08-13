@@ -12,6 +12,7 @@
 /* Embla viewport/container/slide structure — wraps only the copy column */
 .achievements__embla {
   width: 100%;
+  min-width: 0;
   overflow: hidden;
   border-radius: 1rem;
 }
@@ -36,25 +37,66 @@
 
 .achievements__grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 2.5rem;
   align-items: center;
 }
 
 .achievements__media {
   position: relative;
+  min-width: 0;
+  width: 100%;
 }
 
 .achievements__content {
   display: flex;
   flex-direction: column;
   gap: 1.75rem;
+  min-width: 0;
+  width: 100%;
 }
 
 .achievements__image {
   position: relative;
   border-radius: 1rem;
   overflow: hidden;
+  width: 100%;
+}
+
+/* Text overlay on achievement photo */
+.achievements__image-overlay {
+  position: absolute;
+  width: fit-content;
+  margin-inline:auto 0;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  opacity: 0.9;
+  padding: 0.85rem 1.1rem;
+  border-radius: 0.75rem;
+  background-color: var(--pistachio-green-background,#f6faf5);
+  color: var(--color-text-dark, #062516);
+  box-shadow: 0 8px 24px rgba(6, 37, 22, 0.12);
+}
+
+.achievements__image-overlay-title {
+  margin: 0;
+  font-size: clamp(0.95rem, 1.6vw, 1rem);
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: left;
+  text-justify: auto;
+}
+
+.achievements__image-overlay-meta {
+  margin: 0.25rem 0 0;
+  font-size: 0.700rem;
+  font-weight: 500;
+  line-height: 1.4;
+  opacity: 0.85;
+  text-align: left;
+  text-justify: auto;
 }
 
 /* Text overlay on achievement photo */
@@ -145,7 +187,7 @@
 
 @media (min-width: 1024px) {
   .achievements__grid {
-    grid-template-columns: 50% 50%;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
     gap: 1.5rem;
   }
 

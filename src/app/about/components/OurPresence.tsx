@@ -138,7 +138,7 @@ export default function OurPresence() {
               {otherRegions.map((region, index) => (
                 <div
                   key={index}
-                  className="our-presence__chip px-4 py-2 rounded-lg text-gray-200 text-sm font-medium cursor-default"
+                  className="tag px-4 py-2 rounded-lg text-gray-200 text-sm font-medium cursor-default"
                 >
                   {region}
                 </div>

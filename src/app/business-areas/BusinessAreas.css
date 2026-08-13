@@ -1,0 +1,222 @@
+/* Business Areas — sticky image swapped via IntersectionObserver */
+
+.ba-page {
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+.ba-banner {
+  position: relative;
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ba-intro-wrap {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 0;
+}
+
+.ba-intro {
+  margin-bottom: 4rem;
+}
+
+.ba-intro .section-title-spl {
+  color: #062516;
+  margin-bottom: 2.5rem;
+}
+
+.ba-intro .prose {
+  max-width: 65ch;
+}
+
+.ba-intro .prose p {
+  color: #4b5563;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.ba-scroll-container {
+  position: relative;
+  display: grid;
+  /* Image column left (fits 600px), text right — two children so sticky spans all sections */
+  grid-template-columns: minmax(280px, 600px) minmax(0, 1fr);
+  column-gap: 3rem;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.ba-swatch-col {
+  min-width: 0;
+}
+
+.ba-scroll-sections {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.ba-scroll-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 4rem 0;
+  scroll-margin-top: 6rem;
+}
+
+.ba-scroll-section .section-title-spl {
+  color: #062516;
+  margin-bottom: 1rem;
+}
+
+.ba-scroll-section-kicker {
+  text-align: left;
+  color: #374151;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.ba-scroll-section-desc {
+  color: #4b5563;
+  line-height: 1.7;
+  margin-top: 1rem;
+  max-width: 75ch;
+}
+
+.ba-scroll-section-cta {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #062516;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  width: fit-content;
+}
+
+.ba-scroll-section-cta:hover {
+  background: #051e12;
+}
+
+/* Per-section photo — mobile listing only */
+.ba-section-photo {
+  display: none;
+}
+
+/* Sticky image — active layer set by IntersectionObserver */
+.ba-swatch {
+  --ba-swatch-width: 600px;
+  --ba-swatch-height: 400px;
+
+  position: sticky;
+  top: calc(50% - (var(--ba-swatch-height) / 2));
+  width: var(--ba-swatch-width);
+  max-width: 100%;
+  height: var(--ba-swatch-height);
+  margin-top: 4rem;
+  margin-left: 0;
+  margin-right: auto;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(6, 37, 22, 0.12);
+  background-color: var(--pistachio-green-background, #f6faf5);
+}
+
+.ba-swatch-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.ba-swatch-layer.is-active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.ba-swatch-layer img {
+  object-fit: cover;
+}
+
+.ba-cta {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 6rem 1rem 4rem;
+  text-align: center;
+}
+
+.ba-cta .section-title-spl {
+  color: #062516;
+  margin-bottom: 1.5rem;
+}
+
+.ba-cta p {
+  color: #4b5563;
+  margin: 0 auto 2rem;
+  max-width: 36rem;
+}
+
+.ba-cta-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: #062516;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.ba-cta-btn:hover {
+  background: #051e12;
+}
+
+/* Mobile: simple listing — image then copy in each section */
+@media (max-width: 1023px) {
+  .ba-scroll-container {
+    display: block;
+  }
+
+  .ba-swatch-col {
+    display: none;
+  }
+
+  .ba-scroll-section {
+    min-height: 0;
+    padding: 2rem 0;
+    justify-content: flex-start;
+  }
+
+  .ba-section-photo {
+    display: block;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    margin-bottom: 1.25rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: var(--pistachio-green-background, #f6faf5);
+  }
+
+  .ba-section-photo img {
+    object-fit: cover;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ba-swatch-layer {
+    transition: none;
+  }
+
+  .ba-swatch {
+    position: relative;
+    top: auto;
+  }
+}

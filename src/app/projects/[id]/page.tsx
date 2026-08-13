@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Project } from '@/types/project';
 import { getProjectById } from '@/lib/projects';
+import { getRegionPathForProject } from '@/lib/projectRegions';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { MapPin, Zap, Battery, Sun, Factory, ArrowLeft, Cpu, Globe, Shield } from 'lucide-react';
@@ -46,7 +47,7 @@ const ProjectDetailPage = () => {
                 <div className="container mx-auto px-4 py-32 text-center">
                     <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
                     <p className="text-gray-600 mb-8">The project you are looking for does not exist or has been moved.</p>
-                    <Link href="/projects" className="bg-[#062516] text-[#FFFA84] px-8 py-3 rounded-full font-bold">
+                    <Link href="/projects/east-africa" className="bg-[#062516] text-[#FFFA84] px-8 py-3 rounded-full font-bold">
                         Back to Projects
                     </Link>
                 </div>
@@ -86,7 +87,7 @@ const ProjectDetailPage = () => {
                         transition={{ duration: 0.8 }}
                         className="max-w-4xl"
                     >
-                        <Link href="/projects" className="inline-flex items-center text-[#FFFA84] mb-6 hover:underline font-medium">
+                        <Link href={getRegionPathForProject(project)} className="inline-flex items-center text-[#FFFA84] mb-6 hover:underline font-medium">
                             <ArrowLeft className="w-4 h-4 mr-2" />
                             Back to Portfolio
                         </Link>
@@ -102,9 +103,7 @@ const ProjectDetailPage = () => {
                         <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight tracking-tight">
                             {project.title}
                         </h1>
-                        <p className="text-xl text-white/90 max-w-2xl leading-relaxed font-light">
-                            Leading the transition to sustainable energy through innovative infrastructure and community-focused solutions.
-                        </p>
+                      
                     </motion.div>
                 </div>
             </section>
