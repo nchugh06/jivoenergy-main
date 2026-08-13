@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
@@ -8,28 +8,11 @@ import type { Swiper as SwiperInstance } from 'swiper';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'swiper/css';
 import 'photoswipe/style.css';
+import './ProjectGallery.css';
 
-type GalleryItem = {
-    url: string;
-    width: number;
-    height: number;
-};
-
-const DEFAULT_SIZE = { width: 1600, height: 1200 };
+const ZOOM_WIDTH = 640;
+const ZOOM_HEIGHT = 360;
 const MIN_LOOP_SLIDES = 6;
-
-const loadImageSize = (url: string): Promise<GalleryItem> =>
-    new Promise((resolve) => {
-        const img = new window.Image();
-        img.onload = () =>
-            resolve({
-                url,
-                width: img.naturalWidth || DEFAULT_SIZE.width,
-                height: img.naturalHeight || DEFAULT_SIZE.height,
-            });
-        img.onerror = () => resolve({ url, ...DEFAULT_SIZE });
-        img.src = url;
-    });
 
 interface ProjectGalleryProps {
     urls: string[];
@@ -37,34 +20,33 @@ interface ProjectGalleryProps {
 }
 
 const ProjectGallery = ({ urls, title }: ProjectGalleryProps) => {
-    const [items, setItems] = useState<GalleryItem[]>(
-        urls.map((url) => ({ url, ...DEFAULT_SIZE }))
+    const items = useMemo(
+        () => urls.filter((url) => typeof url === 'string' && url.trim().length > 0),
+        [urls]
     );
     const lightboxRef = useRef<PhotoSwipeLightbox | null>(null);
     const swiperRef = useRef<SwiperInstance | null>(null);
 
     useEffect(() => {
-        let cancelled = false;
-
-        Promise.all(urls.map(loadImageSize)).then((loaded) => {
-            if (!cancelled) setItems(loaded);
-        });
-
-        return () => {
-            cancelled = true;
-        };
-    }, [urls]);
-
-    useEffect(() => {
         const lightbox = new PhotoSwipeLightbox({
             pswpModule: () => import('photoswipe'),
-            dataSource: items.map((item, index) => ({
-                src: item.url,
-                width: item.width,
-                height: item.height,
+            dataSource: items.map((url, index) => ({
+                src: url,
+                width: ZOOM_WIDTH,
+                height: ZOOM_HEIGHT,
                 alt: `${title} Gallery ${index + 1}`,
             })),
             padding: { top: 24, bottom: 40, left: 16, right: 16 },
+            initialZoomLevel: 'fit',
+            secondaryZoomLevel: 1,
+            maxZoomLevel: 1,
+        });
+
+        lightbox.on('contentActivate', ({ content }) => {
+            const img = content.element?.querySelector('img');
+            if (img) {
+                img.style.objectFit = 'cover';
+            }
         });
 
         lightbox.on('close', () => {
@@ -95,8 +77,10 @@ const ProjectGallery = ({ urls, title }: ProjectGalleryProps) => {
         lightboxRef.current?.loadAndOpen(index % items.length);
     };
 
+    if (!items.length) return null;
+
     return (
-        <div className="relative px-2">
+        <div className="project-gallery">
             <Swiper
                 modules={[Autoplay]}
                 autoplay={{
@@ -116,28 +100,22 @@ const ProjectGallery = ({ urls, title }: ProjectGalleryProps) => {
                     swiperRef.current = swiper;
                 }}
             >
-                {slides.map((item, index) => (
-                    <SwiperSlide key={`${item.url}-${index}`}>
-                        <div className="relative h-72 rounded-3xl overflow-hidden shadow-lg border-4 border-white">
-                            <a
-                                href={item.url}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="absolute inset-0 cursor-zoom-in"
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    openLightbox(index);
-                                }}
-                            >
-                                <Image
-                                    src={item.url}
-                                    alt={`${title} Gallery ${(index % items.length) + 1}`}
-                                    fill
-                                    className="object-cover"
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                />
-                            </a>
-                        </div>
+                {slides.map((url, index) => (
+                    <SwiperSlide key={`${url}-${index}`}>
+                        <button
+                            type="button"
+                            className="project-gallery__item"
+                            onClick={() => openLightbox(index)}
+                            aria-label={`Open ${title} gallery image ${(index % items.length) + 1}`}
+                        >
+                            <Image
+                                src={url}
+                                alt={`${title} Gallery ${(index % items.length) + 1}`}
+                                fill
+                                className="project-gallery__image"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            />
+                        </button>
                     </SwiperSlide>
                 ))}
             </Swiper>

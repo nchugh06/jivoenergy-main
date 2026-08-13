@@ -101,7 +101,7 @@ const ProjectDetailPage = () => {
                         <p className="project-mesh__value">{project.region}</p>
                     </div>
 
-                    <div className="project-mesh__cell project-mesh__spec project-mesh__completion">
+                    <div className="project-mesh__cell project-mesh__spec project-mesh__status">
                         <p className="project-mesh__label">Status</p>
                         <p className="project-mesh__value">{project.status}</p>
                     </div>
