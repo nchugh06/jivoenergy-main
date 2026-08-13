@@ -11,6 +11,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { MapPin, Zap, Battery, Sun, Factory, ArrowLeft, Cpu, Globe, Shield } from 'lucide-react';
 import Link from 'next/link';
+import ProjectGallery from '@/components/projects/ProjectGallery';
 
 const ProjectDetailPage = () => {
     const { id } = useParams();
@@ -112,6 +113,11 @@ const ProjectDetailPage = () => {
                             <ArrowLeft className="w-4 h-4 mr-2" />
                             Back to Portfolio
                         </Link>
+                    <div className="mb-8">
+                        <h3 className="section-title-spl text-center text-[#062516]">
+                            {project.detailProjectName?.trim() || project.title}
+                        </h3>
+                    </div>
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         {/* Main Description */}
                         <div className="lg:col-span-2 bg-white rounded-[40px] p-8 md:p-12 shadow-sm border border-gray-100 italic md:not-italic">
@@ -160,6 +166,15 @@ const ProjectDetailPage = () => {
                                             <p className="text-lg font-bold">{project.region}</p>
                                         </div>
                                     </div>
+                                    <div className="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
+                                        {/* <div className="p-3 bg-white/10 rounded-xl">
+                                            <Globe className="w-6 h-6 text-[#FFFA84]" />
+                                        </div> */}
+                                        <div>
+                                            <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">Year of Completion</p>
+                                            <p className="text-lg font-bold">{project.completionYear}</p>
+                                        </div>
+                                    </div>
 
                                     {project.beneficiary && (
                                         <div className="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
@@ -187,22 +202,7 @@ const ProjectDetailPage = () => {
                             <h3 className="text-4xl font-black text-[#062516] tracking-tight mb-4 text-center">Visual Progress</h3>
                         </div>
                         
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {project.galleryUrls.map((url: string, index: number) => (
-                                <motion.div 
-                                    key={index}
-                                    whileHover={{ scale: 1.02, rotate: index % 2 === 0 ? 1 : -1 }}
-                                    className="relative h-72 rounded-3xl overflow-hidden shadow-lg border-4 border-white"
-                                >
-                                    <Image 
-                                        src={url} 
-                                        alt={`${project.title} Gallery ${index + 1}`} 
-                                        fill 
-                                        className="object-cover"
-                                    />
-                                </motion.div>
-                            ))}
-                        </div>
+                        <ProjectGallery urls={project.galleryUrls} title={project.title} />
                     </div>
                 </section>
             )}
