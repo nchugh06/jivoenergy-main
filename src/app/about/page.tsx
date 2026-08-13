@@ -11,7 +11,7 @@ import OurPresence from "./components/OurPresence";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-white text-gray-800 font-sans">
+    <div className="min-h-screen bg-white text-gray-800">
       <Navbar />
       <AboutHero />
       <CompanyOverview />

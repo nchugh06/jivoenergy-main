@@ -57,7 +57,7 @@ const ProjectDetailPage = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 flex flex-col font-sans">
+        <div className="min-h-screen bg-gray-50 flex flex-col">
             <Navbar />
 
             {/* Hero Section */}

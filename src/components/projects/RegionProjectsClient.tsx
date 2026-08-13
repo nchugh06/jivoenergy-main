@@ -58,7 +58,7 @@ export default function RegionProjectsClient({ regionId }: RegionProjectsClientP
   }
 
   return (
-    <div className="min-h-screen bg-white font-sans selection:bg-[#FFFA84] selection:text-[#062516]">
+    <div className="min-h-screen bg-white selection:bg-[#FFFA84] selection:text-[#062516]">
       <Navbar />
 
       <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
