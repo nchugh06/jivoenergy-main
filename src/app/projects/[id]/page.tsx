@@ -8,7 +8,6 @@ import { Project } from '@/types/project';
 import { getProjectById } from '@/lib/projects';
 import { getRegionPathForProject } from '@/lib/projectRegions';
 import Image from 'next/image';
-import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import ProjectGallery from '@/components/projects/ProjectGallery';
 import './project-detail.css';
@@ -73,62 +72,66 @@ const ProjectDetailPage = () => {
                 )}
             </section>
 
-            {/* Overview & Quick Stats */}
-            <section className="py-8 px-4">
-                <div className="container mx-auto">
-                      <Link href={getRegionPathForProject(project)} className="inline-flex items-center text-[#062516] mb-6 hover:underline font-medium">
-                            <ArrowLeft className="w-4 h-4 mr-2" />
-                            Back to Project
-                        </Link>
-                    <div className="mb-8">
+            <div className="max-w-7xl mx-auto px-4 py-16">
+                <div className="mb-8">
+                    <Link
+                        href={getRegionPathForProject(project)}
+                        className="text-[#062516] font-medium hover:text-[#051e12] transition-colors duration-300 flex items-center gap-2"
+                    >
+                        ← Back to Project
+                    </Link>
+                </div>
+                <div className="grid grid-cols-1 gap-6 items-start mb-6">
+                    <div className="mb-0">
                         <h3 className="section-title-spl text-center text-[#062516]">
                             {project.detailProjectName?.trim() || project.title}
                         </h3>
                     </div>
-                    <div className="project-mesh">
-                        <div className="project-mesh__cell project-mesh__overview italic md:not-italic">
-                            <h3 className="section-title-spl">Project Overview</h3>
-                            <div
-                                className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-4"
-                                dangerouslySetInnerHTML={{ __html: project.description }}
-                            />
-                        </div>
+                <div className="project-mesh">
+                    <div className="project-mesh__cell project-mesh__overview italic md:not-italic">
+                        <h3 className="section-title-spl">Project Overview</h3>
+                        <div
+                            className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-4"
+                            dangerouslySetInnerHTML={{ __html: project.description }}
+                        />
+                    </div>
 
-                        <div className="project-mesh__cell project-mesh__spec project-mesh__region">
-                            <p className="project-mesh__label">Region</p>
-                            <p className="project-mesh__value">{project.region}</p>
-                        </div>
+                    <div className="project-mesh__cell project-mesh__spec project-mesh__region">
+                        <p className="project-mesh__label">Region</p>
+                        <p className="project-mesh__value">{project.region}</p>
+                    </div>
 
-                        <div className="project-mesh__cell project-mesh__spec project-mesh__year">
-                            <p className="project-mesh__label">Year of Completion</p>
-                            <p className="project-mesh__value">{project.completionYear}</p>
-                        </div>
+                    <div className="project-mesh__cell project-mesh__spec project-mesh__completion">
+                        <p className="project-mesh__label">Status</p>
+                        <p className="project-mesh__value">{project.status}</p>
+                    </div>
 
-                        <div className="project-mesh__cell project-mesh__spec project-mesh__technology">
-                            <p className="project-mesh__label">Technology</p>
-                            <p className="project-mesh__value">{project.detailPageTechnology?.trim()}</p>
-                        </div>
+                    <div className="project-mesh__cell project-mesh__spec project-mesh__year">
+                        <p className="project-mesh__label">Year of Completion</p>
+                        <p className="project-mesh__value">{project.completionYear}</p>
+                    </div>
 
-                        <div className="project-mesh__cell project-mesh__spec project-mesh__client">
-                            <p className="project-mesh__label">Client</p>
-                            <p className="project-mesh__value">{project.client}</p>
-                        </div>
+                    <div className="project-mesh__cell project-mesh__spec project-mesh__technology">
+                        <p className="project-mesh__label">Technology</p>
+                        <p className="project-mesh__value">{project.detailPageTechnology?.trim()}</p>
+                    </div>
+
+                    <div className="project-mesh__cell project-mesh__spec project-mesh__client">
+                        <p className="project-mesh__label">Client</p>
+                        <p className="project-mesh__value">{project.client}</p>
                     </div>
                 </div>
-            </section>
+                </div>
 
-            {/* Image Gallery */}
-            {project.galleryUrls && project.galleryUrls.length > 0 && (
-                <section className="py-8 px-4 bg-white border-y border-gray-100">
-                    <div className="container mx-auto">
+                {project.galleryUrls && project.galleryUrls.length > 0 && (
+                    <div className="mt-16">
                         <div className="mb-12">
                             <h3 className="text-4xl font-black text-[#062516] tracking-tight mb-4 text-center">Visual Progress</h3>
                         </div>
-                        
                         <ProjectGallery urls={project.galleryUrls} title={project.title} />
                     </div>
-                </section>
-            )}
+                )}
+            </div>
 
             {/* Impact Section Placeholder */}
             {/* {project.financing && (
