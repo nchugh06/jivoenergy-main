@@ -19,6 +19,8 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoad
   const [formData, setFormData] = useState<Partial<Project>>({
     title: initialData?.title || '',
     sub_title: initialData?.sub_title || '',
+    detailProjectName: initialData?.detailProjectName || '',
+    completionYear: initialData?.completionYear || '',
     order: initialData?.order ?? 0,
     country: initialData?.country || '',
     region: initialData?.region || '',
@@ -101,6 +103,16 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoad
             placeholder="e.g. 38 MWp Solar PV plant"
           />
         </div>
+        <div className="col-span-2">
+          <label className={labelClass}>Detail Project Name</label>
+          <input
+            name="detailProjectName"
+            value={formData.detailProjectName || ''}
+            onChange={handleChange}
+            className={`${inputClass} text-lg py-3`}
+            placeholder="e.g. Official project name for the detail page"
+          />
+        </div>
          <div>
           <label className={labelClass}>Display Order</label>
           <input
@@ -152,6 +164,21 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoad
             {settings?.statuses.map(v => <option key={v} value={v}>{v}</option>)}
           </select>
           <ChevronDown className="absolute right-4 top-9 w-4 h-4 text-gray-400 pointer-events-none" />
+        </div>
+
+        <div>
+          <label className={labelClass}>Date of Completion in Year</label>
+          <input
+            name="completionYear"
+            type="number"
+            min={1900}
+            max={2100}
+            step={1}
+            value={formData.completionYear || ''}
+            onChange={handleChange}
+            className={inputClass}
+            placeholder="e.g. 2024"
+          />
         </div>
 
         <div>
