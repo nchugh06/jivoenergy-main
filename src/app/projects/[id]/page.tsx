@@ -78,7 +78,7 @@ const ProjectDetailPage = () => {
                         href={getRegionPathForProject(project)}
                         className="text-[#062516] font-medium hover:text-[#051e12] transition-colors duration-300 flex items-center gap-2"
                     >
-                        ← Back to Project
+                        ← Back to Projects
                     </Link>
                 </div>
                 <div className="grid grid-cols-1 gap-6 items-start mb-6">
