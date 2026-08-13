@@ -7,7 +7,6 @@ import Footer from '@/components/Footer';
 import { Project } from '@/types/project';
 import { getProjectById } from '@/lib/projects';
 import { getRegionPathForProject } from '@/lib/projectRegions';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
@@ -62,49 +61,16 @@ const ProjectDetailPage = () => {
         <div className="min-h-screen bg-gray-50 flex flex-col">
             <Navbar />
 
-            {/* Hero Section */}
-            <section className="relative h-[80vh] flex items-center justify-center overflow-hidden bg-[#062516]">
+            <section className="project-banner">
                 {project.imageUrl && (
-                    <motion.div 
-                        initial={{ scale: 1.1 }}
-                        animate={{ scale: 1 }}
-                        transition={{ duration: 10, ease: "linear" }}
-                        className="absolute inset-0"
-                    >
-                        <Image 
-                            src={project.imageUrl} 
-                            alt={project.title} 
-                            fill 
-                            className="object-cover opacity-60"
-                            priority
-                        />
-                    </motion.div>
+                    <Image
+                        src={project.imageUrl}
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                        priority
+                    />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#062516] via-[#062516]/60 to-transparent" />
-                
-                <div className="container relative z-10 px-4 py-8 mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="max-w-4xl"
-                    >
-                      
-                        {/* <div className="flex items-center gap-3 mb-4">
-                            <span className="bg-[#FFFA84] text-[#062516] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                                {project.status}
-                            </span>
-                            <span className="text-white/80 flex items-center text-sm font-medium">
-                                <MapPin className="w-4 h-4 mr-1" />
-                                {project.location}, {project.country}
-                            </span>
-                        </div>
-                        <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight tracking-tight">
-                            {project.title}
-                        </h1> */}
-                      
-                    </motion.div>
-                </div>
             </section>
 
             {/* Overview & Quick Stats */}

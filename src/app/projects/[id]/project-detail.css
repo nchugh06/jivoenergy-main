@@ -1,3 +1,16 @@
+/* Project detail — banner (same shell as business areas) */
+
+.project-banner {
+  position: relative;
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--color-text-dark);
+}
+
 /* Project detail — overview mesh */
 
 .project-mesh {
