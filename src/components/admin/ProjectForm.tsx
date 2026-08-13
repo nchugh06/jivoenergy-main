@@ -20,6 +20,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoad
     title: initialData?.title || '',
     sub_title: initialData?.sub_title || '',
     detailProjectName: initialData?.detailProjectName || '',
+    detailPageTechnology: initialData?.detailPageTechnology || '',
     completionYear: initialData?.completionYear || '',
     order: initialData?.order ?? 0,
     country: initialData?.country || '',
@@ -27,6 +28,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoad
     status: initialData?.status || 'Planned',
     capacity: initialData?.capacity || '',
     technology: initialData?.technology || '',
+    client: initialData?.client || '',
     description: initialData?.description || '',
     location: initialData?.location || '',
     beneficiary: initialData?.beneficiary || '',
@@ -112,6 +114,20 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoad
             className={`${inputClass} text-lg py-3`}
             placeholder="e.g. Official project name for the detail page"
           />
+        </div>
+        <div>
+          <label className={labelClass}>Detail Page Technology</label>
+          <input
+            name="detailPageTechnology"
+            value={formData.detailPageTechnology || ''}
+            onChange={handleChange}
+            className={inputClass}
+            placeholder="e.g. Ground-Mounted Solar PV"
+          />
+        </div>
+        <div>
+          <label className={labelClass}>Client</label>
+          <input name="client" value={formData.client || ''} onChange={handleChange} placeholder="e.g. Ministry of Health" className={inputClass} />
         </div>
          <div>
           <label className={labelClass}>Display Order</label>

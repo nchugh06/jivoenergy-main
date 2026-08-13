@@ -9,9 +9,10 @@ import { getProjectById } from '@/lib/projects';
 import { getRegionPathForProject } from '@/lib/projectRegions';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { MapPin, Zap, Battery, Sun, Factory, ArrowLeft, Cpu, Globe, Shield } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import ProjectGallery from '@/components/projects/ProjectGallery';
+import './project-detail.css';
 
 const ProjectDetailPage = () => {
     const { id } = useParams();
@@ -111,84 +112,40 @@ const ProjectDetailPage = () => {
                 <div className="container mx-auto">
                       <Link href={getRegionPathForProject(project)} className="inline-flex items-center text-[#062516] mb-6 hover:underline font-medium">
                             <ArrowLeft className="w-4 h-4 mr-2" />
-                            Back to Portfolio
+                            Back to Project
                         </Link>
                     <div className="mb-8">
                         <h3 className="section-title-spl text-center text-[#062516]">
                             {project.detailProjectName?.trim() || project.title}
                         </h3>
                     </div>
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                        {/* Main Description */}
-                        <div className="lg:col-span-2 bg-white rounded-[40px] p-8 md:p-12 shadow-sm border border-gray-100 italic md:not-italic">
-                            <h3 className="section-title-spl text-[#062516] mb-8 border-b border-gray-100 pb-4">Project Overview</h3>
-                            <div 
+                    <div className="project-mesh">
+                        <div className="project-mesh__cell project-mesh__overview italic md:not-italic">
+                            <h3 className="section-title-spl">Project Overview</h3>
+                            <div
                                 className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-4"
                                 dangerouslySetInnerHTML={{ __html: project.description }}
                             />
                         </div>
 
-                        {/* Technical Specifications Sticky Sidebar */}
-                        <div className="space-y-8">
-                            <div className="bg-[#062516] text-white rounded-[40px] p-8 shadow-xl sticky top-32">
-                                <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-                                    <Cpu className="text-[#FFFA84]" />
-                                    Project Specs
-                                </h3>
-                                
-                                <div className="space-y-6">
-                                    <div className="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
-                                        {/* <div className="p-3 bg-white/10 rounded-xl">
-                                            <Zap className="w-6 h-6 text-[#085D36]" />
-                                        </div> */}
-                                        <div>
-                                            <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">Capacity</p>
-                                            <p className="text-xl font-bold">{project.capacity || 'N/A'}</p>
-                                        </div>
-                                    </div>
+                        <div className="project-mesh__cell project-mesh__spec project-mesh__region">
+                            <p className="project-mesh__label">Region</p>
+                            <p className="project-mesh__value">{project.region}</p>
+                        </div>
 
-                                    <div className="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
-                                        {/* <div className="p-3 bg-white/10 rounded-xl">
-                                            <Factory className="w-6 h-6 text-[#FFFA84]" />
-                                        </div> */}
-                                        <div>
-                                            <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">Technology</p>
-                                            <p className="text-lg font-bold">{project.technology || 'Infrastructure'}</p>
-                                        </div>
-                                    </div>
+                        <div className="project-mesh__cell project-mesh__spec project-mesh__year">
+                            <p className="project-mesh__label">Year of Completion</p>
+                            <p className="project-mesh__value">{project.completionYear}</p>
+                        </div>
 
-                                    <div className="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
-                                        {/* <div className="p-3 bg-white/10 rounded-xl">
-                                            <Globe className="w-6 h-6 text-[#FFFA84]" />
-                                        </div> */}
-                                        <div>
-                                            <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">Region</p>
-                                            <p className="text-lg font-bold">{project.region}</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
-                                        {/* <div className="p-3 bg-white/10 rounded-xl">
-                                            <Globe className="w-6 h-6 text-[#FFFA84]" />
-                                        </div> */}
-                                        <div>
-                                            <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">Year of Completion</p>
-                                            <p className="text-lg font-bold">{project.completionYear}</p>
-                                        </div>
-                                    </div>
+                        <div className="project-mesh__cell project-mesh__spec project-mesh__technology">
+                            <p className="project-mesh__label">Technology</p>
+                            <p className="project-mesh__value">{project.detailPageTechnology?.trim()}</p>
+                        </div>
 
-                                    {project.beneficiary && (
-                                        <div className="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
-                                            <div className="p-3 bg-white/10 rounded-xl">
-                                                <Shield className="w-6 h-6 text-[#FFFA84]" />
-                                            </div>
-                                            <div>
-                                                <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">Beneficiary</p>
-                                                <p className="text-lg font-bold">{project.beneficiary}</p>
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
+                        <div className="project-mesh__cell project-mesh__spec project-mesh__client">
+                            <p className="project-mesh__label">Client</p>
+                            <p className="project-mesh__value">{project.client}</p>
                         </div>
                     </div>
                 </div>

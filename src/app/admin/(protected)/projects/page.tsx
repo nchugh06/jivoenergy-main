@@ -42,8 +42,10 @@ export default function AdminProjectsPage() {
       p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       p.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
       (p.technology?.toLowerCase() ?? '').includes(searchTerm.toLowerCase()) ||
+      (p.client?.toLowerCase() ?? '').includes(searchTerm.toLowerCase()) ||
       (p.sub_title?.toLowerCase() ?? '').includes(searchTerm.toLowerCase()) ||
       (p.detailProjectName?.toLowerCase() ?? '').includes(searchTerm.toLowerCase()) ||
+      (p.detailPageTechnology?.toLowerCase() ?? '').includes(searchTerm.toLowerCase()) ||
       (p.completionYear ?? '').toString().includes(searchTerm)
     )
     // Keep list ordered by display order (lower first); missing order at end

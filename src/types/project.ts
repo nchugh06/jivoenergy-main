@@ -7,6 +7,7 @@ export interface Project {
     title: string;
     sub_title?: string;
     detailProjectName?: string;
+    detailPageTechnology?: string;
     order?: number;
     slug?: string;
 
@@ -18,6 +19,7 @@ export interface Project {
     // Technical Specs
     capacity?: string; // e.g., "1.2 MWp"
     technology?: string; // e.g., "Ground-Mounted Solar PV"
+    client?: string; // e.g., "Ministry of Health"
     status: ProjectStatus;
     completionYear?: string;
 

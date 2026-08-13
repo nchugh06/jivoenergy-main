@@ -117,6 +117,24 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
 
                 {/* Additional Specs if any */}
                 <div className="mt-10 space-y-4">
+                    {(project.detailPageTechnology || project.technology) && (
+                        <div className="flex items-start gap-3 p-4 rounded-xl bg-gray-50 border border-gray-100">
+                            <CheckCircle2 className="w-5 h-5 text-[#062516] mt-0.5 flex-shrink-0" />
+                            <div>
+                                <span className="block text-[10px] text-gray-400 font-bold uppercase tracking-wider">Technology</span>
+                                <span className="font-medium text-[#062516]">{project.detailPageTechnology?.trim() || project.technology}</span>
+                            </div>
+                        </div>
+                    )}
+                    {project.client && (
+                        <div className="flex items-start gap-3 p-4 rounded-xl bg-gray-50 border border-gray-100">
+                            <CheckCircle2 className="w-5 h-5 text-[#062516] mt-0.5 flex-shrink-0" />
+                            <div>
+                                <span className="block text-[10px] text-gray-400 font-bold uppercase tracking-wider">Client</span>
+                                <span className="font-medium text-[#062516]">{project.client}</span>
+                            </div>
+                        </div>
+                    )}
                     {project.beneficiary && (
                         <div className="flex items-start gap-3 p-4 rounded-xl bg-gray-50 border border-gray-100">
                             <CheckCircle2 className="w-5 h-5 text-[#062516] mt-0.5 flex-shrink-0" />
