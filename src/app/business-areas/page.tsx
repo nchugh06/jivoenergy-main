@@ -333,10 +333,10 @@ const BusinessAreas = () => {
               </p>
               <p>
                 Our multidisciplinary team specializes in complete project
-                lifecycle execution — from feasibility studies, detailed
+                lifecycle execution, from feasibility studies, detailed
                 engineering, grid integration, procurement, construction,
                 commissioning, SCADA integration, and operations &amp;
-                maintenance — ensuring technically optimized and bankable energy
+                maintenance, ensuring technically optimized and bankable energy
                 solutions for utilities, governments, industries, commercial
                 clients, and development agencies.
               </p>
