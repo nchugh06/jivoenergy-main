@@ -55,48 +55,50 @@ const ProjectNews = ({ country }: ProjectNewsProps) => {
             : items;
 
     return (
-        <div className="mt-16">
-            <div className="mb-12">
-                <h3 className="section-title-spl text-center text-[#062516]">News</h3>
+        <section className="bg-pistachio-green">
+            <div className="max-w-7xl mx-auto px-4 py-16">
+                <div className="mb-12">
+                    <h3 className="section-title-spl text-center text-[#062516]">Project Related News</h3>
+                </div>
+                <div className="project-news">
+                    <Swiper
+                        modules={[Autoplay]}
+                        autoplay={{
+                            delay: 3000,
+                            disableOnInteraction: false,
+                            pauseOnMouseEnter: true,
+                        }}
+                        loop={canLoop}
+                        spaceBetween={24}
+                        slidesPerView={1}
+                        breakpoints={{
+                            640: { slidesPerView: 1, spaceBetween: 16 },
+                            768: { slidesPerView: 2, spaceBetween: 20 },
+                            1024: { slidesPerView: 3, spaceBetween: 24 },
+                        }}
+                    >
+                        {slides.map((item, index) => (
+                            <SwiperSlide key={`${item.id}-${index}`}>
+                                <Link href="/media" className="project-news__card">
+                                    <div className="project-news__image">
+                                        <Image
+                                            src={item.image}
+                                            alt={item.title}
+                                            fill
+                                            className="project-news__img"
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                        />
+                                    </div>
+                                    <div className="project-news__content">
+                                        <h4 className="project-news__title">{item.title}</h4>
+                                    </div>
+                                </Link>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
             </div>
-            <div className="project-news">
-                <Swiper
-                    modules={[Autoplay]}
-                    autoplay={{
-                        delay: 3000,
-                        disableOnInteraction: false,
-                        pauseOnMouseEnter: true,
-                    }}
-                    loop={canLoop}
-                    spaceBetween={24}
-                    slidesPerView={1}
-                    breakpoints={{
-                        640: { slidesPerView: 1, spaceBetween: 16 },
-                        768: { slidesPerView: 2, spaceBetween: 20 },
-                        1024: { slidesPerView: 3, spaceBetween: 24 },
-                    }}
-                >
-                    {slides.map((item, index) => (
-                        <SwiperSlide key={`${item.id}-${index}`}>
-                            <Link href="/media" className="project-news__card">
-                                <div className="project-news__image">
-                                    <Image
-                                        src={item.image}
-                                        alt={item.title}
-                                        fill
-                                        className="project-news__img"
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                    />
-                                </div>
-                                <div className="project-news__content">
-                                    <h4 className="project-news__title">{item.title}</h4>
-                                </div>
-                            </Link>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </div>
-        </div>
+        </section>
     );
 };
 

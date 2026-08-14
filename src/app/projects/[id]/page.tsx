@@ -133,8 +133,9 @@ const ProjectDetailPage = () => {
                     </div>
                 )}
 
-                <ProjectNews country={project.country} />
             </div>
+
+            <ProjectNews country={project.country} />
 
             {/* Impact Section Placeholder */}
             {/* {project.financing && (
