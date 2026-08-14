@@ -58,7 +58,7 @@ const ProjectDetailPage = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 flex flex-col">
+        <div className="min-h-screen bg-white flex flex-col">
             <Navbar />
 
             <section className="project-banner">
