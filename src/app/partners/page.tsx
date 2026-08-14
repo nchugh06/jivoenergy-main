@@ -4,8 +4,40 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
+import { motion, useReducedMotion, type Variants } from 'framer-motion';
+
+const containerVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.06,
+      delayChildren: 0.08,
+    },
+  },
+};
+
+const headingVariants: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: 'easeOut' },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 28, scale: 0.96 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.45, ease: 'easeOut' },
+  },
+};
 
 const Partners = () => {
+  const reduceMotion = useReducedMotion();
+
   const clients = [
     'client1.jpg', 'client2.jpg', 'client3.jpg', 'client4.jpg', 'client5.jpg',
     'client6.jpg', 'client7.jpg', 'client8.jpg', 'client9.jpg', 'client10.jpg',
@@ -28,42 +60,62 @@ const Partners = () => {
 
     return (
     <div className={`mb-16 ${isFinancersSection ? 'relative left-1/2 -translate-x-1/2 w-screen bg-[#F5FBF5] py-10 px-35' : ''}`}>
-      <h3 className="section-title-spl text-center text-[#062516] mb-10">
-        {title}
-      </h3>
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 justify-items-center items-center">
-        {images.map((img, index) => (
-          <div 
-            key={index} 
-            className="w-full h-32 relative p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 flex items-center justify-center"
-          >
-            <Image
-              src={`/partners/${img}`}
-              alt={`${title} Partner ${index + 1}`}
-              fill
-              className="object-contain p-2"
-              quality={100}
-            />
-          </div>
-        ))}
-      </div>
+      <motion.div
+        initial={reduceMotion ? false : 'hidden'}
+        whileInView="visible"
+        viewport={{ once: true, margin: '-80px' }}
+        variants={containerVariants}
+      >
+        <motion.h3
+          variants={headingVariants}
+          className="section-title-spl text-center text-[#062516] mb-10"
+        >
+          {title}
+        </motion.h3>
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 justify-items-center items-center">
+          {images.map((img, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              whileHover={reduceMotion ? undefined : { y: -6, scale: 1.03 }}
+              transition={{ type: 'spring', stiffness: 320, damping: 22 }}
+              className="group w-full h-32 relative p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 flex items-center justify-center"
+            >
+              <Image
+                src={`/partners/${img}`}
+                alt={`${title} Partner ${index + 1}`}
+                fill
+                className="object-contain p-2 transition-transform duration-500 group-hover:scale-105"
+                quality={100}
+              />
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
     </div>
     );
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar />
       
       {/* Hero Section */}
       <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
-              <Image
-                src="/assets/banners/Partners.jpg"
-                alt="Partners Banner"
-                fill
-                className="object-cover"
-                priority
-              />
+              <motion.div
+                className="absolute inset-0"
+                initial={reduceMotion ? false : { scale: 1.08 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <Image
+                  src="/assets/banners/Partners.jpg"
+                  alt="Partners Banner"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </motion.div>
               {/* <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/25 to-[#04301C]/25"></div> */}
             </section>
 
