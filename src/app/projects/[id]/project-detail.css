@@ -151,3 +151,61 @@ grid-column: 3 / 4;
     padding: 1.25rem 1.25rem;
   }
 }
+
+/* Project detail — country news carousel (same shell as Visual Progress) */
+
+.project-news {
+  position: relative;
+  padding-inline: 0.5rem;
+}
+
+.project-news .swiper-slide {
+  height: auto;
+}
+
+.project-news__card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  text-decoration: none;
+  background: var(--color-white);
+  box-shadow: 0 10px 15px -3px rgba(6, 37, 22, 0.12);
+}
+
+.project-news__image {
+  position: relative;
+  width: 100%;
+  height: 14rem;
+  overflow: hidden;
+  background: #f3f4f6;
+}
+
+.project-news__img {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-news__card:hover .project-news__img {
+  transform: scale(1.05);
+}
+
+.project-news__content {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.project-news__title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+  color: var(--color-text-dark);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

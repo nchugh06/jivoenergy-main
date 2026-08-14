@@ -10,6 +10,7 @@ import { getRegionPathForProject } from '@/lib/projectRegions';
 import Image from 'next/image';
 import Link from 'next/link';
 import ProjectGallery from '@/components/projects/ProjectGallery';
+import ProjectNews from '@/components/projects/ProjectNews';
 import './project-detail.css';
 
 const ProjectDetailPage = () => {
@@ -131,6 +132,8 @@ const ProjectDetailPage = () => {
                         <ProjectGallery urls={project.galleryUrls} title={project.title} />
                     </div>
                 )}
+
+                <ProjectNews country={project.country} />
             </div>
 
             {/* Impact Section Placeholder */}
