@@ -60,6 +60,12 @@ export const getProjectById = async (id: string): Promise<Project | null> => {
     }
 };
 
+export const getProjectBySlugOrId = async (slugOrId: string): Promise<Project | null> => {
+    const bySlug = await getProjectBySlug(slugOrId);
+    if (bySlug) return bySlug;
+    return getProjectById(slugOrId);
+};
+
 export const getProjectBySlug = async (slug: string): Promise<Project | null> => {
     try {
         const q = query(

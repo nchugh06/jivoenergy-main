@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { Project } from '@/types/project';
 import { getProjectSettings, ProjectSettings } from '@/lib/projectSettings';
+import { getProjects } from '@/lib/projects';
+import { ensureUniqueSlug, projectSlugFromName, slugify } from '@/lib/projectSlug';
 import TiptapEditor from './TiptapEditor';
 import { Loader2, ChevronDown } from 'lucide-react';
 
@@ -33,9 +35,13 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoad
     location: initialData?.location || '',
     beneficiary: initialData?.beneficiary || '',
     financing: initialData?.financing || '',
-    ...initialData
+    ...initialData,
+    slug:
+      initialData?.slug ||
+      projectSlugFromName(initialData?.title, initialData?.detailProjectName),
   });
 
+  const [slugTouched, setSlugTouched] = useState(Boolean(initialData?.slug));
   const [coverImage, setCoverImage] = useState<File | null>(null);
   const [galleryImages, setGalleryImages] = useState<File[]>([]);
 
@@ -52,9 +58,17 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoad
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.title || !formData.country) return;
+    const existing = await getProjects();
+    const generated = projectSlugFromName(formData.title, formData.detailProjectName);
+    const slug = ensureUniqueSlug(
+      slugify(formData.slug || generated),
+      existing,
+      initialData?.id
+    );
     // Ensure order is always a number in Firestore (inputs can leave it as string)
     const payload = {
       ...formData,
+      slug,
       order: Number(formData.order ?? 0),
     } as Omit<Project, 'id'>;
     await onSubmit(payload, coverImage, galleryImages);
@@ -62,10 +76,24 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoad
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: name === 'order' ? (value === '' ? 0 : Number(value)) : value,
-    }));
+    if (name === 'slug') {
+      setSlugTouched(true);
+      setFormData(prev => ({ ...prev, slug: slugify(value) }));
+      return;
+    }
+    setFormData(prev => {
+      const next = {
+        ...prev,
+        [name]: name === 'order' ? (value === '' ? 0 : Number(value)) : value,
+      };
+      if (!slugTouched && (name === 'title' || name === 'detailProjectName')) {
+        next.slug = projectSlugFromName(
+          name === 'title' ? value : next.title,
+          name === 'detailProjectName' ? value : next.detailProjectName
+        );
+      }
+      return next;
+    });
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -114,6 +142,20 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoad
             className={`${inputClass} text-lg py-3`}
             placeholder="e.g. Official project name for the detail page"
           />
+        </div>
+        <div className="col-span-2">
+          <label className={labelClass}>URL Slug</label>
+          <input
+            name="slug"
+            value={formData.slug || ''}
+            onChange={handleChange}
+            className={inputClass}
+            placeholder="e.g. kleibrok-solar-project"
+          />
+          <p className="text-[10px] text-gray-400 mt-1 ml-1">
+            Used in the public URL. Auto-filled from the project name.
+            {formData.slug ? ` Preview: /projects/${formData.slug}` : ''}
+          </p>
         </div>
         <div>
           <label className={labelClass}>Detail Page Technology</label>

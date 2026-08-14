@@ -7,6 +7,7 @@ import { MapPin, Battery, Sun, Factory, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 import Link from 'next/link';
+import { getProjectHref } from '@/lib/projectSlug';
 
 interface ProjectCardProps {
   project: Project;
@@ -21,7 +22,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   };
 
   return (
-    <Link href={`/projects/${project.id}`}>
+    <Link href={getProjectHref(project)}>
       <motion.div
         whileHover={{ y: -5 }}
         className="group bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl hover:border-[#062516]/20 transition-all duration-300 cursor-pointer flex flex-col h-full"

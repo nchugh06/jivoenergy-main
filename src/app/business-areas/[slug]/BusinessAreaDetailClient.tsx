@@ -11,6 +11,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Project } from '@/types/project';
 import { getProjectsByBusinessArea } from '@/lib/projects';
+import { getProjectHref } from '@/lib/projectSlug';
 
 interface BusinessAreaData {
   title: string;
@@ -263,7 +264,7 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
                 {projects.map((project) => (
                   <SwiperSlide key={project.id}>
                     <Link
-                      href={project.id ? `/projects/${project.id}` : '/projects/east-africa'}
+                      href={getProjectHref(project)}
                       className="group block h-full"
                     >
                       <div className="overflow-hidden rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-shadow duration-300">

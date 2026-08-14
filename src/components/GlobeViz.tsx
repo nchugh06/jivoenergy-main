@@ -3,6 +3,7 @@ import { useEffect, useState, useRef, useMemo } from "react"
 import dynamic from "next/dynamic"
 import { Plus, Minus, RotateCw, RotateCcw, ExternalLink } from "lucide-react"
 import { getProjects } from "@/lib/projects"
+import { getProjectHref } from "@/lib/projectSlug"
 import { Project } from "@/types/project"
 import { countries as countryList } from "@/lib/countries"
 import Link from "next/link"
@@ -74,7 +75,7 @@ export default function GlobeViz() {
             
             acc[code].projects += 1
             if (p.id) {
-                acc[code].projectList.push({ id: p.id, title: p.title })
+                acc[code].projectList.push({ id: p.id, slug: p.slug, title: p.title })
             }
             // Simple heuristic: if multiple projects, maybe just say "Multiple Projects" or keep status from the latest/first
             if (acc[code].projects > 1) {
@@ -357,7 +358,7 @@ export default function GlobeViz() {
                       {info.projectList?.map((p: any) => (
                         <Link 
                           key={p.id} 
-                          href={`/projects/${p.id}`}
+                          href={getProjectHref(p)}
                           className="flex items-center justify-between p-2.5 bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 rounded-lg transition-all group"
                         >
                           <span className="text-xs text-gray-300 group-hover:text-white font-medium truncate pr-4">{p.title}</span>

@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Project } from '@/types/project';
-import { getProjectById } from '@/lib/projects';
+import { getProjectBySlugOrId } from '@/lib/projects';
 import { getRegionPathForProject } from '@/lib/projectRegions';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -21,7 +21,7 @@ const ProjectDetailPage = () => {
     useEffect(() => {
         const fetchProject = async () => {
             if (id) {
-                const data = await getProjectById(id as string);
+                const data = await getProjectBySlugOrId(id as string);
                 setProject(data);
                 setLoading(false);
             }
