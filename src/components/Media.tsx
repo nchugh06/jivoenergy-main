@@ -1,6 +1,7 @@
 'use client'
-import React from 'react';
+import React, { Suspense } from 'react';
 import Image from 'next/image';
+import { useRouter, useSearchParams } from 'next/navigation';
 import newsData from '@/data/news.json';
 
 export interface MediaCard {
@@ -9,6 +10,7 @@ export interface MediaCard {
   description: string;
   image: string;
   category: string;
+  slug?: string;
   link?: string;
   open?: 'tab' | 'iframe';
 }
@@ -19,14 +21,69 @@ interface MediaProps {
   limit?: number;
 }
 
+function findCardByOpenParam(value: string | null) {
+  if (!value) return undefined;
+  return mediaCards.find(
+    (card) => card.slug === value || String(card.id) === value
+  );
+}
+
+function mediaOpenHref(card: MediaCard) {
+  return `/media?open=${encodeURIComponent(card.slug || String(card.id))}`;
+}
+
+function MediaQueryOpener({
+  onOpenIframe,
+}: {
+  onOpenIframe: (link: string | null) => void;
+}) {
+  const searchParams = useSearchParams();
+  const openParam = searchParams.get('open');
+
+  React.useEffect(() => {
+    if (!openParam) {
+      onOpenIframe(null);
+      return;
+    }
+    const card = findCardByOpenParam(openParam);
+    if (!card?.link) return;
+    if (card.open === 'tab') {
+      window.open(card.link, '_blank', 'noopener,noreferrer');
+      return;
+    }
+    onOpenIframe(card.link);
+  }, [openParam, onOpenIframe]);
+
+  return null;
+}
+
 const Media = ({ limit }: MediaProps) => {
+  const router = useRouter();
   const [activeLink, setActiveLink] = React.useState<string | null>(null);
   const sortedCards = [...mediaCards];
+
+  const closeModal = () => {
+    setActiveLink(null);
+    router.replace('/media', { scroll: false });
+  };
+
+  const openCard = (card: MediaCard) => {
+    if (!card.link) return;
+    if (card.open === 'tab') {
+      window.open(card.link, '_blank', 'noopener,noreferrer');
+      return;
+    }
+    setActiveLink(card.link);
+    router.replace(mediaOpenHref(card), { scroll: false });
+  };
 
   const displayedCards = limit ? sortedCards.slice(0, limit) : sortedCards;
 
   return (
     <section className="w-full py-15 bg-[#f6faf5] relative overflow-hidden">
+      <Suspense fallback={null}>
+        <MediaQueryOpener onOpenIframe={setActiveLink} />
+      </Suspense>
       <h3 className="section-title-spl text-center text-[#062516] mb-10">JIVO Energy Newsroom</h3>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
@@ -60,14 +117,7 @@ const Media = ({ limit }: MediaProps) => {
           {displayedCards.map((card) => (
             <button 
               key={card.id}
-              onClick={() => {
-                if (!card.link) return;
-                if (card.open === 'tab') {
-                  window.open(card.link, '_blank', 'noopener,noreferrer');
-                  return;
-                }
-                setActiveLink(card.link);
-              }}
+              onClick={() => openCard(card)}
               className="group bg-white/95 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl border border-white/20 hover:bg-white hover:shadow-green-500/20 hover:-translate-y-3 hover:scale-105 transition-all duration-500 relative block text-left"
             >
               {/* Category Badge */}
@@ -126,7 +176,7 @@ const Media = ({ limit }: MediaProps) => {
         <div className="fixed inset-0 z-[2000] flex items-center justify-center p-4 md:p-8 pt-24 md:pt-32">
           <div 
             className="absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity duration-300"
-            onClick={() => setActiveLink(null)}
+            onClick={closeModal}
           ></div>
           
           <div className="relative w-full h-full max-w-6xl bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col animate-in fade-in zoom-in duration-300">
@@ -136,7 +186,7 @@ const Media = ({ limit }: MediaProps) => {
                 {mediaCards.find(c => c.link === activeLink)?.title}
               </h3>
               <button 
-                onClick={() => setActiveLink(null)}
+                onClick={closeModal}
                 className="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-all duration-200"
                 aria-label="Close modal"
               >

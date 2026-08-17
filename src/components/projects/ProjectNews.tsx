@@ -2,7 +2,7 @@
 
 import React, { useMemo } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import newsData from '@/data/news.json';
 
 type NewsItem = {
@@ -11,6 +11,9 @@ type NewsItem = {
     description: string;
     image: string;
     country: string;
+    slug?: string;
+    link?: string;
+    open?: 'tab' | 'iframe';
 };
 
 interface ProjectNewsProps {
@@ -31,13 +34,27 @@ function countriesMatch(a: string, b: string) {
     return normalizeCountry(a) === normalizeCountry(b);
 }
 
+function mediaOpenHref(item: NewsItem) {
+    return `/media?open=${encodeURIComponent(item.slug || String(item.id))}`;
+}
+
 const ProjectNews = ({ country }: ProjectNewsProps) => {
+    const router = useRouter();
     const items = useMemo(() => {
         if (!country) return [];
         return (newsData as NewsItem[]).filter((item) =>
             countriesMatch(item.country, country)
         );
     }, [country]);
+
+    const openNews = (item: NewsItem) => {
+        if (!item.link) return;
+        if (item.open === 'tab') {
+            window.open(item.link, '_blank', 'noopener,noreferrer');
+            return;
+        }
+        router.push(mediaOpenHref(item));
+    };
 
     if (!items.length) return null;
 
@@ -49,7 +66,11 @@ const ProjectNews = ({ country }: ProjectNewsProps) => {
                 </div>
                 <div className="project-news">
                     {items.map((item) => (
-                        <article key={item.id} className="project-news__card">
+                        <article
+                            key={item.id}
+                            className={`project-news__card${item.link ? ' project-news__card--clickable' : ''}`}
+                            onClick={() => openNews(item)}
+                        >
                             <div className="project-news__image">
                                 <Image
                                     src={item.image}
@@ -62,10 +83,19 @@ const ProjectNews = ({ country }: ProjectNewsProps) => {
                             <div className="project-news__content">
                                 <h4 className="project-news__title">{item.title}</h4>
                                 <p className="project-news__description">{item.description}</p>
-                                <Link href="/media" className="project-news__link">
-                                    Read more
-                                    <span aria-hidden="true">→</span>
-                                </Link>
+                                {item.link && (
+                                    <button
+                                        type="button"
+                                        className="project-news__link"
+                                        onClick={(event) => {
+                                            event.stopPropagation();
+                                            openNews(item);
+                                        }}
+                                    >
+                                        Read more
+                                        <span aria-hidden="true">→</span>
+                                    </button>
+                                )}
                             </div>
                         </article>
                     ))}

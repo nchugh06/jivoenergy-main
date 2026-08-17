@@ -172,6 +172,10 @@ grid-column: 3 / 4;
   box-shadow: 0 10px 15px -3px rgba(6, 37, 22, 0.12);
 }
 
+.project-news__card--clickable {
+  cursor: pointer;
+}
+
 .project-news__image {
   position: relative;
   flex: 0 0 40%;
@@ -219,10 +223,15 @@ grid-column: 3 / 4;
   align-items: center;
   gap: 0.4rem;
   width: fit-content;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--color-text-dark);
   text-decoration: none;
+  cursor: pointer;
 }
 
 .project-news__link:hover {
