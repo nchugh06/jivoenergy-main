@@ -460,14 +460,13 @@ export default function AfricaPresenceMap() {
 
   return (
     <section className="africa-presence-section" aria-label="JIVO Energy in Africa">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="africa-presence-section__head">
-          <h3 className="section-title-spl">JIVO Energy in Africa</h3>
-        </div>
-        <div
-          ref={sectionRef}
-          className={`africa-presence${inView ? ' in-view' : ''}${selectedId ? ' is-detail-open' : ''}`}
-        >
+      <div className="africa-presence-section__head">
+        <h3 className="section-title-spl">JIVO Energy in Africa</h3>
+      </div>
+      <div
+        ref={sectionRef}
+        className={`africa-presence${inView ? ' in-view' : ''}${selectedId ? ' is-detail-open' : ''}`}
+      >
         <aside className="africa-presence__panel" aria-hidden={selectedId ? 'false' : 'true'}>
           <div className="africa-presence__panel-inner">
             <button
@@ -516,6 +515,11 @@ export default function AfricaPresenceMap() {
           </div>
         </aside>
         <div className="africa-presence__stage">
+          <div className="africa-presence__map" ref={mapAreaRef}>
+            <div className="africa-presence__svg-host" ref={svgHostRef} />
+            <svg className="africa-presence__lines" ref={lineLayerRef} aria-hidden="true" />
+            <div className="africa-presence__callouts" ref={labelLayerRef} />
+          </div>
           <div className="africa-presence__legend-wrap">
             <ul className="africa-presence__legend">
               {LEGEND.map((item) => (
@@ -526,12 +530,6 @@ export default function AfricaPresenceMap() {
               ))}
             </ul>
           </div>
-          <div className="africa-presence__map" ref={mapAreaRef}>
-            <div className="africa-presence__svg-host" ref={svgHostRef} />
-            <svg className="africa-presence__lines" ref={lineLayerRef} aria-hidden="true" />
-            <div className="africa-presence__callouts" ref={labelLayerRef} />
-          </div>
-        </div>
         </div>
       </div>
     </section>
