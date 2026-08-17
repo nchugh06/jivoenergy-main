@@ -62,15 +62,25 @@ export default function RegionProjectsClient({ regionId }: RegionProjectsClientP
       <Navbar />
 
       <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
-        <Image
-          src="/assets/banners/Projects.jpg"
-          alt={`${region.label} Projects`}
-          fill
-          className="object-cover"
-          priority
-        />
+        <div className="absolute inset-0 block md:hidden">
+          <Image
+            src={region.bannerMobile}
+            alt={`${region.label} Projects`}
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="absolute inset-0 hidden md:block">
+          <Image
+            src={region.banner}
+            alt={`${region.label} Projects`}
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
         <div className="absolute inset-0 bg-[#062516]/45" />
-      
       </section>
 
       <main className="py-5">

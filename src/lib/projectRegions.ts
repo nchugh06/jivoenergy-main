@@ -6,16 +6,22 @@ export const PROJECT_REGIONS = [
     id: 'east-africa',
     label: 'East Africa',
     image: '/our-presence/Map_of_East_Africa_Countries.png',
+    banner: '/banner/East.jpg',
+    bannerMobile: '/banner/mobile/East.jpg',
   },
   {
     id: 'west-africa',
     label: 'West Africa',
     image: '/our-presence/Western-Africa-map.png',
+    banner: '/banner/West.jpg',
+    bannerMobile: '/banner/mobile/West.jpg',
   },
   {
     id: 'southern-africa',
     label: 'Southern Africa',
     image: '/our-presence/Southern_Africa_last.png',
+    banner: '/banner/South.jpg',
+    bannerMobile: '/banner/mobile/South.jpg',
   },
 ] as const;
 
