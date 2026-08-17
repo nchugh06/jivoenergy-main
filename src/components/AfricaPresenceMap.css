@@ -1,0 +1,473 @@
+.africa-presence-section {
+  width: 100%;
+  background: var(--color-white);
+  padding: 3.5rem 0 4.5rem;
+}
+
+.africa-presence-section__head {
+  text-align: center;
+  padding: 0 0 1.5rem;
+}
+
+.africa-presence-section__head .section-title-spl {
+  color: var(--color-text-dark);
+  margin: 0;
+}
+
+.africa-presence {
+  display: grid;
+  grid-template-columns: 0fr 1fr;
+  min-height: 72vh;
+  background-color: var(--color-white);
+  color: var(--color-text-dark);
+  transition: grid-template-columns 0.45s ease;
+}
+
+.africa-presence.is-detail-open {
+  grid-template-columns: minmax(0, 3fr) minmax(0, 7fr);
+}
+
+.africa-presence__panel {
+  min-width: 0;
+  overflow: hidden;
+  background: var(--pistachio-green-background);
+  border-right: 1px solid transparent;
+}
+
+.africa-presence.is-detail-open .africa-presence__panel {
+  border-right-color: var(--color-border-soft);
+}
+
+.africa-presence__panel-inner {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  padding: 2rem 1.75rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateX(-16px);
+  pointer-events: none;
+  transition: opacity 0.28s ease 0.08s, transform 0.35s ease;
+}
+
+.africa-presence.is-detail-open .africa-presence__panel-inner {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.africa-presence__close {
+  align-self: flex-end;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-dark-green);
+  border-radius: 6px;
+  background: var(--color-white);
+  color: var(--color-text-dark);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.africa-presence__close:hover {
+  background: #e7f0ea;
+}
+
+.africa-presence__visual {
+  margin: 1.25rem 0;
+  width: 100%;
+  aspect-ratio: 1;
+  max-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-white);
+  border: 1px solid var(--color-dark-green);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.africa-presence__visual svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.africa-presence__heading {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.65rem;
+}
+
+.africa-presence__flag {
+  display: none;
+  width: 36px;
+  height: 24px;
+  flex-shrink: 0;
+  object-fit: cover;
+  object-position: center;
+  background: var(--color-white);
+  border: 1px solid var(--color-dark-green);
+  border-radius: 3px;
+}
+
+.africa-presence__flag.is-ready {
+  display: block;
+}
+
+.africa-presence__name {
+  font-size: 1.75rem;
+  line-height: 1.2;
+  font-weight: 700;
+  margin: 0;
+  color: var(--color-text-dark);
+}
+
+.africa-presence__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 1.35rem;
+}
+
+.africa-presence__status .dot,
+.africa-presence__legend .dot,
+.africa-presence__callout .tt-color {
+  flex-shrink: 0;
+  border: 1px solid var(--color-dark-green);
+}
+
+.africa-presence__status .dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+}
+
+.africa-presence__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin: 0;
+}
+
+.africa-presence__meta div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border-soft);
+  font-size: 0.95rem;
+}
+
+.africa-presence__meta dt {
+  color: var(--color-text-muted);
+}
+
+.africa-presence__meta dd {
+  margin: 0;
+  font-weight: 700;
+  color: var(--color-text-dark);
+}
+
+.africa-presence__stage {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 0;
+}
+
+.africa-presence__legend-wrap {
+  position: absolute;
+  top: 2.5rem;
+  left: 0;
+  z-index: 2;
+}
+
+.africa-presence__legend {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+}
+
+.africa-presence__legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+}
+
+.africa-presence__legend .dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.africa-presence__svg-host {
+  line-height: 0;
+}
+
+.africa-presence__map {
+  position: relative;
+  width: min(1100px, 96%);
+  max-width: 100%;
+  min-width: 0;
+  overflow: visible;
+}
+
+.africa-presence__map .africa-map {
+  display: block;
+  width: min(640px, 58vw);
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 239 / 217;
+  margin: 0 auto;
+}
+
+.africa-presence.is-detail-open .africa-presence__map .africa-map {
+  width: min(640px, 70%);
+}
+
+.africa-presence__map .africa-map path {
+  fill: transparent;
+  stroke: var(--color-dark-green);
+  stroke-width: 0.2;
+  stroke-linejoin: round;
+  stroke-dasharray: 8000;
+  stroke-dashoffset: 8000;
+  transition: filter 0.15s ease, stroke-width 0.15s ease;
+}
+
+.africa-presence.in-view .africa-map path {
+  animation: africa-map-draw 10s ease-out forwards;
+}
+
+.africa-presence__map .africa-map #UG,
+.africa-presence__map .africa-map #KE,
+.africa-presence__map .africa-map #LR,
+.africa-presence__map .africa-map #SL,
+.africa-presence__map .africa-map #SN,
+.africa-presence__map .africa-map #ST {
+  fill: var(--dark-green-background);
+}
+
+.africa-presence__map .africa-map #ET,
+.africa-presence__map .africa-map #BF,
+.africa-presence__map .africa-map #CV,
+.africa-presence__map .africa-map #MW {
+  fill: var(--light-green-background);
+}
+
+.africa-presence__map .africa-map #RW,
+.africa-presence__map .africa-map #TZ,
+.africa-presence__map .africa-map #ZM,
+.africa-presence__map .africa-map #ZA {
+  fill: #fafafa;
+}
+
+.africa-presence__map .africa-map path:hover,
+.africa-presence__map .africa-map path.has-callout:hover,
+.africa-presence__map .africa-map path.is-active {
+  filter: brightness(1.15);
+}
+
+.africa-map path.has-callout {
+  cursor: pointer;
+}
+
+.africa-map path.is-active {
+  stroke-width: 0.55;
+}
+
+.africa-presence__lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.africa-presence__line {
+  fill: none !important;
+  stroke: var(--color-dark-green) !important;
+  stroke-width: 1.25 !important;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.africa-presence__line.is-active {
+  stroke-width: 1.85 !important;
+}
+
+.africa-presence__callouts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.africa-presence__callout {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--color-white);
+  color: var(--color-text-dark);
+  padding: 0.25rem 0.45rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-dark-green);
+  white-space: nowrap;
+  box-shadow: 0 1px 4px rgba(18, 93, 54, 0.12);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.africa-presence__callout.is-active {
+  z-index: 20;
+  box-shadow: 0 6px 14px rgba(18, 93, 54, 0.18);
+}
+
+.africa-presence__callout .tt-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.africa-presence__callout strong {
+  display: block;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.africa-presence__map.callouts-animate .africa-presence__callout {
+  opacity: 0;
+  animation: africa-callout-pop 0.45s ease-out forwards;
+}
+
+.africa-presence__map.callouts-animate .africa-presence__line {
+  animation: africa-callout-line-draw 0.7s ease-out forwards;
+}
+
+.africa-presence__map.callouts-animate .africa-presence__dot {
+  opacity: 0;
+  animation: africa-callout-dot-in 0.35s ease-out forwards;
+}
+
+@keyframes africa-callout-pop {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes africa-callout-line-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes africa-callout-dot-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes africa-map-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .africa-presence-section {
+    padding: 2.5rem 0 3rem;
+  }
+
+  .africa-presence,
+  .africa-presence.is-detail-open {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    min-height: auto;
+  }
+
+  .africa-presence__panel {
+    order: 2;
+    border-right: none;
+    border-top: 1px solid transparent;
+    max-height: 0;
+    transition: max-height 0.4s ease, border-color 0.3s ease;
+  }
+
+  .africa-presence.is-detail-open .africa-presence__panel {
+    max-height: 80vh;
+    overflow-y: auto;
+    border-top-color: var(--color-border-soft);
+  }
+
+  .africa-presence__panel-inner {
+    padding: 1.25rem 1.25rem 1.75rem;
+    transform: translateY(10px);
+  }
+
+  .africa-presence.is-detail-open .africa-presence__panel-inner {
+    transform: none;
+  }
+
+  .africa-presence__visual {
+    max-height: 120px;
+    margin: 0.75rem 0 1rem;
+  }
+
+  .africa-presence__name {
+    font-size: 1.35rem;
+  }
+
+  .africa-presence__stage {
+    order: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1.5rem 0 2rem;
+  }
+
+  .africa-presence__map {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .africa-presence__map .africa-map,
+  .africa-presence.is-detail-open .africa-presence__map .africa-map {
+    width: 100%;
+  }
+
+  .africa-presence__lines,
+  .africa-presence__callouts {
+    display: none;
+  }
+
+  .africa-presence__legend-wrap {
+    position: static;
+    align-self: center;
+    margin-top: 1.5rem;
+    order: 2;
+  }
+}
