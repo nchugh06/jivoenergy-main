@@ -1,7 +1,24 @@
 'use client';
 
+import { useEffect, useState, type CSSProperties, type ReactNode } from 'react';
 import ScrollReveal from '@/components/ScrollReveal';
 import './Statistics.css';
+
+const MOBILE_QUERY = '(max-width: 767px)';
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia(MOBILE_QUERY);
+    const update = () => setIsMobile(media.matches);
+    update();
+    media.addEventListener('change', update);
+    return () => media.removeEventListener('change', update);
+  }, []);
+
+  return isMobile;
+}
 
 const stats = [
   {
@@ -38,9 +55,9 @@ const stats = [
     value: '100MWp',
     label: (
       <>
-        Delivered &
+        Delivered &{' '}
         <br />
-        200MWp+
+        200MWp+{' '}
         <br />
         under Development
       </>
@@ -57,9 +74,9 @@ const stats = [
     value: '60MWh',
     label: (
       <>
-        Delivered &
+        Delivered &{' '}
         <br />
-        50MWh+
+        50MWh+{' '}
         <br />
         under Development
       </>
@@ -83,31 +100,64 @@ const stats = [
   },
 ];
 
+function StatCard({
+  stat,
+  index,
+}: {
+  stat: (typeof stats)[number];
+  index: number;
+}) {
+  const isEven = index % 2 === 0;
+  const color = isEven ? '#125d36' : '#ffffff';
+
+  return (
+    <div className="content">
+      <h3 className="stat-number" style={{ color }}>
+        {stat.value}
+      </h3>
+      <h3 className="stat-description text-bold" style={{ color }}>
+        {stat.label}
+      </h3>
+    </div>
+  );
+}
+
 const Statistics = () => {
+  const isMobile = useIsMobile();
+
   return (
     <section className="about-stats stats-data bg-white">
       <div className="about-stats__container">
         <div className="stats-grid">
-          {stats.map((stat, index) => (
-            <ScrollReveal
-              key={stat.value}
-              className="grid-item"
-              delay={(index + 1) * 0.15}
-              from="right"
-              distance={90}
-              style={{ backgroundColor: index % 2 === 0 ? '#85c54a' : '#1c4832', color: index % 2 === 0 ? '#125d36' : '#ffffff' }}
-            >
-              <div className="content">
-                {/* <div className="stat-icon" aria-hidden="true">
-                  {stat.icon}
-                </div> */}
-                <h3 className="stat-number text-center" style={{ color: index % 2 === 0 ? '#125d36' : '#ffffff' }}>
-                  {stat.value}
-                </h3>
-                <h3 className="stat-description text-center text-bold" style={{ color: index % 2 === 0 ? '#125d36' : '#ffffff' }}>{stat.label}</h3>
-              </div>
-            </ScrollReveal>
-          ))}
+          {stats.map((stat, index) => {
+            const itemStyle: CSSProperties = {
+              backgroundColor: index % 2 === 0 ? '#85c54a' : '#1c4832',
+              color: index % 2 === 0 ? '#125d36' : '#ffffff',
+            };
+
+            const card: ReactNode = <StatCard stat={stat} index={index} />;
+
+            if (isMobile) {
+              return (
+                <div key={stat.value} className="grid-item" style={itemStyle}>
+                  {card}
+                </div>
+              );
+            }
+
+            return (
+              <ScrollReveal
+                key={stat.value}
+                className="grid-item"
+                delay={(index + 1) * 0.15}
+                from="right"
+                distance={90}
+                style={itemStyle}
+              >
+                {card}
+              </ScrollReveal>
+            );
+          })}
         </div>
       </div>
     </section>

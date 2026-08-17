@@ -56,15 +56,59 @@
   }
 }
 
-@media (max-width: 640px) {
+/* Mobile: static stacked list, no scroll / hover animation */
+@media (max-width: 767px) {
   .about-stats .stats-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-top: 1rem;
   }
-}
 
-@media (max-width: 480px) {
-  .about-stats .stats-grid {
-    grid-template-columns: 1fr;
+  .about-stats .grid-item,
+  .about-stats .grid-item.scroll-reveal {
+    min-height: 0;
+    padding: 0.85rem 1rem;
+    border-radius: 0.75rem;
+    cursor: default;
+    box-shadow: none;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+
+  .about-stats .grid-item .content {
+    padding: 0;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.85rem;
+    text-align: left;
+    transition: none;
+  }
+
+  .about-stats .stat-number {
+    flex: 0 0 auto;
+    min-width: 6.25rem;
+    margin: 0;
+    font-size: 1.15rem;
+    text-align: left;
+  }
+
+  .about-stats .stat-description {
+    flex: 1 1 auto;
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.35;
+    text-align: left;
+  }
+
+  .about-stats .stat-description br {
+    display: none;
+  }
+
+  .about-stats .grid-item:hover .content {
+    opacity: 1;
   }
 }
 
