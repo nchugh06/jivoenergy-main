@@ -1,6 +1,9 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import Image from 'next/image';
+import { getProjects } from '@/lib/projects';
+import { Project } from '@/types/project';
 import './AfricaPresenceMap.css';
 
 type CountryStatus = {
@@ -62,9 +65,54 @@ const LEGEND = [
   { color: '#fafafa', label: 'Upcoming project' },
 ];
 
+const NAME_TO_CODE: Record<string, string> = {
+  uganda: 'UG',
+  kenya: 'KE',
+  liberia: 'LR',
+  'sierra leone': 'SL',
+  senegal: 'SN',
+  'sao tome and principe': 'ST',
+  'sao tome': 'ST',
+  ethiopia: 'ET',
+  'burkina faso': 'BF',
+  'cape verde': 'CV',
+  'cabo verde': 'CV',
+  malawi: 'MW',
+  rwanda: 'RW',
+  tanzania: 'TZ',
+  zambia: 'ZM',
+  'south africa': 'ZA',
+};
+
 function displayName(title: string | null, id: string) {
   const name = title || id;
   return SHORT_NAME[name] || name;
+}
+
+function normalizeCountry(value?: string) {
+  return (value || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+}
+
+function countryCodeFor(project: Project) {
+  const raw = normalizeCountry(project.country);
+  if (!raw) return null;
+  if (NAME_TO_CODE[raw]) return NAME_TO_CODE[raw];
+  const upper = raw.toUpperCase();
+  if (STATUS[upper]) return upper;
+  return null;
+}
+
+function projectsForCode(code: string, projects: Project[]) {
+  return projects.filter((project) => countryCodeFor(project) === code);
+}
+
+function coverForCode(code: string, projects: Project[]) {
+  return projectsForCode(code, projects).find((project) => project.imageUrl)?.imageUrl || '';
 }
 
 function isMobile() {
@@ -121,35 +169,6 @@ function placeNearCountry(list: CalloutItem[], side: 'left' | 'right') {
   }
 }
 
-function countryShape(path: SVGPathElement, color: string) {
-  const b = path.getBBox();
-  const pad = Math.max(b.width, b.height, 4) * 0.16;
-  const x = b.x - pad;
-  const y = b.y - pad;
-  const w = b.width + pad * 2;
-  const h = b.height + pad * 2;
-  const stroke = Math.max(w, h) * 0.008;
-  return (
-    '<svg viewBox="' +
-    x +
-    ' ' +
-    y +
-    ' ' +
-    w +
-    ' ' +
-    h +
-    '" preserveAspectRatio="xMidYMid meet" aria-hidden="true">' +
-    '<path d="' +
-    (path.getAttribute('d') || '') +
-    '" fill="' +
-    color +
-    '" stroke="#125d36" stroke-width="' +
-    stroke +
-    '" stroke-linejoin="round"></path>' +
-    '</svg>'
-  );
-}
-
 export default function AfricaPresenceMap() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const mapAreaRef = useRef<HTMLDivElement>(null);
@@ -162,8 +181,16 @@ export default function AfricaPresenceMap() {
   const [inView, setInView] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [selectedName, setSelectedName] = useState('');
-  const [shapeHtml, setShapeHtml] = useState('');
+  const [coverImage, setCoverImage] = useState('');
+  const [allProjects, setAllProjects] = useState<Project[]>([]);
+  const projectsRef = useRef<Project[]>([]);
   const [mapReady, setMapReady] = useState(false);
+
+  const clearSelection = useCallback(() => {
+    setSelectedId(null);
+    setSelectedName('');
+    setCoverImage('');
+  }, []);
 
   selectedIdRef.current = selectedId;
 
@@ -184,6 +211,25 @@ export default function AfricaPresenceMap() {
     observer.observe(section);
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    getProjects()
+      .then((data) => {
+        setAllProjects(data);
+        projectsRef.current = data;
+      })
+      .catch((error) => {
+        console.error('Failed to load projects:', error);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (!selectedId) {
+      setCoverImage('');
+      return;
+    }
+    setCoverImage(coverForCode(selectedId, allProjects));
+  }, [selectedId, allProjects]);
 
   useEffect(() => {
     const host = svgHostRef.current;
@@ -240,7 +286,7 @@ export default function AfricaPresenceMap() {
       if (selectedIdRef.current === id) {
         setSelectedId(null);
         setSelectedName('');
-        setShapeHtml('');
+        setCoverImage('');
         return;
       }
       const data = STATUS[id];
@@ -248,7 +294,7 @@ export default function AfricaPresenceMap() {
       if (!data || !path) return;
       setSelectedId(id);
       setSelectedName(displayName(path.getAttribute('title'), id));
-      setShapeHtml(countryShape(path, data.color));
+      setCoverImage(coverForCode(id, projectsRef.current));
     };
 
     if (!pathsBoundRef.current) {
@@ -447,16 +493,20 @@ export default function AfricaPresenceMap() {
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && selectedIdRef.current) {
-        setSelectedId(null);
-        setSelectedName('');
-        setShapeHtml('');
+        clearSelection();
       }
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
-  }, []);
+  }, [clearSelection]);
 
   const selected = selectedId ? STATUS[selectedId] : null;
+  const selectedProjects = useMemo(
+    () => (selectedId ? projectsForCode(selectedId, allProjects) : []),
+    [selectedId, allProjects]
+  );
+  const selectedCapacity =
+    selectedProjects.find((project) => project.capacity)?.capacity || '_';
 
   return (
     <section className="africa-presence-section" aria-label="JIVO Energy in Africa">
@@ -473,19 +523,21 @@ export default function AfricaPresenceMap() {
               className="africa-presence__close"
               type="button"
               aria-label="Close country details"
-              onClick={() => {
-                setSelectedId(null);
-                setSelectedName('');
-                setShapeHtml('');
-              }}
+              onClick={clearSelection}
             >
               &times;
             </button>
-            <div
-              className="africa-presence__visual"
-              aria-hidden="true"
-              dangerouslySetInnerHTML={{ __html: shapeHtml }}
-            />
+            {coverImage ? (
+              <div className="africa-presence__visual africa-presence__visual--photo">
+                <Image
+                  src={coverImage}
+                  alt={selectedName}
+                  fill
+                  className="africa-presence__cover"
+                  sizes="320px"
+                />
+              </div>
+            ) : null}
             <div className="africa-presence__heading">
               {selectedId ? (
                 <img
@@ -505,11 +557,11 @@ export default function AfricaPresenceMap() {
             <dl className="africa-presence__meta">
               <div>
                 <dt>No. of projects</dt>
-                <dd>{selected?.projects ?? '_'}</dd>
+                <dd>{selectedId ? String(selectedProjects.length) : '_'}</dd>
               </div>
               <div>
                 <dt>Capacity</dt>
-                <dd>{selected?.capacity ?? '_'}</dd>
+                <dd>{selectedId ? selectedCapacity : '_'}</dd>
               </div>
             </dl>
           </div>
