@@ -67,7 +67,6 @@ export default function RegionProjectsClient({ regionId }: RegionProjectsClientP
             src={region.bannerMobile}
             alt={`${region.label} Projects`}
             fill
-            className="object-cover"
             priority
           />
         </div>
