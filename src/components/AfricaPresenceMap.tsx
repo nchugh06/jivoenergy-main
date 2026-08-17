@@ -510,6 +510,7 @@ export default function AfricaPresenceMap() {
 
   return (
     <section className="africa-presence-section" aria-label="JIVO Energy in Africa">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 africa-presence-section__inner">
       <div className="africa-presence-section__head">
         <h3 className="section-title-spl">JIVO Energy in Africa</h3>
       </div>
@@ -583,6 +584,7 @@ export default function AfricaPresenceMap() {
             </ul>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
