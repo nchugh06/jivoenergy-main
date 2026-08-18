@@ -1,7 +1,5 @@
 .africa-presence-section {
   width: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   background: var(--color-white);
@@ -51,7 +49,9 @@
   opacity: 0;
   transform: translateX(-12px);
   pointer-events: none;
-  transition: opacity 0.28s ease, transform 0.35s ease;
+  transition:
+    opacity 0.28s ease,
+    transform 0.35s ease;
 }
 
 .africa-presence.is-detail-open .africa-presence__panel {
@@ -70,7 +70,9 @@
   opacity: 0;
   transform: translateX(-16px);
   pointer-events: none;
-  transition: opacity 0.28s ease 0.08s, transform 0.35s ease;
+  transition:
+    opacity 0.28s ease 0.08s,
+    transform 0.35s ease;
 }
 
 .africa-presence.is-detail-open .africa-presence__panel-inner {
@@ -266,7 +268,9 @@
   stroke-linejoin: round;
   stroke-dasharray: 8000;
   stroke-dashoffset: 8000;
-  transition: filter 0.15s ease, stroke-width 0.15s ease;
+  transition:
+    filter 0.15s ease,
+    stroke-width 0.15s ease;
 }
 
 .africa-presence.in-view .africa-map path {
@@ -293,7 +297,7 @@
 .africa-presence__map .africa-map #TZ,
 .africa-presence__map .africa-map #ZM,
 .africa-presence__map .africa-map #ZA {
-  fill: #fafafa;
+  fill: #f6faf5;
 }
 
 .africa-presence__map .africa-map path:hover,
