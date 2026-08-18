@@ -57,6 +57,7 @@ const NUDGE: Record<string, { dx?: number; dy?: number }> = {
   BF: { dx: -18, dy: 108 },
   RW: { dx: 86, dy: 0 },
   ZM: { dx: 52, dy: 72 },
+  ZA: { dy: 40 },
 };
 
 const LEGEND = [
