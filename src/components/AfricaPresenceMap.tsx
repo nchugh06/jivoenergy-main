@@ -32,21 +32,27 @@ type CalloutItem = {
   el: HTMLButtonElement;
 };
 
+const STATUS_COLOR = {
+  completed: "var(--color-dark-green)",
+  ongoing: "var(--color-light-green)",
+  upcoming: "var(--color-border-soft)",
+};
+
 const STATUS: Record<string, CountryStatus> = {
-  UG: { label: "Completed", color: "#1c4832", projects: "_", capacity: "_" },
-  KE: { label: "Completed", color: "#1c4832", projects: "_", capacity: "_" },
-  LR: { label: "Completed", color: "#1c4832", projects: "_", capacity: "_" },
-  SL: { label: "Completed", color: "#1c4832", projects: "_", capacity: "_" },
-  SN: { label: "Completed", color: "#1c4832", projects: "_", capacity: "_" },
-  ST: { label: "Completed", color: "#1c4832", projects: "_", capacity: "_" },
-  ET: { label: "On going", color: "#85c54a", projects: "_", capacity: "_" },
-  BF: { label: "On going", color: "#85c54a", projects: "_", capacity: "_" },
-  CV: { label: "On going", color: "#85c54a", projects: "_", capacity: "_" },
-  MW: { label: "On going", color: "#85c54a", projects: "_", capacity: "_" },
-  RW: { label: "Upcoming", color: "#f6faf5", projects: "_", capacity: "_" },
-  TZ: { label: "Upcoming", color: "#f6faf5", projects: "_", capacity: "_" },
-  ZM: { label: "Upcoming", color: "#f6faf5", projects: "_", capacity: "_" },
-  ZA: { label: "Upcoming", color: "#f6faf5", projects: "_", capacity: "_" },
+  UG: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
+  KE: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
+  LR: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
+  SL: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
+  SN: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
+  ST: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
+  ET: { label: "On going", color: STATUS_COLOR.ongoing, projects: "_", capacity: "_" },
+  BF: { label: "On going", color: STATUS_COLOR.ongoing, projects: "_", capacity: "_" },
+  CV: { label: "On going", color: STATUS_COLOR.ongoing, projects: "_", capacity: "_" },
+  MW: { label: "On going", color: STATUS_COLOR.ongoing, projects: "_", capacity: "_" },
+  RW: { label: "Upcoming", color: STATUS_COLOR.upcoming, projects: "_", capacity: "_" },
+  TZ: { label: "Upcoming", color: STATUS_COLOR.upcoming, projects: "_", capacity: "_" },
+  ZM: { label: "Upcoming", color: STATUS_COLOR.upcoming, projects: "_", capacity: "_" },
+  ZA: { label: "Upcoming", color: STATUS_COLOR.upcoming, projects: "_", capacity: "_" },
 };
 
 const LEFT_IDS = new Set(["CV", "SN", "BF", "SL", "LR", "ST"]);
@@ -61,9 +67,9 @@ const NUDGE: Record<string, { dx?: number; dy?: number }> = {
 };
 
 const LEGEND = [
-  { color: "#1c4832", label: "Completed Projects" },
-  { color: "#85c54a", label: "On Going" },
-  { color: "#f6faf5", label: "Upcoming Projects" },
+  { color: STATUS_COLOR.completed, label: "Completed Projects" },
+  { color: STATUS_COLOR.ongoing, label: "On Going" },
+  { color: STATUS_COLOR.upcoming, label: "Upcoming Projects" },
 ];
 
 const NAME_TO_CODE: Record<string, string> = {

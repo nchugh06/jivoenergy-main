@@ -35,10 +35,10 @@ export default function Home() {
         {/* <Projects /> */}
         {/* <CoreValues /> */}
         <BusinessAreasServices />
+        <Clients />
         <AfricaPresenceMap />
         {/* <Impact /> */}
-        {/* <Media /> */}        
-        <Clients />
+        {/* <Media /> */}
         <Achievements /> 
         <Media /> 
         {/* <section id="hero-section" className="relative w-full h-[100vh] overflow-hidden">
