@@ -1,0 +1,72 @@
+/* ESG gallery — CSS Grid masonry, with a columns fallback */
+
+.esg-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: masonry;
+  gap: 1rem;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .esg-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .esg-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.esg-gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.esg-gallery-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.esg-gallery-item:hover {
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.esg-gallery-item:hover .esg-gallery-image {
+  transform: scale(1.1);
+}
+
+/* Browsers without native grid masonry: pack items down columns */
+@supports not (grid-template-rows: masonry) {
+  .esg-gallery {
+    display: block;
+    column-count: 1;
+    column-gap: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .esg-gallery {
+      column-count: 2;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .esg-gallery {
+      column-count: 3;
+    }
+  }
+
+  .esg-gallery-item {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}

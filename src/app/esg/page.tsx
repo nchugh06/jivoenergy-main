@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
+import "./esg.css";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -50,16 +51,17 @@ const metrics = [
   { title: "Community", subtitle: "Engagement" },
 ];
 
-export default function SustainabilityPage() {
-  const galleryImages = [
-    "/esg/1766384012371.jpg",
-    "/esg/1766384012520.jpg",
-    "/esg/1766384012528.jpg",
-    "/esg/1766384012546.jpg",
-    "/esg/1766384012549.jpg",
+const galleryImages = [
+  { src: "/esg/1766384012371.jpg", width: 1280, height: 720 },
+  { src: "/esg/1766384012520.jpg", width: 960, height: 1280 },
+  { src: "/esg/1766384012528.jpg", width: 960, height: 1280 },
+  { src: "/esg/1766384012546.jpg", width: 963, height: 1280 },
+  { src: "/esg/1766384012549.jpg", width: 960, height: 1280 },
+  { src: "/esg/IMG_0478.jpg", width: 3520, height: 1980 },
+  { src: "/esg/1766384013654.jpg", width: 1280, height: 960 },
+];
 
-    "/esg/IMG_0478.jpg",
-  ];
+export default function SustainabilityPage() {
 
   return (
     <main className="min-h-screen bg-white">
@@ -332,23 +334,25 @@ export default function SustainabilityPage() {
         <div className="container mx-auto px-4">
           <h3 className="section-title-spl text-[#062516] text-center mb-12">Gallery</h3>
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+            className="esg-gallery"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
             variants={staggerContainer}
           >
-            {galleryImages.map((src, index) => (
+            {galleryImages.map((image, index) => (
               <motion.div
-                key={index}
+                key={image.src}
                 variants={galleryItemVariants}
-                className="relative h-64 rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group"
+                className="esg-gallery-item"
               >
                 <Image
-                  src={src}
+                  src={image.src}
                   alt={`Sustainability Gallery Image ${index + 1}`}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  width={image.width}
+                  height={image.height}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="esg-gallery-image"
                 />
               </motion.div>
             ))}
