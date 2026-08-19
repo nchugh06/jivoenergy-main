@@ -95,7 +95,7 @@ const INTRO_HOLD_MS = 200;
 
 const LEGEND = [
   { color: STATUS_COLOR.completed, label: "Completed Projects" },
-  { color: STATUS_COLOR.ongoing, label: "On Going" },
+  { color: STATUS_COLOR.ongoing, label: "On Going Projects" },
   { color: STATUS_COLOR.upcoming, label: "Upcoming Projects" },
 ];
 
@@ -127,6 +127,10 @@ const AMCHARTS_SCRIPTS = [
 
 function displayName(id: string) {
   return COUNTRY_NAME[id] || id;
+}
+
+function canOpenDetails(id: string) {
+  return Boolean(STATUS[id] && STATUS[id].label !== "Upcoming");
 }
 
 function normalizeCountry(value?: string) {
@@ -309,7 +313,7 @@ function createPresenceGlobe(options: {
     "cursorOverStyle",
     (_style: string, target: any) => {
       const id = target.dataItem?.dataContext?.id;
-      return STATUS[id] ? "pointer" : "default";
+      return canOpenDetails(id) ? "pointer" : "default";
     },
   );
 
@@ -328,7 +332,7 @@ function createPresenceGlobe(options: {
     });
     circle.events.on("click", (event: any) => {
       const id = event.target.dataItem?.dataContext?.id;
-      if (id && STATUS[id]) handleSelect(id);
+      if (id && canOpenDetails(id)) handleSelect(id);
     });
     return am5.Bullet.new(root, { sprite: circle });
   });
@@ -341,14 +345,27 @@ function createPresenceGlobe(options: {
       text: "{name}",
       fill: am5.color(THEME.label),
       fontSize: 11,
-      fontWeight: "500",
+      fontWeight: "600",
       fontFamily: "Inter, var(--font-inter), sans-serif",
       centerX: am5.p50,
       centerY: am5.p50,
       opacity: 0,
-      oversizedBehavior: "fit",
-      minScale: 0.35,
       populateText: true,
+      paddingTop: 3,
+      paddingBottom: 3,
+      paddingLeft: 7,
+      paddingRight: 7,
+      background: am5.RoundedRectangle.new(root, {
+        fill: am5.color(0xffffff),
+        fillOpacity: 0.94,
+        cornerRadiusTL: 4,
+        cornerRadiusTR: 4,
+        cornerRadiusBL: 4,
+        cornerRadiusBR: 4,
+        stroke: am5.color(THEME.label),
+        strokeOpacity: 0.12,
+        strokeWidth: 1,
+      }),
     });
     return am5.Bullet.new(root, { sprite: label });
   });
@@ -396,7 +413,7 @@ function createPresenceGlobe(options: {
 
   let selectedId: string | null = null;
   const handleSelect = (id: string) => {
-    if (!STATUS[id]) return;
+    if (!canOpenDetails(id)) return;
     if (selectedId === id) {
       selectedId = null;
       options.onSelect(null, "");
@@ -443,7 +460,7 @@ function createPresenceGlobe(options: {
 
   polygonSeries.mapPolygons.template.events.on("click", (event: any) => {
     const id = event.target.dataItem?.dataContext?.id;
-    if (id && STATUS[id]) handleSelect(id);
+    if (id && canOpenDetails(id)) handleSelect(id);
     else {
       selectedId = null;
       options.onSelect(null, "");
