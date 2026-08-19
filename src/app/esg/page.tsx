@@ -1,9 +1,12 @@
 "use client";
 
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
+import PhotoSwipeLightbox from "photoswipe/lightbox";
+import "photoswipe/style.css";
 import "./esg.css";
 
 const fadeUp: Variants = {
@@ -62,6 +65,18 @@ const galleryImages = [
 ];
 
 export default function SustainabilityPage() {
+  useEffect(() => {
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: "#esg-gallery",
+      children: "a",
+      pswpModule: () => import("photoswipe"),
+      padding: { top: 24, bottom: 40, left: 16, right: 16 },
+      initialZoomLevel: "fit",
+    });
+
+    lightbox.init();
+    return () => lightbox.destroy();
+  }, []);
 
   return (
     <main className="min-h-screen bg-white">
@@ -334,6 +349,7 @@ export default function SustainabilityPage() {
         <div className="container mx-auto px-4">
           <h3 className="section-title-spl text-[#062516] text-center mb-12">Gallery</h3>
           <motion.div
+            id="esg-gallery"
             className="esg-gallery"
             initial="hidden"
             whileInView="visible"
@@ -346,14 +362,23 @@ export default function SustainabilityPage() {
                 variants={galleryItemVariants}
                 className="esg-gallery-item"
               >
-                <Image
-                  src={image.src}
-                  alt={`Sustainability Gallery Image ${index + 1}`}
-                  width={image.width}
-                  height={image.height}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="esg-gallery-image"
-                />
+                <a
+                  href={image.src}
+                  data-pswp-width={image.width}
+                  data-pswp-height={image.height}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Open gallery image ${index + 1}`}
+                >
+                  <Image
+                    src={image.src}
+                    alt={`Sustainability Gallery Image ${index + 1}`}
+                    width={image.width}
+                    height={image.height}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="esg-gallery-image"
+                  />
+                </a>
               </motion.div>
             ))}
           </motion.div>

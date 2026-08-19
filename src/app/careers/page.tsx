@@ -3,6 +3,7 @@
 import React, { useState, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { motion, type Variants } from 'framer-motion';
 import {
   Briefcase,
   Users,
@@ -17,6 +18,35 @@ import {
 } from 'lucide-react';
 
 import { countries } from '@/lib/countries';
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'tween', duration: 0.6, ease: 'easeOut' },
+  },
+};
+
+const staggerContainer: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.08,
+    },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 28, scale: 0.96 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { type: 'tween', duration: 0.45, ease: 'easeOut' },
+  },
+};
 
 interface FormData {
   fullName: string;
@@ -148,17 +178,30 @@ const Careers = () => {
       <section className="py-5 px-4 max-w-7xl mx-auto">
         <div className="text-center max-w-7xl mx-auto mb-16">
           <h3 className="section-title-spl text-center text-[#062516] mb-10">Careers</h3>
-          <p className="text-lg text-gray-600 leading-relaxed">
-            At JIVO Energy, we are committed to building a highly skilled, diverse, and performance-driven workforce.
-            As we broaden our portfolio and expand our presence across the region, we continue to seek professionals
-            who demonstrate excellence, integrity, and a commitment to delivering results. If you aspire to be part
-            of a reputable and future-focused organisation, we welcome you to explore career opportunities with us.
-          </p>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <p className="text-lg text-gray-600 leading-relaxed">
+              At JIVO Energy, we are committed to building a highly skilled, diverse, and performance-driven workforce.
+              As we broaden our portfolio and expand our presence across the region, we continue to seek professionals
+              who demonstrate excellence, integrity, and a commitment to delivering results. If you aspire to be part
+              of a reputable and future-focused organisation, we welcome you to explore career opportunities with us.
+            </p>
+          </motion.div>
         </div>
 
         {/* Why Work With Us */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
-          <div className="space-y-8">
+          <motion.div
+            className="space-y-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
             <h3 className="section-title text-[#062516] text-center">
               Why Work With Us?
             </h3>
@@ -180,24 +223,37 @@ const Careers = () => {
                 </li>
               ))}
             </ul>
-          </div>
-          <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl group">
-            <div
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-              style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80")' }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#062516]/80 to-transparent" />
-            <div className="absolute bottom-8 left-8 text-white">
-              <p className="text-2xl font-bold">Growth & Stability</p>
-              <p className="opacity-90">Building the future together</p>
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl group">
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80")' }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#062516]/80 to-transparent" />
+              <div className="absolute bottom-8 left-8 text-white">
+                <p className="text-2xl font-bold">Growth & Stability</p>
+                <p className="opacity-90">Building the future together</p>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Our Culture & Values */}
         <div className="mb-24 ">
           <h3 className="section-title text-center text-[#062516]">Our Culture & Values</h3>
-          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <motion.div
+            className="grid md:grid-cols-3 lg:grid-cols-5 gap-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            variants={staggerContainer}
+          >
             {[
               { icon: Shield, title: "Integrity", desc: "Doing what’s right, consistently and transparently." },
               { icon: Users, title: "Collaboration", desc: "Working together to achieve shared goals." },
@@ -205,73 +261,106 @@ const Careers = () => {
               { icon: TrendingUp, title: "Continuous Improvement", desc: "Embracing learning, growth, and innovation." },
               { icon: Heart, title: "Customer-Focused", desc: "Placing our customers at the heart of everything we do." }
             ].map((value, index) => (
-              <div key={index} className="bg-[#F5FBF5] p-6 rounded-xl shadow-lg transition-all duration-300 group2">
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                whileHover={{ y: -6, scale: 1.03, transition: { type: 'spring', stiffness: 320, damping: 22 } }}
+                className="bg-[#F5FBF5] p-6 rounded-xl shadow-lg transition-shadow duration-300 group2"
+              >
                 <div className="w-12 h-12 bg-[#F5FBF5] rounded-full flex items-center justify-center mb-4 group2-hover:bg-[#062516] transition-colors duration-300">
                   <value.icon className="w-6 h-6 text-[#062516] group-hover:text-white transition-colors duration-300" />
                 </div>
                 <h4 className="text-lg font-bold text-[#062516] mb-2 bg-[#F5FBF5]">{value.title}</h4>
                 <p className="text-sm text-black bg-[#F5FBF5]">{value.desc}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* Life at JIVO & Benefits */}
         <div className="grid md:grid-cols-2 gap-8 mb-24">
-          <div className="bg-[#F5FBF5] text-white p-10 rounded-2xl relative overflow-hidden">
-            <div className="relative z-10 text-[#062516]">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <div className="bg-[#F5FBF5] text-white p-10 rounded-2xl relative overflow-hidden">
+              <div className="relative z-10 text-[#062516]">
+                <h3 className="section-title mb-6 flex items-center">
+                  <Globe className="mr-3" /> Life at JIVO Energy
+                </h3>
+                <ul className="space-y-4">
+                  {[
+                    "Collaborative culture",
+                    "Project-driven environment",
+                    "Safety-first philosophy",
+                    "Professional development focus",
+                    "Cross-country or multi-site exposure"
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-center space-x-3 opacity-90">
+                      <div className="w-1.5 h-1.5 bg-[#062516] rounded-full" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#FFFA84]/10 rounded-full blur-3xl" />
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <div className="bg-[#062516] text-white p-10 rounded-2xl relative overflow-hidden">
               <h3 className="section-title mb-6 flex items-center">
-                <Globe className="mr-3" /> Life at JIVO Energy
+                <Award className="mr-3" /> Employee Benefits
               </h3>
               <ul className="space-y-4">
                 {[
-                  "Collaborative culture",
-                  "Project-driven environment",
-                  "Safety-first philosophy",
-                  "Professional development focus",
-                  "Cross-country or multi-site exposure"
+                  "Health insurance / medical coverage",
+                  "Annual performance bonuses",
+                  "Training sponsorships (technical certifications, PMP, HSE, etc.)",
+                  "Travel opportunities for site or project work",
+                  "Team outings, learning sessions, mentorship programs"
                 ].map((item, index) => (
-                  <li key={index} className="flex items-center space-x-3 opacity-90">
-                    <div className="w-1.5 h-1.5 bg-[#062516] rounded-full" />
+                  <li key={index} className="flex items-start space-x-3 text-white">
+                    <div className="w-1.5 h-1.5 bg-[#ffffff] mt-2.5 rounded-full" />
+                    {/* <div className="w-5 h-5 text-[#ffffff] mt-0.5 flex-shrink-0" /> */}
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#FFFA84]/10 rounded-full blur-3xl" />
-          </div>
-
-          <div className="bg-[#062516] text-white p-10 rounded-2xl relative overflow-hidden">
-            <h3 className="section-title mb-6 flex items-center">
-              <Award className="mr-3" /> Employee Benefits
-            </h3>
-            <ul className="space-y-4">
-              {[
-                "Health insurance / medical coverage",
-                "Annual performance bonuses",
-                "Training sponsorships (technical certifications, PMP, HSE, etc.)",
-                "Travel opportunities for site or project work",
-                "Team outings, learning sessions, mentorship programs"
-              ].map((item, index) => (
-                <li key={index} className="flex items-start space-x-3 text-white">
-                  <div className="w-1.5 h-1.5 bg-[#ffffff] mt-2.5 rounded-full" />
-                  {/* <div className="w-5 h-5 text-[#ffffff] mt-0.5 flex-shrink-0" /> */}
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          </motion.div>
         </div>
 
         {/* Job Openings */}
         <div className="mb-16">
           <h3 className="section-title text-[#062516] text-center">Current Job Openings</h3>
-          <p className="mb-8">
-            Be part of a future-focused team where innovation, collaboration, and purpose come together to create exceptional work.
-            Ready to take the next step in your career? {/* <span className="font-semibold text-[#062516]">Apply Now!</span> */}
-          </p>
+          <motion.div
+            className="mb-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <p>
+              Be part of a future-focused team where innovation, collaboration, and purpose come together to create exceptional work.
+              Ready to take the next step in your career? {/* <span className="font-semibold text-[#062516]">Apply Now!</span> */}
+            </p>
+          </motion.div>
 
-          <div className="grid gap-6">
+          <motion.div
+            className="grid gap-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            variants={staggerContainer}
+          >
             {[
               {
                 title: "Technical Manager - Electrical",
@@ -292,7 +381,11 @@ const Careers = () => {
               //   pdf: "/careers/HSES Manager JD for Careers Page.pdf"
               // }
             ].map((job, index) => (
-              <div key={index} className="bg-white border border-gray-200 p-6 rounded-xl hover:shadow-md transition-shadow flex flex-col md:flex-row md:items-center justify-between group">
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                className="bg-white border border-gray-200 p-6 rounded-xl hover:shadow-md transition-shadow flex flex-col md:flex-row md:items-center justify-between group"
+              >
                 <div className="bg-[#F5FBF5] p-4 rounded-lg mb-4 md:mb-0 md:mr-6 flex-1">
                   <h4 className="text-xl font-bold text-[#062516] group-hover:text-[#062516]/80 transition-colors">
                     {job.title}
@@ -310,15 +403,20 @@ const Careers = () => {
                 >
                   View Details
                 </a>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* Application Form Section */}
         <div className="bg-[#F5FBF5] rounded-3xl p-8 md:p-16 shadow-sm border border-gray-100">
           <div className="grid md:grid-cols-2 gap-16">
-            <div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+            >
               <h3 className="section-title text-[#062516] mb-6">
                 Be Part of Our Growth Story
               </h3>
@@ -326,8 +424,14 @@ const Careers = () => {
                 We are always looking for passionate, hardworking, and talented individuals who want to grow with us.
                 Even if the role listed here doesn’t match your profile, feel free to send us CV. We’re always open to great talent!
               </p>
-            </div>
+            </motion.div>
 
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+            >
             <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-2xl shadow-lg">
               <h4 className="text-xl font-bold text-[#062516] mb-4">Submit Your Application</h4>
 
@@ -453,6 +557,7 @@ const Careers = () => {
                 Thank you for considering a career with JIVO Energy!
               </p>
             </form>
+            </motion.div>
           </div>
         </div>
       </section>
