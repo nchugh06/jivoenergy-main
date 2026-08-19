@@ -52,9 +52,7 @@
   opacity: 0;
   transform: translate(-12px, -50%);
   pointer-events: none;
-  transition:
-    opacity 0.28s ease,
-    transform 0.35s ease;
+  transition: opacity 0.28s ease;
 }
 
 .africa-presence.is-detail-open .africa-presence__panel {

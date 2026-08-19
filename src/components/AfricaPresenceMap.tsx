@@ -10,7 +10,7 @@ declare global {
   interface Window {
     am5: any;
     am5map: any;
-    am5geodata_worldLow: any;
+    am5geodata_worldIndiaLow: any;
     am5themes_Animated: any;
   }
 }
@@ -40,7 +40,6 @@ const THEME = {
   border: "#d9edd5",
   hover: "#b7c6bc",
   label: "#062516",
-  home: "#7ec8e3",
 };
 
 const STATUS: Record<string, CountryStatus> = {
@@ -122,7 +121,7 @@ const NAME_TO_CODE: Record<string, string> = {
 const AMCHARTS_SCRIPTS = [
   "https://cdn.amcharts.com/lib/5/index.js",
   "https://cdn.amcharts.com/lib/5/map.js",
-  "https://cdn.amcharts.com/lib/5/geodata/worldLow.js",
+  "https://cdn.amcharts.com/lib/5/geodata/worldIndiaLow.js",
   "https://cdn.amcharts.com/lib/5/themes/Animated.js",
 ];
 
@@ -192,7 +191,7 @@ function loadAmCharts() {
     while (
       !window.am5 ||
       !window.am5map ||
-      !window.am5geodata_worldLow ||
+      !window.am5geodata_worldIndiaLow ||
       !window.am5themes_Animated
     ) {
       if (Date.now() - start > 12000) {
@@ -232,7 +231,7 @@ function createPresenceGlobe(options: {
   reducedMotion: boolean;
   onSelect: (id: string | null, name: string) => void;
 }): GlobeApi {
-  const { am5, am5map, am5geodata_worldLow, am5themes_Animated } = window;
+  const { am5, am5map, am5geodata_worldIndiaLow, am5themes_Animated } = window;
   const timeouts: number[] = [];
   const later = (fn: () => void, ms: number) => {
     timeouts.push(window.setTimeout(fn, ms));
@@ -455,7 +454,7 @@ function createPresenceGlobe(options: {
   const paintUnvisited = () => {
     polygonSeries.mapPolygons.each((polygon: any) => {
       const id = polygon.dataItem?.dataContext?.id;
-      polygon.set("fill", am5.color(id === HOME_ID ? THEME.home : THEME.unvisited));
+      polygon.set("fill", am5.color(THEME.unvisited));
       polygon.set("fillOpacity", 0.85);
       polygon.set("strokeWidth", 0.35);
       polygon.set("stroke", am5.color(THEME.border));
@@ -468,7 +467,7 @@ function createPresenceGlobe(options: {
   };
 
   const revealCountry = (id: string) => {
-    const color = STATUS[id]?.color || THEME.home;
+    const color = STATUS[id]?.color || THEME.unvisited;
     const polygon = polygonSeries.getDataItemById(id)?.get("mapPolygon");
     if (polygon) setPolygonFill(id, color, 1);
     setSpriteOpacity(nameSeries, id, 0.92, THEME.label);
@@ -483,7 +482,6 @@ function createPresenceGlobe(options: {
     options.onSelect(null, "");
     paintUnvisited();
     rotateTo(INDIA, 0);
-    setPolygonFill(HOME_ID, THEME.home, 1);
     setSpriteOpacity(nameSeries, HOME_ID, 1);
 
     const travel = options.reducedMotion ? 0 : ANIMATION_MS;
@@ -528,7 +526,7 @@ function createPresenceGlobe(options: {
     root.events.once("frameended", () => playIntro());
   });
 
-  polygonSeries.set("geoJSON", am5geodata_worldLow);
+  polygonSeries.set("geoJSON", am5geodata_worldIndiaLow);
   chart.appear(280, 40);
   root._logo?.dispose();
 
