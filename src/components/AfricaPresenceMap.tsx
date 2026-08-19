@@ -6,6 +6,15 @@ import { getProjects } from "@/lib/projects";
 import { Project } from "@/types/project";
 import "./AfricaPresenceMap.css";
 
+declare global {
+  interface Window {
+    am5: any;
+    am5map: any;
+    am5geodata_worldLow: any;
+    am5themes_Animated: any;
+  }
+}
+
 type CountryStatus = {
   label: string;
   color: string;
@@ -13,29 +22,26 @@ type CountryStatus = {
   capacity: string;
 };
 
-type CalloutItem = {
-  id: string;
-  name: string;
-  status: CountryStatus;
-  side: "left" | "right";
-  cx: number;
-  cy: number;
-  left: number;
-  right: number;
-  ax: number;
-  ay: number;
-  ly: number;
-  edgeX: number;
-  x: number;
-  w: number;
-  h: number;
-  el: HTMLButtonElement;
+type GlobeApi = {
+  dispose: () => void;
+  select: (id: string | null) => void;
+  replay: () => void;
 };
 
 const STATUS_COLOR = {
-  completed: "var(--color-dark-green)",
-  ongoing: "var(--color-light-green)",
-  upcoming: "var(--color-border-soft)",
+  completed: "#1c4832",
+  ongoing: "#85c54a",
+  upcoming: "#62a557",
+};
+
+const THEME = {
+  background: "#f6faf5",
+  water: "#e4eee6",
+  unvisited: "#c5d4c8",
+  border: "#d9edd5",
+  hover: "#b7c6bc",
+  label: "#062516",
+  home: "#daa244",
 };
 
 const STATUS: Record<string, CountryStatus> = {
@@ -55,16 +61,39 @@ const STATUS: Record<string, CountryStatus> = {
   ZA: { label: "Upcoming", color: STATUS_COLOR.upcoming, projects: "_", capacity: "_" },
 };
 
-const LEFT_IDS = new Set(["CV", "SN", "BF", "SL", "LR", "ST"]);
-const SHORT_NAME: Record<string, string> = {
-  "Sao Tome and Principe": "São Tomé",
+const REVEAL_ORDER = [
+  "ET", "ZA", "LR", "SL", "RW", "KE", "UG", "ZM", "TZ", "BF", "ST", "CV", "SN", "MW",
+];
+
+const COUNTRY_NAME: Record<string, string> = {
+  ET: "Ethiopia",
+  ZA: "South Africa",
+  LR: "Liberia",
+  SL: "Sierra Leone",
+  RW: "Rwanda",
+  KE: "Kenya",
+  UG: "Uganda",
+  ZM: "Zambia",
+  TZ: "Tanzania",
+  BF: "Burkina Faso",
+  ST: "São Tomé",
+  CV: "Cape Verde",
+  SN: "Senegal",
+  MW: "Malawi",
+  IN: "India",
 };
-const NUDGE: Record<string, { dx?: number; dy?: number }> = {
-  BF: { dx: -18, dy: 108 },
-  RW: { dx: 86, dy: 0 },
-  ZM: { dx: 52, dy: 72 },
-  ZA: { dy: 40 },
+
+const FALLBACK_COORDS: Record<string, [number, number]> = {
+  CV: [-23.04, 16.0],
+  ST: [6.61, 0.19],
 };
+
+const HOME_ID = "IN";
+const AFRICA = { longitude: 18, latitude: 1.6, rotationX: -18, rotationY: -1.6, zoom: 1.5 };
+const INDIA = { longitude: 78.96, latitude: 20.59, rotationX: -78.96, rotationY: -20.59, zoom: 1 };
+const ANIMATION_MS = 700;
+const PLACE_MS = 35;
+const INTRO_HOLD_MS = 200;
 
 const LEGEND = [
   { color: STATUS_COLOR.completed, label: "Completed Projects" },
@@ -91,9 +120,15 @@ const NAME_TO_CODE: Record<string, string> = {
   "south africa": "ZA",
 };
 
-function displayName(title: string | null, id: string) {
-  const name = title || id;
-  return SHORT_NAME[name] || name;
+const AMCHARTS_SCRIPTS = [
+  "https://cdn.amcharts.com/lib/5/index.js",
+  "https://cdn.amcharts.com/lib/5/map.js",
+  "https://cdn.amcharts.com/lib/5/geodata/worldLow.js",
+  "https://cdn.amcharts.com/lib/5/themes/Animated.js",
+];
+
+function displayName(id: string) {
+  return COUNTRY_NAME[id] || id;
 }
 
 function normalizeCountry(value?: string) {
@@ -120,90 +155,463 @@ function projectsForCode(code: string, projects: Project[]) {
 
 function coverForCode(code: string, projects: Project[]) {
   return (
-    projectsForCode(code, projects).find((project) => project.imageUrl)
-      ?.imageUrl || ""
+    projectsForCode(code, projects).find((project) => project.imageUrl)?.imageUrl ||
+    ""
   );
 }
 
-function isMobile() {
-  return window.matchMedia("(max-width: 700px)").matches;
+function loadScript(src: string) {
+  return new Promise<void>((resolve, reject) => {
+    const existing = document.querySelector(`script[data-am5="${src}"]`) as HTMLScriptElement | null;
+    if (existing) {
+      if (existing.dataset.loaded === "1") resolve();
+      else existing.addEventListener("load", () => resolve(), { once: true });
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = src;
+    script.async = false;
+    script.dataset.am5 = src;
+    script.onload = () => {
+      script.dataset.loaded = "1";
+      resolve();
+    };
+    script.onerror = () => reject(new Error(`Failed to load ${src}`));
+    document.head.appendChild(script);
+  });
 }
 
-function boxesOverlap(
-  a: { x: number; w: number; ly: number; h: number },
-  b: { x: number; w: number; ly: number; h: number },
-  pad: number,
-) {
-  return (
-    a.x < b.x + b.w + pad &&
-    a.x + a.w + pad > b.x &&
-    a.ly - a.h / 2 < b.ly + b.h / 2 + pad &&
-    a.ly + a.h / 2 + pad > b.ly - b.h / 2
+let amchartsPromise: Promise<void> | null = null;
+
+function loadAmCharts() {
+  if (amchartsPromise) return amchartsPromise;
+  amchartsPromise = (async () => {
+    for (const src of AMCHARTS_SCRIPTS) {
+      await loadScript(src);
+    }
+    const start = Date.now();
+    while (
+      !window.am5 ||
+      !window.am5map ||
+      !window.am5geodata_worldLow ||
+      !window.am5themes_Animated
+    ) {
+      if (Date.now() - start > 12000) {
+        throw new Error("amCharts failed to initialize");
+      }
+      await new Promise((resolve) => setTimeout(resolve, 40));
+    }
+  })();
+  return amchartsPromise;
+}
+
+function centroidOf(polygonSeries: any, id: string) {
+  const dataItem = polygonSeries.getDataItemById(id);
+  const polygon = dataItem?.get("mapPolygon");
+  if (polygon?.geoCentroid) {
+    const point = polygon.geoCentroid();
+    if (point && Number.isFinite(point.longitude) && Number.isFinite(point.latitude)) {
+      return point;
+    }
+  }
+  const fallback = FALLBACK_COORDS[id];
+  if (fallback) return { longitude: fallback[0], latitude: fallback[1] };
+  return null;
+}
+
+function bulletSprite(dataItem: any) {
+  if (!dataItem) return null;
+  const bullets = dataItem.bullets;
+  if (!bullets) return null;
+  const bullet =
+    typeof bullets.getIndex === "function" ? bullets.getIndex(0) : bullets[0];
+  return bullet?.get("sprite") ?? null;
+}
+
+function createPresenceGlobe(options: {
+  host: HTMLElement;
+  reducedMotion: boolean;
+  onSelect: (id: string | null, name: string) => void;
+  onStep: (label: string) => void;
+}): GlobeApi {
+  const { am5, am5map, am5geodata_worldLow, am5themes_Animated } = window;
+  const timeouts: number[] = [];
+  const later = (fn: () => void, ms: number) => {
+    timeouts.push(window.setTimeout(fn, ms));
+  };
+  const clearTimers = () => {
+    timeouts.splice(0).forEach((id) => window.clearTimeout(id));
+  };
+
+  const root = am5.Root.new(options.host);
+  root.setThemes([am5themes_Animated.new(root)]);
+
+  const chart = root.container.children.push(
+    am5map.MapChart.new(root, {
+      panX: "rotateX",
+      panY: "rotateY",
+      projection: am5map.geoOrthographic(),
+      paddingTop: 12,
+      paddingBottom: 12,
+      paddingLeft: 12,
+      paddingRight: 12,
+      maxZoomLevel: 6,
+      minZoomLevel: 0.85,
+      zoomStep: 1.25,
+      wheelX: "none",
+      wheelY: "none",
+      animationDuration: ANIMATION_MS,
+      animationEasing: am5.ease.inOut(am5.ease.cubic),
+      rotationX: INDIA.rotationX,
+      rotationY: INDIA.rotationY,
+      zoomLevel: INDIA.zoom,
+      homeGeoPoint: { longitude: AFRICA.longitude, latitude: AFRICA.latitude },
+      homeZoomLevel: AFRICA.zoom,
+      homeRotationX: AFRICA.rotationX,
+      homeRotationY: AFRICA.rotationY,
+      background: am5.Rectangle.new(root, {
+        fill: am5.color(THEME.background),
+        fillOpacity: 1,
+      }),
+    }),
   );
-}
 
-function placeNearCountry(list: CalloutItem[], side: "left" | "right") {
-  const line = 16;
-  const pad = 6;
-  list.sort((a, b) => a.ay - b.ay);
-  list.forEach((c) => {
-    c.ly = c.ay;
-    c.x = side === "left" ? c.edgeX - line - c.w : c.edgeX + line;
+  const waterSeries = chart.series.push(
+    am5map.MapPolygonSeries.new(root, { fill: am5.color(THEME.water) }),
+  );
+  waterSeries.mapPolygons.template.setAll({
+    fill: am5.color(THEME.water),
+    fillOpacity: 1,
+    strokeOpacity: 0,
+  });
+  waterSeries.data.push({
+    geometry: am5map.getGeoRectangle(90, 180, -90, -180),
   });
 
-  let moved = true;
-  let pass = 0;
-  while (moved && pass++ < 16) {
-    moved = false;
-    for (let i = 0; i < list.length; i++) {
-      for (let j = i + 1; j < list.length; j++) {
-        if (!boxesOverlap(list[i], list[j], pad)) continue;
-        const a = list[i];
-        const b = list[j];
-        const outer =
-          side === "left" ? (a.x <= b.x ? a : b) : a.x >= b.x ? a : b;
-        const overlap = Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x);
-        outer.x += (side === "left" ? -1 : 1) * Math.max(10, overlap + pad);
-        moved = true;
-      }
-    }
-  }
+  const graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {}));
+  graticuleSeries.mapLines.template.setAll({
+    stroke: am5.color(0x000000),
+    strokeOpacity: 0.12,
+  });
 
-  list.sort((a, b) => a.ly - b.ly || a.x - b.x);
-  for (let i = 1; i < list.length; i++) {
-    for (let j = 0; j < i; j++) {
-      const row = Math.min(list[i].h, list[j].h) * 0.8;
-      if (Math.abs(list[i].ly - list[j].ly) < row) {
-        list[i].ly = list[j].ly + (list[j].h + list[i].h) / 2 + 6;
-      }
+  const polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {}));
+  polygonSeries.mapPolygons.template.setAll({
+    fill: am5.color(THEME.unvisited),
+    fillOpacity: 0.85,
+    stroke: am5.color(THEME.border),
+    strokeWidth: 0.35,
+    tooltipText: "{name}",
+    interactive: true,
+    toggleKey: "none",
+  });
+  polygonSeries.mapPolygons.template.states.create("hover", {
+    fill: am5.color(THEME.hover),
+  });
+  polygonSeries.mapPolygons.template.adapters.add(
+    "cursorOverStyle",
+    (_style: string, target: any) => {
+      const id = target.dataItem?.dataContext?.id;
+      return STATUS[id] ? "pointer" : "default";
+    },
+  );
+
+  const pinSeries = chart.series.push(
+    am5map.MapPointSeries.new(root, { idField: "id" }),
+  );
+  pinSeries.bullets.push(() => {
+    const circle = am5.Circle.new(root, {
+      radius: 4,
+      fill: am5.color(THEME.unvisited),
+      stroke: am5.color(THEME.label),
+      strokeWidth: 1,
+      strokeOpacity: 0.7,
+      tooltipText: "{name}",
+      opacity: 0,
+    });
+    circle.events.on("click", (event: any) => {
+      const id = event.target.dataItem?.dataContext?.id;
+      if (id && STATUS[id]) handleSelect(id);
+    });
+    return am5.Bullet.new(root, { sprite: circle });
+  });
+
+  const nameSeries = chart.series.push(
+    am5map.MapPointSeries.new(root, { idField: "id" }),
+  );
+  nameSeries.bullets.push(() => {
+    const label = am5.Label.new(root, {
+      text: "{name}",
+      fill: am5.color(THEME.label),
+      fontSize: 11,
+      fontWeight: "500",
+      fontFamily: "Inter, var(--font-inter), sans-serif",
+      centerX: am5.p50,
+      centerY: am5.p50,
+      opacity: 0,
+      oversizedBehavior: "fit",
+      minScale: 0.35,
+      populateText: true,
+    });
+    return am5.Bullet.new(root, { sprite: label });
+  });
+
+  const zoomControl = chart.set(
+    "zoomControl",
+    am5map.ZoomControl.new(root, {
+      x: am5.p100,
+      centerX: am5.p100,
+      y: 0,
+      centerY: 0,
+      paddingTop: 14,
+      paddingRight: 14,
+    }),
+  );
+  const homeButton = zoomControl.children.moveValue(
+    am5.Button.new(root, {
+      tooltipText: "Back to Africa",
+      icon: am5.Graphics.new(root, {
+        svgPath:
+          "M11.5 2.9C11.2 2.9 10.9 3 10.6 3.2L3.2 9.4C2.9 9.7 2.8 10.1 3 10.4 3.2 10.8 3.7 10.8 4.1 10.6L11.4 4.4C11.5 4.4 11.6 4.4 11.6 4.4L19 10.6C19.1 10.7 19.3 10.7 19.4 10.7 19.7 10.7 19.9 10.6 20.1 10.3 20.2 10 20.1 9.6 19.9 9.4L18.7 8.5 18.7 5.4C18.7 5 18.4 4.7 18 4.7L17.3 4.7C16.9 4.7 16.6 5 16.6 5.4L16.6 6.7 12.4 3.2C12.2 3 11.8 2.9 11.5 2.9zM11.5 5.8 4.3 11.8 4.3 16.9C4.3 17.9 5.1 18.7 6.1 18.7L9 18.7C9.6 18.7 10.1 18.2 10.1 17.6L10.1 14C10.1 13.6 10.4 13.3 10.8 13.3L12.2 13.3C12.6 13.3 13 13.6 13 14L13 17.6C13 18.2 13.4 18.7 14 18.7L16.9 18.7C17.9 18.7 18.7 17.9 18.7 16.9L18.7 11.8 11.5 5.8z",
+        fill: am5.color(THEME.label),
+        x: am5.p50,
+        y: am5.p50,
+        centerX: am5.p50,
+        centerY: am5.p50,
+      }),
+    }),
+    0,
+  );
+  homeButton.events.on("click", () => {
+    chart.goHome();
+    options.onSelect(null, "");
+    options.onStep("Africa");
+  });
+  [zoomControl.plusButton, zoomControl.minusButton, homeButton].forEach((button: any) => {
+    const background = button?.get("background");
+    background?.setAll({
+      fill: am5.color(THEME.home),
+      strokeOpacity: 0,
+    });
+    background?.states.create("hover", { fill: am5.color("#e8b85a") });
+  });
+
+  const setPolygonFill = (id: string, color: string, opacity = 1) => {
+    const polygon = polygonSeries.getDataItemById(id)?.get("mapPolygon");
+    if (!polygon) return;
+    polygon.animate({
+      key: "fill",
+      to: am5.color(color),
+      duration: 220,
+      easing: am5.ease.out(am5.ease.cubic),
+    });
+    polygon.animate({ key: "fillOpacity", to: opacity, duration: 180 });
+    polygon.states.lookup("hover")?.set("fill", am5.color(color));
+  };
+
+  const setSpriteOpacity = (series: any, id: string, opacity: number, fill?: string) => {
+    const sprite = bulletSprite(series.getDataItemById(id));
+    if (!sprite) return;
+    if (fill) sprite.set("fill", am5.color(fill));
+    sprite.animate({ key: "opacity", to: opacity, duration: 180 });
+  };
+
+  const rotateTo = (view: typeof AFRICA | typeof INDIA, duration: number) => {
+    chart.animate({
+      key: "rotationX",
+      to: view.rotationX,
+      duration,
+      easing: am5.ease.inOut(am5.ease.cubic),
+    });
+    chart.animate({
+      key: "rotationY",
+      to: view.rotationY,
+      duration,
+      easing: am5.ease.inOut(am5.ease.cubic),
+    });
+    chart.animate({
+      key: "zoomLevel",
+      to: view.zoom,
+      duration,
+      easing: am5.ease.inOut(am5.ease.cubic),
+    });
+  };
+
+  let selectedId: string | null = null;
+  const handleSelect = (id: string) => {
+    if (!STATUS[id]) return;
+    if (selectedId === id) {
+      selectedId = null;
+      options.onSelect(null, "");
+      setActiveStroke(null);
+      rotateTo(AFRICA, 900);
+      return;
     }
-  }
+    selectedId = id;
+    options.onSelect(id, displayName(id));
+    setActiveStroke(id);
+    const point = centroidOf(polygonSeries, id);
+    if (!point) return;
+    chart.animate({
+      key: "rotationX",
+      to: -point.longitude,
+      duration: 1100,
+      easing: am5.ease.inOut(am5.ease.cubic),
+    });
+    chart.animate({
+      key: "rotationY",
+      to: -point.latitude,
+      duration: 1100,
+      easing: am5.ease.inOut(am5.ease.cubic),
+    });
+    chart.animate({
+      key: "zoomLevel",
+      to: Math.max(AFRICA.zoom, 2.15),
+      duration: 1100,
+      easing: am5.ease.inOut(am5.ease.cubic),
+    });
+  };
+
+  const setActiveStroke = (id: string | null) => {
+    polygonSeries.mapPolygons.each((polygon: any) => {
+      const pid = polygon.dataItem?.get("id") || polygon.dataItem?.dataContext?.id;
+      polygon.animate({
+        key: "strokeWidth",
+        to: pid === id ? 1.6 : 0.35,
+        duration: 200,
+      });
+      polygon.set("stroke", am5.color(pid === id ? THEME.label : THEME.border));
+    });
+  };
+
+  polygonSeries.mapPolygons.template.events.on("click", (event: any) => {
+    const id = event.target.dataItem?.dataContext?.id;
+    if (id && STATUS[id]) handleSelect(id);
+    else {
+      selectedId = null;
+      options.onSelect(null, "");
+      setActiveStroke(null);
+    }
+  });
+
+  const paintUnvisited = () => {
+    polygonSeries.mapPolygons.each((polygon: any) => {
+      const id = polygon.dataItem?.dataContext?.id;
+      polygon.set("fill", am5.color(id === HOME_ID ? THEME.home : THEME.unvisited));
+      polygon.set("fillOpacity", 0.85);
+      polygon.set("strokeWidth", 0.35);
+      polygon.set("stroke", am5.color(THEME.border));
+    });
+    REVEAL_ORDER.forEach((id) => {
+      setSpriteOpacity(nameSeries, id, 0);
+      setSpriteOpacity(pinSeries, id, 0);
+    });
+    setSpriteOpacity(nameSeries, HOME_ID, 1, THEME.label);
+  };
+
+  const revealCountry = (id: string) => {
+    const color = STATUS[id]?.color || THEME.home;
+    const polygon = polygonSeries.getDataItemById(id)?.get("mapPolygon");
+    if (polygon) setPolygonFill(id, color, 1);
+    setSpriteOpacity(nameSeries, id, 0.92, THEME.label);
+    if (!polygon || FALLBACK_COORDS[id]) {
+      setSpriteOpacity(pinSeries, id, 1, color);
+    }
+  };
+
+  const playIntro = () => {
+    clearTimers();
+    selectedId = null;
+    options.onSelect(null, "");
+    options.onStep("");
+    paintUnvisited();
+    rotateTo(INDIA, 0);
+    setPolygonFill(HOME_ID, THEME.home, 1);
+    setSpriteOpacity(nameSeries, HOME_ID, 1);
+
+    const travel = options.reducedMotion ? 0 : ANIMATION_MS;
+    later(() => {
+      options.onStep("Africa");
+      rotateTo(AFRICA, travel);
+    }, options.reducedMotion ? 0 : INTRO_HOLD_MS);
+
+    later(() => {
+      setSpriteOpacity(nameSeries, HOME_ID, 0);
+      REVEAL_ORDER.forEach((id, index) => {
+        later(() => revealCountry(id), options.reducedMotion ? 0 : index * PLACE_MS);
+      });
+    }, options.reducedMotion ? 80 : INTRO_HOLD_MS + travel);
+  };
+
+  let introBound = false;
+  polygonSeries.events.on("datavalidated", () => {
+    if (introBound) return;
+    introBound = true;
+    const names: { id: string; name: string; geometry: { type: string; coordinates: number[] } }[] = [];
+    const pins: { id: string; name: string; geometry: { type: string; coordinates: number[] } }[] = [];
+
+    [...REVEAL_ORDER, HOME_ID].forEach((id) => {
+      const point = centroidOf(polygonSeries, id);
+      if (!point) return;
+      names.push({
+        id,
+        name: displayName(id),
+        geometry: { type: "Point", coordinates: [point.longitude, point.latitude] },
+      });
+      if (FALLBACK_COORDS[id] || !polygonSeries.getDataItemById(id)) {
+        pins.push({
+          id,
+          name: displayName(id),
+          geometry: { type: "Point", coordinates: [point.longitude, point.latitude] },
+        });
+      }
+    });
+
+    nameSeries.data.setAll(names);
+    pinSeries.data.setAll(pins);
+    root.events.once("frameended", () => playIntro());
+  });
+
+  polygonSeries.set("geoJSON", am5geodata_worldLow);
+  chart.appear(280, 40);
+
+  return {
+    dispose: () => {
+      clearTimers();
+      root.dispose();
+    },
+    select: (id) => {
+      if (!id) {
+        selectedId = null;
+        setActiveStroke(null);
+        rotateTo(AFRICA, 900);
+        return;
+      }
+      if (selectedId === id) return;
+      handleSelect(id);
+    },
+    replay: () => playIntro(),
+  };
 }
 
 export default function AfricaPresenceMap() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const mapAreaRef = useRef<HTMLDivElement>(null);
-  const svgHostRef = useRef<HTMLDivElement>(null);
-  const lineLayerRef = useRef<SVGSVGElement>(null);
-  const labelLayerRef = useRef<HTMLDivElement>(null);
-  const selectedIdRef = useRef<string | null>(null);
-  const firstPaintRef = useRef(true);
-  const pathsBoundRef = useRef(false);
+  const chartRef = useRef<HTMLDivElement>(null);
+  const globeRef = useRef<GlobeApi | null>(null);
   const [inView, setInView] = useState(false);
+  const [mapReady, setMapReady] = useState(false);
+  const [mapError, setMapError] = useState(false);
+  const [stepLabel, setStepLabel] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [selectedName, setSelectedName] = useState("");
   const [coverImage, setCoverImage] = useState("");
   const [allProjects, setAllProjects] = useState<Project[]>([]);
-  const projectsRef = useRef<Project[]>([]);
-  const [mapReady, setMapReady] = useState(false);
 
   const clearSelection = useCallback(() => {
     setSelectedId(null);
     setSelectedName("");
     setCoverImage("");
+    globeRef.current?.select(null);
   }, []);
-
-  selectedIdRef.current = selectedId;
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -217,7 +625,7 @@ export default function AfricaPresenceMap() {
           }
         });
       },
-      { threshold: 0.2 },
+      { threshold: 0.25 },
     );
     observer.observe(section);
     return () => observer.disconnect();
@@ -225,10 +633,7 @@ export default function AfricaPresenceMap() {
 
   useEffect(() => {
     getProjects()
-      .then((data) => {
-        setAllProjects(data);
-        projectsRef.current = data;
-      })
+      .then(setAllProjects)
       .catch((error) => {
         console.error("Failed to load projects:", error);
       });
@@ -243,283 +648,46 @@ export default function AfricaPresenceMap() {
   }, [selectedId, allProjects]);
 
   useEffect(() => {
-    const host = svgHostRef.current;
-    if (!host) return;
+    if (!inView || !chartRef.current) return;
     let cancelled = false;
+    const host = chartRef.current;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    fetch("/africa-map/africa.svg")
-      .then((res) => res.text())
-      .then((text) => {
+    loadAmCharts()
+      .then(() => {
         if (cancelled || !host) return;
-        const markup = text
-          .replace(/<\?xml[\s\S]*?\?>/, "")
-          .replace(/<style[\s\S]*?<\/style>/i, "");
-        host.innerHTML = markup;
-        const svg = host.querySelector("svg");
-        if (svg) {
-          svg.classList.add("africa-map");
-          svg.removeAttribute("width");
-          svg.removeAttribute("height");
-          svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
-        }
+        globeRef.current?.dispose();
+        globeRef.current = createPresenceGlobe({
+          host,
+          reducedMotion,
+          onSelect: (id, name) => {
+            setSelectedId(id);
+            setSelectedName(name);
+          },
+          onStep: setStepLabel,
+        });
         setMapReady(true);
       })
       .catch((error) => {
-        console.error("Failed to load Africa map:", error);
+        console.error("Failed to load presence globe:", error);
+        if (!cancelled) setMapError(true);
       });
 
     return () => {
       cancelled = true;
+      globeRef.current?.dispose();
+      globeRef.current = null;
     };
-  }, []);
-
-  const layout = useCallback(() => {
-    const section = sectionRef.current;
-    const mapArea = mapAreaRef.current;
-    const svg = svgHostRef.current?.querySelector(
-      "svg.africa-map",
-    ) as SVGSVGElement | null;
-    const lineLayer = lineLayerRef.current;
-    const labelLayer = labelLayerRef.current;
-    if (!section || !mapArea || !svg || !lineLayer || !labelLayer) return;
-
-    const findPath = (id: string) =>
-      svg.querySelector("#" + id) as SVGPathElement | null;
-
-    const setActive = (id: string | null) => {
-      section.querySelectorAll(".is-active").forEach((node) => {
-        node.classList.remove("is-active");
-      });
-      if (!id) return;
-      labelLayer.querySelector(`[data-id="${id}"]`)?.classList.add("is-active");
-      lineLayer
-        .querySelector(`.africa-presence__line[data-id="${id}"]`)
-        ?.classList.add("is-active");
-      findPath(id)?.classList.add("is-active");
-    };
-
-    const selectCountry = (id: string) => {
-      if (selectedIdRef.current === id) {
-        setSelectedId(null);
-        setSelectedName("");
-        setCoverImage("");
-        return;
-      }
-      const data = STATUS[id];
-      const path = findPath(id);
-      if (!data || !path) return;
-      setSelectedId(id);
-      setSelectedName(displayName(path.getAttribute("title"), id));
-      setCoverImage(coverForCode(id, projectsRef.current));
-    };
-
-    if (!pathsBoundRef.current) {
-      pathsBoundRef.current = true;
-      Object.keys(STATUS).forEach((id) => {
-        const path = findPath(id);
-        if (!path) return;
-        path.classList.add("has-callout");
-        path.addEventListener("click", (event) => {
-          event.stopPropagation();
-          selectCountry(id);
-        });
-      });
-    }
-
-    if (isMobile()) {
-      labelLayer.innerHTML = "";
-      lineLayer.innerHTML = "";
-      mapArea.style.minHeight = "";
-      setActive(selectedIdRef.current);
-      return;
-    }
-
-    const area = mapArea.getBoundingClientRect();
-    if (!area.width || !area.height) return;
-
-    const svgToArea = (x: number, y: number) => {
-      const pt = svg.createSVGPoint();
-      pt.x = x;
-      pt.y = y;
-      const ctm = svg.getScreenCTM();
-      if (!ctm) return { x: 0, y: 0 };
-      const screen = pt.matrixTransform(ctm);
-      return { x: screen.x - area.left, y: screen.y - area.top };
-    };
-
-    const items: CalloutItem[] = [];
-    Object.keys(STATUS).forEach((id) => {
-      const path = findPath(id);
-      if (!path) return;
-      const b = path.getBBox();
-      items.push({
-        id,
-        name: displayName(path.getAttribute("title"), id),
-        status: STATUS[id],
-        side: LEFT_IDS.has(id) ? "left" : "right",
-        cx: b.x + b.width / 2,
-        cy: b.y + b.height / 2,
-        left: b.x,
-        right: b.x + b.width,
-        ax: 0,
-        ay: 0,
-        ly: 0,
-        edgeX: 0,
-        x: 0,
-        w: 0,
-        h: 0,
-        el: document.createElement("button"),
-      });
-    });
-
-    items.forEach((c) => {
-      const center = svgToArea(c.cx, c.cy);
-      const left = svgToArea(c.left, c.cy);
-      const right = svgToArea(c.right, c.cy);
-      c.ax = center.x;
-      c.ay = center.y;
-      c.ly = center.y;
-      c.edgeX = c.side === "left" ? left.x : right.x;
-    });
-
-    labelLayer.innerHTML = "";
-    lineLayer.setAttribute(
-      "viewBox",
-      `0 0 ${Math.round(area.width)} ${Math.round(area.height)}`,
-    );
-    lineLayer.innerHTML = "";
-
-    items.forEach((c) => {
-      const el = document.createElement("button");
-      el.type = "button";
-      el.className = `africa-presence__callout callout-${c.side}`;
-      el.setAttribute("data-id", c.id);
-      el.innerHTML =
-        '<span class="tt-color" style="background:' +
-        c.status.color +
-        '"></span><strong>' +
-        c.name +
-        "</strong>";
-      el.style.left = "0px";
-      el.style.top = "0px";
-      el.style.visibility = "hidden";
-      el.addEventListener("click", (event) => {
-        event.stopPropagation();
-        selectCountry(c.id);
-      });
-      labelLayer.appendChild(el);
-      c.el = el;
-      c.w = el.offsetWidth;
-      c.h = el.offsetHeight;
-    });
-
-    placeNearCountry(
-      items.filter((c) => c.side === "left"),
-      "left",
-    );
-    placeNearCountry(
-      items.filter((c) => c.side === "right"),
-      "right",
-    );
-
-    items.forEach((c) => {
-      const n = NUDGE[c.id];
-      if (!n) return;
-      c.x += n.dx || 0;
-      c.ly += n.dy || 0;
-    });
-
-    if (firstPaintRef.current) {
-      mapArea.classList.add("callouts-animate");
-    }
-
-    const ns = "http://www.w3.org/2000/svg";
-    items.forEach((c, i) => {
-      const connectX = c.side === "left" ? c.x + c.w : c.x;
-      if (c.side === "left") {
-        c.el.style.left = "auto";
-        c.el.style.right = `${area.width - connectX}px`;
-      } else {
-        c.el.style.left = `${c.x}px`;
-        c.el.style.right = "auto";
-      }
-      c.el.style.top = `${c.ly - c.h / 2}px`;
-      c.el.style.visibility = "visible";
-      c.el.style.animationDelay = `${0.12 + i * 0.05}s`;
-
-      const line = document.createElementNS(ns, "line");
-      const len = Math.sqrt((c.ax - connectX) ** 2 + (c.ay - c.ly) ** 2);
-      line.setAttribute("x1", String(connectX));
-      line.setAttribute("y1", String(c.ly));
-      line.setAttribute("x2", String(c.ax));
-      line.setAttribute("y2", String(c.ay));
-      line.setAttribute("class", "africa-presence__line");
-      line.setAttribute("data-id", c.id);
-      if (firstPaintRef.current && len > 0) {
-        line.style.strokeDasharray = String(len);
-        line.style.strokeDashoffset = String(len);
-        line.style.animationDelay = `${0.04 + i * 0.05}s`;
-      }
-      lineLayer.appendChild(line);
-
-      const dot = document.createElementNS(ns, "circle");
-      dot.setAttribute("cx", String(c.ax));
-      dot.setAttribute("cy", String(c.ay));
-      dot.setAttribute("r", "3.2");
-      dot.setAttribute("class", "africa-presence__dot");
-      dot.setAttribute("data-id", c.id);
-      dot.setAttribute("fill", c.status.color);
-      dot.setAttribute("stroke", "#125d36");
-      dot.setAttribute("stroke-width", "1");
-      dot.style.animationDelay = `${0.18 + i * 0.05}s`;
-      lineLayer.appendChild(dot);
-    });
-
-    setActive(selectedIdRef.current);
-
-    if (firstPaintRef.current) {
-      firstPaintRef.current = false;
-      window.setTimeout(() => {
-        mapArea.classList.remove("callouts-animate");
-      }, 1800);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!mapReady) return;
-    let ticking = false;
-    const schedule = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        ticking = false;
-        layout();
-      });
-    };
-
-    schedule();
-    const fontsReady = document.fonts?.ready?.then(schedule);
-    window.addEventListener("resize", schedule);
-    const timer = window.setTimeout(schedule, 480);
-
-    return () => {
-      window.removeEventListener("resize", schedule);
-      window.clearTimeout(timer);
-      void fontsReady;
-    };
-  }, [mapReady, selectedId, layout]);
+  }, [inView]);
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && selectedIdRef.current) {
-        clearSelection();
-      }
+      if (event.key === "Escape" && selectedId) clearSelection();
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [clearSelection]);
+  }, [clearSelection, selectedId]);
 
-  const selected = selectedId ? STATUS[selectedId] : null;
   const selectedProjects = useMemo(
     () => (selectedId ? projectsForCode(selectedId, allProjects) : []),
     [selectedId, allProjects],
@@ -532,13 +700,13 @@ export default function AfricaPresenceMap() {
       className="africa-presence-section"
       aria-label="JIVO Energy in Africa"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 africa-presence-section__inner">
+      <div className="africa-presence-section__inner">
         <div className="africa-presence-section__head">
           <h3 className="section-title-spl">JIVO Energy in Africa</h3>
         </div>
         <div
           ref={sectionRef}
-          className={`africa-presence${inView ? " in-view" : ""}${selectedId ? " is-detail-open" : ""}`}
+          className={`africa-presence${selectedId ? " is-detail-open" : ""}`}
         >
           <aside
             className="africa-presence__panel"
@@ -574,6 +742,17 @@ export default function AfricaPresenceMap() {
                 ) : null}
                 <h2 className="africa-presence__name">{selectedName}</h2>
               </div>
+              <p className="africa-presence__status">
+                {selectedId && STATUS[selectedId] ? (
+                  <>
+                    <span
+                      className="dot"
+                      style={{ background: STATUS[selectedId].color }}
+                    />
+                    {STATUS[selectedId].label}
+                  </>
+                ) : null}
+              </p>
               <dl className="africa-presence__meta">
                 <div>
                   <dt>No. of projects</dt>
@@ -587,14 +766,31 @@ export default function AfricaPresenceMap() {
             </div>
           </aside>
           <div className="africa-presence__stage">
-            <div className="africa-presence__map" ref={mapAreaRef}>
-              <div className="africa-presence__svg-host" ref={svgHostRef} />
-              <svg
-                className="africa-presence__lines"
-                ref={lineLayerRef}
-                aria-hidden="true"
+            <div className="africa-presence__map">
+              <div
+                ref={chartRef}
+                className="africa-presence__globe"
+                role="img"
+                aria-label="Animated world globe showing JIVO Energy countries in Africa"
               />
-              <div className="africa-presence__callouts" ref={labelLayerRef} />
+              {!mapReady && !mapError ? (
+                <div className="africa-presence__loading">Loading map…</div>
+              ) : null}
+              {mapError ? (
+                <div className="africa-presence__loading">
+                  Map could not be loaded.
+                </div>
+              ) : null}
+              {stepLabel ? (
+                <p className="africa-presence__step-label">{stepLabel}</p>
+              ) : null}
+              <button
+                type="button"
+                className="africa-presence__replay"
+                onClick={() => globeRef.current?.replay()}
+              >
+                Replay
+              </button>
             </div>
             <div className="africa-presence__legend-wrap">
               <ul className="africa-presence__legend">
