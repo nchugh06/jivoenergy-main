@@ -37,10 +37,12 @@
 
 .africa-presence__panel {
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 0;
-  bottom: 0;
+  bottom: auto;
   width: 30%;
+  height: fit-content;
+  max-height: fit-content;
   z-index: 6;
   min-width: 0;
   overflow: auto;
@@ -48,7 +50,7 @@
   border-right: 1px solid var(--color-border-soft);
   box-shadow: 8px 0 24px rgba(6, 37, 22, 0.08);
   opacity: 0;
-  transform: translateX(-12px);
+  transform: translate(-12px, -50%);
   pointer-events: none;
   transition:
     opacity 0.28s ease,
@@ -57,14 +59,14 @@
 
 .africa-presence.is-detail-open .africa-presence__panel {
   opacity: 1;
-  transform: none;
+  transform: translateY(-50%);
   pointer-events: auto;
 }
 
 .africa-presence__panel-inner {
   width: 100%;
   min-width: 0;
-  height: 100%;
+  height: auto;
   padding: 2rem 1.75rem 2.25rem;
   display: flex;
   flex-direction: column;
@@ -264,6 +266,10 @@
   touch-action: none;
 }
 
+.africa-presence__globe a[href*="amcharts"] {
+  display: none !important;
+}
+
 .africa-presence__loading {
   position: absolute;
   inset: 0;
@@ -273,38 +279,6 @@
   color: var(--color-text-muted);
   font-size: 0.95rem;
   pointer-events: none;
-}
-
-.africa-presence__step-label {
-  position: absolute;
-  left: 1.1rem;
-  bottom: 1.1rem;
-  margin: 0;
-  color: var(--color-text-dark);
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  opacity: 0.45;
-  pointer-events: none;
-}
-
-.africa-presence__replay {
-  position: absolute;
-  left: 1.1rem;
-  bottom: 4.1rem;
-  z-index: 3;
-  border: 0;
-  border-radius: 999px;
-  padding: 0.4rem 0.9rem;
-  background: #daa244;
-  color: #ffffff;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.africa-presence__replay:hover {
-  filter: brightness(1.08);
 }
 
 @media (max-width: 900px) {
@@ -327,17 +301,6 @@
   .africa-presence__legend li {
     font-size: 0.8rem;
   }
-
-  .africa-presence__replay {
-    left: 1rem;
-    right: auto;
-    bottom: auto;
-    top: 1rem;
-  }
-
-  .africa-presence__step-label {
-    bottom: 4.4rem;
-  }
 }
 
 @media (max-width: 700px) {
@@ -348,20 +311,21 @@
   }
 
   .africa-presence__panel {
-    width: 100%;
-    top: auto;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    max-height: 70%;
-    border-right: none;
+    width: calc(100% - 2rem);
+    top: 50%;
+    left: 1rem;
+    right: 1rem;
+    bottom: auto;
+    height: fit-content;
+    max-height: fit-content;
+    border-right: 1px solid var(--color-border-soft);
     border-top: 1px solid var(--color-border-soft);
-    box-shadow: 0 -8px 24px rgba(6, 37, 22, 0.08);
-    transform: translateY(12px);
+    box-shadow: 0 8px 24px rgba(6, 37, 22, 0.08);
+    transform: translate(-12px, -50%);
   }
 
   .africa-presence.is-detail-open .africa-presence__panel {
-    transform: none;
+    transform: translateY(-50%);
   }
 
   .africa-presence__panel-inner {

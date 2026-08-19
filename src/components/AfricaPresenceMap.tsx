@@ -25,13 +25,12 @@ type CountryStatus = {
 type GlobeApi = {
   dispose: () => void;
   select: (id: string | null) => void;
-  replay: () => void;
 };
 
 const STATUS_COLOR = {
   completed: "#1c4832",
-  ongoing: "#85c54a",
-  upcoming: "#62a557",
+  ongoing: "#62a557",
+  upcoming: "#85c54a",
 };
 
 const THEME = {
@@ -41,7 +40,7 @@ const THEME = {
   border: "#d9edd5",
   hover: "#b7c6bc",
   label: "#062516",
-  home: "#daa244",
+  home: "#7ec8e3",
 };
 
 const STATUS: Record<string, CountryStatus> = {
@@ -232,7 +231,6 @@ function createPresenceGlobe(options: {
   host: HTMLElement;
   reducedMotion: boolean;
   onSelect: (id: string | null, name: string) => void;
-  onStep: (label: string) => void;
 }): GlobeApi {
   const { am5, am5map, am5geodata_worldLow, am5themes_Animated } = window;
   const timeouts: number[] = [];
@@ -245,6 +243,7 @@ function createPresenceGlobe(options: {
 
   const root = am5.Root.new(options.host);
   root.setThemes([am5themes_Animated.new(root)]);
+  root._logo?.dispose();
 
   const chart = root.container.children.push(
     am5map.MapChart.new(root, {
@@ -353,46 +352,6 @@ function createPresenceGlobe(options: {
       populateText: true,
     });
     return am5.Bullet.new(root, { sprite: label });
-  });
-
-  const zoomControl = chart.set(
-    "zoomControl",
-    am5map.ZoomControl.new(root, {
-      x: am5.p100,
-      centerX: am5.p100,
-      y: 0,
-      centerY: 0,
-      paddingTop: 14,
-      paddingRight: 14,
-    }),
-  );
-  const homeButton = zoomControl.children.moveValue(
-    am5.Button.new(root, {
-      tooltipText: "Back to Africa",
-      icon: am5.Graphics.new(root, {
-        svgPath:
-          "M11.5 2.9C11.2 2.9 10.9 3 10.6 3.2L3.2 9.4C2.9 9.7 2.8 10.1 3 10.4 3.2 10.8 3.7 10.8 4.1 10.6L11.4 4.4C11.5 4.4 11.6 4.4 11.6 4.4L19 10.6C19.1 10.7 19.3 10.7 19.4 10.7 19.7 10.7 19.9 10.6 20.1 10.3 20.2 10 20.1 9.6 19.9 9.4L18.7 8.5 18.7 5.4C18.7 5 18.4 4.7 18 4.7L17.3 4.7C16.9 4.7 16.6 5 16.6 5.4L16.6 6.7 12.4 3.2C12.2 3 11.8 2.9 11.5 2.9zM11.5 5.8 4.3 11.8 4.3 16.9C4.3 17.9 5.1 18.7 6.1 18.7L9 18.7C9.6 18.7 10.1 18.2 10.1 17.6L10.1 14C10.1 13.6 10.4 13.3 10.8 13.3L12.2 13.3C12.6 13.3 13 13.6 13 14L13 17.6C13 18.2 13.4 18.7 14 18.7L16.9 18.7C17.9 18.7 18.7 17.9 18.7 16.9L18.7 11.8 11.5 5.8z",
-        fill: am5.color(THEME.label),
-        x: am5.p50,
-        y: am5.p50,
-        centerX: am5.p50,
-        centerY: am5.p50,
-      }),
-    }),
-    0,
-  );
-  homeButton.events.on("click", () => {
-    chart.goHome();
-    options.onSelect(null, "");
-    options.onStep("Africa");
-  });
-  [zoomControl.plusButton, zoomControl.minusButton, homeButton].forEach((button: any) => {
-    const background = button?.get("background");
-    background?.setAll({
-      fill: am5.color(THEME.home),
-      strokeOpacity: 0,
-    });
-    background?.states.create("hover", { fill: am5.color("#e8b85a") });
   });
 
   const setPolygonFill = (id: string, color: string, opacity = 1) => {
@@ -522,7 +481,6 @@ function createPresenceGlobe(options: {
     clearTimers();
     selectedId = null;
     options.onSelect(null, "");
-    options.onStep("");
     paintUnvisited();
     rotateTo(INDIA, 0);
     setPolygonFill(HOME_ID, THEME.home, 1);
@@ -530,7 +488,6 @@ function createPresenceGlobe(options: {
 
     const travel = options.reducedMotion ? 0 : ANIMATION_MS;
     later(() => {
-      options.onStep("Africa");
       rotateTo(AFRICA, travel);
     }, options.reducedMotion ? 0 : INTRO_HOLD_MS);
 
@@ -573,6 +530,7 @@ function createPresenceGlobe(options: {
 
   polygonSeries.set("geoJSON", am5geodata_worldLow);
   chart.appear(280, 40);
+  root._logo?.dispose();
 
   return {
     dispose: () => {
@@ -589,7 +547,6 @@ function createPresenceGlobe(options: {
       if (selectedId === id) return;
       handleSelect(id);
     },
-    replay: () => playIntro(),
   };
 }
 
@@ -600,7 +557,6 @@ export default function AfricaPresenceMap() {
   const [inView, setInView] = useState(false);
   const [mapReady, setMapReady] = useState(false);
   const [mapError, setMapError] = useState(false);
-  const [stepLabel, setStepLabel] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [selectedName, setSelectedName] = useState("");
   const [coverImage, setCoverImage] = useState("");
@@ -664,7 +620,6 @@ export default function AfricaPresenceMap() {
             setSelectedId(id);
             setSelectedName(name);
           },
-          onStep: setStepLabel,
         });
         setMapReady(true);
       })
@@ -742,17 +697,7 @@ export default function AfricaPresenceMap() {
                 ) : null}
                 <h2 className="africa-presence__name">{selectedName}</h2>
               </div>
-              <p className="africa-presence__status">
-                {selectedId && STATUS[selectedId] ? (
-                  <>
-                    <span
-                      className="dot"
-                      style={{ background: STATUS[selectedId].color }}
-                    />
-                    {STATUS[selectedId].label}
-                  </>
-                ) : null}
-              </p>
+            
               <dl className="africa-presence__meta">
                 <div>
                   <dt>No. of projects</dt>
@@ -781,16 +726,6 @@ export default function AfricaPresenceMap() {
                   Map could not be loaded.
                 </div>
               ) : null}
-              {stepLabel ? (
-                <p className="africa-presence__step-label">{stepLabel}</p>
-              ) : null}
-              <button
-                type="button"
-                className="africa-presence__replay"
-                onClick={() => globeRef.current?.replay()}
-              >
-                Replay
-              </button>
             </div>
             <div className="africa-presence__legend-wrap">
               <ul className="africa-presence__legend">
