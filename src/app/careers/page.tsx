@@ -372,7 +372,7 @@ const Careers = () => {
             variants={fadeUp}
           >
             <h3 className="section-title text-center text-[#062516]">Current Job Openings</h3>
-            <p>
+            <p className="careers-jobs__note">
               Be part of a future-focused team where innovation, collaboration, and purpose come together to create exceptional work.
               Ready to take the next step in your career?
             </p>
@@ -448,9 +448,6 @@ const Careers = () => {
             ))}
           </motion.div>
 
-          <p className="careers-jobs__note">
-            Don&apos;t see a suitable role? Send us your CV anyway – we&apos;re always open to great talent.
-          </p>
         </div>
       </section>
 
