@@ -28,7 +28,14 @@ export const getProjectSettings = async (): Promise<ProjectSettings> => {
         countries: africanCountries,
         regions: ["West Africa", "East Africa", "Southern Africa", "Central Africa", "North Africa"],
         technologies: ["Solar PV", "Wind", "Hydro", "BESS", "Hybrid"],
-        statuses: ["Completed", "Under Development", "Planned", "Operation & Maintenance"],
+        statuses: [
+            "Completed",
+            "Under Development",
+            "Planned",
+            "Operations & Maintenance",
+            "Under Construction",
+            "EPC Completed - Operations & Maintenance Ongoing",
+        ],
         locations: []
     };
 
@@ -39,10 +46,24 @@ export const getProjectSettings = async (): Promise<ProjectSettings> => {
         if (docSnap.exists()) {
             const data = docSnap.data();
             // Merge existing data with defaults to handle missing fields (migration)
-            return {
+            const merged = {
                 ...defaults,
                 ...data
             } as ProjectSettings;
+            const statusAlias: Record<string, string> = {
+                "Operation & Maintenance": "Operations & Maintenance",
+                "EPC Completed Q & M Ongoing": "EPC Completed - Operations & Maintenance Ongoing",
+                "EPC Completed — O&M Ongoing": "EPC Completed - Operations & Maintenance Ongoing",
+                "EPC Completed - Operation & Maintenance Ongoing": "EPC Completed - Operations & Maintenance Ongoing",
+            };
+            merged.statuses = Array.from(
+                new Set(
+                    [...defaults.statuses, ...(data.statuses || [])].map(
+                        (status) => statusAlias[status] || status
+                    )
+                )
+            );
+            return merged;
         } else {
             await setDoc(docRef, defaults);
             return defaults;

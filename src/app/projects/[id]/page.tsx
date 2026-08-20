@@ -13,132 +13,144 @@ import ProjectGallery from '@/components/projects/ProjectGallery';
 import ProjectNews from '@/components/projects/ProjectNews';
 import './project-detail.css';
 
+const STATUS_LABEL: Record<string, string> = {
+  'Operation & Maintenance': 'Operations & Maintenance',
+  'EPC Completed — O&M Ongoing': 'EPC Completed - Operations & Maintenance Ongoing',
+  'EPC Completed Q & M Ongoing': 'EPC Completed - Operations & Maintenance Ongoing',
+  'EPC Completed - Operation & Maintenance Ongoing': 'EPC Completed - Operations & Maintenance Ongoing',
+};
+
 const ProjectDetailPage = () => {
-    const { id } = useParams();
-    const [project, setProject] = useState<Project | null>(null);
-    const [loading, setLoading] = useState(true);
+  const { id } = useParams();
+  const [project, setProject] = useState<Project | null>(null);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchProject = async () => {
-            if (id) {
-                const data = await getProjectBySlugOrId(id as string);
-                setProject(data);
-                setLoading(false);
-            }
-        };
-        fetchProject();
-    }, [id]);
+  useEffect(() => {
+    const fetchProject = async () => {
+      if (id) {
+        const data = await getProjectBySlugOrId(id as string);
+        setProject(data);
+        setLoading(false);
+      }
+    };
+    fetchProject();
+  }, [id]);
 
-    if (loading) {
-        return (
-            <div className="min-h-screen bg-white">
-                <Navbar />
-                <div className="flex items-center justify-center h-[70vh]">
-                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#062516]"></div>
-                </div>
-                <Footer />
-            </div>
-        );
-    }
-
-    if (!project) {
-        return (
-            <div className="min-h-screen bg-white">
-                <Navbar />
-                <div className="container mx-auto px-4 py-32 text-center">
-                    <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
-                    <p className="text-gray-600 mb-8">The project you are looking for does not exist or has been moved.</p>
-                    <Link href="/projects/east-africa" className="bg-[#062516] text-[#FFFA84] px-8 py-3 rounded-full font-bold">
-                        Back to Projects
-                    </Link>
-                </div>
-                <Footer />
-            </div>
-        );
-    }
-
+  if (loading) {
     return (
-        <div className="min-h-screen bg-white flex flex-col">
-            <Navbar />
+      <div className="min-h-screen bg-white">
+        <Navbar />
+        <div className="flex items-center justify-center h-[70vh]">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#062516]"></div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
-            <section className="project-banner">
-                {project.imageUrl && (
-                    <Image
-                        src={project.imageUrl}
-                        alt={project.title}
-                        fill
-                        className="object-cover"
-                        priority
-                    />
-                )}
-            </section>
+  if (!project) {
+    return (
+      <div className="min-h-screen bg-white">
+        <Navbar />
+        <div className="container mx-auto px-4 py-32 text-center">
+          <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
+          <p className="text-gray-600 mb-8">The project you are looking for does not exist or has been moved.</p>
+          <Link href="/projects/east-africa" className="bg-[#062516] text-[#FFFA84] px-8 py-3 rounded-full font-bold">
+            Back to Projects
+          </Link>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
-            <div className="max-w-7xl mx-auto px-4 py-16">
-                <div className="mb-8">
-                    <Link
-                        href={getRegionPathForProject(project)}
-                        className="text-[#062516] font-medium hover:text-[#051e12] transition-colors duration-300 flex items-center gap-2"
-                    >
-                        ← Back to Projects
-                    </Link>
-                </div>
-                <div className="grid grid-cols-1 gap-6 items-start mb-6">
-                    <div className="mb-0">
-                        <h3 className="section-title-spl text-center text-[#062516]">
-                            {project.detailProjectName?.trim() || project.title}
-                        </h3>
-                    </div>
-                <div className="project-mesh">
-                    <div className="project-mesh__cell project-mesh__overview italic md:not-italic">
-                        <h3 className="section-title-spl">Project Overview</h3>
-                        <div
-                            className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-4"
-                            dangerouslySetInnerHTML={{ __html: project.description }}
-                        />
-                    </div>
+  return (
+    <div className="min-h-screen bg-white flex flex-col">
+      <Navbar />
 
-                    <div className="project-mesh__cell project-mesh__spec project-mesh__region">
-                        <p className="project-mesh__label">Region</p>
-                        <p className="project-mesh__value">{project.region}</p>
-                    </div>
+      <section className="project-banner">
+        {project.imageUrl && (
+          <Image
+            src={project.imageUrl}
+            alt={project.title}
+            fill
+            className="object-cover"
+            priority
+          />
+        )}
+      </section>
 
-                    <div className="project-mesh__cell project-mesh__spec project-mesh__status">
-                        <p className="project-mesh__label">Status</p>
-                        <p className="project-mesh__value">{project.status}</p>
-                    </div>
-
-                    <div className="project-mesh__cell project-mesh__spec project-mesh__year">
-                        <p className="project-mesh__label">Year of Completion</p>
-                        <p className="project-mesh__value">{project.completionYear}</p>
-                    </div>
-
-                    <div className="project-mesh__cell project-mesh__spec project-mesh__technology">
-                        <p className="project-mesh__label">Technology</p>
-                        <p className="project-mesh__value">{project.detailPageTechnology?.trim()}</p>
-                    </div>
-
-                    <div className="project-mesh__cell project-mesh__spec project-mesh__client">
-                        <p className="project-mesh__label">Client</p>
-                        <p className="project-mesh__value">{project.client}</p>
-                    </div>
-                </div>
-                </div>
-
-                {project.galleryUrls && project.galleryUrls.length > 0 && (
-                    <div className="mt-16">
-                        <div className="mb-12">
-                            <h3 className="section-title-spl text-center text-[#062516]">Visual Progress</h3>
-                        </div>
-                        <ProjectGallery urls={project.galleryUrls} title={project.title} />
-                    </div>
-                )}
-
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="mb-8">
+          <Link
+            href={getRegionPathForProject(project)}
+            className="text-[#062516] font-medium hover:text-[#051e12] transition-colors duration-300 flex items-center gap-2"
+          >
+            ← Back to Projects
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 gap-6 items-start mb-6">
+          <div className="mb-0">
+            <h3 className="section-title-spl text-center text-[#062516]">
+              {project.detailProjectName?.trim() || project.title}
+            </h3>
+          </div>
+          <div className="project-mesh">
+            <div className="project-mesh__cell project-mesh__overview italic md:not-italic">
+              <h3 className="section-title-spl">Project Overview</h3>
+              <div
+                className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-4"
+                dangerouslySetInnerHTML={{ __html: project.description }}
+              />
             </div>
 
-            <ProjectNews country={project.country} />
+            <div className="project-mesh__cell project-mesh__spec project-mesh__region">
+              <p className="project-mesh__label">Country</p>
+              <p className="project-mesh__value">{project.country}</p>
+            </div>
 
-            {/* Impact Section Placeholder */}
-            {/* {project.financing && (
+            <div className="project-mesh__cell project-mesh__spec project-mesh__status">
+              <p className="project-mesh__label">Status</p>
+              <p className="project-mesh__value">{STATUS_LABEL[project.status] || project.status}</p>
+            </div>
+
+            <div className="project-mesh__cell project-mesh__spec project-mesh__year">
+              <p className="project-mesh__label">Year of Completion</p>
+              <p className="project-mesh__value">{project.completionYear}</p>
+            </div>
+
+            <div className="project-mesh__cell project-mesh__spec project-mesh__technology">
+              <p className="project-mesh__label">Technology</p>
+              <p className="project-mesh__value">{project.detailPageTechnology?.trim()}</p>
+            </div>
+
+            <div className="project-mesh__cell project-mesh__spec project-mesh__client">
+              <p className="project-mesh__label">Client</p>
+              <p className="project-mesh__value">{project.client}</p>
+            </div>
+
+            <div className="project-mesh__cell project-mesh__spec project-mesh__capacity">
+              <p className="project-mesh__label">Capacity</p>
+              <p className="project-mesh__value">{project.capacity?.trim() || '—'}</p>
+            </div>
+          </div>
+        </div>
+
+        {project.galleryUrls && project.galleryUrls.length > 0 && (
+          <div className="mt-16">
+            <div className="mb-12">
+              <h3 className="section-title-spl text-center text-[#062516]">Visual Progress</h3>
+            </div>
+            <ProjectGallery urls={project.galleryUrls} title={project.title} />
+          </div>
+        )}
+
+      </div>
+
+      <ProjectNews country={project.country} />
+
+      {/* Impact Section Placeholder */}
+      {/* {project.financing && (
                 <section className="py-8 px-4">
                     <div className="container mx-auto">
                         <div className="bg-gradient-to-r from-[#062516] to-[#085D36] rounded-[40px] p-12 text-center text-white">
@@ -151,8 +163,8 @@ const ProjectDetailPage = () => {
                 </section>
             )} */}
 
-            {/* CTA Section */}
-            {/* <section className="py-8 px-4 mb-8">
+      {/* CTA Section */}
+      {/* <section className="py-8 px-4 mb-8">
                 <div className="container mx-auto">
                     <div className="bg-[#FFFA84] rounded-[40px] p-12 flex flex-col md:flex-row items-center justify-between gap-8">
                         <div>
@@ -169,9 +181,9 @@ const ProjectDetailPage = () => {
                 </div>
             </section> */}
 
-            <Footer />
-        </div>
-    );
+      <Footer />
+    </div>
+  );
 };
 
 export default ProjectDetailPage;

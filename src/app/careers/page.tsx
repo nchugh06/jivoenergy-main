@@ -218,10 +218,10 @@ const Careers = () => {
         <div className="text-center max-w-7xl mx-auto mb-16">
           <h3 className="section-title-spl text-center text-[#062516] mb-10">Careers</h3>
           <motion.div
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            variants={fadeUp}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
           >
             <p className="text-lg text-gray-600 leading-relaxed">
               At <strong>JIVO Energy</strong>, we are committed to building a highly skilled, diverse, and performance-driven workforce.
@@ -235,28 +235,28 @@ const Careers = () => {
         {/* Why Work With Us */}
         <motion.div
           className="careers-why"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
-          variants={staggerContainer}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          <motion.article className="careers-why__cell careers-why__inclusive" variants={fadeUp}>
+          <article className="careers-why__cell careers-why__inclusive">
             <Users className="careers-why__icon" />
             <h4 className="careers-why__name">Inclusive Environment</h4>
             <p className="careers-why__desc">
               Fostering a supportive, inclusive, and collaborative work environment.
             </p>
-          </motion.article>
+          </article>
 
-          <motion.div className="careers-why__photo" variants={fadeUp}>
+          <div className="careers-why__photo">
             <img
               className="careers-why__photo-img"
               src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80"
               alt="Growth & Stability"
             />
-          </motion.div>
+          </div>
 
-          <motion.div className="careers-why__cell careers-why__title" variants={fadeUp}>
+          <div className="careers-why__cell careers-why__title">
             <p className="careers-why__kicker">Growth &amp; Stability</p>
             <h3 className="careers-why__heading">
               <span>Why</span>
@@ -268,31 +268,31 @@ const Careers = () => {
               professionalism and long-term career development. We are committed to promoting work-life balance
               and offering a competitive compensation package.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.article className="careers-why__cell careers-why__growth" variants={fadeUp}>
+          <article className="careers-why__cell careers-why__growth">
             <TrendingUp className="careers-why__icon" />
             <h4 className="careers-why__name">Professional Growth</h4>
             <p className="careers-why__desc">
               Providing opportunities for continuous professional growth and skills development.
             </p>
-          </motion.article>
+          </article>
 
-          <motion.article className="careers-why__cell careers-why__innovation" variants={fadeUp}>
+          <article className="careers-why__cell careers-why__innovation">
             <Lightbulb className="careers-why__icon" />
             <h4 className="careers-why__name">Innovation &amp; Ownership</h4>
             <p className="careers-why__desc">
               Encouraging innovation, ownership, and creativity.
             </p>
-          </motion.article>
+          </article>
 
-          <motion.article className="careers-why__cell careers-why__recognition" variants={fadeUp}>
+          <article className="careers-why__cell careers-why__recognition">
             <Award className="careers-why__icon" />
             <h4 className="careers-why__name">Recognition &amp; Rewards</h4>
             <p className="careers-why__desc">
               Recognising and rewarding strong performance and dedication.
             </p>
-          </motion.article>
+          </article>
         </motion.div>
 
         {/* Our Culture & Values */}
