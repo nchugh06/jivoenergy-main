@@ -87,7 +87,7 @@ const FALLBACK_COORDS: Record<string, [number, number]> = {
 };
 
 const HOME_ID = "IN";
-const AFRICA = { longitude: 18, latitude: 1.6, rotationX: -18, rotationY: -1.6, zoom: 1.5 };
+const AFRICA = { longitude: 18, latitude: 1.6, rotationX: -18, rotationY: -1.6, zoom: 1 };
 const INDIA = { longitude: 78.96, latitude: 20.59, rotationX: -78.96, rotationY: -20.59, zoom: 1 };
 const ANIMATION_MS = 700;
 const PLACE_MS = 35;

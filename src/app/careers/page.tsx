@@ -247,7 +247,13 @@ const Careers = () => {
               Working with JIVO Energy means becoming part of a stable, growth-oriented company that values
               professionalism and long-term career development. We are committed to:
             </p>
-            <ul className="space-y-4">
+            <motion.ul
+              className="space-y-4"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+            >
               {[
                 "Fostering a supportive, inclusive, and collaborative work environment.",
                 "Providing opportunities for continuous professional growth and skills development.",
@@ -255,12 +261,16 @@ const Careers = () => {
                 "Recognising and rewarding strong performance and dedication.",
                 "Promoting work-life balance and offering a competitive compensation package."
               ].map((item, index) => (
-                <li key={index} className="flex items-start space-x-3 text-gray-600">
+                <motion.li
+                  key={index}
+                  variants={fadeUp}
+                  className="flex items-start space-x-3 text-gray-600"
+                >
                   <CheckCircle2 className="w-6 h-6 text-[#062516] flex-shrink-0 mt-0.5" />
                   <span className="text-gray-600">{item}</span>
-                </li>
+                </motion.li>
               ))}
-            </ul>
+            </motion.ul>
           </div>
           <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl group">
             <div
