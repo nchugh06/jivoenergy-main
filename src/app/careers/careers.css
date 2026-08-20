@@ -249,7 +249,6 @@
   align-items:start;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
   gap: 3.25rem;
-  align-items: center;
 }
 
 .careers-apply__intro {
