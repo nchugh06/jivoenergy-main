@@ -228,6 +228,192 @@
   }
 }
 
+/* Why Work With Us — bento layout */
+.careers-why {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.2fr) minmax(0, 1.2fr) minmax(0, 1.15fr);
+  grid-template-rows: minmax(280px, 1fr) auto;
+  grid-template-areas:
+    "inclusive photo photo title"
+    "growth innovation recognition recognition";
+  margin: 0 0 6rem;
+  overflow: hidden;
+}
+
+.careers-why__cell {
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.careers-why__inclusive {
+  grid-area: inclusive;
+  background: var(--pistachio-green-background, #f6faf5);
+  color: var(--dark-green-background, #1c4832);
+}
+
+.careers-why__photo {
+  grid-area: photo;
+  position: relative;
+  min-height: 260px;
+  overflow: hidden;
+  background: var(--pistachio-green-background, #f6faf5);
+}
+
+.careers-why__photo-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.careers-why__title {
+  grid-area: title;
+  background: var(--pistachio-green-background, #f6faf5);
+  color: var(--dark-green-background, #1c4832);
+  justify-content: center;
+  text-align: right;
+  padding: 2rem 1.5rem 2rem 1.25rem;
+}
+
+.careers-why__growth {
+  grid-area: growth;
+  background: var(--pistachio-green-background, #f6faf5);
+  color: var(--dark-green-background, #1c4832);
+}
+
+.careers-why__innovation {
+  grid-area: innovation;
+  background: var(--light-green-background, #85c54a);
+  color: var(--dark-green-background, #1c4832);
+}
+
+.careers-why__recognition {
+  grid-area: recognition;
+  background: var(--dark-green-background, #1c4832);
+  color: var(--pistachio-green-background, #f6faf5);
+}
+
+.careers-why__icon {
+  width: 1.85rem;
+  height: 1.85rem;
+  margin-bottom: 1.15rem;
+  flex-shrink: 0;
+}
+
+.careers-why__name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 0.6rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.careers-why__desc {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin: 0;
+  text-align: left;
+  text-justify: auto;
+  opacity: 0.92;
+  max-width: 28ch;
+}
+
+.careers-why__recognition .careers-why__desc {
+  max-width: 36ch;
+}
+
+.careers-why__kicker {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--light-green-background, #85c54a);
+  margin: 0 0 0.75rem;
+}
+
+.careers-why__heading {
+  font-size: clamp(2.15rem, 3.4vw, 3.35rem);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  color: var(--dark-green-background, #1c4832);
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+
+.careers-why__heading span {
+  display: block;
+}
+
+.careers-why__lede {
+  font-size: 0.84rem;
+  color: var(--dark-green-background, #1c4832);
+  line-height: 1.6;
+  margin: 0;
+  text-align: right;
+  text-justify: auto;
+}
+
+@media (max-width: 1023px) {
+  .careers-why {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "title title"
+      "photo photo"
+      "inclusive growth"
+      "innovation recognition";
+    min-height: 0;
+  }
+
+  .careers-why__title {
+    text-align: left;
+    justify-content: flex-start;
+  }
+
+  .careers-why__heading {
+    font-size: 2.4rem;
+  }
+
+  .careers-why__lede {
+    text-align: left;
+    max-width: 48ch;
+  }
+
+  .careers-why__photo {
+    min-height: 240px;
+    aspect-ratio: 16 / 9;
+  }
+
+  .careers-why__inclusive,
+  .careers-why__growth,
+  .careers-why__innovation,
+  .careers-why__recognition {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .careers-why {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "photo"
+      "inclusive"
+      "growth"
+      "innovation"
+      "recognition";
+  }
+
+  .careers-why__cell {
+    padding: 1.5rem 1.25rem;
+    min-height: 0;
+  }
+}
+
 /* Culture & Values — same tile UI as Statistics */
 .careers-values__grid {
   display: grid;

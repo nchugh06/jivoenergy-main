@@ -19,6 +19,7 @@ import {
   Mail,
   Upload,
   X,
+  Lightbulb,
 } from 'lucide-react';
 
 import { countries } from '@/lib/countries';
@@ -223,7 +224,7 @@ const Careers = () => {
             variants={fadeUp}
           >
             <p className="text-lg text-gray-600 leading-relaxed">
-              At JIVO Energy, we are committed to building a highly skilled, diverse, and performance-driven workforce.
+              At <strong>JIVO Energy</strong>, we are committed to building a highly skilled, diverse, and performance-driven workforce.
               As we broaden our portfolio and expand our presence across the region, we continue to seek professionals
               who demonstrate excellence, integrity, and a commitment to delivering results. If you aspire to be part
               of a reputable and future-focused organisation, we welcome you to explore career opportunities with us.
@@ -233,56 +234,65 @@ const Careers = () => {
 
         {/* Why Work With Us */}
         <motion.div
-          className="grid md:grid-cols-2 gap-12 items-center mb-24"
+          className="careers-why"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
+          viewport={{ once: true, margin: '-80px' }}
+          variants={staggerContainer}
         >
-          <div className="space-y-8">
-            <h3 className="section-title text-[#062516] text-center">
-              Why Work With Us?
-            </h3>
-            <p className="text-gray-600 mb-6">
-              Working with JIVO Energy means becoming part of a stable, growth-oriented company that values
-              professionalism and long-term career development. We are committed to:
+          <motion.article className="careers-why__cell careers-why__inclusive" variants={fadeUp}>
+            <Users className="careers-why__icon" />
+            <h4 className="careers-why__name">Inclusive Environment</h4>
+            <p className="careers-why__desc">
+              Fostering a supportive, inclusive, and collaborative work environment.
             </p>
-            <motion.ul
-              className="space-y-4"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={staggerContainer}
-            >
-              {[
-                "Fostering a supportive, inclusive, and collaborative work environment.",
-                "Providing opportunities for continuous professional growth and skills development.",
-                "Encouraging innovation, ownership, and creativity.",
-                "Recognising and rewarding strong performance and dedication.",
-                "Promoting work-life balance and offering a competitive compensation package."
-              ].map((item, index) => (
-                <motion.li
-                  key={index}
-                  variants={fadeUp}
-                  className="flex items-start space-x-3 text-gray-600"
-                >
-                  <CheckCircle2 className="w-6 h-6 text-[#062516] flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-600">{item}</span>
-                </motion.li>
-              ))}
-            </motion.ul>
-          </div>
-          <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl group">
-            <div
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-              style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80")' }}
+          </motion.article>
+
+          <motion.div className="careers-why__photo" variants={fadeUp}>
+            <img
+              className="careers-why__photo-img"
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80"
+              alt="Growth & Stability"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#062516]/80 to-transparent" />
-            <div className="absolute bottom-8 left-8 text-white">
-              <p className="text-2xl font-bold">Growth & Stability</p>
-              <p className="opacity-90">Building the future together</p>
-            </div>
-          </div>
+          </motion.div>
+
+          <motion.div className="careers-why__cell careers-why__title" variants={fadeUp}>
+            <p className="careers-why__kicker">Growth &amp; Stability</p>
+            <h3 className="careers-why__heading">
+              <span>Why</span>
+              <span>Work</span>
+              <span>With Us?</span>
+            </h3>
+            <p className="careers-why__lede">
+              Working with JIVO Energy means becoming part of a stable, growth-oriented company that values
+              professionalism and long-term career development. We are committed to promoting work-life balance
+              and offering a competitive compensation package.
+            </p>
+          </motion.div>
+
+          <motion.article className="careers-why__cell careers-why__growth" variants={fadeUp}>
+            <TrendingUp className="careers-why__icon" />
+            <h4 className="careers-why__name">Professional Growth</h4>
+            <p className="careers-why__desc">
+              Providing opportunities for continuous professional growth and skills development.
+            </p>
+          </motion.article>
+
+          <motion.article className="careers-why__cell careers-why__innovation" variants={fadeUp}>
+            <Lightbulb className="careers-why__icon" />
+            <h4 className="careers-why__name">Innovation &amp; Ownership</h4>
+            <p className="careers-why__desc">
+              Encouraging innovation, ownership, and creativity.
+            </p>
+          </motion.article>
+
+          <motion.article className="careers-why__cell careers-why__recognition" variants={fadeUp}>
+            <Award className="careers-why__icon" />
+            <h4 className="careers-why__name">Recognition &amp; Rewards</h4>
+            <p className="careers-why__desc">
+              Recognising and rewarding strong performance and dedication.
+            </p>
+          </motion.article>
         </motion.div>
 
         {/* Our Culture & Values */}

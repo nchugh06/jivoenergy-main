@@ -36,17 +36,17 @@ export default function Home() {
         {/* <CoreValues /> */}
         <BusinessAreasServices />
         <Clients />
-        <AfricaPresenceMap />
         {/* <Impact /> */}
         {/* <Media /> */}
-        <Achievements /> 
-        <Media /> 
+        <Achievements />
+        <Media />
         {/* <section id="hero-section" className="relative w-full h-[100vh] overflow-hidden">
           <div className="absolute inset-0 z-0">
             <MapViz />
           </div>
         </section>       */}
         {/* <Map /> */}
+        <AfricaPresenceMap />
         <ContactForm />
       </main>
       <Footer />

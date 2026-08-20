@@ -34,7 +34,7 @@ const STATUS_COLOR = {
 };
 
 const THEME = {
-  background: "#f6faf5",
+  background: "#ffffff",
   water: "#e4eee6",
   unvisited: "#c5d4c8",
   border: "#d9edd5",
