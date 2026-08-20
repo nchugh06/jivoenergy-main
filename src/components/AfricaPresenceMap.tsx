@@ -43,8 +43,8 @@ const THEME = {
 };
 
 const STATUS: Record<string, CountryStatus> = {
-  UG: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
-  KE: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
+  UG: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "46 MWp" },
+  KE: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "0.93 MWp" },
   LR: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
   SL: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
   SN: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
@@ -662,8 +662,11 @@ export default function AfricaPresenceMap() {
     () => (selectedId ? projectsForCode(selectedId, allProjects) : []),
     [selectedId, allProjects],
   );
-  const selectedCapacity =
-    selectedProjects.find((project) => project.capacity)?.capacity || "_";
+  const selectedCapacity = (() => {
+    const fromStatus = selectedId ? STATUS[selectedId]?.capacity : undefined;
+    if (fromStatus && fromStatus !== "_") return fromStatus;
+    return selectedProjects.find((project) => project.capacity)?.capacity || "_";
+  })();
 
   return (
     <section

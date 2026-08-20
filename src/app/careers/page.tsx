@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect, type CSSProperties, type ReactNode } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import ScrollReveal from '@/components/ScrollReveal';
 import { motion, type Variants } from 'framer-motion';
 import {
   Briefcase,
@@ -23,12 +24,36 @@ import {
 import { countries } from '@/lib/countries';
 import './careers.css';
 
+const MOBILE_QUERY = '(max-width: 767px)';
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia(MOBILE_QUERY);
+    const update = () => setIsMobile(media.matches);
+    update();
+    media.addEventListener('change', update);
+    return () => media.removeEventListener('change', update);
+  }, []);
+
+  return isMobile;
+}
+
+const CULTURE_VALUES = [
+  { icon: Shield, title: 'Integrity', desc: 'Doing what’s right, consistently and transparently.' },
+  { icon: Users, title: 'Collaboration', desc: 'Working together to achieve shared goals.' },
+  { icon: CheckCircle2, title: 'Accountability', desc: 'Taking ownership of our responsibilities and outcomes.' },
+  { icon: TrendingUp, title: <>Continuous<br />Improvement</>, desc: 'Embracing learning, growth, and innovation.' },
+  { icon: Heart, title: 'Customer-Focused', desc: 'Placing our customers at the heart of everything we do.' },
+];
+
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: 'tween', duration: 0.6, ease: 'easeOut' },
+    transition: { duration: 0.6, ease: 'easeOut' },
   },
 };
 
@@ -39,16 +64,6 @@ const staggerContainer: Variants = {
       staggerChildren: 0.08,
       delayChildren: 0.08,
     },
-  },
-};
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 28, scale: 0.96 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { type: 'tween', duration: 0.45, ease: 'easeOut' },
   },
 };
 
@@ -63,6 +78,7 @@ interface FormData {
 }
 
 const Careers = () => {
+  const isMobile = useIsMobile();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [formData, setFormData] = useState<FormData>({
@@ -216,14 +232,14 @@ const Careers = () => {
         </div>
 
         {/* Why Work With Us */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
-          <motion.div
-            className="space-y-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-          >
+        <motion.div
+          className="grid md:grid-cols-2 gap-12 items-center mb-24"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <div className="space-y-8">
             <h3 className="section-title text-[#062516] text-center">
               Why Work With Us?
             </h3>
@@ -245,120 +261,116 @@ const Careers = () => {
                 </li>
               ))}
             </ul>
-          </motion.div>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-          >
-            <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl group">
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80")' }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#062516]/80 to-transparent" />
-              <div className="absolute bottom-8 left-8 text-white">
-                <p className="text-2xl font-bold">Growth & Stability</p>
-                <p className="opacity-90">Building the future together</p>
-              </div>
+          </div>
+          <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl group">
+            <div
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+              style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80")' }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#062516]/80 to-transparent" />
+            <div className="absolute bottom-8 left-8 text-white">
+              <p className="text-2xl font-bold">Growth & Stability</p>
+              <p className="opacity-90">Building the future together</p>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
 
         {/* Our Culture & Values */}
-        <div className="mb-24 ">
+        <div className="careers-values mb-24">
           <h3 className="section-title text-center text-[#062516]">Our Culture & Values</h3>
-          <motion.div
-            className="grid md:grid-cols-3 lg:grid-cols-5 gap-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
-            variants={staggerContainer}
-          >
-            {[
-              { icon: Shield, title: "Integrity", desc: "Doing what’s right, consistently and transparently." },
-              { icon: Users, title: "Collaboration", desc: "Working together to achieve shared goals." },
-              { icon: CheckCircle2, title: "Accountability", desc: "Taking ownership of our responsibilities and outcomes." },
-              { icon: TrendingUp, title: "Continuous Improvement", desc: "Embracing learning, growth, and innovation." },
-              { icon: Heart, title: "Customer-Focused", desc: "Placing our customers at the heart of everything we do." }
-            ].map((value, index) => (
-              <motion.div
-                key={index}
-                variants={cardVariants}
-                whileHover={{ y: -6, scale: 1.03, transition: { type: 'spring', stiffness: 320, damping: 22 } }}
-                className="bg-[#F5FBF5] p-6 rounded-xl shadow-lg transition-shadow duration-300 group2"
-              >
-                <div className="w-12 h-12 bg-[#F5FBF5] rounded-full flex items-center justify-center mb-4 group2-hover:bg-[#062516] transition-colors duration-300">
-                  <value.icon className="w-6 h-6 text-[#062516] group-hover:text-white transition-colors duration-300" />
+          <div className="careers-values__grid">
+            {CULTURE_VALUES.map((value, index) => {
+              const isEven = index % 2 === 0;
+              const itemStyle: CSSProperties = {
+                backgroundColor: isEven ? '#85c54a' : '#1c4832',
+                color: isEven ? '#125d36' : '#ffffff',
+              };
+              const Icon = value.icon;
+              const card: ReactNode = (
+                <div className="careers-values__content">
+                  <span className="careers-values__icon">
+                    <Icon />
+                  </span>
+                  <h4 className="careers-values__name">{value.title}</h4>
+                  <p className="careers-values__desc">{value.desc}</p>
                 </div>
-                <h4 className="text-lg font-bold text-[#062516] mb-2 bg-[#F5FBF5]">{value.title}</h4>
-                <p className="text-sm text-black bg-[#F5FBF5]">{value.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+              );
+
+              if (isMobile) {
+                return (
+                  <div key={index} className="careers-values__item" style={itemStyle}>
+                    {card}
+                  </div>
+                );
+              }
+
+              return (
+                <ScrollReveal
+                  key={index}
+                  className="careers-values__item"
+                  delay={(index + 1) * 0.15}
+                  from="right"
+                  distance={90}
+                  style={itemStyle}
+                >
+                  {card}
+                </ScrollReveal>
+              );
+            })}
+          </div>
         </div>
 
         {/* Life at JIVO & Benefits */}
-        <div className="grid md:grid-cols-2 gap-8 mb-24">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-          >
-            <div className="bg-[#F5FBF5] text-white p-10 rounded-2xl relative overflow-hidden">
-              <div className="relative z-10 text-[#062516]">
-                <h3 className="section-title mb-6 flex items-center">
-                  <Globe className="mr-3" /> Life at JIVO Energy
-                </h3>
-                <ul className="space-y-4">
-                  {[
-                    "Collaborative culture",
-                    "Project-driven environment",
-                    "Safety-first philosophy",
-                    "Professional development focus",
-                    "Cross-country or multi-site exposure"
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-center space-x-3 opacity-90">
-                      <div className="w-1.5 h-1.5 bg-[#062516] rounded-full" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#FFFA84]/10 rounded-full blur-3xl" />
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-          >
-            <div className="bg-[#062516] text-white p-10 rounded-2xl relative overflow-hidden">
+        <motion.div
+          className="grid md:grid-cols-2 gap-8 mb-24"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <div className="bg-[#F5FBF5] text-white p-10 rounded-2xl relative overflow-hidden">
+            <div className="relative z-10 text-[#062516]">
               <h3 className="section-title mb-6 flex items-center">
-                <Award className="mr-3" /> Employee Benefits
+                Life at JIVO Energy
               </h3>
               <ul className="space-y-4">
                 {[
-                  "Health insurance / medical coverage",
-                  "Annual performance bonuses",
-                  "Training sponsorships (technical certifications, PMP, HSE, etc.)",
-                  "Travel opportunities for site or project work",
-                  "Team outings, learning sessions, mentorship programs"
+                  "Collaborative culture",
+                  "Project-driven environment",
+                  "Safety-first philosophy",
+                  "Professional development focus",
+                  "Cross-country or multi-site exposure"
                 ].map((item, index) => (
-                  <li key={index} className="flex items-start space-x-3 text-white">
-                    <div className="w-1.5 h-1.5 bg-[#ffffff] mt-2.5 rounded-full" />
-                    {/* <div className="w-5 h-5 text-[#ffffff] mt-0.5 flex-shrink-0" /> */}
+                  <li key={index} className="flex items-center space-x-3 opacity-90">
+                    <div className="w-1.5 h-1.5 bg-[#062516] rounded-full" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
-          </motion.div>
-        </div>
+            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#FFFA84]/10 rounded-full blur-3xl" />
+          </div>
+
+          <div className="bg-[#062516] text-white p-10 rounded-2xl relative overflow-hidden">
+            <h3 className="section-title mb-6 flex items-center">
+              Employee Benefits
+            </h3>
+            <ul className="space-y-4">
+              {[
+                "Health insurance / medical coverage",
+                "Annual performance bonuses",
+                "Training sponsorships (technical certifications, PMP, HSE, etc.)",
+                "Travel opportunities for site or project work",
+                "Team outings, learning sessions, mentorship programs"
+              ].map((item, index) => (
+                <li key={index} className="flex items-start space-x-3 text-white">
+                  <div className="w-1.5 h-1.5 bg-[#ffffff] mt-2.5 rounded-full" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </motion.div>
       </section>
 
       {/* Job Openings */}
@@ -407,12 +419,11 @@ const Careers = () => {
             ].map((job, index) => (
               <motion.article
                 key={index}
-                variants={cardVariants}
+                variants={fadeUp}
                 className="careers-job-card"
               >
                 <span className="careers-job-card__accent" aria-hidden="true" />
                 <div className="careers-job-card__body">
-                  <span className="careers-job-card__open">Open Position</span>
                   <h4>{job.title}</h4>
                   <div className="careers-job-card__meta">
                     <div className="careers-job-card__meta-item">
@@ -473,18 +484,6 @@ const Careers = () => {
               We are always looking for passionate, hardworking, and talented individuals who want to grow with us.
               Even if the role listed here doesn’t match your profile, feel free to send us CV. We’re always open to great talent!
             </p>
-            <div className="careers-apply__email">
-              <span className="careers-apply__email-label">Email us directly</span>
-              <a href="mailto:info@jivoenergy.com" className="careers-apply__email-card">
-                <span className="careers-apply__email-icon">
-                  <Mail className="w-5 h-5" />
-                </span>
-                <span>
-                  <strong>info@jivoenergy.com</strong>
-                  <em>We&apos;ll reach out within 48 hours.</em>
-                </span>
-              </a>
-            </div>
           </motion.div>
 
           <motion.div
