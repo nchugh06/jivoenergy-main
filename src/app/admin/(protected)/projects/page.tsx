@@ -138,7 +138,14 @@ export default function AdminProjectsPage() {
                           {project.sub_title && (
                             <div className="text-xs text-gray-500 line-clamp-1">{project.sub_title}</div>
                           )}
-                          <div className="text-xs text-gray-400">{project.status}</div>
+                          <div className="flex items-center gap-2 text-xs text-gray-400">
+                            <span>{project.status}</span>
+                            {project.planned && (
+                              <span className="px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 font-semibold">
+                                Planned
+                              </span>
+                            )}
+                          </div>
                         </div>
                       </div>
                     </td>

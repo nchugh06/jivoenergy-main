@@ -27,6 +27,7 @@ export interface Project {
   technology?: string; // e.g., "Ground-Mounted Solar PV"
   client?: string; // e.g., "Ministry of Health"
   status: ProjectStatus;
+  planned?: boolean;
   completionYear?: string;
 
   // Content

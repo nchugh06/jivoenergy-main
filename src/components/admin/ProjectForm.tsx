@@ -39,6 +39,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoad
     slug:
       initialData?.slug ||
       projectSlugFromName(initialData?.title, initialData?.detailProjectName),
+    planned: initialData?.planned ?? false,
   });
 
   const [slugTouched, setSlugTouched] = useState(Boolean(initialData?.slug));
@@ -70,12 +71,18 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoad
       ...formData,
       slug,
       order: Number(formData.order ?? 0),
+      planned: Boolean(formData.planned),
     } as Omit<Project, 'id'>;
     await onSubmit(payload, coverImage, galleryImages);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
+    if (e.target instanceof HTMLInputElement && e.target.type === 'checkbox') {
+      const checked = e.target.checked;
+      setFormData(prev => ({ ...prev, [name]: checked }));
+      return;
+    }
     if (name === 'slug') {
       setSlugTouched(true);
       setFormData(prev => ({ ...prev, slug: slugify(value) }));
@@ -222,6 +229,22 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, isLoad
             {settings?.statuses.map(v => <option key={v} value={v}>{v}</option>)}
           </select>
           <ChevronDown className="absolute right-4 top-9 w-4 h-4 text-gray-400 pointer-events-none" />
+        </div>
+
+        <div className="flex items-end">
+          <label className="flex items-center gap-3 px-4 py-2.5 rounded-xl border border-gray-200 bg-white cursor-pointer w-full">
+            <input
+              type="checkbox"
+              name="planned"
+              checked={Boolean(formData.planned)}
+              onChange={handleChange}
+              className="h-4 w-4 rounded border-gray-300 text-[#062516] focus:ring-[#062516]/20 accent-[#062516]"
+            />
+            <span>
+              <span className="block text-[11px] font-bold text-gray-400 uppercase tracking-widest">Planned</span>
+              <span className="text-sm font-medium text-[#062516]">Mark as a planned project</span>
+            </span>
+          </label>
         </div>
 
         <div>
