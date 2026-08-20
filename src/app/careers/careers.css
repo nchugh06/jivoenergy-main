@@ -75,7 +75,7 @@
   right: 0;
   top: 0;
   height: 3px;
-  background: var(--color-dark-green, #1c4832);
+  background: linear-gradient(90deg, #062516 0%, #00c853 100%);
 }
 
 .careers-job-card__accent {
@@ -85,7 +85,7 @@
   z-index: 1;
   width: 4px;
   height: 4.75rem;
-  background: var(--color-dark-green, #1c4832);
+  background: linear-gradient(180deg, #062516 0%, #00c853 100%);
   border-radius: 0 3px 3px 0;
 }
 
@@ -246,6 +246,7 @@
   max-height: 100%;
   margin: 0 auto;
   display: grid;
+  align-items:start;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
   gap: 3.25rem;
   align-items: center;
