@@ -4,8 +4,38 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { motion, type Variants } from 'framer-motion';
 
 const PdfThumbnail = dynamic(() => import('@/components/PdfThumbnail'), { ssr: false });
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'tween', duration: 0.6, ease: 'easeOut' },
+  },
+};
+
+const staggerContainer: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.08,
+    },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 28, scale: 0.96 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { type: 'tween', duration: 0.45, ease: 'easeOut' },
+  },
+};
 
 const certifications = [
   {
@@ -59,15 +89,30 @@ const Certificate = () => {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-5">
-        <h3 className="section-title-spl text-center text-[#062516] mb-10">Certifications</h3>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          
+        <motion.h3
+          className="section-title-spl text-center text-[#062516] mb-10"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          Certifications
+        </motion.h3>
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+          variants={staggerContainer}
+        >
           {certifications.map((cert, index) => (
-            <a 
+            <motion.a
               key={index}
               href={`/certifications/${cert.file}`}
               target="_blank"
               rel="noopener noreferrer"
+              variants={cardVariants}
+              whileHover={{ y: -6, scale: 1.03, transition: { type: 'spring', stiffness: 320, damping: 22 } }}
               className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col items-center text-center group cursor-pointer overflow-hidden"
             >
               <div className="w-full bg-gray-50 h-48 md:h-64 overflow-hidden flex items-start justify-center transition-colors group-hover:bg-white relative">
@@ -82,9 +127,9 @@ const Certificate = () => {
                   {cert.title}
                 </h3>
               </div>
-            </a>
+            </motion.a>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <Footer />
