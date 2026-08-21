@@ -137,13 +137,15 @@ const ProjectDetailPage = () => {
                 {project?.completionYear || '—'}
                 {project.planned ? ' *' : ''}
               </p>
-              {project.planned && (
-                <p className="project-mesh__note">* Planned completion date</p>
-              )}
             </div>
           </div>
         </div>
 
+        {project.planned && (
+          <p className="project-planned-note">
+            * Planned completion date
+          </p>
+        )}
         {project.galleryUrls && project.galleryUrls.length > 0 && (
           <div className="mt-16">
             <div className="mb-12">

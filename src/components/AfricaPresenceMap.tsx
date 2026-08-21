@@ -46,11 +46,12 @@ const THEME = {
 
 const STATUS: Record<string, CountryStatus> = {
   UG: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "46 MWp" },
-  KE: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "0.93 MWp" },
+  KE: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "930 KWp / 1.45 KWh" },
   LR: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
   SL: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
   SN: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
   ST: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
+  ZW: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "2.5 MWp" },
   ET: { label: "On going", color: STATUS_COLOR.ongoing, projects: "_", capacity: "_" },
   BF: { label: "On going", color: STATUS_COLOR.ongoing, projects: "_", capacity: "_" },
   CV: { label: "On going", color: STATUS_COLOR.ongoing, projects: "_", capacity: "_" },
@@ -62,12 +63,13 @@ const STATUS: Record<string, CountryStatus> = {
 };
 
 const REVEAL_ORDER = [
-  "ET", "ZA", "LR", "SL", "RW", "KE", "UG", "ZM", "TZ", "BF", "ST", "CV", "SN", "MW",
+  "ET", "ZA", "ZW", "LR", "SL", "RW", "KE", "UG", "ZM", "TZ", "BF", "ST", "CV", "SN", "MW",
 ];
 
 const COUNTRY_NAME: Record<string, string> = {
   ET: "Ethiopia",
   ZA: "South Africa",
+  ZW: "Zimbabwe",
   LR: "Liberia",
   SL: "Sierra Leone",
   RW: "Rwanda",
@@ -118,6 +120,7 @@ const NAME_TO_CODE: Record<string, string> = {
   tanzania: "TZ",
   zambia: "ZM",
   "south africa": "ZA",
+  zimbabwe: "ZW",
 };
 
 const AMCHARTS_SCRIPTS = [

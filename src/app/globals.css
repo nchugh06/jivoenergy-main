@@ -12,11 +12,11 @@
   --color-light-green: var(--light-green-background);
   --color-pistachio-green: var(--pistachio-green-background);
   --color-white: #ffffff;
-  --color-text-natural:#111827;
+  --color-text-natural: #111827;
   --color-text-dark: #062516;
   --color-text-muted: #455c4f;
   --color-border-soft: #d9edd5;
-  --color-border-pistachio : #f6faf5;
+  --color-border-pistachio: #f6faf5;
   --color-card-accent: #62a557;
   --color-accent-highlight: #fffa84;
   --color-dark-green-rgb: 28, 72, 50;
@@ -27,13 +27,15 @@
 .text-dark-green {
   color: var(--dark-green-background);
 }
-.text-muted{
+
+.text-muted {
   color: var(--color-text-muted);
 }
 
 .bg-dark-green {
   background-color: var(--dark-green-background);
 }
+
 .bg-light-green {
   background-color: var(--light-green-background);
 }
@@ -185,7 +187,7 @@ body {
 }
 
 .stat-number {
-  font-size: max(1.3rem,min(2vw,1.8rem));
+  font-size: max(1.3rem, min(2vw, 1.8rem));
   font-weight: 700;
   margin-bottom: 10px;
   /* color: #ffffff; */
@@ -345,8 +347,13 @@ p {
 }
 
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .animate-marquee {
@@ -356,12 +363,10 @@ p {
 
 
 .tag {
-  background: linear-gradient(
-    135deg,
-    #2e4d33 0%,
-    #217338 50%,
-    #1a8c47 100%
-  );
+  background: linear-gradient(135deg,
+      #2e4d33 0%,
+      #217338 50%,
+      #1a8c47 100%);
   border: 1px solid transparent;
   transition: border-color 0.3s ease, filter 0.3s ease;
 }
