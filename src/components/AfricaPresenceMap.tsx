@@ -138,7 +138,7 @@ function displayName(id: string) {
 function projectCountLabel(id: string | null, count: number) {
   if (!id) return "_";
   const sites = STATUS[id]?.sites;
-  return sites ? `${count} (site ${sites})` : String(count);
+  return sites ? `${count} (${sites} Sites)` : String(count);
 }
 
 function canOpenDetails(id: string) {

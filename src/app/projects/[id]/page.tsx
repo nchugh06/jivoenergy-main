@@ -142,7 +142,7 @@ const ProjectDetailPage = () => {
             </div>
             {project.planned && (
               <p className="project-planned-note">
-                * Planned completion date
+                * Planned
               </p>
             )}
           </div>
