@@ -106,13 +106,13 @@ const ProjectDetailPage = () => {
 
             <div className="project-mesh__sidebar">
               <div className="project-mesh__cell project-mesh__spec project-mesh__region">
-                <p className="project-mesh__label">Region</p>
-                <p className="project-mesh__value">{project.region || project.country}</p>
+                <p className="project-mesh__label">Country</p>
+                <p className="project-mesh__value">{project?.country}</p>
               </div>
 
               <div className="project-mesh__cell project-mesh__spec project-mesh__status">
                 <p className="project-mesh__label">Status</p>
-                <p className="project-mesh__value">{STATUS_LABEL[project.status] || project.status}</p>
+                <p className="project-mesh__value">{STATUS_LABEL[project?.status] || project.status}</p>
               </div>
             </div>
 
@@ -123,17 +123,17 @@ const ProjectDetailPage = () => {
 
             <div className="project-mesh__cell project-mesh__spec project-mesh__client">
               <p className="project-mesh__label">Client</p>
-              <p className="project-mesh__value">{project.client}</p>
+              <p className="project-mesh__value">{project?.client}</p>
             </div>
 
             <div className="project-mesh__cell project-mesh__spec project-mesh__capacity">
               <p className="project-mesh__label">Capacity</p>
-              <p className="project-mesh__value">{project.capacity?.trim() || '—'}</p>
+              <p className="project-mesh__value">{project?.capacity?.trim() || '—'}</p>
             </div>
 
             <div className="project-mesh__cell project-mesh__spec project-mesh__year">
               <p className="project-mesh__label">Year of Completion</p>
-              <p className="project-mesh__value">{project.completionYear}</p>
+              <p className="project-mesh__value">{project?.completionYear}</p>
             </div>
           </div>
         </div>
