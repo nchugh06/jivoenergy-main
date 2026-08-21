@@ -111,6 +111,7 @@ export default function AdminProjectsPage() {
                   <th className="px-6 py-4 text-sm font-semibold text-gray-600">Country</th>
                   <th className="px-6 py-4 text-sm font-semibold text-gray-600">Power</th>
                   <th className="px-6 py-4 text-sm font-semibold text-gray-600">Category</th>
+                  <th className="px-6 py-4 text-sm font-semibold text-gray-600">Year of Completion</th>
                   <th className="px-6 py-4 text-sm font-semibold text-gray-600 text-right">Actions</th>
                 </tr>
               </thead>
@@ -155,6 +156,9 @@ export default function AdminProjectsPage() {
                       <span className="px-2 py-1 bg-gray-100 rounded text-xs">
                         {project.technology}
                       </span>
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-600 tabular-nums">
+                      {project.completionYear || '—'}
                     </td>
                     <td className="px-6 py-4 text-right">
                       <div className="flex justify-end gap-2  transition-opacity">
