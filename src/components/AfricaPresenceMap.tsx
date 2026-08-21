@@ -22,6 +22,7 @@ type CountryStatus = {
   color: string;
   projects: string;
   capacity: string;
+  sites?: number;
 };
 
 type GlobeApi = {
@@ -47,14 +48,14 @@ const THEME = {
 const STATUS: Record<string, CountryStatus> = {
   UG: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "46 MWp" },
   KE: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "930 KWp / 1.45 KWh" },
-  LR: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
+  LR: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_", sites: 39 },
   SL: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
   SN: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
   ST: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
   ZW: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "2.5 MWp" },
   ET: { label: "On going", color: STATUS_COLOR.ongoing, projects: "_", capacity: "_" },
   BF: { label: "On going", color: STATUS_COLOR.ongoing, projects: "_", capacity: "_" },
-  CV: { label: "On going", color: STATUS_COLOR.ongoing, projects: "_", capacity: "_" },
+  CV: { label: "On going", color: STATUS_COLOR.ongoing, projects: "_", capacity: "_", sites: 32 },
   MW: { label: "On going", color: STATUS_COLOR.ongoing, projects: "_", capacity: "_" },
   RW: { label: "Upcoming", color: STATUS_COLOR.upcoming, projects: "_", capacity: "_" },
   TZ: { label: "Upcoming", color: STATUS_COLOR.upcoming, projects: "_", capacity: "_" },
@@ -132,6 +133,12 @@ const AMCHARTS_SCRIPTS = [
 
 function displayName(id: string) {
   return COUNTRY_NAME[id] || id;
+}
+
+function projectCountLabel(id: string | null, count: number) {
+  if (!id) return "_";
+  const sites = STATUS[id]?.sites;
+  return sites ? `${count} (site ${sites})` : String(count);
 }
 
 function canOpenDetails(id: string) {
@@ -707,7 +714,7 @@ export default function AfricaPresenceMap() {
       <dl className="africa-presence__meta">
         <div>
           <dt>No. of projects</dt>
-          <dd>{selectedId ? String(selectedProjects.length) : "_"}</dd>
+          <dd>{projectCountLabel(selectedId, selectedProjects.length)}</dd>
         </div>
         <div>
           <dt>Capacity</dt>
