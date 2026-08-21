@@ -75,7 +75,7 @@ const Team = () => {
     { name: 'Geetika', image: '/team/updated/Geetika.jpg', linkedin: '' },
     { name: 'Abhishek', image: '/team/updated/Abhishek.jpg', linkedin: '' },
     { name: 'Chavvi', image: '/team/updated/Chavvi.jpg', linkedin: '' },
-    { name: 'Harshit', image: '/team/updated/Harshit.jpg', linkedin: '' },
+    // { name: 'Harshit', image: '/team/updated/Harshit.jpg', linkedin: '' },
     { name: 'Anuradha', image: '/team/updated/Anuradha.jpg', linkedin: '' },
     { name: 'Monika', image: '/team/updated/Monika.jpg', linkedin: '' },
     { name: 'Gayatri', image: '/team/updated/Gayatri.jpg', linkedin: '' },
