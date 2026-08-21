@@ -126,8 +126,9 @@ const Team = () => {
             src={member.image}
             alt={member.name}
             fill
+            quality={100}
             className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
-            sizes="100px"
+            sizes={size === "large" ? "(max-width: 768px) 128px, 192px" : "(max-width: 768px) 80px, 96px"}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-[#062516]/5 text-[#062516]/20">
@@ -165,7 +166,7 @@ const Team = () => {
             onClick={() => mentor.linkedin && window.open(mentor.linkedin, '_blank')}
           >
             {/* border-4 border-[#175d33] */}
-            <Image src={mentor.image} alt={mentor.name} fill className="object-cover object-top transition-transform group-hover:scale-110" />
+            <Image src={mentor.image} alt={mentor.name} fill quality={100} sizes="(max-width: 768px) 112px, 128px" className="object-cover object-top transition-transform group-hover:scale-110" />
             <div className="absolute inset-0 bg-[#062516]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <Linkedin className="w-10 h-10 text-white" />
             </div>
@@ -185,7 +186,7 @@ const Team = () => {
             onClick={() => cco.linkedin && window.open(cco.linkedin, '_blank')}
           >
             {/* border-4 border-[#175d33] */}
-            <Image src={cco.image} alt={cco.name} fill className="object-cover object-top transition-transform group-hover:scale-110" />
+            <Image src={cco.image} alt={cco.name} fill quality={100} sizes="(max-width: 768px) 112px, 128px" className="object-cover object-top transition-transform group-hover:scale-110" />
             <div className="absolute inset-0 bg-[#062516]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <Linkedin className="w-10 h-10 text-white" />
             </div>
