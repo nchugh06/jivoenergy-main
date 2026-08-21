@@ -95,57 +95,58 @@ const ProjectDetailPage = () => {
               {project.detailProjectName?.trim() || project.title}
             </h3>
           </div>
-          <div className="project-mesh">
-            <div className="project-mesh__cell project-mesh__overview italic md:not-italic">
-              <h3 className="section-title-spl">Project Overview</h3>
-              <div
-                className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-4"
-                dangerouslySetInnerHTML={{ __html: project.description }}
-              />
-            </div>
-
-            <div className="project-mesh__sidebar">
-              <div className="project-mesh__cell project-mesh__spec project-mesh__region">
-                <p className="project-mesh__label">Country</p>
-                <p className="project-mesh__value">{project?.country}</p>
+          <div className="project-mesh-block">
+            <div className="project-mesh">
+              <div className="project-mesh__cell project-mesh__overview italic md:not-italic">
+                <h3 className="section-title-spl">Project Overview</h3>
+                <div
+                  className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-4"
+                  dangerouslySetInnerHTML={{ __html: project.description }}
+                />
               </div>
 
-              <div className="project-mesh__cell project-mesh__spec project-mesh__status">
-                <p className="project-mesh__label">Status</p>
-                <p className="project-mesh__value">{STATUS_LABEL[project?.status] || project.status}</p>
+              <div className="project-mesh__sidebar">
+                <div className="project-mesh__cell project-mesh__spec project-mesh__region">
+                  <p className="project-mesh__label">Country</p>
+                  <p className="project-mesh__value">{project?.country}</p>
+                </div>
+
+                <div className="project-mesh__cell project-mesh__spec project-mesh__status">
+                  <p className="project-mesh__label">Status</p>
+                  <p className="project-mesh__value">{STATUS_LABEL[project?.status] || project.status}</p>
+                </div>
+              </div>
+
+              <div className="project-mesh__cell project-mesh__spec project-mesh__technology">
+                <p className="project-mesh__label">Technology</p>
+                <p className="project-mesh__value">{project.detailPageTechnology?.trim()}</p>
+              </div>
+
+              <div className="project-mesh__cell project-mesh__spec project-mesh__client">
+                <p className="project-mesh__label">Client</p>
+                <p className="project-mesh__value">{project?.client}</p>
+              </div>
+
+              <div className="project-mesh__cell project-mesh__spec project-mesh__capacity">
+                <p className="project-mesh__label">Capacity</p>
+                <p className="project-mesh__value">{project?.capacity?.trim() || '—'}</p>
+              </div>
+
+              <div className="project-mesh__cell project-mesh__spec project-mesh__year">
+                <p className="project-mesh__label">Year of Completion</p>
+                <p className="project-mesh__value">
+                  {project?.completionYear || '—'}
+                  {project.planned ? ' *' : ''}
+                </p>
               </div>
             </div>
-
-            <div className="project-mesh__cell project-mesh__spec project-mesh__technology">
-              <p className="project-mesh__label">Technology</p>
-              <p className="project-mesh__value">{project.detailPageTechnology?.trim()}</p>
-            </div>
-
-            <div className="project-mesh__cell project-mesh__spec project-mesh__client">
-              <p className="project-mesh__label">Client</p>
-              <p className="project-mesh__value">{project?.client}</p>
-            </div>
-
-            <div className="project-mesh__cell project-mesh__spec project-mesh__capacity">
-              <p className="project-mesh__label">Capacity</p>
-              <p className="project-mesh__value">{project?.capacity?.trim() || '—'}</p>
-            </div>
-
-            <div className="project-mesh__cell project-mesh__spec project-mesh__year">
-              <p className="project-mesh__label">Year of Completion</p>
-              <p className="project-mesh__value">
-                {project?.completionYear || '—'}
-                {project.planned ? ' *' : ''}
+            {project.planned && (
+              <p className="project-planned-note">
+                * Planned completion date
               </p>
-            </div>
+            )}
           </div>
         </div>
-
-        {project.planned && (
-          <p className="project-planned-note">
-            * Planned completion date
-          </p>
-        )}
         {project.galleryUrls && project.galleryUrls.length > 0 && (
           <div className="mt-16">
             <div className="mb-12">
