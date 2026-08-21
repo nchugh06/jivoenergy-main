@@ -217,12 +217,12 @@
 
 .africa-presence__legend-wrap {
   position: absolute;
-  top: 50%;
+  top: 0;
   right: 0.85rem;
   bottom: auto;
   z-index: 2;
   pointer-events: none;
-  transform: translateY(-50%);
+  transform: translateY(50%);
 }
 
 .africa-presence__legend {
@@ -287,11 +287,11 @@
 
 @media (max-width: 900px) {
   .africa-presence__legend-wrap {
-    top: 50%;
+    top: 0;
     right: 0.75rem;
     left: auto;
     bottom: auto;
-    transform: translateY(-50%);
+    transform: translateY(50%);
   }
 
   .africa-presence__legend {

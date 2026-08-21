@@ -133,7 +133,13 @@ const ProjectDetailPage = () => {
 
             <div className="project-mesh__cell project-mesh__spec project-mesh__year">
               <p className="project-mesh__label">Year of Completion</p>
-              <p className="project-mesh__value">{project?.completionYear}</p>
+              <p className="project-mesh__value">
+                {project?.completionYear || '—'}
+                {project.planned ? ' *' : ''}
+              </p>
+              {project.planned && (
+                <p className="project-mesh__note">* Planned completion date</p>
+              )}
             </div>
           </div>
         </div>
