@@ -2,7 +2,9 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { getProjects } from "@/lib/projects";
+import { getPathForRegionLabel, getRegionById, resolveRegionId } from "@/lib/projectRegions";
 import { Project } from "@/types/project";
 import "./AfricaPresenceMap.css";
 
@@ -662,11 +664,55 @@ export default function AfricaPresenceMap() {
     () => (selectedId ? projectsForCode(selectedId, allProjects) : []),
     [selectedId, allProjects],
   );
+  const selectedRegionHref = useMemo(() => {
+    const region = selectedProjects.find((project) => project.region)?.region;
+    return getPathForRegionLabel(region);
+  }, [selectedProjects]);
+  const selectedRegionLabel = useMemo(() => {
+    const region = selectedProjects.find((project) => project.region)?.region;
+    return getRegionById(resolveRegionId(region))?.label;
+  }, [selectedProjects]);
   const selectedCapacity = (() => {
     const fromStatus = selectedId ? STATUS[selectedId]?.capacity : undefined;
     if (fromStatus && fromStatus !== "_") return fromStatus;
     return selectedProjects.find((project) => project.capacity)?.capacity || "_";
   })();
+
+  const panelDetails = (
+    <>
+      {coverImage ? (
+        <div className="africa-presence__visual africa-presence__visual--photo">
+          <Image
+            src={coverImage}
+            alt={selectedName}
+            fill
+            className="africa-presence__cover"
+            sizes="320px"
+          />
+        </div>
+      ) : null}
+      <div className="africa-presence__heading">
+        {selectedId ? (
+          <img
+            className="africa-presence__flag is-ready"
+            src={`/africa-map/flags/${selectedId.toLowerCase()}.svg`}
+            alt=""
+          />
+        ) : null}
+        <h2 className="africa-presence__name">{selectedName}</h2>
+      </div>
+      <dl className="africa-presence__meta">
+        <div>
+          <dt>No. of projects</dt>
+          <dd>{selectedId ? String(selectedProjects.length) : "_"}</dd>
+        </div>
+        <div>
+          <dt>Capacity</dt>
+          <dd>{selectedId ? selectedCapacity : "_"}</dd>
+        </div>
+      </dl>
+    </>
+  );
 
   return (
     <section
@@ -682,7 +728,7 @@ export default function AfricaPresenceMap() {
           className={`africa-presence${selectedId ? " is-detail-open" : ""}`}
         >
           <aside
-            className="africa-presence__panel"
+            className={`africa-presence__panel${selectedRegionHref ? " is-linked" : ""}`}
             aria-hidden={selectedId ? "false" : "true"}
           >
             <div className="africa-presence__panel-inner">
@@ -694,38 +740,17 @@ export default function AfricaPresenceMap() {
               >
                 &times;
               </button>
-              {coverImage ? (
-                <div className="africa-presence__visual africa-presence__visual--photo">
-                  <Image
-                    src={coverImage}
-                    alt={selectedName}
-                    fill
-                    className="africa-presence__cover"
-                    sizes="320px"
-                  />
-                </div>
-              ) : null}
-              <div className="africa-presence__heading">
-                {selectedId ? (
-                  <img
-                    className="africa-presence__flag is-ready"
-                    src={`/africa-map/flags/${selectedId.toLowerCase()}.svg`}
-                    alt=""
-                  />
-                ) : null}
-                <h2 className="africa-presence__name">{selectedName}</h2>
-              </div>
-            
-              <dl className="africa-presence__meta">
-                <div>
-                  <dt>No. of projects</dt>
-                  <dd>{selectedId ? String(selectedProjects.length) : "_"}</dd>
-                </div>
-                <div>
-                  <dt>Capacity</dt>
-                  <dd>{selectedId ? selectedCapacity : "_"}</dd>
-                </div>
-              </dl>
+              {selectedRegionHref ? (
+                <Link
+                  href={selectedRegionHref}
+                  className="africa-presence__panel-link"
+                  aria-label={`View ${selectedRegionLabel || selectedName} projects`}
+                >
+                  {panelDetails}
+                </Link>
+              ) : (
+                panelDetails
+              )}
             </div>
           </aside>
           <div className="africa-presence__stage">

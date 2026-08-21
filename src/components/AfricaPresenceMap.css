@@ -97,6 +97,21 @@
   font-size: 1.25rem;
   line-height: 1;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+.africa-presence__panel-link {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.africa-presence.is-detail-open .africa-presence__panel.is-linked:hover {
+  background: #f6faf7;
 }
 
 .africa-presence__close:hover {

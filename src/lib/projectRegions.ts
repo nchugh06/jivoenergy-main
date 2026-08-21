@@ -75,10 +75,15 @@ export function getRegionById(id: string | null | undefined) {
   return PROJECT_REGIONS.find((r) => r.id === id) ?? null;
 }
 
+/** Map a Firestore `project.region` label (e.g. "West Africa") to its portfolio path. */
+export function getPathForRegionLabel(region?: string): string | null {
+  const id = resolveRegionId(region);
+  return id ? `/projects/${id}` : null;
+}
+
 /** Map a project.region string to its portfolio path, if known. */
 export function getRegionPathForProject(project: Project): string {
-  const match = PROJECT_REGIONS.find((region) => projectMatchesRegion(project, region));
-  return match ? `/projects/${match.id}` : '/projects/east-africa';
+  return getPathForRegionLabel(project.region) || '/projects/east-africa';
 }
 
 export function filterProjectsByRegion(
