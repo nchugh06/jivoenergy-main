@@ -47,7 +47,7 @@ const THEME = {
 
 const STATUS: Record<string, CountryStatus> = {
   UG: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "46 MWp" },
-  KE: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "930 KWp / 1.45 KWh" },
+  KE: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "930 kWp / 1.45 kWh" },
   LR: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_", sites: 39 },
   SL: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
   SN: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
