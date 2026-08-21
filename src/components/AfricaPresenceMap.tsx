@@ -52,7 +52,7 @@ const STATUS: Record<string, CountryStatus> = {
   SL: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
   SN: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
   ST: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
-  ZW: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "2.5 MWp" },
+  ZW: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "3.5 MWp" },
   ET: { label: "On going", color: STATUS_COLOR.ongoing, projects: "_", capacity: "_" },
   BF: { label: "On going", color: STATUS_COLOR.ongoing, projects: "_", capacity: "_" },
   CV: { label: "On going", color: STATUS_COLOR.ongoing, projects: "_", capacity: "_", sites: 32 },
