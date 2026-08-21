@@ -251,7 +251,7 @@ const Careers = () => {
           <div className="careers-why__photo">
             <img
               className="careers-why__photo-img"
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80"
+              src="/assets/cell-center-image.png"
               alt="Growth & Stability"
             />
           </div>
