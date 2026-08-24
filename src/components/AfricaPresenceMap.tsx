@@ -1,9 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { getProjects } from "@/lib/projects";
+import { sortByFirestoreOrder } from "@/lib/projectRegions";
 import { getProjectHref } from "@/lib/projectSlug";
 import { Project } from "@/types/project";
 import "./AfricaPresenceMap.css";
@@ -141,6 +143,38 @@ function projectCountLabel(id: string | null, count: number) {
   return sites ? `${count} (${sites} Sites)` : String(count);
 }
 
+function projectListLabel(project: Project) {
+  const raw = (project.detailProjectName || project.title || "").trim();
+  const comma = raw.indexOf(",");
+  const label = (comma === -1 ? raw : raw.slice(0, comma)).trim();
+  return label || project.title;
+}
+
+function projectHoverColor(project: Project, countryId: string | null) {
+  const status = (project.status || "").toLowerCase();
+  if (status.includes("plan")) return STATUS_COLOR.upcoming;
+  if (
+    status.includes("completed") ||
+    status.includes("operation") ||
+    status.includes("maintenance")
+  ) {
+    return STATUS_COLOR.completed;
+  }
+  if (status.includes("construction") || status.includes("development")) {
+    return STATUS_COLOR.ongoing;
+  }
+  return (countryId && STATUS[countryId]?.color) || STATUS_COLOR.ongoing;
+}
+
+function projectHoverStyle(project: Project, countryId: string | null): CSSProperties {
+  const color = projectHoverColor(project, countryId);
+  const ink = color === STATUS_COLOR.completed ? "#f6faf5" : "var(--color-text-dark)";
+  return {
+    ["--project-hover" as string]: color,
+    ["--project-hover-ink" as string]: ink,
+  };
+}
+
 function canOpenDetails(id: string) {
   return Boolean(STATUS[id] && STATUS[id].label !== "Upcoming");
 }
@@ -164,7 +198,9 @@ function countryCodeFor(project: Project) {
 }
 
 function projectsForCode(code: string, projects: Project[]) {
-  return projects.filter((project) => countryCodeFor(project) === code);
+  return sortByFirestoreOrder(
+    projects.filter((project) => countryCodeFor(project) === code),
+  );
 }
 
 function coverForCode(code: string, projects: Project[]) {
@@ -730,13 +766,23 @@ export default function AfricaPresenceMap() {
               </dl>
               {selectedProjects.length > 0 ? (
                 <ul className="africa-presence__projects">
-                  {selectedProjects.map((project) => (
+                  {selectedProjects.map((project, index) => (
                     <li key={project.id || project.slug || project.title}>
                       <Link
                         href={getProjectHref(project)}
                         className="africa-presence__project"
+                        style={projectHoverStyle(project, selectedId)}
                       >
-                        {project.title}
+                        <span className="africa-presence__project-index">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <span className="africa-presence__project-name">
+                          {projectListLabel(project)}
+                        </span>
+                        <ArrowRight
+                          className="africa-presence__project-go"
+                          aria-hidden="true"
+                        />
                       </Link>
                     </li>
                   ))}

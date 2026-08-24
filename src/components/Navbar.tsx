@@ -32,8 +32,10 @@ const Navbar = () => {
   };
 
   const toggleDropdown = (id: DropdownId) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    setOpenDropdown((prev) => (prev === id ? null : id));
+    if (isMenuOpen) {
+      e.preventDefault();
+      setOpenDropdown((prev) => (prev === id ? null : id));
+    }
   };
 
   const closeAll = () => {
@@ -70,10 +72,12 @@ const Navbar = () => {
             <li className={styles.nav__item}>
               <a
                 className={styles.nav__link}
+                href="/about"
                 onClick={toggleDropdown('about')}
                 onMouseEnter={() => openMenu('about')}
                 onMouseLeave={closeMenu}
-                style={{ cursor: 'pointer' }}
+                aria-haspopup="true"
+                aria-expanded={openDropdown === 'about'}
               >
                 About JIVO
                 <svg
@@ -115,10 +119,12 @@ const Navbar = () => {
             <li className={styles.nav__item}>
               <a
                 className={styles.nav__link}
+                href="/projects"
                 onClick={toggleDropdown('projects')}
                 onMouseEnter={() => openMenu('projects')}
                 onMouseLeave={closeMenu}
-                style={{ cursor: 'pointer' }}
+                aria-haspopup="true"
+                aria-expanded={openDropdown === 'projects'}
               >
                 Projects
                 <svg
