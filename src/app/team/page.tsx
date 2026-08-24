@@ -18,73 +18,73 @@ const Team = () => {
   const mentor: TeamMember = {
     name: 'Rajesh Chugh',
     role: 'CEO',
-    image: '/team/updated/Rajesh.jpg',
+    image: '/team/update/Rajesh-Chugh.jpg',
     linkedin: 'https://www.linkedin.com/in/rajeshchugh74/'
   };
 
   const cco: TeamMember = {
     name: 'Jorge Lascas',
     role: 'CCO',
-    image: '/team/updated/Jorge.jpg',
+    image: '/team/update/Jorge-Lascas.jpg',
     linkedin: 'https://www.linkedin.com/in/jorgemslascas/'
   };
 
   const projectDevelopment: TeamMember[] = [
-    // { name: 'Jorge Lascas', image: '/team/updated/Jorge.jpg', linkedin: 'https://www.linkedin.com/in/jorgemslascas/' },
-    { name: 'Beatrice', image: '/team/updated/Beatrice.jpg', linkedin: '' },
-    { name: 'Nishank', image: '/team/updated/Nishank.jpg', linkedin: '' },
-    { name: 'Naresh', image: '/team/updated/Naresh.jpg', linkedin: '' },
-    { name: 'Ivan', image: '/team/updated/Ivan.JPG', linkedin: '' },
-    { name: 'Samuel T', image: '/team/updated/SamuelT.jpg', linkedin: '' },
-    { name: 'Francis', image: '/team/updated/Francis.jpg', linkedin: '' },
-    { name: 'Eric', image: '/team/updated/Eric.jpg', linkedin: '' },
+    // { name: 'Jorge Lascas', image: '/team/update/Jorge.jpg', linkedin: 'https://www.linkedin.com/in/jorgemslascas/' },
+    { name: 'Beatrice', image: '/team/update/Beatrice.jpg', linkedin: '' },
+    { name: 'Nishank', image: '/team/update/Nishank.jpg', linkedin: '' },
+    { name: 'Naresh', image: '/team/update/Naresh.jpg', linkedin: '' },
+    { name: 'Ivan', image: '/team/update/Ivan.jpg', linkedin: '' },
+    { name: 'Samuel T', image: '/team/update/Samuel-T.jpg', linkedin: '' },
+    { name: 'Francis', image: '/team/update/Francis.jpg', linkedin: '' },
+    { name: 'Eric', image: '/team/update/Eric.jpg', linkedin: '' },
 
 
 
-    // { name: 'Patrice Yamintare Kounkorgo', image: '/team/updated/Patrice.jpg', linkedin: 'https://www.linkedin.com/in/yamintare-patrice-kounkorgo-058405179/' },
+    // { name: 'Patrice Yamintare Kounkorgo', image: '/team/update/Patrice.jpg', linkedin: 'https://www.linkedin.com/in/yamintare-patrice-kounkorgo-058405179/' },
     // { name: 'Boyd', image: '' },
   ];
 
   const projectExecution: TeamMember[] = [
-    { name: 'Prayas', image: '/team/updated/Prayas.jpg', linkedin: '' },
-    { name: 'Manvendra', image: '/team/updated/Manvendra.jpg', linkedin: '' },
-    // { name: 'Ankit Srivastava', image: '/team/updated/Ankit.jpg', linkedin: 'https://www.linkedin.com/in/ankit-srivastava14/' },
-    { name: 'Tushar', image: '/team/updated/Tushar.jpeg', linkedin: '' },
-    { name: 'Vivek', image: '/team/updated/Vivek.jpg', linkedin: '' },
-    { name: 'Samuel W', image: '/team/updated/Samuel.jpg', linkedin: '' },
-    { name: 'Nitesh', image: '/team/updated/Nitesh.jpg', linkedin: '' },
-    { name: 'Shashi', image: '/team/updated/Shashi.jpg', linkedin: '' },
-    { name: 'Rohit', image: '/team/updated/Rohit.jpg', linkedin: '' },
-    { name: 'Akshay', image: '/team/updated/Akahsy.png', linkedin: '' },
-    { name: 'Pauline', image: '/team/updated/Pauline.jpg', linkedin: '' },
-    // { name: 'Ashok Kumar', image: '/team/updated/Ashok.jpg', linkedin: 'https://www.linkedin.com/in/ashok-kumar-74a07064/' },    
-    { name: 'Nitin', image: '/team/updated/Nitin.jpg', linkedin: '' },
-    { name: 'Ravi', image: '/team/updated/Ravi.jpg', linkedin: '' },
-    { name: 'Grace', image: '/team/updated/Grace.jpg', linkedin: '' },
-    { name: 'Patrice', image: '/team/updated/Patrice-new.jpg', linkedin: '' },
-    { name: 'Jaideep', image: '/team/updated/Jaideep.jpg', linkedin: '' },
-    { name: 'Arun', image: '/team/updated/Arun.jpg', linkedin: '' },
+    { name: 'Prayas', image: '/team/update/Prayas.jpg', linkedin: '' },
+    { name: 'Manvendra', image: '/team/update/Manvendra.jpg', linkedin: '' },
+    // { name: 'Ankit Srivastava', image: '/team/update/Ankit.jpg', linkedin: 'https://www.linkedin.com/in/ankit-srivastava14/' },
+    { name: 'Tushar', image: '/team/update/Tushar.jpg', linkedin: '' },
+    { name: 'Vivek', image: '/team/update/Vivek.jpg', linkedin: '' },
+    { name: 'Samuel W', image: '/team/update/Samuel.jpg', linkedin: '' },
+    { name: 'Nitesh', image: '/team/update/Nitesh.jpg', linkedin: '' },
+    { name: 'Shashi', image: '/team/update/Shashi.jpg', linkedin: '' },
+    { name: 'Rohit', image: '/team/update/Rohit.jpg', linkedin: '' },
+    { name: 'Akshay', image: '/team/update/Akshay.jpg', linkedin: '' },
+    { name: 'Pauline', image: '/team/update/Pauline.jpg', linkedin: '' },
+    // { name: 'Ashok Kumar', image: '/team/update/Ashok.jpg', linkedin: 'https://www.linkedin.com/in/ashok-kumar-74a07064/' },    
+    { name: 'Nitin', image: '/team/update/Nitin.jpg', linkedin: '' },
+    { name: 'Ravi', image: '/team/update/Ravi.jpg', linkedin: '' },
+    { name: 'Grace', image: '/team/update/Grace.jpg', linkedin: '' },
+    { name: 'Patrice', image: '/team/update/Patrice.jpg', linkedin: '' },
+    { name: 'Jaideep', image: '/team/update/Jaideep.jpg', linkedin: '' },
+    { name: 'Arun', image: '/team/update/Arun.jpg', linkedin: '' },
   ];
 
   const projectSupport: TeamMember[] = [
   ];
 
   const projectCorporate: TeamMember[] = [
-    { name: 'Ujwal', image: '/team/updated/Ujwal.jpg', linkedin: '' },
-    { name: 'Aakanksha', image: '/team/updated/Aakanksha.jpg', linkedin: '' },
-    { name: 'Geetika', image: '/team/updated/Geetika.jpg', linkedin: '' },
-    { name: 'Abhishek', image: '/team/updated/Abhishek.jpg', linkedin: '' },
-    { name: 'Chavvi', image: '/team/updated/Chavvi.jpg', linkedin: '' },
-    // { name: 'Harshit', image: '/team/updated/Harshit.jpg', linkedin: '' },
-    { name: 'Anuradha', image: '/team/updated/Anuradha.jpg', linkedin: '' },
-    { name: 'Monika', image: '/team/updated/Monika.jpg', linkedin: '' },
-    { name: 'Gayatri', image: '/team/updated/Gayatri.jpg', linkedin: '' },
-    { name: 'Dikshita', image: '/team/updated/Dikshita.jpg', linkedin: '' },
-    { name: 'Radhika', image: '/team/updated/Radhika.jpg', linkedin: '' },
-    // { name: 'Shivalika Nagpal', image: '/team/updated/Shivalika.jpg', linkedin: 'https://www.linkedin.com/in/shivalikanagpal/' },
-    { name: 'Martha', image: '/team/updated/Martha.jpg', linkedin: '' },
-    // { name: 'Nidhi', image: '/team/updated/nidhi.jpg' },
-    // { name: 'Chavvi Ahuja', image: '/team/updated/Chavvi.jpg', linkedin: 'https://www.linkedin.com/in/chavvi-ahuja-68507b20a/' },
+    { name: 'Ujwal', image: '/team/update/Ujwal.jpg', linkedin: '' },
+    { name: 'Aakanksha', image: '/team/update/Aakanksha.jpg', linkedin: '' },
+    { name: 'Geetika', image: '/team/update/Geetika.jpg', linkedin: '' },
+    { name: 'Abhishek', image: '/team/update/Abhishek.jpg', linkedin: '' },
+    { name: 'Chavvi', image: '/team/update/Chavvi.jpg', linkedin: '' },
+    // { name: 'Harshit', image: '/team/update/Harshit.jpg', linkedin: '' },
+    { name: 'Anuradha', image: '/team/update/Anuradha.jpg', linkedin: '' },
+    { name: 'Monika', image: '/team/update/Monika.jpg', linkedin: '' },
+    { name: 'Gayatri', image: '/team/update/Gayatri.jpg', linkedin: '' },
+    { name: 'Dikshita', image: '/team/update/Dikshita.jpg', linkedin: '' },
+    { name: 'Radhika', image: '/team/update/Radhika.jpg', linkedin: '' },
+    // { name: 'Shivalika Nagpal', image: '/team/update/Shivalika.jpg', linkedin: 'https://www.linkedin.com/in/shivalikanagpal/' },
+    { name: 'Martha', image: '/team/update/Martha.jpg', linkedin: '' },
+    // { name: 'Nidhi', image: '/team/update/nidhi.jpg' },
+    // { name: 'Chavvi Ahuja', image: '/team/update/Chavvi.jpg', linkedin: 'https://www.linkedin.com/in/chavvi-ahuja-68507b20a/' },
     // { name: 'Harshit', image: '' },
   ];
 
