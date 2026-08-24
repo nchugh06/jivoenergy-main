@@ -30,6 +30,7 @@ type CountryStatus = {
 type GlobeApi = {
   dispose: () => void;
   select: (id: string | null) => void;
+  applyColors: (colors: Record<string, string>) => void;
 };
 
 const STATUS_COLOR = {
@@ -58,7 +59,7 @@ const STATUS: Record<string, CountryStatus> = {
   ET: { label: "On going", color: STATUS_COLOR.ongoing, projects: "_", capacity: "_" },
   BF: { label: "On going", color: STATUS_COLOR.ongoing, projects: "_", capacity: "_" },
   CV: { label: "On going", color: STATUS_COLOR.ongoing, projects: "_", capacity: "_", sites: 32 },
-  MW: { label: "On going", color: STATUS_COLOR.ongoing, projects: "_", capacity: "_" },
+  MW: { label: "Completed", color: STATUS_COLOR.completed, projects: "_", capacity: "_" },
   RW: { label: "Upcoming", color: STATUS_COLOR.upcoming, projects: "_", capacity: "_" },
   TZ: { label: "Upcoming", color: STATUS_COLOR.upcoming, projects: "_", capacity: "_" },
   ZM: { label: "Upcoming", color: STATUS_COLOR.upcoming, projects: "_", capacity: "_" },
@@ -201,6 +202,49 @@ function projectsForCode(code: string, projects: Project[]) {
   return sortByFirestoreOrder(
     projects.filter((project) => countryCodeFor(project) === code),
   );
+}
+
+function isCompletedProjectStatus(status?: string) {
+  const value = (status || "").toLowerCase();
+  return (
+    value.includes("completed") ||
+    value.includes("operation") ||
+    value.includes("maintenance")
+  );
+}
+
+function isOngoingProjectStatus(status?: string) {
+  const value = (status || "").toLowerCase();
+  if (isCompletedProjectStatus(value)) return false;
+  return value.includes("construction") || value.includes("development");
+}
+
+function resolvedCountryStatus(code: string, projects: Project[]) {
+  const fallback = STATUS[code];
+  const list = projectsForCode(code, projects);
+  if (!fallback) {
+    return { label: "Upcoming", color: STATUS_COLOR.upcoming, projects: "_", capacity: "_" };
+  }
+  if (!list.length) return fallback;
+
+  if (list.every((project) => isCompletedProjectStatus(project.status))) {
+    return { ...fallback, label: "Completed", color: STATUS_COLOR.completed };
+  }
+  if (list.some((project) => isOngoingProjectStatus(project.status))) {
+    return { ...fallback, label: "On going", color: STATUS_COLOR.ongoing };
+  }
+  if (list.every((project) => (project.status || "").toLowerCase().includes("plan"))) {
+    return { ...fallback, label: "Upcoming", color: STATUS_COLOR.upcoming };
+  }
+  return fallback;
+}
+
+function countryColorsFromProjects(projects: Project[]) {
+  const colors: Record<string, string> = {};
+  Object.keys(STATUS).forEach((code) => {
+    colors[code] = resolvedCountryStatus(code, projects).color;
+  });
+  return colors;
 }
 
 function coverForCode(code: string, projects: Project[]) {
@@ -531,14 +575,17 @@ function createPresenceGlobe(options: {
     setSpriteOpacity(nameSeries, HOME_ID, 1, THEME.label);
   };
 
-  const revealCountry = (id: string) => {
-    const color = STATUS[id]?.color || THEME.unvisited;
+  const paintCountry = (id: string, color: string) => {
     const polygon = polygonSeries.getDataItemById(id)?.get("mapPolygon");
     if (polygon) setPolygonFill(id, color, 1);
     setSpriteOpacity(nameSeries, id, 0.92, THEME.label);
     if (!polygon || FALLBACK_COORDS[id]) {
       setSpriteOpacity(pinSeries, id, 1, color);
     }
+  };
+
+  const revealCountry = (id: string) => {
+    paintCountry(id, STATUS[id]?.color || THEME.unvisited);
   };
 
   const playIntro = () => {
@@ -610,6 +657,15 @@ function createPresenceGlobe(options: {
       if (selectedId === id) return;
       handleSelect(id);
     },
+    applyColors: (colors) => {
+      Object.keys(STATUS).forEach((id) => {
+        const color = colors[id] || STATUS[id]?.color || THEME.unvisited;
+        const polygon = polygonSeries.getDataItemById(id)?.get("mapPolygon");
+        if (polygon) setPolygonFill(id, color, 1);
+        const pin = bulletSprite(pinSeries.getDataItemById(id));
+        if (pin) pin.set("fill", am5.color(color));
+      });
+    },
   };
 }
 
@@ -665,6 +721,11 @@ export default function AfricaPresenceMap() {
     }
     setCoverImage(coverForCode(selectedId, allProjects));
   }, [selectedId, allProjects]);
+
+  useEffect(() => {
+    if (!mapReady || !globeRef.current || !allProjects.length) return;
+    globeRef.current.applyColors(countryColorsFromProjects(allProjects));
+  }, [allProjects, mapReady]);
 
   useEffect(() => {
     if (!inView || !chartRef.current) return;
