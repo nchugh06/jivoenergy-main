@@ -98,41 +98,33 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info Column 1 */}
-          <div>
+          <div className="md:col-span-2">
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-            <ul className="space-y-4 text-gray-400 text-sm">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-gray-400 text-sm items-start">
               <li>
                 <span className="block text-white font-medium">India</span>
                 108 to 111, First Floor, Tower B, Spaze Business Park, Sector-66, Gurgaon, Haryana
               </li>
               <li>
-                <span className="block text-white font-medium">U.A.E.</span>
-                Meydan Grandstand, 6th Floor, Meydan Road, Nad El Sheba, Dubai<br></br><br></br>
-              </li>
-              <li>
-                <span className="block text-white font-medium">Uganda</span>
-                Unit 10C, The Cube 10th Floor, Plot 5/7, Cooper Road, Kampala
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Info Column 2 */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4 opacity-0 md:opacity-100 select-none">&nbsp;</h3>
-            <ul className="space-y-4 text-gray-400 text-sm">              
-              <li>
                 <span className="block text-white font-medium">Mauritius</span>
-                4th Floor Ebene Skies, Rue De L'Institut, Ebene<br></br><br></br>
-              </li>              
+                4th Floor Ebene Skies, Rue De L'Institut, Ebene
+              </li>
+              <li>
+                <span className="block text-white font-medium">U.A.E.</span>
+                Meydan Grandstand, 6th Floor, Meydan Road, Nad El Sheba, Dubai
+              </li>
               <li>
                 <span className="block text-white font-medium">Kenya</span>
                 Office No-309, Third Floor, Kanha Building, 10 Lower Kabete Road, Westlands, Nairobi
               </li>
               <li>
+                <span className="block text-white font-medium">Uganda</span>
+                Unit 10C, The Cube 10th Floor, Plot 5/7, Cooper Road, Kampala
+              </li>
+              <li>
                 <span className="block text-white font-medium">Portugal</span>
-                Rua, Joaquim Brandao, 13 2900-422, Setubal              
-                </li>
+                Rua, Joaquim Brandao, 13 2900-422, Setubal
+              </li>
             </ul>
           </div>
         </div>
