@@ -805,7 +805,7 @@ export default function AfricaPresenceMap() {
                     alt={selectedName}
                     fill
                     className="africa-presence__cover"
-                    sizes="320px"
+                    sizes="360px"
                   />
                 </div>
               ) : null}
