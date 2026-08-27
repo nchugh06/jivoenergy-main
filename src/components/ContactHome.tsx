@@ -24,7 +24,7 @@ export default function ContactHome() {
           </div>
         </div>
 
-        <div className="relative w-full max-w-sm shrink-0">
+        <div className="relative hidden w-full max-w-sm shrink-0 md:block">
           <div className="relative h-48 w-full">
             <Image
               src="/logo-white.png"

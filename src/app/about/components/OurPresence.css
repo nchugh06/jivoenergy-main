@@ -41,8 +41,12 @@
   pointer-events: none;
 }
 
-@media (width < 40rem) {
+@media (width < 48rem) {
   .region-map {
-    width: min(38%, 6.5rem);
+    display: none;
+  }
+
+  .our-presence__box {
+    padding-right: 1.25rem;
   }
 }

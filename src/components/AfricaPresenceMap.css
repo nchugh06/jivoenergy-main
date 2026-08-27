@@ -397,10 +397,7 @@
 
 @media (width < 48rem) {
   .africa-presence-section {
-    padding: 0;
-    height: 100dvh;
-    min-height: 100dvh;
-    max-height: 100dvh;
+    display: none;
   }
 
   .africa-presence__panel {
