@@ -50,7 +50,18 @@
   grid-row: auto;
   background: var(--color-white);
   color: var(--color-text-dark);
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  min-width: 0;
+}
+
+.project-mesh__overview .prose,
+.project-mesh__overview p,
+.project-mesh__overview span {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
 }
 
 .project-mesh__sidebar {

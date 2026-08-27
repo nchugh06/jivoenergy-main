@@ -1,7 +1,7 @@
 .project-reviews {
   position: relative;
-  background: var(--color-pistachio-green);
-  padding: 3rem 0;
+  background: #fff;
+  padding: 0 0 3rem 0;
 }
 
 .project-reviews__inner {
@@ -19,7 +19,7 @@
 
 @media (min-width: 1024px) {
   .project-reviews {
-    padding: 4rem 0;
+    padding: 0 0 4rem 0;
   }
 
   .project-reviews__inner {
@@ -53,7 +53,7 @@
 
 .project-reviews__grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   justify-content: center;
   gap: 2rem;
 }
@@ -75,27 +75,17 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-@media (width >= 48rem) {
+@media (width >=48rem) {
   .project-reviews__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit,
+        minmax(min(100%, 16rem), calc((100% - 2rem) / 2)));
   }
 }
 
-@media (width >= 64rem) {
+@media (width >=64rem) {
   .project-reviews__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@container (min-width: 42rem) {
-  .project-reviews__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@container (min-width: 64rem) {
-  .project-reviews__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit,
+        minmax(min(100%, 16rem), calc((100% - 4rem) / 3)));
   }
 }
 
@@ -207,9 +197,9 @@
   color: var(--color-dark-green);
 }
 
-@media (width >= 64rem) {
+@media (width >=64rem) {
   .project-reviews {
-    padding: 4rem 0;
+    padding: 0 0 4rem 0;
   }
 
   .project-reviews__card-title {
