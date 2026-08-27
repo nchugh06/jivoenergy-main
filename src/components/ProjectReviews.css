@@ -4,6 +4,10 @@
   padding: 0 0 3rem 0;
 }
 
+.project-reviews--pistachio {
+  background: var(--pistachio-green-background);
+}
+
 .project-reviews__inner {
   container-type: inline-size;
   width: min(80rem, 100%);
@@ -197,12 +201,22 @@
   color: var(--color-dark-green);
 }
 
-@media (width >=64rem) {
+@media (width >= 64rem) {
   .project-reviews {
     padding: 0 0 4rem 0;
   }
 
   .project-reviews__card-title {
     font-size: 1.05rem;
+  }
+}
+
+.project-reviews.project-reviews--pistachio {
+  padding: 3rem 0;
+}
+
+@media (min-width: 1024px) {
+  .project-reviews.project-reviews--pistachio {
+    padding: 4rem 0;
   }
 }

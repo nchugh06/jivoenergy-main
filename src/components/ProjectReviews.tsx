@@ -7,6 +7,7 @@ import "./ProjectReviews.css";
 
 type ProjectReviewsProps = {
   country?: string;
+  pistachio?: boolean;
 };
 
 function normalizeCountry(value: string) {
@@ -23,7 +24,7 @@ function countriesMatch(a: string, b: string) {
   return normalizeCountry(a) === normalizeCountry(b);
 }
 
-export default function ProjectReviews({ country }: ProjectReviewsProps) {
+export default function ProjectReviews({ country, pistachio = false }: ProjectReviewsProps) {
   const videos = country
     ? YOUTUBE_VIDEOS.filter(
       (video) => video.country != null && countriesMatch(video.country, country)
@@ -33,10 +34,16 @@ export default function ProjectReviews({ country }: ProjectReviewsProps) {
   if (!videos.length) return null;
 
   return (
-    <section className="project-reviews" id="project-reviews" aria-label="Project reviews">
+    <section
+      className={`project-reviews${pistachio ? " project-reviews--pistachio" : ""}`}
+      id="project-reviews"
+      aria-label="Project reviews"
+    >
       <div className="project-reviews__inner">
         <div className="project-reviews__head">
-          <h3 className="section-title">Project Gallery</h3>
+          {pistachio ? (
+            <h3 className="section-title">Project Gallery</h3>
+          ) : null}
           <a
             className="project-reviews__channel"
             href={YOUTUBE_CHANNEL_URL}

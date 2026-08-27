@@ -5,7 +5,7 @@ const About = () => {
     <section className="about-stats">
       <div className="about-stats__container">
         <div className="mt-9 grid grid-cols-1 items-center gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="overflow-hidden rounded-2xl min-w-0">
+          <div className="overflow-hidden rounded-2xl min-w-0 aspect-video md:aspect-auto">
             <video
               src="/assets/videos/final_video_94mb.mp4"
               className="w-full h-full object-cover rounded-2xl"
@@ -31,7 +31,7 @@ const About = () => {
             </p>
             <a
               href="/about"
-              className="inline-block mt-6 px-6 py-3 bg-[#fafafa] text-black rounded-lg font-medium transition-colors duration-300 text-center"
+              className="inline-block mt-6 w-full sm:w-auto px-6 py-3 bg-[#fafafa] text-black rounded-lg font-medium transition-colors duration-300 text-center"
             >
               Explore More
             </a>

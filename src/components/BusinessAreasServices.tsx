@@ -69,7 +69,7 @@ export default function BusinessAreasServices({
   services = DEFAULT_SERVICES,
 }: BusinessAreasServicesProps) {
   return (
-    <section className="bg-pistachio-green py-12 md:py-18 our-services">
+    <section className="bg-pistachio-green py-10 md:py-18 our-services">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h3 className="section-title text-center text-[#062516]">Our Business Areas</h3>
 
@@ -83,7 +83,7 @@ export default function BusinessAreasServices({
             >
               <div className="group grid grid-rows-subgrid row-span-3 gap-0 bg-white overflow-hidden rounded-2xl border border-[#dce9dc] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                 {/* Image */}
-                <div className="relative h-56 w-full overflow-hidden">
+                <div className="relative h-40 md:h-56 w-full overflow-hidden">
                   <Image
                     src={service.image}
                     alt={service.title}
@@ -94,7 +94,7 @@ export default function BusinessAreasServices({
                 </div>
 
                 {/* Content */}
-                <div className="px-6 py-6 text-left grid grid-rows-subgrid row-span-2 gap-0 items-start justify-items-center">
+                <div className="px-4 py-4 md:px-6 md:py-6 text-left grid grid-rows-subgrid row-span-2 gap-0 items-start justify-items-center">
                   <h3 className="text-center text-lg md:text-xl font-semibold group-hover:text-[#085d36] transition-colors duration-300">
                     {service.title}
                   </h3>

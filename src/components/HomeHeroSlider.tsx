@@ -121,7 +121,7 @@ export default function HomeHeroSlider() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
-                    className="text-5xl font-bold leading-tight text-green sm:text-4xl"
+                    className="text-3xl font-bold leading-tight text-green sm:text-4xl"
                   >
                     {slides[index].captionTitle}
                   </motion.h2>
@@ -129,7 +129,7 @@ export default function HomeHeroSlider() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
-                    className="mt-2 text-center text-base leading-relaxed text-white sm:text-xl"
+                    className="mt-2 text-center text-sm leading-relaxed text-white sm:text-xl"
                   >
                     {slides[index].captionSubtitle}
                   </motion.h5>

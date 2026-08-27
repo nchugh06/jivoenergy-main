@@ -190,6 +190,15 @@
     padding: 2.5rem 0;
   }
 
+  .media-home-glow-left,
+  .media-home-glow-right {
+    display: none;
+  }
+
+  .media-home-title {
+    margin-bottom: 1.5rem;
+  }
+
   .media-home-swiper {
     padding-bottom: 3.5rem;
   }
