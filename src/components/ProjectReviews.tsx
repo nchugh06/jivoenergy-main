@@ -26,8 +26,8 @@ function countriesMatch(a: string, b: string) {
 export default function ProjectReviews({ country }: ProjectReviewsProps) {
   const videos = country
     ? YOUTUBE_VIDEOS.filter(
-        (video) => video.country != null && countriesMatch(video.country, country)
-      )
+      (video) => video.country != null && countriesMatch(video.country, country)
+    )
     : YOUTUBE_VIDEOS;
 
   if (!videos.length) return null;
