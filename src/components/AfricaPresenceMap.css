@@ -1,8 +1,8 @@
 .africa-presence-section {
   width: 100%;
-  height: 100dvh;
-  min-height: 100dvh;
-  max-height: 100dvh;
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   background: #ffffff;
@@ -398,6 +398,9 @@
 @media (width < 48rem) {
   .africa-presence-section {
     padding: 0;
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: 100dvh;
   }
 
   .africa-presence__panel {

@@ -75,6 +75,14 @@
   .media-home-card-image {
     height: 18rem;
   }
+
+  .media-home-prev {
+    left: -1rem;
+  }
+
+  .media-home-next {
+    right: -1rem;
+  }
 }
 
 .media-home-card-image img {

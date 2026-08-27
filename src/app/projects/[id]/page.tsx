@@ -92,7 +92,7 @@ const ProjectDetailPage = () => {
         </div>
         <div className="grid grid-cols-1 gap-6 items-start mb-6">
           <div className="mb-0">
-            <h3 className="section-title-spl text-center text-[#062516]">
+            <h3 className="section-title-spl text-center text-[#062516] px-1">
               {project.detailProjectName?.trim() || project.title}
             </h3>
           </div>
@@ -101,7 +101,7 @@ const ProjectDetailPage = () => {
               <div className="project-mesh__cell project-mesh__overview italic md:not-italic">
                 <h3 className="section-title-spl">Project Overview</h3>
                 <div
-                  className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-4"
+                  className="prose max-w-none md:prose-lg text-gray-700 leading-relaxed space-y-4"
                   dangerouslySetInnerHTML={{ __html: project.description }}
                 />
               </div>

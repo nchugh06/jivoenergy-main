@@ -31,7 +31,7 @@ const About = () => {
             </p>
             <a
               href="/about"
-              className="inline-flex min-h-11 items-center justify-center mt-6 px-6 py-3 bg-[#fafafa] text-black rounded-lg font-medium transition-colors duration-300 text-center"
+              className="inline-block mt-6 px-6 py-3 bg-[#fafafa] text-black rounded-lg font-medium transition-colors duration-300 text-center"
             >
               Explore More
             </a>

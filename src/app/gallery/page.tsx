@@ -79,7 +79,7 @@ export default function GalleryPage() {
               <motion.h1 
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 px-4"
+                className="text-3xl sm:text-6xl md:text-7xl font-bold text-white mb-6 px-4"
               >
                 Our Global Impact
               </motion.h1>

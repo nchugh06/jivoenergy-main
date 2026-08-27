@@ -146,7 +146,7 @@ const Media = ({ limit }: MediaProps) => {
               
               {/* Content */}
               <div className="p-5 sm:p-8 min-h-0 sm:min-h-72 flex flex-col">
-                <h3 className="text-xl sm:text-2xl font-bold text-[#062516] mb-4 group-hover:text-green-600 transition-colors duration-300 line-clamp-2">
+                <h3 className="text-xl md:text-2xl font-bold text-[#062516] mb-4 group-hover:text-green-600 transition-colors duration-300 line-clamp-2">
                   {card.title}
                 </h3>
                 <p className="text-gray-700 mb-6 leading-relaxed flex-1 overflow-hidden">

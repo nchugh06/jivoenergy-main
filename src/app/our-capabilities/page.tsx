@@ -71,7 +71,7 @@ const Capabilities = () => {
           <source src="/power.mp4" type="video/mp4" />
         </video>
         <div className="relative z-10 h-full flex items-center justify-center">
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white text-center px-4">
+          <h1 className="text-3xl md:text-7xl font-bold text-white text-center px-4">
             OUR CAPABILITIES
           </h1>
         </div>

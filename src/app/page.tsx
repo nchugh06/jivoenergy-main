@@ -26,7 +26,7 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       <Navbar />
       <main className="flex flex-col w-full">
-        <section id="hero-section" className="page-hero page-hero--home">
+        <section id="hero-section" className="page-hero page-hero--home relative w-full overflow-hidden md:h-[85vh]">
           <div className="absolute inset-0 z-0">
             <HomeHeroSlider />
           </div>

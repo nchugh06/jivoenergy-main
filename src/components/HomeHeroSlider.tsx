@@ -121,7 +121,7 @@ export default function HomeHeroSlider() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
-                    className="text-3xl font-bold leading-tight text-green sm:text-4xl lg:text-5xl"
+                    className="text-5xl font-bold leading-tight text-green sm:text-4xl"
                   >
                     {slides[index].captionTitle}
                   </motion.h2>
@@ -129,7 +129,7 @@ export default function HomeHeroSlider() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
-                    className="mt-2 text-center text-sm leading-relaxed text-white sm:text-base md:text-xl"
+                    className="mt-2 text-center text-base leading-relaxed text-white sm:text-xl"
                   >
                     {slides[index].captionSubtitle}
                   </motion.h5>
@@ -148,17 +148,13 @@ export default function HomeHeroSlider() {
             type="button"
             aria-label={`Go to slide ${i + 1}`}
             onClick={() => setIndex(i)}
-            className="inline-flex min-h-11 min-w-11 items-center justify-center"
-          >
-            <span
-              className={
-                "h-2.5 w-6 rounded-full transition-colors border border-white/20 " +
-                (i === index
-                  ? "bg-white/90"
-                  : "bg-white/10 hover:bg-white/30")
-              }
-            />
-          </button>
+            className={
+              "h-2.5 w-6 rounded-full transition-colors border border-white/20 " +
+              (i === index
+                ? "bg-white/90"
+                : "bg-white/10 hover:bg-white/30")
+            }
+          />
         ))}
       </div>
     </div>

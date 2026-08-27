@@ -23,15 +23,6 @@
   --shadow-card: 0 20px 80px rgba(6, 37, 22, 0.12);
   --shadow-card-hover: 0 14px 30px rgba(6, 37, 22, 0.12);
 
-  /* Fluid type + spacing (Tailwind sm/md/lg/xl scale: 40/48/64/80rem) */
-  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-  --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
-  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
-  --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
-  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
-  --text-2xl: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
-  --text-3xl: clamp(1.75rem, 1.35rem + 2vw, 2.5rem);
-  --text-4xl: clamp(2rem, 1.4rem + 3vw, 3.25rem);
   --space-md: clamp(1rem, 0.8rem + 1vw, 1.5rem);
   --space-lg: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
   --space-xl: clamp(2rem, 1.5rem + 2.5vw, 4rem);
@@ -158,6 +149,20 @@ video {
   padding-inline: var(--container-pad);
 }
 
+@media (min-width: 768px) {
+  .container,
+  .footer__container,
+  .contact__container,
+  .news__container,
+  .customers__container,
+  .technology__container,
+  .about-stats__container,
+  .who-we-are__container,
+  .hero__container {
+    padding: 0 5%;
+  }
+}
+
 .about-stats__header {
   margin-bottom: 50px;
   max-width: 800px;
@@ -177,7 +182,7 @@ video {
 }
 
 .about-stats__title {
-  font-size: var(--text-4xl);
+  font-size: 48px;
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 24px;
@@ -315,20 +320,39 @@ video {
   color: var(--color-text-dark);
 }
 
-/* Standardized Section Styles — fluid type, Tailwind md/lg as enhancement */
+/* Standardized Section Styles — smaller on mobile, original desktop sizes from md */
 .section-title {
-  font-size: var(--text-3xl);
-  line-height: 1.2;
+  font-size: 1.5rem;
+  line-height: 1.25;
   font-weight: 700;
   margin-bottom: 2rem;
   letter-spacing: -0.5px;
+  overflow-wrap: break-word;
 }
 
 .section-title-spl {
-  font-size: var(--text-3xl);
-  line-height: 1.2;
+  font-size: 1.5rem;
+  line-height: 1.25;
   font-weight: 700;
   letter-spacing: -0.5px;
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 768px) {
+  .section-title,
+  .section-title-spl {
+    font-size: 2.25rem;
+    line-height: 1.2;
+  }
+
+  h2.section-title {
+    font-size: 2.5rem;
+  }
+
+  h3.section-title,
+  h3.section-title-spl {
+    font-size: 1.75rem;
+  }
 }
 
 /* Page banners: mobile-first clamp, then Tailwind lg (64rem) */
@@ -374,7 +398,7 @@ video {
 
 @media (width >= 48rem) {
   .page-hero--home {
-    height: 85dvh;
+    height: 85vh;
   }
 }
 
