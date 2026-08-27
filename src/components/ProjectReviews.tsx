@@ -40,19 +40,23 @@ export default function ProjectReviews({ country, pistachio = false }: ProjectRe
       aria-label="Project reviews"
     >
       <div className="project-reviews__inner">
-        <div className="project-reviews__head">
+        <div className={`project-reviews__head${pistachio ? "" : " project-reviews__head--detail"}`}>
           {pistachio ? (
-            <h3 className="section-title">Project Gallery</h3>
-          ) : null}
-          <a
-            className="project-reviews__channel"
-            href={YOUTUBE_CHANNEL_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Watch all on YouTube
-            <span aria-hidden="true">→</span>
-          </a>
+            <>
+              <h3 className="section-title">Project Gallery</h3>
+              <a
+                className="project-reviews__channel"
+                href={YOUTUBE_CHANNEL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Watch all on YouTube
+                <span aria-hidden="true">→</span>
+              </a>
+            </>
+          ) : (
+            <h3 className="project-news__title">Watch Project Videos</h3>
+          )}
         </div>
 
         <div className="project-reviews__grid">

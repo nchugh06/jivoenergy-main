@@ -36,6 +36,10 @@
   margin-bottom: 2.5rem;
 }
 
+.project-reviews__head--detail {
+  text-align: center;
+}
+
 .project-reviews__head .section-title {
   color: var(--color-text-dark);
   margin-bottom: 0.75rem;
