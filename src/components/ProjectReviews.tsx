@@ -5,12 +5,38 @@ import {
 } from "@/data/youtubeVideos";
 import "./ProjectReviews.css";
 
-export default function ProjectReviews() {
+type ProjectReviewsProps = {
+  country?: string;
+};
+
+function normalizeCountry(value: string) {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function countriesMatch(a: string, b: string) {
+  return normalizeCountry(a) === normalizeCountry(b);
+}
+
+export default function ProjectReviews({ country }: ProjectReviewsProps) {
+  const videos = country
+    ? YOUTUBE_VIDEOS.filter(
+        (video) => video.country != null && countriesMatch(video.country, country)
+      )
+    : YOUTUBE_VIDEOS;
+
+  if (!videos.length) return null;
+
   return (
     <section className="project-reviews" id="project-reviews" aria-label="Project reviews">
       <div className="project-reviews__inner">
         <div className="project-reviews__head">
-          <h3 className="section-title">Project Reviews</h3>
+          <h3 className="section-title">Project Gallery</h3>
           <a
             className="project-reviews__channel"
             href={YOUTUBE_CHANNEL_URL}
@@ -23,7 +49,7 @@ export default function ProjectReviews() {
         </div>
 
         <div className="project-reviews__grid">
-          {YOUTUBE_VIDEOS.map((video) => (
+          {videos.map((video) => (
             <a
               key={video.id}
               className="project-reviews__card"

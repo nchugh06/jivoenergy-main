@@ -11,6 +11,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ProjectGallery from '@/components/projects/ProjectGallery';
 import ProjectNews from '@/components/projects/ProjectNews';
+import ProjectReviews from '@/components/ProjectReviews';
 import './project-detail.css';
 
 const STATUS_LABEL: Record<string, string> = {
@@ -158,6 +159,7 @@ const ProjectDetailPage = () => {
 
       </div>
 
+      <ProjectReviews country={project.country} />
       <ProjectNews country={project.country} />
 
       {/* Impact Section Placeholder */}

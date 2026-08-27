@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { isProduction } from "@/lib/site";
@@ -29,6 +30,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} font-inter antialiased`}>
         {children}
+        <Script
+          src="https://mcp.figma.com/mcp/html-to-design/capture.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
