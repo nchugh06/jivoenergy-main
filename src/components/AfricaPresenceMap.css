@@ -73,7 +73,7 @@
   min-width: 0;
   height: auto;
   max-height: min(78vh, 44rem);
-  overflow: auto;
+  overflow: hidden;
   padding: 1.15rem 1.2rem 1.35rem;
   display: flex;
   flex-direction: column;
@@ -115,11 +115,9 @@
   position: relative;
   margin: -1.15rem -1.2rem 1rem;
   width: calc(100% + 2.4rem);
-  aspect-ratio: 4 / 3;
-  max-height: 240px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 13.5rem;
+  flex-shrink: 0;
+  display: block;
   background: var(--pistachio-green-background);
   border: none;
   border-radius: 0;
@@ -133,9 +131,12 @@
 .africa-presence__cover {
   object-fit: cover;
   object-position: center;
+  width: 100%;
+  height: 100%;
 }
 
 .africa-presence__heading {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   gap: 0.7rem;
@@ -196,6 +197,7 @@
   flex-direction: column;
   gap: 0;
   margin: 0;
+  flex-shrink: 0;
 }
 
 .africa-presence__meta div {
@@ -228,15 +230,19 @@
 
 .africa-presence__projects {
   list-style: none;
-  margin: 0;
+  margin: 0 -1.2rem 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   gap: 0;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .africa-presence__projects li {
-  margin: 0 -1.2rem;
+  margin: 0;
   border-bottom: 1px solid color-mix(in srgb, var(--pistachio-green-background) 58%, var(--color-text-dark) 16%);
 }
 
@@ -421,16 +427,21 @@
   .africa-presence__panel-inner {
     padding: 1.1rem 1.1rem 1.35rem;
     max-height: min(72dvh, 36rem);
+    overflow: hidden;
   }
 
   .africa-presence__visual {
-    max-height: 200px;
+    height: 13.5rem;
     margin: -1.1rem -1.1rem 0.85rem;
     width: calc(100% + 2.2rem);
   }
 
+  .africa-presence__projects {
+    margin: 0 -1.1rem 0;
+  }
+
   .africa-presence__projects li {
-    margin: 0 -1.1rem;
+    margin: 0;
   }
 
   .africa-presence__project {

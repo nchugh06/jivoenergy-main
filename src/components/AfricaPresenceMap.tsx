@@ -804,7 +804,7 @@ export default function AfricaPresenceMap() {
                     src={coverImage}
                     alt={selectedName}
                     fill
-                    className="africa-presence__cover"
+                    className="africa-presence__cover object-cover"
                     sizes="360px"
                   />
                 </div>
