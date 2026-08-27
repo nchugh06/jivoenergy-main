@@ -10,9 +10,9 @@ const Footer = () => {
     <footer className="w-full bg-black text-white">
       <div className="w-full max-w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Company Info */}
-          <div className="space-y-4">
+          <div className="space-y-4 min-w-0">
             <Link href="/" className="block">
               <Image
                 src="/logo-white.png"
@@ -43,12 +43,13 @@ const Footer = () => {
               </a>
             </div>
             <div className="mt-4">
-               <a href="mailto:info@jivoenergy.com" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2">
+               <a href="mailto:info@jivoenergy.com" className="text-gray-400 hover:text-white transition-colors text-sm flex flex-wrap items-center gap-x-2 gap-y-1 break-all">
                  <span className="font-semibold text-white">Email:</span> info@jivoenergy.com
                </a>
             </div>
           </div>
 
+          <div className="grid grid-cols-2 gap-8 lg:contents">
           {/* Quick Links */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
@@ -98,7 +99,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="md:col-span-2">
+          </div>
+
+          <div className="md:col-span-2 min-w-0">
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-gray-400 text-sm items-start">
               <li>
@@ -131,11 +134,11 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-gray-400 text-sm text-center md:text-left">
               © 2026 JIVO ENERGY. All rights reserved.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-0">
               <Link href="/privacy-policy" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
                 Privacy Policy
               </Link>
