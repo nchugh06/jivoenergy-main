@@ -37,7 +37,7 @@ export default function Home() {
         {/* <CoreValues /> */}
         <BusinessAreasServices />
         <Clients />
-        <ProjectReviews pistachio />
+        <ProjectReviews variant="home" />
         {/* <Impact /> */}
         {/* <Media /> */}
         <Achievements />

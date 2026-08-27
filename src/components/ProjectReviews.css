@@ -4,7 +4,7 @@
   padding: 0 0 3rem 0;
 }
 
-.project-reviews--pistachio {
+.project-reviews--home {
   background: var(--pistachio-green-background);
 }
 
@@ -36,7 +36,8 @@
   margin-bottom: 2.5rem;
 }
 
-.project-reviews__head--detail {
+.project-reviews__head--home,
+.project-reviews__head--project {
   text-align: center;
 }
 
@@ -215,12 +216,12 @@
   }
 }
 
-.project-reviews.project-reviews--pistachio {
+.project-reviews.project-reviews--home {
   padding: 3rem 0;
 }
 
 @media (min-width: 1024px) {
-  .project-reviews.project-reviews--pistachio {
+  .project-reviews.project-reviews--home {
     padding: 4rem 0;
   }
 }

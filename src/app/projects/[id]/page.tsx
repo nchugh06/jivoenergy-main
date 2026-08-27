@@ -159,7 +159,7 @@ const ProjectDetailPage = () => {
 
       </div>
 
-      <ProjectReviews country={project.country} />
+      <ProjectReviews variant="project" country={project.country} />
       <ProjectNews country={project.country} />
 
       {/* Impact Section Placeholder */}
