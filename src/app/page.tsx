@@ -17,6 +17,7 @@ import Map from "@/components/MapImage";
 import HomeHeroSlider from "@/components/HomeHeroSlider";
 import BusinessAreasServices from "@/components/BusinessAreasServices";
 import AfricaPresenceMap from "@/components/AfricaPresenceMap";
+import ProjectReviews from "@/components/ProjectReviews";
 
 
 
@@ -36,6 +37,7 @@ export default function Home() {
         {/* <CoreValues /> */}
         <BusinessAreasServices />
         <Clients />
+        <ProjectReviews />
         {/* <Impact /> */}
         {/* <Media /> */}
         <Achievements />
