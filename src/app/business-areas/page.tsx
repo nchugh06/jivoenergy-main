@@ -297,7 +297,7 @@ const BusinessAreas = () => {
     <div className="ba-page min-h-screen bg-white">
       <Navbar />
 
-      <section className="ba-banner relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="ba-banner">
         <Image
           src="/assets/banners/BusinessAreas.jpg"
           alt="Business Areas"

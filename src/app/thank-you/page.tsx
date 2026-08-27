@@ -11,13 +11,13 @@ export default function ThankYou() {
     <div className="min-h-screen bg-white flex flex-col">
       <Navbar />
 
-      <main className="flex-grow flex items-center justify-center p-4">
+      <main className="flex-grow flex items-center justify-center p-4 pt-28">
         <div className="max-w-2xl w-full text-center space-y-8">
           <div className="flex justify-center">
              <FaCheckCircle className="text-[#062516] w-24 h-24" />
           </div>
           
-          <h1 className="text-4xl md:text-5xl font-bold text-[#062516]">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#062516]">
             Thank You!
           </h1>
           
@@ -33,7 +33,7 @@ export default function ThankYou() {
           <div className="pt-8">
             <Link 
               href="/"
-              className="inline-block px-8 py-4 bg-[#062516] text-white rounded-lg font-medium transition-all duration-300 hover:bg-[#051e12] hover:shadow-lg hover:-translate-y-1"
+              className="inline-flex min-h-11 items-center justify-center px-8 py-4 bg-[#062516] text-white rounded-lg font-medium transition-all duration-300 hover:bg-[#051e12] hover:shadow-lg hover:-translate-y-1"
             >
               Back to Home
             </Link>

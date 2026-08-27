@@ -4,8 +4,8 @@ const About = () => {
   return (
     <section className="about-stats">
       <div className="about-stats__container">
-        <div className="about-two-col">
-          <div className="about-two-col__video">
+        <div className="mt-9 grid grid-cols-1 items-center gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="overflow-hidden rounded-2xl min-w-0">
             <video
               src="/assets/videos/final_video_94mb.mp4"
               className="w-full h-full object-cover rounded-2xl"
@@ -17,7 +17,7 @@ const About = () => {
               controls={true}
             />
           </div>
-          <div className="about-two-col__copy">
+          <div className="min-w-0">
             <h3 className="section-title text-center text-[#062516]">Why Choose JIVO Energy</h3>
             <p className="about-stats__description">
               <span className="font-bold text-[#062516]">JIVO Energy</span> is one of the fastest growing renewable energy companies with a track record of over
@@ -31,7 +31,7 @@ const About = () => {
             </p>
             <a
               href="/about"
-              className="inline-block mt-6 px-6 py-3 bg-[#fafafa] text-black rounded-lg font-medium transition-colors duration-300 text-center"
+              className="inline-flex min-h-11 items-center justify-center mt-6 px-6 py-3 bg-[#fafafa] text-black rounded-lg font-medium transition-colors duration-300 text-center"
             >
               Explore More
             </a>
@@ -119,36 +119,6 @@ const About = () => {
           </div>
         </div> */}
 
-        {/* inline styles for the new layout + icons */}
-        <style jsx>{`
-          .about-two-col{
-            display:grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            align-items:center;
-            margin-top: 2.25rem;
-          }
-          .about-two-col__video{ border-radius: 1rem; overflow:hidden; }
-          .about-two-col__copy{ }
-
-          .stat-icon{
-            width:44px;
-            height:44px;
-            color:#0ea5e9;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            border-radius:14px;
-            background: rgba(14,165,233,0.08);
-            margin-bottom: 0.75rem;
-          }
-          .stat-icon svg{ width:24px; height:24px; }
-
-          /* desktop */
-          @media (min-width: 1024px){
-            .about-two-col{ grid-template-columns: 1.05fr 0.95fr; }
-          }
-        `}</style>
       </div>
     </section>
   );

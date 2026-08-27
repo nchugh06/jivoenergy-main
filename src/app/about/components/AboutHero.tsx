@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function AboutHero() {
   return (
-    <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
+    <section className="page-hero">
       <Image
         src="/assets/banners/AboutUs.jpg"
         alt="About Banner"

@@ -18,9 +18,9 @@ export default function SustainabilityPage() {
     <main className="min-h-screen bg-white">
       <Navbar />
 
-      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#085D36] to-[#04301C]">
+      <section className="page-hero page-hero--mid bg-gradient-to-br from-[#085D36] to-[#04301C]">
         <div className="relative z-10 container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4 px-4">
             Sustainability & Impact
           </h1>
           <p className="text-xl text-white/90 max-w-2xl mx-auto">

@@ -22,6 +22,21 @@
   --color-dark-green-rgb: 28, 72, 50;
   --shadow-card: 0 20px 80px rgba(6, 37, 22, 0.12);
   --shadow-card-hover: 0 14px 30px rgba(6, 37, 22, 0.12);
+
+  /* Fluid type + spacing (Tailwind sm/md/lg/xl scale: 40/48/64/80rem) */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+  --text-3xl: clamp(1.75rem, 1.35rem + 2vw, 2.5rem);
+  --text-4xl: clamp(2rem, 1.4rem + 3vw, 3.25rem);
+  --space-md: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --space-lg: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
+  --space-xl: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+  --container-pad: clamp(1rem, 0.5rem + 3vw, 4rem);
+  --touch-min: 2.75rem;
 }
 
 .text-dark-green {
@@ -58,9 +73,19 @@
   }
 }
 
+html {
+  overflow-x: clip;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
+  overflow-x: clip;
+}
+
+img,
+video {
+  max-width: 100%;
 }
 
 /* About Stats Section Styles */
@@ -129,8 +154,8 @@ body {
 .hero__container,
 .nav__container {
   max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 5%;
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
 }
 
 .about-stats__header {
@@ -152,7 +177,7 @@ body {
 }
 
 .about-stats__title {
-  font-size: 48px;
+  font-size: var(--text-4xl);
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 24px;
@@ -290,10 +315,9 @@ body {
   color: var(--color-text-dark);
 }
 
-/* Standardized Section Styles */
+/* Standardized Section Styles — fluid type, Tailwind md/lg as enhancement */
 .section-title {
-  font-size: 2.25rem;
-  /* 36px */
+  font-size: var(--text-3xl);
   line-height: 1.2;
   font-weight: 700;
   margin-bottom: 2rem;
@@ -301,27 +325,56 @@ body {
 }
 
 .section-title-spl {
-  font-size: 2.25rem;
-  /* 36px */
+  font-size: var(--text-3xl);
   line-height: 1.2;
   font-weight: 700;
   letter-spacing: -0.5px;
 }
 
-@media (min-width: 768px) {
-  h2.section-title {
-    font-size: 2.5rem;
-    /* 48px */
-  }
+/* Page banners: mobile-first clamp, then Tailwind lg (64rem) */
+.page-hero {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: clamp(12rem, 40dvh, 20rem);
+}
 
-  h3.section-title {
-    font-size: 1.75rem;
-    /* 48px */
+@media (width >= 64rem) {
+  .page-hero {
+    height: 40vh;
   }
+}
 
-  h3.section-title-spl {
-    font-size: 1.75rem;
-    /* 48px */
+.page-hero--mid {
+  height: clamp(14rem, 50dvh, 26rem);
+}
+
+@media (width >= 64rem) {
+  .page-hero--mid {
+    height: 60vh;
+  }
+}
+
+.page-hero--tall {
+  height: clamp(16rem, 55dvh, 28rem);
+}
+
+@media (width >= 64rem) {
+  .page-hero--tall {
+    height: 65vh;
+  }
+}
+
+.page-hero--home {
+  height: clamp(22rem, 70svh, 40rem);
+}
+
+@media (width >= 48rem) {
+  .page-hero--home {
+    height: 85dvh;
   }
 }
 

@@ -25,8 +25,8 @@ const Footer = () => {
             {/* <p className="text-gray-400 text-sm">
               Empowering sustainable energy solutions for a brighter future.
             </p> */}
-            <div className="flex space-x-4">
-              <a href="https://www.linkedin.com/company/jivo-energy/" target="_blank" className="text-gray-400 hover:text-white transition-colors duration-200">
+            <div className="flex flex-wrap gap-1">
+              <a href="https://www.linkedin.com/company/jivo-energy/" target="_blank" className="inline-flex h-11 w-11 items-center justify-center text-gray-400 hover:text-white transition-colors duration-200">
                 <FaLinkedin size={20} />
               </a>
               {/* <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
@@ -35,10 +35,10 @@ const Footer = () => {
               <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
                 <FaFacebook size={20} />
               </a> */}
-              <a href="https://www.instagram.com/jivoenergy?igsh=MTQ4MDN2bDV6NjJhNA==" target="_blank" className="text-gray-400 hover:text-white transition-colors duration-200">
+              <a href="https://www.instagram.com/jivoenergy?igsh=MTQ4MDN2bDV6NjJhNA==" target="_blank" className="inline-flex h-11 w-11 items-center justify-center text-gray-400 hover:text-white transition-colors duration-200">
                 <FaInstagram size={20} />
               </a>
-              <a href="https://www.youtube.com/@JIVOEnergy" target="_blank" className="text-gray-400 hover:text-white transition-colors duration-200">
+              <a href="https://www.youtube.com/@JIVOEnergy" target="_blank" className="inline-flex h-11 w-11 items-center justify-center text-gray-400 hover:text-white transition-colors duration-200">
                 <FaYoutube size={20} />
               </a>
             </div>
@@ -135,14 +135,14 @@ const Footer = () => {
             <p className="text-gray-400 text-sm">
               © 2026 JIVO ENERGY. All rights reserved.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link href="/privacy-policy" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-4 md:mt-0">
+              <Link href="/privacy-policy" className="inline-flex min-h-11 items-center text-gray-400 hover:text-white text-sm transition-colors duration-200">
                 Privacy Policy
               </Link>
-              <Link href="/terms-of-service" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
+              <Link href="/terms-of-service" className="inline-flex min-h-11 items-center text-gray-400 hover:text-white text-sm transition-colors duration-200">
                 Terms of Service
               </Link>
-              <Link href="/sitemap.xml" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
+              <Link href="/sitemap.xml" className="inline-flex min-h-11 items-center text-gray-400 hover:text-white text-sm transition-colors duration-200">
                 Sitemap
               </Link>
             </div>

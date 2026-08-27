@@ -78,7 +78,7 @@ const Certificate = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="page-hero">
               <Image src="/assets/banners/Certifications.jpg" alt="Certifications Banner"
                 fill
                 className="object-cover"
@@ -99,7 +99,7 @@ const Certificate = () => {
           Certifications
         </motion.h3>
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}

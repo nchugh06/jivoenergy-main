@@ -106,7 +106,7 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="page-hero page-hero--mid">
         <Image
           src={typeof area.image === 'string' ? area.image : area.image}
           alt={displayTitle}

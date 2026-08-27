@@ -200,7 +200,7 @@
   margin: 1.25rem 0 0;
 }
 
-@media (max-width: 767px) {
+@media (width < 64rem) {
   .careers-jobs {
     padding: 2rem 0 1.25rem;
   }
@@ -356,7 +356,7 @@
   text-justify: auto;
 }
 
-@media (max-width: 1023px) {
+@media (width < 64rem) {
   .careers-why {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
@@ -395,7 +395,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (width < 40rem) {
   .careers-why {
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -467,7 +467,7 @@
   margin: 0 0 0.4rem;
   line-height: 1.25;
   color: inherit;
-  white-space: nowrap;
+  overflow-wrap: break-word;
 }
 
 .careers-values__desc {
@@ -483,13 +483,13 @@
   overflow-wrap: break-word;
 }
 
-@media (max-width: 1023px) {
+@media (width < 64rem) {
   .careers-values__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 767px) {
+@media (width < 48rem) {
   .careers-values__grid {
     display: flex;
     flex-direction: column;
@@ -548,13 +548,23 @@
 /* Application form — one viewport on desktop */
 .careers-apply {
   background: var(--pistachio-green-background, #f6faf5);
-  height: 100vh;
-  min-height: 100vh;
-  max-height: 100vh;
-  padding: 1.25rem 1.5rem;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  padding: 1.25rem 1.5rem 3rem;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  overflow: visible;
+}
+
+@media (width >= 64rem) and (min-height: 50rem) {
+  .careers-apply {
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    overflow: hidden;
+    padding: 1.25rem 1.5rem;
+  }
 }
 
 .careers-apply__inner {
@@ -895,7 +905,7 @@
   margin: 0;
 }
 
-@media (max-width: 900px) {
+@media (width < 64rem) {
   .careers-apply {
     height: auto;
     min-height: 0;
@@ -922,7 +932,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (width < 40rem) {
   .careers-apply__row--2 {
     grid-template-columns: 1fr;
   }
@@ -936,7 +946,7 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (width < 48rem) {
   .careers-apply {
     padding: 1.5rem 1rem 3rem;
   }

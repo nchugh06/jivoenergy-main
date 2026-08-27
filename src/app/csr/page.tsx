@@ -19,7 +19,7 @@ export default function CSRPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="page-hero page-hero--mid">
         <div className="absolute inset-0 z-0">
           <Image
             src="/bgjve.png"
@@ -30,7 +30,7 @@ export default function CSRPage() {
           />
         </div>
         <div className="relative z-10 container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4 px-4">
             Giving Back to the Community
           </h1>
           <p className="text-xl text-white/90 max-w-2xl mx-auto">

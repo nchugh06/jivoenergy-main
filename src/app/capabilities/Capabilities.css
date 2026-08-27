@@ -1,19 +1,25 @@
 /* ── Capabilities page ─────────────────────────────────────────── */
 
 .capabilities-page {
-  min-height: 100vh;
+  min-height: 100dvh;
   background: #ffffff;
 }
 
 /* Banner */
 .capabilities-banner {
   position: relative;
-  height: 40vh;
+  height: clamp(12rem, 40dvh, 20rem);
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+@media (width >= 64rem) {
+  .capabilities-banner {
+    height: 40vh;
+  }
 }
 
 /* Intro */
@@ -49,12 +55,19 @@
 }
 
 .capabilities-section {
-  position: sticky;
-  top: 5.5rem; /* clear fixed navbar */
+  position: relative;
+  top: auto;
   z-index: var(--stack-index, 1);
   width: 100%;
   background-color: #ffffff;
-  will-change: transform;
+}
+
+@media (width >= 64rem) {
+  .capabilities-section {
+    position: sticky;
+    top: 5.5rem;
+    will-change: transform;
+  }
 }
 
 .capabilities-section.is-tinted {
@@ -98,7 +111,7 @@
 
 .capabilities-media-frame {
   position: relative;
-  height: 400px;
+  height: clamp(14rem, 50vw, 25rem);
   border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(6, 37, 22, 0.12);
@@ -209,17 +222,12 @@
   }
 }
 
-/* Slightly lower sticky offset on small screens (compact nav) */
-@media (max-width: 767px) {
-  .capabilities-section {
-    top: 4.25rem;
-  }
-
-  .capabilities-media-frame {
-    height: 260px;
-  }
-
+@media (width < 64rem) {
   .capabilities-section-inner {
     padding: 2.5rem 1rem;
+  }
+
+  .capabilities-cta {
+    padding: 3rem 1rem;
   }
 }

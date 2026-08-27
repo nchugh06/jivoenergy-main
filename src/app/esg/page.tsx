@@ -82,7 +82,7 @@ export default function SustainabilityPage() {
     <main className="min-h-screen bg-white">
       <Navbar />
 
-      <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="page-hero">
               <Image
                 src="/assets/banners/ESG.jpg"
                 alt="ESG Banner"

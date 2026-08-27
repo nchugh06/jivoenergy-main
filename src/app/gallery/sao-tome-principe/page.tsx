@@ -55,7 +55,7 @@ export default function SaoTomePrincipeGallery() {
       <Navbar />
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
         {/* Hero Section */}
-        <div className="relative w-full h-[65vh] bg-[#062516] overflow-hidden">
+        <div className="page-hero page-hero--tall bg-[#062516]">
           <div className="absolute inset-0">
             <Image
               src="/gallery/sao1.jpg"
@@ -71,7 +71,7 @@ export default function SaoTomePrincipeGallery() {
               <motion.h1 
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-5xl md:text-6xl font-bold text-white mb-4"
+                className="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-4 px-4"
               >
                 São Tomé and Príncipe
               </motion.h1>
@@ -87,7 +87,7 @@ export default function SaoTomePrincipeGallery() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="flex items-center justify-center gap-4 text-white/80"
+                className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 px-4 text-white/80"
               >
                 <span className="flex items-center gap-2">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

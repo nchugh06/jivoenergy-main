@@ -46,7 +46,7 @@ export default function CoreValues() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left: Image */}
-          <div className="relative h-96 md:h-[500px] rounded-lg overflow-hidden shadow-xl bg-slate-200">
+          <div className="relative h-56 sm:h-80 md:h-[500px] rounded-lg overflow-hidden shadow-xl bg-slate-200">
             <Image
               src="/assets/core-values.jpg"
               alt="Solar energy workers with panels"

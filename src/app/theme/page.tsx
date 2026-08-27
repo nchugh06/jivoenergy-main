@@ -31,9 +31,9 @@ const Theme = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <div className="relative w-full h-[40vh] bg-[#062516]">
+      <div className="page-hero bg-[#062516]">
         <div className="relative z-10 h-full flex items-center justify-center">
-          <h1 className="text-6xl font-bold text-white text-center px-4">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white text-center px-4">
             Design System
           </h1>
         </div>

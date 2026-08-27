@@ -191,7 +191,7 @@
 }
 
 /* Mobile: message comes down out of the photo above */
-@media (max-width: 1023px) {
+@media (width < 64rem) {
   .ceo-message__portrait-frame {
     /* Stacked layout: outer curve on top corners */
     border-radius: var(--ceo-outer-radius) var(--ceo-outer-radius) 0 0;

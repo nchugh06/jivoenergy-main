@@ -61,12 +61,14 @@ export default function RegionProjectsClient({ regionId }: RegionProjectsClientP
     <div className="min-h-screen bg-white selection:bg-[#FFFA84] selection:text-[#062516]">
       <Navbar />
 
-      <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="page-hero">
         <div className="absolute inset-0 block md:hidden">
           <Image
             src={region.bannerMobile}
             alt={`${region.label} Projects`}
             fill
+            className="object-cover"
+            sizes="100vw"
             priority
           />
         </div>
@@ -75,6 +77,8 @@ export default function RegionProjectsClient({ regionId }: RegionProjectsClientP
             src={region.banner}
             alt={`${region.label} Projects`}
             fill
+            className="object-cover"
+            sizes="100vw"
             priority
           />
         </div>

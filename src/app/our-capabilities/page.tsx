@@ -60,7 +60,7 @@ const Capabilities = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <div className="relative w-full h-[65vh] bg-[#062516] overflow-hidden">
+      <div className="page-hero page-hero--tall bg-[#062516]">
         <video
           autoPlay
           loop
@@ -71,7 +71,7 @@ const Capabilities = () => {
           <source src="/power.mp4" type="video/mp4" />
         </video>
         <div className="relative z-10 h-full flex items-center justify-center">
-          <h1 className="text-7xl font-bold text-white text-center px-4">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white text-center px-4">
             OUR CAPABILITIES
           </h1>
         </div>

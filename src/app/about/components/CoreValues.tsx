@@ -46,7 +46,7 @@ export default function CoreValues() {
           {coreValues.map((value, index) => (
             <ScrollReveal
               key={value.title}
-              className={`rounded-3xl border border-slate-200 ${value.bg} p-8 shadow-sm hover:shadow-lg`}
+              className={`rounded-3xl border border-slate-200 ${value.bg} p-6 sm:p-8 shadow-sm hover:shadow-lg`}
               delay={(index + 1) * 0.15}
               from="right"
               distance={90}

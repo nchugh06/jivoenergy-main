@@ -1,18 +1,24 @@
 /* Business Areas — sticky image swapped via IntersectionObserver */
 
 .ba-page {
-  min-height: 100vh;
+  min-height: 100dvh;
   background: #ffffff;
 }
 
 .ba-banner {
   position: relative;
-  height: 40vh;
+  height: clamp(12rem, 40dvh, 20rem);
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+@media (width >= 64rem) {
+  .ba-banner {
+    height: 40vh;
+  }
 }
 
 .ba-intro-wrap {
@@ -42,16 +48,14 @@
 
 .ba-scroll-container {
   position: relative;
-  display: grid;
-  /* Image column left (fits 600px), text right — two children so sticky spans all sections */
-  grid-template-columns: minmax(280px, 600px) minmax(0, 1fr);
-  column-gap: 3rem;
+  display: block;
   max-width: 80rem;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
 .ba-swatch-col {
+  display: none;
   min-width: 0;
 }
 
@@ -64,9 +68,9 @@
 .ba-scroll-section {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  min-height: 60vh;
-  padding: 4rem 0;
+  justify-content: flex-start;
+  min-height: 0;
+  padding: 2rem 0;
   scroll-margin-top: 6rem;
 }
 
@@ -105,15 +109,26 @@
   background: #051e12;
 }
 
-/* Per-section photo — mobile listing only */
+/* Per-section photo — default (mobile/tablet); hidden at lg */
 .ba-section-photo {
-  display: none;
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  margin-bottom: 1.25rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: var(--pistachio-green-background, #f6faf5);
+}
+
+.ba-section-photo img {
+  object-fit: cover;
 }
 
 /* Sticky image — active layer set by IntersectionObserver */
 .ba-swatch {
-  --ba-swatch-width: 600px;
-  --ba-swatch-height: 400px;
+  --ba-swatch-width: min(37.5rem, 100%);
+  --ba-swatch-height: clamp(16rem, 28vw, 25rem);
 
   position: sticky;
   top: calc(50% - (var(--ba-swatch-height) / 2));
@@ -178,35 +193,26 @@
   background: #051e12;
 }
 
-/* Mobile: simple listing — image then copy in each section */
-@media (max-width: 1023px) {
+/* Tailwind lg+: sticky image column + copy */
+@media (width >= 64rem) {
   .ba-scroll-container {
-    display: block;
+    display: grid;
+    grid-template-columns: minmax(16rem, min(37.5rem, 45%)) minmax(0, 1fr);
+    column-gap: 3rem;
   }
 
   .ba-swatch-col {
+    display: block;
+  }
+
+  .ba-section-photo {
     display: none;
   }
 
   .ba-scroll-section {
-    min-height: 0;
-    padding: 2rem 0;
-    justify-content: flex-start;
-  }
-
-  .ba-section-photo {
-    display: block;
-    position: relative;
-    width: 100%;
-    aspect-ratio: 3 / 2;
-    margin-bottom: 1.25rem;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    background-color: var(--pistachio-green-background, #f6faf5);
-  }
-
-  .ba-section-photo img {
-    object-fit: cover;
+    min-height: 60vh;
+    padding: 4rem 0;
+    justify-content: center;
   }
 }
 

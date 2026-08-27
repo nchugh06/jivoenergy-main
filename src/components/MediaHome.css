@@ -66,9 +66,15 @@
 
 .media-home-card-image {
   position: relative;
-  height: 18rem;
+  height: 12rem;
   overflow: hidden;
   background: var(--color-pistachio-green);
+}
+
+@media (width >= 48rem) {
+  .media-home-card-image {
+    height: 18rem;
+  }
 }
 
 .media-home-card-image img {
@@ -153,11 +159,11 @@
 }
 
 .media-home-prev {
-  left: -1rem;
+  left: 0.5rem;
 }
 
 .media-home-next {
-  right: -1rem;
+  right: 0.5rem;
 }
 
 .media-home-prev:hover,
@@ -165,15 +171,19 @@
   background: var(--color-pistachio-green);
 }
 
-@media (min-width: 768px) {
+@media (width >= 48rem) {
   .media-home-carousel-wrap {
     padding: 2rem;
   }
 }
 
-@media (max-width: 767px) {
+@media (width < 48rem) {
+  .media-home-section {
+    padding: 2.5rem 0;
+  }
+
   .media-home-swiper {
-    padding-bottom: 0;
+    padding-bottom: 3.5rem;
   }
 
   .media-home-prev,

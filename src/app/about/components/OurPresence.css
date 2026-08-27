@@ -34,11 +34,19 @@
 
 .region-map{
   position: absolute;
-  right: -25px;
-  zoom:0.82;
+  right: 0;
   top: 50%;
+  width: min(42%, 11.25rem);
+  height: auto;
   object-fit: contain;
   transform: translateY(-50%);
   opacity: 0.9;
   z-index: 1;
+  pointer-events: none;
+}
+
+@media (width < 40rem) {
+  .region-map {
+    width: min(38%, 6.5rem);
+  }
 }

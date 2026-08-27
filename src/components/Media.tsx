@@ -113,7 +113,7 @@ const Media = ({ limit }: MediaProps) => {
         </div>
         
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
           {displayedCards.map((card) => (
             <button 
               key={card.id}
@@ -145,8 +145,8 @@ const Media = ({ limit }: MediaProps) => {
               </div>
               
               {/* Content */}
-              <div className="p-8 h-96 flex flex-col">
-                <h3 className="text-2xl font-bold text-[#062516] mb-4 group-hover:text-green-600 transition-colors duration-300 line-clamp-2">
+              <div className="p-5 sm:p-8 min-h-0 sm:min-h-72 flex flex-col">
+                <h3 className="text-xl sm:text-2xl font-bold text-[#062516] mb-4 group-hover:text-green-600 transition-colors duration-300 line-clamp-2">
                   {card.title}
                 </h3>
                 <p className="text-gray-700 mb-6 leading-relaxed flex-1 overflow-hidden">

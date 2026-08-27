@@ -143,8 +143,8 @@ const Team = () => {
         )}
       </div>
 
-      <div className="text-center mt-2 max-w-[120px]">
-        <h3 className={`font-bold text-[#062516] ${size === 'large' ? 'text-base' : 'text-xs md:text-sm'} leading-tight`}>
+      <div className="text-center mt-2 max-w-[7.5rem] px-1">
+        <h3 className={`font-bold text-[#062516] break-words ${size === 'large' ? 'text-base' : 'text-xs md:text-sm'} leading-tight`}>
           {member.name.split(' ')[0]}
         </h3>
       </div>
@@ -208,7 +208,7 @@ const Team = () => {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap justify-center gap-0 md:gap-0"
+              className="flex flex-wrap justify-center gap-3 sm:gap-4"
             >
               {projectExecution.map((member, index) => (
                 <MemberCard key={index} member={member} size="small" />
@@ -223,7 +223,7 @@ const Team = () => {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap justify-center gap-0 md:gap-0"
+              className="flex flex-wrap justify-center gap-3 sm:gap-4"
             >
               {projectDevelopment.map((member, index) => (
                 <MemberCard key={index} member={member} size="small" />
@@ -238,7 +238,7 @@ const Team = () => {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap justify-center gap-0 md:gap-0"
+              className="flex flex-wrap justify-center gap-3 sm:gap-4"
             >
               {projectSupport.map((member, index) => (
                 <MemberCard key={index} member={member} size="small" />
@@ -253,7 +253,7 @@ const Team = () => {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap justify-center gap-0 md:gap-0"
+              className="flex flex-wrap justify-center gap-3 sm:gap-4"
             >
               {projectCorporate.map((member, index) => (
                 <MemberCard key={index} member={member} size="small" />

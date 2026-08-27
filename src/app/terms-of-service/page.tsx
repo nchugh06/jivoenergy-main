@@ -31,7 +31,7 @@ export default function TermsOfService() {
 
 
 
-      <section className="bg-gray-50 py-16 md:py-24">
+      <section className="bg-gray-50 pt-28 pb-16 md:pt-32 md:pb-24">
         <div className="container mx-auto px-4">
           <h3 className="section-title-spl text-center text-[#062516] mb-10">
             Terms of Service

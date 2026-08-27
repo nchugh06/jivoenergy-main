@@ -19,7 +19,7 @@ export default function Home() {
       
       <Navbar />
       <main className="flex flex-col items-center w-full">
-        <section id="hero-section" className="relative w-full h-[100vh] overflow-hidden bg-black">
+        <section id="hero-section" className="page-hero page-hero--home bg-black">
           <div className="absolute inset-0 z-0 hidden md:block">
             <GlobeViz />
           </div>

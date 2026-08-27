@@ -191,7 +191,7 @@ const Careers = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <div className="relative w-full h-[40vh] bg-[#062516] flex items-center justify-center overflow-hidden">
+      <div className="page-hero bg-[#062516]">
         <div
           className="absolute inset-0 z-0 opacity-120"
           style={{

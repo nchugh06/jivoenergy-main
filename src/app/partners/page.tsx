@@ -59,7 +59,7 @@ const Partners = () => {
     const isFinancersSection = title === 'Financers';
 
     return (
-    <div className={`mb-16 ${isFinancersSection ? 'relative left-1/2 -translate-x-1/2 w-screen bg-[#F5FBF5] py-10 px-35' : ''}`}>
+    <div className={`mb-16 ${isFinancersSection ? 'bg-[#F5FBF5] py-10 px-4 sm:px-8 -mx-4 sm:mx-0' : ''}`}>
       <motion.div
         initial={reduceMotion ? false : 'hidden'}
         whileInView="visible"
@@ -72,7 +72,7 @@ const Partners = () => {
         >
           {title}
         </motion.h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 justify-items-center items-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 justify-items-center items-center">
           {images.map((img, index) => (
             <motion.div
               key={index}
@@ -101,7 +101,7 @@ const Partners = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="page-hero">
               <motion.div
                 className="absolute inset-0"
                 initial={reduceMotion ? false : { scale: 1.08 }}

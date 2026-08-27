@@ -137,7 +137,7 @@ const Contact = () => {
       <Navbar />
       
       {/* Hero Section - Reduced height */}
-      <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="page-hero">
                     <Image
                       src="/assets/banners/ContactUs.jpg" alt="Contact Banner"
                       fill
@@ -169,30 +169,30 @@ const Contact = () => {
             {/* Social Connect Section - More compact */}
             <div className="bg-[#F5FBF5] rounded-lg p-4">
               <h3 className="text-lg font-bold text-[#062516] mb-4">Connect with us</h3>
-              <div className="flex justify-center space-x-6">
+              <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
                 <a 
                   href="mailto:info@jivoenergy.com" 
-                  className="flex items-center text-[#062516] hover:text-[#051e12] transition-colors duration-300"
+                  className="inline-flex min-h-11 items-center text-[#062516] hover:text-[#051e12] transition-colors duration-300 px-2"
                 >
                   <FaEnvelope size={20} />
                   <span className="ml-2">Email</span>
                 </a>
                 <a 
-                  href="https://www.instagram.com/jivoenergy?igsh=MTQ4MDN2bDV6NjJhNA==" target="_blank" className="flex items-center text-[#062516] hover:text-[#051e12] transition-colors duration-300"
+                  href="https://www.instagram.com/jivoenergy?igsh=MTQ4MDN2bDV6NjJhNA==" target="_blank" className="inline-flex min-h-11 items-center text-[#062516] hover:text-[#051e12] transition-colors duration-300 px-2"
                 >
                   <FaInstagram size={20} />
                   <span className="ml-2">Instagram</span>
                 </a>
                 <a 
                   href="https://www.youtube.com/@JIVOEnergy" target="_blank"
-                  className="flex items-center text-[#062516] hover:text-[#051e12] transition-colors duration-300"
+                  className="inline-flex min-h-11 items-center text-[#062516] hover:text-[#051e12] transition-colors duration-300 px-2"
                 >
                   <FaYoutube size={20} />
                   <span className="ml-2">YouTube</span>
                 </a>
                 <a 
                   href="https://www.linkedin.com/company/jivo-energy/" target="_blank"
-                  className="flex items-center text-[#062516] hover:text-[#051e12] transition-colors duration-300"
+                  className="inline-flex min-h-11 items-center text-[#062516] hover:text-[#051e12] transition-colors duration-300 px-2"
                 >
                   <FaLinkedin size={20} />
                   <span className="ml-2">LinkedIn</span>
@@ -245,7 +245,7 @@ const Contact = () => {
                     Phone Number
                   </label>
                   <div className="flex gap-2">
-                    <div className="w-1/3 min-w-[120px]">
+                    <div className="w-[7.5rem] shrink-0 sm:w-1/3 sm:min-w-[120px]">
                       <select
                         value={formData.countryCode}
                         onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}

@@ -72,14 +72,14 @@ export default function GalleryPage() {
       <Navbar />
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
         {/* Hero Section */}
-        <div className="relative w-full h-[65vh] bg-[#062516] overflow-hidden">
+        <div className="page-hero page-hero--tall bg-[#062516]">
           <div className="absolute inset-0 bg-gradient-to-r from-[#062516] to-[#051e12] opacity-90"></div>
           <div className="relative z-10 h-full flex items-center justify-center">
             <div className="text-center">
               <motion.h1 
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-6xl md:text-7xl font-bold text-white mb-6"
+                className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 px-4"
               >
                 Our Global Impact
               </motion.h1>
