@@ -2,39 +2,28 @@
 import React, { Suspense } from 'react';
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
-import newsData from '@/data/news.json';
-
-export interface MediaCard {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  category: string;
-  slug?: string;
-  link?: string;
-  open?: 'tab' | 'iframe';
-}
-
-export const mediaCards: MediaCard[] = newsData as MediaCard[];
+import { MediaItem } from '@/types/media';
 
 interface MediaProps {
   limit?: number;
 }
 
-function findCardByOpenParam(value: string | null) {
+function findCardByOpenParam(items: MediaItem[], value: string | null) {
   if (!value) return undefined;
-  return mediaCards.find(
-    (card) => card.slug === value || String(card.id) === value
+  return items.find(
+    (card) => card.slug === value || card.id === value
   );
 }
 
-function mediaOpenHref(card: MediaCard) {
-  return `/media?open=${encodeURIComponent(card.slug || String(card.id))}`;
+function mediaOpenHref(card: MediaItem) {
+  return `/media?open=${encodeURIComponent(card.slug || card.id)}`;
 }
 
 function MediaQueryOpener({
+  items,
   onOpenIframe,
 }: {
+  items: MediaItem[];
   onOpenIframe: (link: string | null) => void;
 }) {
   const searchParams = useSearchParams();
@@ -45,14 +34,14 @@ function MediaQueryOpener({
       onOpenIframe(null);
       return;
     }
-    const card = findCardByOpenParam(openParam);
+    const card = findCardByOpenParam(items, openParam);
     if (!card?.link) return;
     if (card.open === 'tab') {
       window.open(card.link, '_blank', 'noopener,noreferrer');
       return;
     }
     onOpenIframe(card.link);
-  }, [openParam, onOpenIframe]);
+  }, [openParam, onOpenIframe, items]);
 
   return null;
 }
@@ -60,14 +49,36 @@ function MediaQueryOpener({
 const Media = ({ limit }: MediaProps) => {
   const router = useRouter();
   const [activeLink, setActiveLink] = React.useState<string | null>(null);
-  const sortedCards = [...mediaCards];
+  const [items, setItems] = React.useState<MediaItem[]>([]);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    let cancelled = false;
+    const load = async () => {
+      try {
+        const res = await fetch('/api/media', { cache: 'no-store' });
+        if (!res.ok) throw new Error('Failed to load media');
+        const data = await res.json();
+        if (!cancelled) setItems(data.items || []);
+      } catch (error) {
+        console.error('Error loading media:', error);
+        if (!cancelled) setItems([]);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    };
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const closeModal = () => {
     setActiveLink(null);
     router.replace('/media', { scroll: false });
   };
 
-  const openCard = (card: MediaCard) => {
+  const openCard = (card: MediaItem) => {
     if (!card.link) return;
     if (card.open === 'tab') {
       window.open(card.link, '_blank', 'noopener,noreferrer');
@@ -77,12 +88,12 @@ const Media = ({ limit }: MediaProps) => {
     router.replace(mediaOpenHref(card), { scroll: false });
   };
 
-  const displayedCards = limit ? sortedCards.slice(0, limit) : sortedCards;
+  const displayedCards = limit ? items.slice(0, limit) : items;
 
   return (
     <section className="w-full py-15 bg-[#f6faf5] relative overflow-hidden">
       <Suspense fallback={null}>
-        <MediaQueryOpener onOpenIframe={setActiveLink} />
+        <MediaQueryOpener items={items} onOpenIframe={setActiveLink} />
       </Suspense>
       <h3 className="section-title-spl text-center text-[#062516] mb-10">JIVO Energy Newsroom</h3>
       {/* Background Pattern */}
@@ -93,26 +104,15 @@ const Media = ({ limit }: MediaProps) => {
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        {/* Header Section */}
-        <div className="text-center mb-16">
-          {/* <div className="inline-block">
-            <span className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm text-white text-sm font-medium rounded-full border border-white/20 mb-6">
-              Media & Resources
-            </span>
-          </div> */}
-          {/* <h3 className="text-5xl font-bold text-white mb-6 leading-tight">
-            <span className="block">Stay Informed With Our</span>
-            <span className="block">
-              Latest Updates & Insights
-            </span>
-          </h3>
-          <p className="text-white max-w-3xl mx-auto text-lg leading-relaxed opacity-90">
-            Explore our comprehensive collection of industry news, success stories, and expert insights 
-            to stay ahead in the renewable energy sector.
-          </p> */}
-        </div>
+        <div className="text-center mb-16"></div>
         
-        {/* Cards Grid */}
+        {loading ? (
+          <div className="flex justify-center py-20">
+            <div className="w-10 h-10 border-4 border-[#062516] border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        ) : displayedCards.length === 0 ? (
+          <p className="text-center text-gray-500 py-16">No media items yet.</p>
+        ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
           {displayedCards.map((card) => (
             <button 
@@ -134,6 +134,7 @@ const Media = ({ limit }: MediaProps) => {
               {/* Image Container */}
               <div className="relative w-full h-56 overflow-hidden bg-gray-200">
                 <div className="absolute inset-0 bg-gradient-to-t from-[#062516]/40 via-transparent to-transparent z-10"></div>
+                {card.image && (
                 <Image
                   src={card.image}
                   alt={card.title}
@@ -142,6 +143,7 @@ const Media = ({ limit }: MediaProps) => {
                   className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
+                )}
               </div>
               
               {/* Content */}
@@ -169,6 +171,7 @@ const Media = ({ limit }: MediaProps) => {
             </button>
           ))}
         </div>
+        )}
       </div>
 
       {/* Iframe Modal */}
@@ -183,7 +186,7 @@ const Media = ({ limit }: MediaProps) => {
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 bg-[#062516] border-b border-white/10">
               <h3 className="text-white font-medium truncate pr-4">
-                {mediaCards.find(c => c.link === activeLink)?.title}
+                {items.find(c => c.link === activeLink)?.title}
               </h3>
               <button 
                 onClick={closeModal}

@@ -1,13 +1,31 @@
 "use client";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./MediaHome.css";
-import { mediaCards } from "./MediaLinksForHome";
+import { fetchFeaturedMedia } from "./MediaLinksForHome";
+import { MediaItem } from "@/types/media";
 
 export default function MediaHome() {
+  const [mediaCards, setMediaCards] = useState<MediaItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchFeaturedMedia()
+      .then((items) => {
+        if (!cancelled) setMediaCards(items);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return (
     <section className="media-home-section">
@@ -19,6 +37,13 @@ export default function MediaHome() {
           <h3 className="section-title">Latest JIVO Energy News</h3>
         </div>
 
+          {loading ? (
+            <div className="flex justify-center py-16">
+              <div className="w-10 h-10 border-4 border-white/40 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+          ) : mediaCards.length === 0 ? (
+            <p className="text-center text-white/70 py-16">No featured news yet.</p>
+          ) : (
           <Swiper
             modules={[Navigation, Autoplay]}
             navigation={{
@@ -29,7 +54,7 @@ export default function MediaHome() {
               delay: 5000,
               disableOnInteraction: false,
             }}
-            loop={true}
+            loop={mediaCards.length > 1}
             spaceBetween={24}
             slidesPerView={3}
             breakpoints={{
@@ -51,7 +76,7 @@ export default function MediaHome() {
             {mediaCards.map((card) => (
               <SwiperSlide key={card.id} className="swiper-slide">
                 <a
-                  href={card.link}
+                  href={card.link || undefined}
                   target="_blank"
                   rel="noreferrer"
                   className="media-home-card"
@@ -86,6 +111,7 @@ export default function MediaHome() {
               </SwiperSlide>
             ))}
           </Swiper>
+          )}
 
           <div className="media-home-nav">
             <button
