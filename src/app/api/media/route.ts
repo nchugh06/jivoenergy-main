@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/firebaseAdmin';
-import { MEDIA_COLLECTION, sortMediaItems, toMediaItem } from '@/lib/media';
+import { MEDIA_COLLECTION, isMediaDeleted, sortMediaItems, toMediaItem } from '@/lib/media';
 
 export async function GET(req: Request) {
   try {
@@ -10,7 +10,7 @@ export async function GET(req: Request) {
     const snapshot = await getDb().collection(MEDIA_COLLECTION).get();
     let items = snapshot.docs.map((doc) => toMediaItem(doc.id, doc.data() as Record<string, any>));
 
-    items = items.filter((item) => item.published);
+    items = items.filter((item) => item.published && !isMediaDeleted(item));
     if (featured) {
       items = items.filter((item) => item.featured);
     }

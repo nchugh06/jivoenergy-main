@@ -1,35 +1,43 @@
 import { NextResponse } from 'next/server';
-import { getDb, getStorage } from '@/lib/firebaseAdmin';
+import { getDb } from '@/lib/firebaseAdmin';
+import {
+    MAX_CV_BYTES,
+    getCvFile,
+    isAllowedCv,
+    uploadCareerCv,
+} from '@/lib/careerCv';
+
+function textField(formData: FormData, key: string) {
+    const value = formData.get(key);
+    return typeof value === 'string' ? value.trim() : '';
+}
 
 export async function POST(req: Request) {
     try {
         const formData = await req.formData();
 
-        const fullName = formData.get('fullName') as string;
-        const email = formData.get('email') as string;
-        const phone = formData.get('phone') as string;
-        const countryCode = formData.get('countryCode') as string;
-        const position = formData.get('position') as string;
-        const description = formData.get('description') as string;
-        const cv = formData.get('cv') as File | null;
+        const fullName = textField(formData, 'fullName');
+        const email = textField(formData, 'email');
+        const phone = textField(formData, 'phone');
+        const countryCode = textField(formData, 'countryCode');
+        const position = textField(formData, 'position');
+        const description = textField(formData, 'description');
+        const cv = getCvFile(formData.get('cv'));
 
-        let cvUrl = '';
-
-        if (cv) {
-            const buffer = Buffer.from(await cv.arrayBuffer());
-            const filename = `${Date.now()}_${cv.name.replace(/\s+/g, '_')}`;
-            const bucket = getStorage().bucket();
-            const file = bucket.file(`resumes/${filename}`);
-
-            await file.save(buffer, {
-                metadata: {
-                    contentType: cv.type,
-                },
-            });
-
-            await file.makePublic();
-            cvUrl = file.publicUrl();
+        if (!fullName || !email || !phone || !position || !description) {
+            return NextResponse.json({ error: 'Please fill in all required fields' }, { status: 400 });
         }
+        if (!cv) {
+            return NextResponse.json({ error: 'Please attach your CV' }, { status: 400 });
+        }
+        if (!isAllowedCv(cv)) {
+            return NextResponse.json({ error: 'CV must be a PDF, DOC, or DOCX file' }, { status: 400 });
+        }
+        if (cv.size > MAX_CV_BYTES) {
+            return NextResponse.json({ error: 'CV must be 5MB or smaller' }, { status: 400 });
+        }
+
+        const uploaded = await uploadCareerCv(cv);
 
         const application = {
             fullName,
@@ -38,11 +46,10 @@ export async function POST(req: Request) {
             countryCode,
             position,
             description,
-            cvUrl,
+            ...uploaded,
             createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
         };
-
-        console.log('Received career application:', application);
 
         await getDb().collection('career_applications').add(application);
 

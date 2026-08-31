@@ -38,6 +38,10 @@ export function mapNewsJsonToMedia(item: NewsJsonItem, index: number): MediaWrit
   };
 }
 
+export function isMediaDeleted(item: { deletedAt?: string | null }): boolean {
+  return Boolean(item.deletedAt);
+}
+
 export function normalizeMediaWrite(
   body: Partial<MediaWritePayload> & { title?: string }
 ): MediaWritePayload | { error: string } {
@@ -76,6 +80,7 @@ export function toMediaItem(id: string, data: Record<string, any>): MediaItem {
     category: data.category || '',
     order: Number(data.order ?? 0),
     published: data.published !== false,
+    deletedAt: data.deletedAt || null,
     createdAt: data.createdAt || '',
     updatedAt: data.updatedAt || '',
   };

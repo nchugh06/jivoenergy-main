@@ -13,11 +13,12 @@ export interface MediaItem {
   category: string;
   order: number;
   published: boolean;
+  deletedAt?: string | null;
   createdAt?: string;
   updatedAt?: string;
 }
 
-export type MediaWritePayload = Omit<MediaItem, 'id' | 'createdAt' | 'updatedAt'>;
+export type MediaWritePayload = Omit<MediaItem, 'id' | 'createdAt' | 'updatedAt' | 'deletedAt'>;
 
 export type NewsJsonItem = {
   id?: number;

@@ -29,7 +29,9 @@ export async function POST(req: Request) {
     const snapshot = await getDb().collection(MEDIA_COLLECTION).get();
     const bySlug = new Map<string, (typeof snapshot.docs)[number]>();
     snapshot.docs.forEach((doc) => {
-      const slug = (doc.data().slug as string) || '';
+      const data = doc.data();
+      if (data.deletedAt) return;
+      const slug = (data.slug as string) || '';
       if (slug) bySlug.set(slug, doc);
     });
 
@@ -46,6 +48,7 @@ export async function POST(req: Request) {
         const createdAt = (existing.data().createdAt as string) || now;
         await existing.ref.set({
           ...payload,
+          deletedAt: null,
           createdAt,
           updatedAt: now,
         });
@@ -53,6 +56,7 @@ export async function POST(req: Request) {
       } else {
         await getDb().collection(MEDIA_COLLECTION).add({
           ...payload,
+          deletedAt: null,
           createdAt: now,
           updatedAt: now,
         });

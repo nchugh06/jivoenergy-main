@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getAuth, getDb } from '@/lib/firebaseAdmin';
-import { MEDIA_COLLECTION, normalizeMediaWrite, sortMediaItems, toMediaItem } from '@/lib/media';
+import { MEDIA_COLLECTION, isMediaDeleted, normalizeMediaWrite, sortMediaItems, toMediaItem } from '@/lib/media';
 import { revalidateTag } from 'next/cache';
 
 async function requireAuth(req: Request) {
@@ -25,9 +25,11 @@ export async function GET(req: Request) {
 
     const { searchParams } = new URL(req.url);
     const search = searchParams.get('search')?.trim().toLowerCase() || '';
+    const includeDeleted = searchParams.get('includeDeleted') === 'true';
 
     const snapshot = await getDb().collection(MEDIA_COLLECTION).get();
     let items = snapshot.docs.map((doc) => toMediaItem(doc.id, doc.data() as Record<string, any>));
+    items = items.filter((item) => includeDeleted ? isMediaDeleted(item) : !isMediaDeleted(item));
 
     if (search) {
       items = items.filter((item) =>
@@ -59,16 +61,17 @@ export async function POST(req: Request) {
     const existing = await getDb()
       .collection(MEDIA_COLLECTION)
       .where('slug', '==', payload.slug)
-      .limit(1)
+      .limit(5)
       .get();
 
-    if (!existing.empty) {
+    if (existing.docs.some((doc) => !isMediaDeleted(doc.data()))) {
       return NextResponse.json({ error: 'A media item with this slug already exists' }, { status: 409 });
     }
 
     const now = new Date().toISOString();
     const docRef = await getDb().collection(MEDIA_COLLECTION).add({
       ...payload,
+      deletedAt: null,
       createdAt: now,
       updatedAt: now,
     });

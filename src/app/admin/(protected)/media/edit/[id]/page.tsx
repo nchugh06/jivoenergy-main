@@ -53,6 +53,11 @@ export default function EditMediaPage() {
           return;
         }
         const data = await res.json();
+        if (data.item?.deletedAt) {
+          alert('Restore this item before editing');
+          router.push('/admin/media');
+          return;
+        }
         setItem(data.item);
       } catch (error) {
         console.error('Error fetching media item:', error);

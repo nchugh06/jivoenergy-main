@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Plus, Trash2, Search, Edit, Database, Newspaper } from 'lucide-react';
+import { Plus, Trash2, Search, Edit, Database, Newspaper, RotateCcw } from 'lucide-react';
 import { auth } from '@/lib/firebase';
 import { MediaItem } from '@/types/media';
 
@@ -23,12 +23,14 @@ export default function AdminMediaPage() {
   const [loading, setLoading] = useState(true);
   const [seeding, setSeeding] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [showDeleted, setShowDeleted] = useState(false);
 
-  const fetchItems = async (search = searchTerm) => {
+  const fetchItems = async (search = searchTerm, deleted = showDeleted) => {
     try {
       if (!auth.currentUser) return;
       const params = new URLSearchParams();
       if (search) params.set('search', search);
+      if (deleted) params.set('includeDeleted', 'true');
       const res = await adminFetch(`/api/admin/media?${params.toString()}`);
       if (!res.ok) throw new Error('Failed to load media');
       const data = await res.json();
@@ -41,20 +43,28 @@ export default function AdminMediaPage() {
   };
 
   useEffect(() => {
-    const waitForAuth = async () => {
+    let cancelled = false;
+    const load = async () => {
       let attempts = 0;
       while (!auth.currentUser && attempts < 8) {
         await new Promise((r) => setTimeout(r, 200));
         attempts += 1;
       }
-      if (auth.currentUser) fetchItems('');
-      else setLoading(false);
+      if (!auth.currentUser || cancelled) {
+        if (!cancelled) setLoading(false);
+        return;
+      }
+      setLoading(true);
+      await fetchItems(searchTerm, showDeleted);
     };
-    waitForAuth();
-  }, []);
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, [showDeleted]);
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this media item?')) return;
+    if (!confirm('Move this item to deleted? You can restore it later.')) return;
     try {
       const res = await adminFetch(`/api/admin/media/${id}`, { method: 'DELETE' });
       if (!res.ok) throw new Error('Delete failed');
@@ -62,6 +72,18 @@ export default function AdminMediaPage() {
     } catch (error) {
       console.error('Error deleting media:', error);
       alert('Failed to delete media item');
+    }
+  };
+
+  const handleRestore = async (id: string) => {
+    try {
+      const res = await adminFetch(`/api/admin/media/${id}/restore`, { method: 'POST', body: '{}' });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Restore failed');
+      setItems((prev) => prev.filter((item) => item.id !== id));
+    } catch (error) {
+      console.error('Error restoring media:', error);
+      alert(error instanceof Error ? error.message : 'Failed to restore media item');
     }
   };
 
@@ -75,7 +97,7 @@ export default function AdminMediaPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Seed failed');
       alert(`Import complete. Created ${data.created}, updated ${data.updated}.`);
-      await fetchItems();
+      await fetchItems(searchTerm, showDeleted);
     } catch (error) {
       console.error('Error seeding media:', error);
       alert('Failed to import JSON');
@@ -100,7 +122,9 @@ export default function AdminMediaPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
         <div>
           <h1 className="section-title-spl text-gray-800">Media Management</h1>
-          <p className="text-gray-500 mt-1">Manage newsroom items for the media page and homepage</p>
+          <p className="text-gray-500 mt-1">
+            {showDeleted ? 'Deleted items stay in the database until restored' : 'Manage newsroom items for the media page and homepage'}
+          </p>
         </div>
         <div className="flex gap-4">
           <button
@@ -131,6 +155,22 @@ export default function AdminMediaPage() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
+        </div>
+        <div className="flex rounded-lg border border-gray-200 overflow-hidden">
+          <button
+            type="button"
+            onClick={() => setShowDeleted(false)}
+            className={`px-4 py-2 text-sm font-semibold ${!showDeleted ? 'bg-[#062516] text-white' : 'bg-white text-gray-600 hover:bg-gray-50'}`}
+          >
+            Live
+          </button>
+          <button
+            type="button"
+            onClick={() => setShowDeleted(true)}
+            className={`px-4 py-2 text-sm font-semibold ${showDeleted ? 'bg-[#062516] text-white' : 'bg-white text-gray-600 hover:bg-gray-50'}`}
+          >
+            Deleted
+          </button>
         </div>
       </div>
 
@@ -192,20 +232,33 @@ export default function AdminMediaPage() {
                     </td>
                     <td className="px-6 py-4 text-right">
                       <div className="flex justify-end gap-2">
-                        <Link
-                          href={`/admin/media/edit/${item.id}`}
-                          className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
-                          title="Edit"
-                        >
-                          <Edit className="w-5 h-5" />
-                        </Link>
-                        <button
-                          onClick={() => handleDelete(item.id)}
-                          className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                          title="Delete"
-                        >
-                          <Trash2 className="w-5 h-5" />
-                        </button>
+                        {showDeleted ? (
+                          <button
+                            onClick={() => handleRestore(item.id)}
+                            className="inline-flex items-center gap-1 px-3 py-2 text-sm font-semibold text-[#062516] hover:bg-emerald-50 rounded-lg transition-colors"
+                            title="Restore"
+                          >
+                            <RotateCcw className="w-4 h-4" />
+                            Restore
+                          </button>
+                        ) : (
+                          <>
+                            <Link
+                              href={`/admin/media/edit/${item.id}`}
+                              className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                              title="Edit"
+                            >
+                              <Edit className="w-5 h-5" />
+                            </Link>
+                            <button
+                              onClick={() => handleDelete(item.id)}
+                              className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                              title="Delete"
+                            >
+                              <Trash2 className="w-5 h-5" />
+                            </button>
+                          </>
+                        )}
                       </div>
                     </td>
                   </tr>
@@ -219,8 +272,12 @@ export default function AdminMediaPage() {
               <div className="bg-gray-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Newspaper className="w-8 h-8 text-gray-300" />
               </div>
-              <p className="text-gray-500 text-lg">No media items found.</p>
-              <p className="text-gray-400 text-sm mt-1">Add an item or import from JSON to get started.</p>
+              <p className="text-gray-500 text-lg">
+                {showDeleted ? 'No deleted media items.' : 'No media items found.'}
+              </p>
+              <p className="text-gray-400 text-sm mt-1">
+                {showDeleted ? 'Deleted items will appear here until restored.' : 'Add an item or import from JSON to get started.'}
+              </p>
             </div>
           )}
         </div>

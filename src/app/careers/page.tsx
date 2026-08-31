@@ -91,21 +91,48 @@ const Careers = () => {
     description: '',
     cv: null
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitMessage, setSubmitMessage] = useState('');
+
+  const emptyForm: FormData = {
+    fullName: '',
+    email: '',
+    phone: '',
+    countryCode: '+91',
+    position: '',
+    description: '',
+    cv: null,
+  };
+
+  const applyForJob = (title: string) => {
+    setFormData((prev) => ({ ...prev, position: title }));
+    setSubmitStatus('idle');
+    document.getElementById('careers-apply')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
 
-    // Create FormData object
-    const data = new FormData();
-    data.append('fullName', formData.fullName);
-    data.append('email', formData.email);
-    data.append('phone', formData.phone);
-    data.append('countryCode', formData.countryCode);
-    data.append('position', formData.position);
-    data.append('description', formData.description);
-    if (formData.cv) {
-      data.append('cv', formData.cv);
+    if (!formData.cv) {
+      setSubmitStatus('error');
+      setSubmitMessage('Please attach your CV (PDF, DOC, or DOCX, max 5MB).');
+      return;
     }
+
+    const data = new FormData();
+    data.append('fullName', formData.fullName.trim());
+    data.append('email', formData.email.trim());
+    data.append('phone', formData.phone.trim());
+    data.append('countryCode', formData.countryCode);
+    data.append('position', formData.position.trim());
+    data.append('description', formData.description.trim());
+    data.append('cv', formData.cv);
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    setSubmitMessage('');
 
     try {
       const response = await fetch('/api/careers', {
@@ -113,32 +140,46 @@ const Careers = () => {
         body: data,
       });
 
+      const payload = await response.json().catch(() => ({}));
       if (!response.ok) {
-        throw new Error('Failed to submit application');
+        throw new Error(payload.error || 'Failed to submit application');
       }
 
-      alert('Application submitted successfully!');
-      // Reset form
-      setFormData({
-        fullName: '',
-        email: '',
-        phone: '',
-        countryCode: '+91',
-        position: '',
-        description: '',
-        cv: null
-      });
+      setSubmitStatus('success');
+      setSubmitMessage('Application submitted successfully. We will be in touch.');
+      setFormData(emptyForm);
       if (fileInputRef.current) {
         fileInputRef.current.value = '';
       }
     } catch (error) {
       console.error('Error submitting application:', error);
-      alert('There was an error submitting your application. Please try again.');
+      setSubmitStatus('error');
+      setSubmitMessage(
+        error instanceof Error
+          ? error.message
+          : 'There was an error submitting your application. Please try again.'
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   const applyCv = (file: File | undefined) => {
     if (!file) return;
+    const name = file.name.toLowerCase();
+    const allowed = name.endsWith('.pdf') || name.endsWith('.doc') || name.endsWith('.docx');
+    if (!allowed) {
+      setSubmitStatus('error');
+      setSubmitMessage('CV must be a PDF, DOC, or DOCX file.');
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      setSubmitStatus('error');
+      setSubmitMessage('CV must be 5MB or smaller.');
+      return;
+    }
+    setSubmitStatus('idle');
+    setSubmitMessage('');
     setFormData((prev) => ({ ...prev, cv: file }));
   };
 
@@ -466,15 +507,24 @@ const Careers = () => {
                     </div>
                   </div>
                 </div>
-                <a
-                  href={job.pdf}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="careers-job-card__cta"
-                >
-                  View Details
-                  <ArrowRight className="w-4 h-4" />
-                </a>
+                <div className="careers-job-card__actions">
+                  <a
+                    href={job.pdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="careers-job-card__cta careers-job-card__cta--ghost"
+                  >
+                    View Details
+                  </a>
+                  <button
+                    type="button"
+                    className="careers-job-card__cta"
+                    onClick={() => applyForJob(job.title)}
+                  >
+                    Apply
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
               </motion.article>
             ))}
           </motion.div>
@@ -482,7 +532,7 @@ const Careers = () => {
         </div>
       </section>
 
-      <section className="careers-apply">
+      <section className="careers-apply" id="careers-apply">
         <div className="careers-apply__inner">
           <motion.div
             className="careers-apply__intro"
@@ -595,7 +645,7 @@ const Careers = () => {
               <div className="careers-apply__field careers-apply__field--cv">
                 <div className="careers-apply__cv-label">
                   <label htmlFor="cv">Attach CV</label>
-                  <span>PDF, DOC, DOCX · Max 5MB</span>
+                  <span>PDF, DOC, DOCX · Max 5MB · Required</span>
                 </div>
                 <div
                   className={`careers-apply__dropzone${isDragging ? ' is-dragging' : ''}${formData.cv ? ' has-file' : ''}`}
@@ -642,9 +692,20 @@ const Careers = () => {
                 </div>
               </div>
 
-              <button type="submit" className="careers-apply__submit">
-                Submit Application
-                <ArrowRight className="w-4 h-4" />
+              {submitStatus === 'success' && (
+                <p className="careers-apply__status careers-apply__status--success" role="status">
+                  {submitMessage}
+                </p>
+              )}
+              {submitStatus === 'error' && (
+                <p className="careers-apply__status careers-apply__status--error" role="alert">
+                  {submitMessage}
+                </p>
+              )}
+
+              <button type="submit" className="careers-apply__submit" disabled={isSubmitting}>
+                {isSubmitting ? 'Submitting...' : 'Submit Application'}
+                {!isSubmitting && <ArrowRight className="w-4 h-4" />}
               </button>
 
               <p className="careers-apply__secure">
