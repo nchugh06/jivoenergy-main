@@ -1,11 +1,12 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { getProjects, deleteProject, restoreProject } from '@/lib/projects';
+import { getProjects, deleteProject, restoreProject, reorderProjects } from '@/lib/projects';
 import { Project } from '@/types/project';
 import Image from 'next/image';
 import { Plus, Trash2, Database, Search, Filter, Edit, RotateCcw } from 'lucide-react';
 import Link from 'next/link';
+import { OrderGrip, useAdminReorder } from '@/components/admin/useAdminReorder';
 
 export default function AdminProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -64,6 +65,20 @@ export default function AdminProjectsPage() {
     // Keep list ordered by display order (lower first); missing order at end
     .sort((a, b) => (Number(a.order ?? 9999)) - (Number(b.order ?? 9999)));
 
+  const { canDrag, rowProps } = useAdminReorder({
+    visibleItems: filteredProjects,
+    setItems: setProjects,
+    enabled: !showDeleted && !searchTerm.trim(),
+    persist: async (ordered) => {
+      await reorderProjects(
+        ordered
+          .filter((item) => item.id)
+          .map((item, index) => ({ id: item.id as string, order: index }))
+      );
+    },
+    onPersistError: () => fetchProjects(showDeleted),
+  });
+
   return (
     <div className="p-8">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
@@ -72,7 +87,9 @@ export default function AdminProjectsPage() {
           <p className="text-gray-500 mt-1">
             {showDeleted
               ? 'Deleted projects stay in the database until restored'
-              : 'Manage and monitor all energy projects'}
+              : canDrag
+                ? 'Drag rows to change the order on the projects pages'
+                : 'Manage and monitor all energy projects'}
           </p>
         </div>
         <div className="flex gap-4">
@@ -133,7 +150,7 @@ export default function AdminProjectsPage() {
             <table className="w-full text-left">
               <thead>
                 <tr className="bg-gray-50 border-b border-gray-100">
-                  <th className="px-4 py-4 text-sm font-semibold text-gray-600 w-20 text-center">Order</th>
+                  <th className="px-4 py-4 text-sm font-semibold text-gray-600 w-24 text-center">Order</th>
                   <th className="px-6 py-4 text-sm font-semibold text-gray-600">Project</th>
                   <th className="px-6 py-4 text-sm font-semibold text-gray-600">Country</th>
                   <th className="px-6 py-4 text-sm font-semibold text-gray-600">Power</th>
@@ -144,13 +161,9 @@ export default function AdminProjectsPage() {
               </thead>
               <tbody className="divide-y divide-gray-50">
                 {filteredProjects.map((project) => (
-                  <tr key={project.id} className="hover:bg-gray-50/50 transition-colors group">
+                  <tr key={project.id} {...(project.id ? rowProps(project.id) : {})}>
                     <td className="px-4 py-4 text-center">
-                      <span className="inline-flex items-center justify-center min-w-[2rem] h-8 px-2 rounded-lg bg-[#062516]/5 text-[#062516] text-sm font-bold tabular-nums">
-                        {project.order != null && !Number.isNaN(Number(project.order))
-                          ? Number(project.order)
-                          : '—'}
-                      </span>
+                      <OrderGrip order={project.order} canDrag={canDrag} />
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-4">

@@ -5,6 +5,7 @@ import {
     getDocs,
     addDoc,
     updateDoc,
+    writeBatch,
     doc,
     Timestamp,
     serverTimestamp,
@@ -232,6 +233,18 @@ export const restoreProject = async (id: string) => {
         deletedAt: null,
         updatedAt: serverTimestamp(),
     });
+};
+
+export const reorderProjects = async (items: Array<{ id: string; order: number }>) => {
+    const batch = writeBatch(db);
+    for (const item of items) {
+        if (!item.id) continue;
+        batch.update(doc(db, COLLECTION_NAME, item.id), {
+            order: item.order,
+            updatedAt: serverTimestamp(),
+        });
+    }
+    await batch.commit();
 };
 
 export const uploadProjectImage = async (file: File, path: string): Promise<string> => {

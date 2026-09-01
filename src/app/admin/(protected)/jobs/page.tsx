@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Plus, Trash2, Search, Edit, Briefcase, RotateCcw } from 'lucide-react';
 import { auth } from '@/lib/firebase';
 import { JobOpening } from '@/types/job';
+import { OrderGrip, useAdminReorder } from '@/components/admin/useAdminReorder';
 
 async function adminFetch(url: string, init?: RequestInit) {
   if (!auth.currentUser) throw new Error('Not signed in');
@@ -95,6 +96,22 @@ export default function AdminJobsPage() {
     );
   });
 
+  const { canDrag, rowProps } = useAdminReorder({
+    visibleItems: filteredItems,
+    setItems,
+    enabled: !showDeleted && !searchTerm.trim(),
+    persist: async (ordered) => {
+      const res = await adminFetch('/api/admin/jobs/reorder', {
+        method: 'PUT',
+        body: JSON.stringify({
+          items: ordered.map((item, index) => ({ id: item.id, order: index })),
+        }),
+      });
+      if (!res.ok) throw new Error('Failed to save order');
+    },
+    onPersistError: () => fetchItems(searchTerm, showDeleted),
+  });
+
   return (
     <div className="p-8">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
@@ -103,7 +120,9 @@ export default function AdminJobsPage() {
           <p className="text-gray-500 mt-1">
             {showDeleted
               ? 'Deleted jobs stay in the database until restored'
-              : 'Publish listings shown on the careers page'}
+              : canDrag
+                ? 'Drag rows to change the order on the careers page'
+                : 'Publish listings shown on the careers page'}
           </p>
         </div>
         <div className="flex gap-4">
@@ -156,7 +175,7 @@ export default function AdminJobsPage() {
             <table className="w-full text-left">
               <thead>
                 <tr className="bg-gray-50 border-b border-gray-100">
-                  <th className="px-4 py-4 text-sm font-semibold text-gray-600 w-20 text-center">Order</th>
+                  <th className="px-4 py-4 text-sm font-semibold text-gray-600 w-24 text-center">Order</th>
                   <th className="px-6 py-4 text-sm font-semibold text-gray-600">Job</th>
                   <th className="px-6 py-4 text-sm font-semibold text-gray-600">Experience</th>
                   <th className="px-6 py-4 text-sm font-semibold text-gray-600">Location</th>
@@ -166,11 +185,9 @@ export default function AdminJobsPage() {
               </thead>
               <tbody className="divide-y divide-gray-50">
                 {filteredItems.map((item) => (
-                  <tr key={item.id} className="hover:bg-gray-50/50 transition-colors">
+                  <tr key={item.id} {...rowProps(item.id)}>
                     <td className="px-4 py-4 text-center">
-                      <span className="inline-flex items-center justify-center min-w-[2rem] h-8 px-2 rounded-lg bg-[#062516]/5 text-[#062516] text-sm font-bold tabular-nums">
-                        {item.order}
-                      </span>
+                      <OrderGrip order={item.order} canDrag={canDrag} />
                     </td>
                     <td className="px-6 py-4 font-bold text-gray-800">{item.title}</td>
                     <td className="px-6 py-4 text-sm text-gray-600">{item.experience}</td>

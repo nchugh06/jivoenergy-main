@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Plus, Trash2, Search, Edit, Users, RotateCcw } from 'lucide-react';
 import { auth } from '@/lib/firebase';
 import { TeamMember, TeamSection, TEAM_SECTIONS } from '@/types/team';
+import { OrderGrip, useAdminReorder } from '@/components/admin/useAdminReorder';
 
 async function adminFetch(url: string, init?: RequestInit) {
   if (!auth.currentUser) throw new Error('Not signed in');
@@ -106,6 +107,22 @@ export default function AdminTeamPage() {
     );
   });
 
+  const { canDrag, rowProps } = useAdminReorder({
+    visibleItems: filteredItems,
+    setItems,
+    enabled: !showDeleted && !searchTerm.trim(),
+    persist: async (ordered) => {
+      const res = await adminFetch('/api/admin/team/reorder', {
+        method: 'PUT',
+        body: JSON.stringify({
+          items: ordered.map((item, index) => ({ id: item.id, order: index })),
+        }),
+      });
+      if (!res.ok) throw new Error('Failed to save order');
+    },
+    onPersistError: () => fetchItems(searchTerm, showDeleted, sectionFilter),
+  });
+
   return (
     <div className="p-8">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
@@ -114,7 +131,9 @@ export default function AdminTeamPage() {
           <p className="text-gray-500 mt-1">
             {showDeleted
               ? 'Deleted members stay in the database until restored'
-              : 'Manage people shown on the team page'}
+              : canDrag
+                ? 'Drag rows to change the order on the team page'
+                : 'Manage people shown on the team page'}
           </p>
         </div>
         <Link
@@ -184,7 +203,7 @@ export default function AdminTeamPage() {
             <table className="w-full text-left">
               <thead>
                 <tr className="bg-gray-50 border-b border-gray-100">
-                  <th className="px-4 py-4 text-sm font-semibold text-gray-600 w-20 text-center">Order</th>
+                  <th className="px-4 py-4 text-sm font-semibold text-gray-600 w-24 text-center">Order</th>
                   <th className="px-6 py-4 text-sm font-semibold text-gray-600">Member</th>
                   <th className="px-6 py-4 text-sm font-semibold text-gray-600">Section</th>
                   <th className="px-6 py-4 text-sm font-semibold text-gray-600">Published</th>
@@ -193,11 +212,9 @@ export default function AdminTeamPage() {
               </thead>
               <tbody className="divide-y divide-gray-50">
                 {filteredItems.map((item) => (
-                  <tr key={item.id} className="hover:bg-gray-50/50 transition-colors">
+                  <tr key={item.id} {...rowProps(item.id)}>
                     <td className="px-4 py-4 text-center">
-                      <span className="inline-flex items-center justify-center min-w-[2rem] h-8 px-2 rounded-lg bg-[#062516]/5 text-[#062516] text-sm font-bold tabular-nums">
-                        {item.order}
-                      </span>
+                      <OrderGrip order={item.order} canDrag={canDrag} />
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-4">
