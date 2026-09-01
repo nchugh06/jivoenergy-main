@@ -1,4 +1,4 @@
-import { MediaItem, MediaWritePayload, NewsJsonItem } from '@/types/media';
+import { MediaItem, MediaWritePayload } from '@/types/media';
 
 export const MEDIA_COLLECTION = 'media';
 
@@ -20,22 +20,6 @@ export function sortMediaItems<T extends { order?: number; createdAt?: string }>
     if (orderA !== orderB) return orderA - orderB;
     return String(b.createdAt ?? '').localeCompare(String(a.createdAt ?? ''));
   });
-}
-
-export function mapNewsJsonToMedia(item: NewsJsonItem, index: number): MediaWritePayload {
-  return {
-    title: item.title,
-    description: item.description,
-    image: item.image,
-    country: item.country || '',
-    slug: slugify(item.slug || item.title),
-    link: item.link || '',
-    open: item.open === 'tab' ? 'tab' : 'iframe',
-    featured: item.category === 'New',
-    category: item.category || '',
-    order: index,
-    published: true,
-  };
 }
 
 export function isMediaDeleted(item: { deletedAt?: string | null }): boolean {

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Plus, Trash2, Search, Edit, Database, Briefcase, RotateCcw } from 'lucide-react';
+import { Plus, Trash2, Search, Edit, Briefcase, RotateCcw } from 'lucide-react';
 import { auth } from '@/lib/firebase';
 import { JobOpening } from '@/types/job';
 
@@ -20,7 +20,6 @@ async function adminFetch(url: string, init?: RequestInit) {
 export default function AdminJobsPage() {
   const [items, setItems] = useState<JobOpening[]>([]);
   const [loading, setLoading] = useState(true);
-  const [seeding, setSeeding] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [showDeleted, setShowDeleted] = useState(false);
 
@@ -86,25 +85,6 @@ export default function AdminJobsPage() {
     }
   };
 
-  const handleSeed = async () => {
-    if (!confirm('Import the current careers listings (Technical Manager published; others saved as unpublished)?')) {
-      return;
-    }
-    setSeeding(true);
-    try {
-      const res = await adminFetch('/api/admin/jobs/seed', { method: 'POST', body: '{}' });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Seed failed');
-      alert(`Import complete. Created ${data.created}, updated ${data.updated}.`);
-      await fetchItems(searchTerm, showDeleted);
-    } catch (error) {
-      console.error('Error seeding jobs:', error);
-      alert('Failed to import listings');
-    } finally {
-      setSeeding(false);
-    }
-  };
-
   const filteredItems = items.filter((item) => {
     const q = searchTerm.toLowerCase();
     if (!q) return true;
@@ -127,14 +107,6 @@ export default function AdminJobsPage() {
           </p>
         </div>
         <div className="flex gap-4">
-          <button
-            onClick={handleSeed}
-            disabled={seeding}
-            className="flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 text-gray-700 rounded-full font-semibold hover:bg-gray-50 transition-all shadow-sm disabled:opacity-60"
-          >
-            <Database className="w-5 h-5" />
-            {seeding ? 'Importing...' : 'Import current listings'}
-          </button>
           <Link
             href="/admin/jobs/add"
             className="flex items-center gap-2 px-6 py-3 bg-[#062516] text-[#FFFA84] rounded-full font-semibold hover:bg-[#08301d] transition-all shadow-lg hover:shadow-xl"
@@ -258,7 +230,7 @@ export default function AdminJobsPage() {
               <p className="text-gray-400 text-sm mt-1">
                 {showDeleted
                   ? 'Deleted jobs will appear here until restored.'
-                  : 'Add a job or import the current listings to get started.'}
+                  : 'Add a job to get started.'}
               </p>
             </div>
           )}

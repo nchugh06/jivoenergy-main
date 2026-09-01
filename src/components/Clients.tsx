@@ -1,20 +1,33 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { Partner } from "@/types/partner";
 
 export default function Clients() {
-  const clientsList = useMemo(
-    () => [
-      "client1.webp", "client2.webp", "client3.webp", "client4.webp",
-      "client5.webp", "client6.webp", "client7.webp", "client8.webp",
-      "client9.webp", "client10.webp", "client11.webp", "client12.webp",
-      "client13.webp",
-    ],
-    []
-  );
+  const [clientsList, setClientsList] = useState<Partner[]>([]);
 
-  // duplicate so the loop is seamless
+  useEffect(() => {
+    let cancelled = false;
+    const load = async () => {
+      try {
+        const res = await fetch("/api/partners?section=clients", { cache: "no-store" });
+        if (!res.ok) throw new Error("Failed to load clients");
+        const data = await res.json();
+        if (!cancelled) setClientsList(data.items || []);
+      } catch (error) {
+        console.error("Error loading clients:", error);
+        if (!cancelled) setClientsList([]);
+      }
+    };
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  if (!clientsList.length) return null;
+
   const looped = [...clientsList, ...clientsList];
 
   return (
@@ -24,14 +37,14 @@ export default function Clients() {
 
         <div className="mt-6 md:mt-10 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
           <div className="flex items-center gap-6 w-max animate-marquee">
-            {looped.map((img, i) => (
+            {looped.map((client, i) => (
               <div
-                key={`${img}-${i}`}
+                key={`${client.id}-${i}`}
                 className="relative w-24 h-24 md:w-28 md:h-28 p-5 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-center shrink-0"
               >
                 <Image
-                  src={`/partners/${img}`}
-                  alt={`Client ${(i % clientsList.length) + 1}`}
+                  src={client.image}
+                  alt={client.name || `Client ${(i % clientsList.length) + 1}`}
                   fill
                   className="object-contain p-2"
                   quality={80}

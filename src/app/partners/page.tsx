@@ -1,10 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
+import { Partner, PARTNER_SECTIONS } from '@/types/partner';
 
 const containerVariants: Variants = {
   hidden: {},
@@ -37,25 +38,32 @@ const itemVariants: Variants = {
 
 const Partners = () => {
   const reduceMotion = useReducedMotion();
+  const [partners, setPartners] = useState<Partner[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const clients = [
-    'client1.jpg', 'client2.jpg', 'client3.jpg', 'client4.jpg', 'client5.jpg',
-    'client6.jpg', 'client7.jpg', 'client8.jpg', 'client9.jpg', 'client10.jpg',
-    'client11.jpg', 'client12.jpg', 'client13.jpg'
-  ];
+  useEffect(() => {
+    let cancelled = false;
+    const load = async () => {
+      try {
+        const res = await fetch('/api/partners', { cache: 'no-store' });
+        if (!res.ok) throw new Error('Failed to load partners');
+        const data = await res.json();
+        if (!cancelled) setPartners(data.items || []);
+      } catch (error) {
+        console.error('Error loading partners:', error);
+        if (!cancelled) setPartners([]);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    };
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
-  const financers = [
-    'finance1.jpg', 'finance2.png', 'finance3.png', 'finance4.png', 'finance5.png',
-    'finance6.png', 'finance7.png'
-  ];
-
-  const technologyProviders = [
-    'tp1.png', 'tp2.jpg', 'tp3.png', 'tp4.jpg', 'tp5.png', 'tp6.jpg', 'tp7.png',
-    'tp8.jpg', 'tp9.png', 'tp10.png', 'tp11.jpg', 'tp12.png', 'tp13.png',
-    'tp14.png', 'tp15.png', 'tp16.png', 'tp17.png', 'tp18.png'
-  ];
-
-  const renderSection = (title: string, images: string[]) => {
+  const renderSection = (title: string, items: Partner[]) => {
+    if (!items.length) return null;
     const isFinancersSection = title === 'Financers';
 
     return (
@@ -73,17 +81,17 @@ const Partners = () => {
           {title}
         </motion.h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 justify-items-center items-center">
-          {images.map((img, index) => (
+          {items.map((partner) => (
             <motion.div
-              key={index}
+              key={partner.id}
               variants={itemVariants}
               whileHover={reduceMotion ? undefined : { y: -6, scale: 1.03 }}
               transition={{ type: 'spring', stiffness: 320, damping: 22 }}
               className="group w-full h-32 relative p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 flex items-center justify-center"
             >
               <Image
-                src={`/partners/${img}`}
-                alt={`${title} Partner ${index + 1}`}
+                src={partner.image}
+                alt={partner.name || `${title} Partner`}
                 fill
                 className="object-contain p-2 transition-transform duration-500 group-hover:scale-105"
                 quality={100}
@@ -121,9 +129,20 @@ const Partners = () => {
 
       {/* Main Partnership Content */}
       <div className="max-w-7xl mx-auto px-4 py-5">
-        {renderSection('Clients', clients)}
-        {renderSection('Financers', financers)}
-        {renderSection('Technology Providers', technologyProviders)}
+        {loading ? (
+          <div className="flex justify-center py-20">
+            <div className="w-10 h-10 border-4 border-[#062516] border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        ) : (
+          PARTNER_SECTIONS.map((section) => (
+            <React.Fragment key={section.id}>
+              {renderSection(
+                section.label,
+                partners.filter((partner) => partner.section === section.id)
+              )}
+            </React.Fragment>
+          ))
+        )}
       </div>
 
       <Footer />

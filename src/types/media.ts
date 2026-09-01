@@ -19,15 +19,3 @@ export interface MediaItem {
 }
 
 export type MediaWritePayload = Omit<MediaItem, 'id' | 'createdAt' | 'updatedAt' | 'deletedAt'>;
-
-export type NewsJsonItem = {
-  id?: number;
-  title: string;
-  description: string;
-  image: string;
-  category?: string;
-  country?: string;
-  slug?: string;
-  link?: string;
-  open?: 'tab' | 'iframe';
-};
