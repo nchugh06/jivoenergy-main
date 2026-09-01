@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 
 import { countries } from '@/lib/countries';
+import { JobOpening } from '@/types/job';
 import './careers.css';
 
 const MOBILE_QUERY = '(max-width: 767px)';
@@ -94,6 +95,29 @@ const Careers = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [submitMessage, setSubmitMessage] = useState('');
+  const [jobs, setJobs] = useState<JobOpening[]>([]);
+  const [jobsLoading, setJobsLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+    const loadJobs = async () => {
+      try {
+        const res = await fetch('/api/jobs', { cache: 'no-store' });
+        if (!res.ok) throw new Error('Failed to load jobs');
+        const data = await res.json();
+        if (!cancelled) setJobs(data.items || []);
+      } catch (error) {
+        console.error('Error loading job openings:', error);
+        if (!cancelled) setJobs([]);
+      } finally {
+        if (!cancelled) setJobsLoading(false);
+      }
+    };
+    loadJobs();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const emptyForm: FormData = {
     fullName: '',
@@ -451,6 +475,15 @@ const Careers = () => {
             </p>
           </motion.div>
 
+          {jobsLoading ? (
+            <div className="careers-jobs__loading">
+              <div className="careers-jobs__spinner" />
+            </div>
+          ) : jobs.length === 0 ? (
+            <p className="careers-jobs__empty">
+              There are no current openings. You can still send us your CV below.
+            </p>
+          ) : (
           <motion.div
             className="careers-jobs__list"
             initial="hidden"
@@ -458,28 +491,9 @@ const Careers = () => {
             viewport={{ once: true, margin: '-80px' }}
             variants={staggerContainer}
           >
-            {[
-              {
-                title: "Technical Manager - Electrical",
-                experience: "5 to 10 years",
-                location: "Africa (travel required)",
-                pdf: "/careers/Technical Manager JD for Careers Page.pdf"
-              },
-              // {
-              //   title: "Logistics Manager",
-              //   experience: "4 to 7 years",
-              //   location: "Gurgaon, India (travel required)",
-              //   pdf: "/careers/Logistics Manager JD for Careers Page.pdf"
-              // },
-              // {
-              //   title: "HSES Manager",
-              //   experience: "5 to 7 years",
-              //   location: "Gurgaon, India (travel required)",
-              //   pdf: "/careers/HSES Manager JD for Careers Page.pdf"
-              // }
-            ].map((job, index) => (
+            {jobs.map((job) => (
               <motion.article
-                key={index}
+                key={job.id}
                 variants={fadeUp}
                 className="careers-job-card"
               >
@@ -508,14 +522,16 @@ const Careers = () => {
                   </div>
                 </div>
                 <div className="careers-job-card__actions">
-                  <a
-                    href={job.pdf}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="careers-job-card__cta careers-job-card__cta--ghost"
-                  >
-                    View Details
-                  </a>
+                  {job.pdfUrl && (
+                    <a
+                      href={job.pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="careers-job-card__cta careers-job-card__cta--ghost"
+                    >
+                      View Details
+                    </a>
+                  )}
                   <button
                     type="button"
                     className="careers-job-card__cta"
@@ -528,6 +544,7 @@ const Careers = () => {
               </motion.article>
             ))}
           </motion.div>
+          )}
 
         </div>
       </section>

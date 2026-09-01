@@ -55,6 +55,35 @@
   gap: 1rem;
 }
 
+.careers-jobs__loading {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0 1rem;
+}
+
+.careers-jobs__spinner {
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid #d7e6d8;
+  border-top-color: var(--color-text-dark, #062516);
+  border-radius: 999px;
+  animation: careers-spin 0.7s linear infinite;
+}
+
+@keyframes careers-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.careers-jobs__empty {
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.95rem;
+  padding: 1.5rem 1rem 0.5rem;
+  margin: 0;
+}
+
 .careers-job-card {
   position: relative;
   background: #ffffff;
