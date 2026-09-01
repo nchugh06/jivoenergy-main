@@ -1,24 +1,26 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { getProjects, deleteProject } from '@/lib/projects';
+import { getProjects, deleteProject, restoreProject } from '@/lib/projects';
 import { Project } from '@/types/project';
 import Image from 'next/image';
-import { Plus, Trash2, Database, Search, Filter, Edit } from 'lucide-react';
+import { Plus, Trash2, Database, Search, Filter, Edit, RotateCcw } from 'lucide-react';
 import Link from 'next/link';
 
 export default function AdminProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+  const [showDeleted, setShowDeleted] = useState(false);
 
   useEffect(() => {
-    fetchProjects();
-  }, []);
+    fetchProjects(showDeleted);
+  }, [showDeleted]);
 
-  const fetchProjects = async () => {
+  const fetchProjects = async (deletedOnly = showDeleted) => {
+    setLoading(true);
     try {
-      const data = await getProjects();
+      const data = await getProjects({ deletedOnly });
       setProjects(data);
     } catch (error) {
       console.error("Failed to load projects", error);
@@ -28,12 +30,23 @@ export default function AdminProjectsPage() {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this project?")) return;
+    if (!confirm("Move this project to deleted? You can restore it later.")) return;
     try {
       await deleteProject(id);
       setProjects(prev => prev.filter(p => p.id !== id));
     } catch (error) {
       console.error("Error deleting project:", error);
+      alert("Failed to delete project");
+    }
+  };
+
+  const handleRestore = async (id: string) => {
+    try {
+      await restoreProject(id);
+      setProjects(prev => prev.filter(p => p.id !== id));
+    } catch (error) {
+      console.error("Error restoring project:", error);
+      alert("Failed to restore project");
     }
   };
 
@@ -56,7 +69,11 @@ export default function AdminProjectsPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
         <div>
           <h1 className="section-title-spl text-gray-800">Projects Management</h1>
-          <p className="text-gray-500 mt-1">Manage and monitor all energy projects</p>
+          <p className="text-gray-500 mt-1">
+            {showDeleted
+              ? 'Deleted projects stay in the database until restored'
+              : 'Manage and monitor all energy projects'}
+          </p>
         </div>
         <div className="flex gap-4">
             <Link
@@ -88,10 +105,20 @@ export default function AdminProjectsPage() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        <div className="flex gap-2 w-full md:w-auto">
-          <button className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-50 transition-colors w-full md:w-auto justify-center">
-            <Filter className="w-4 h-4" />
-            Filter
+        <div className="flex rounded-lg border border-gray-200 overflow-hidden w-full md:w-auto">
+          <button
+            type="button"
+            onClick={() => setShowDeleted(false)}
+            className={`px-4 py-2 text-sm font-semibold flex-1 md:flex-none ${!showDeleted ? 'bg-[#062516] text-white' : 'bg-white text-gray-600 hover:bg-gray-50'}`}
+          >
+            Live
+          </button>
+          <button
+            type="button"
+            onClick={() => setShowDeleted(true)}
+            className={`px-4 py-2 text-sm font-semibold flex-1 md:flex-none ${showDeleted ? 'bg-[#062516] text-white' : 'bg-white text-gray-600 hover:bg-gray-50'}`}
+          >
+            Deleted
           </button>
         </div>
       </div>
@@ -162,20 +189,33 @@ export default function AdminProjectsPage() {
                     </td>
                     <td className="px-6 py-4 text-right">
                       <div className="flex justify-end gap-2  transition-opacity">
-                        <Link
-                          href={`/admin/projects/edit-project/${project.id}`}
-                          className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
-                          title="Edit"
-                        >
-                          <Edit className="w-5 h-5" />
-                        </Link>
-                        <button 
-                          onClick={() => handleDelete(project.id!)}
-                          className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                          title="Delete"
-                        >
-                          <Trash2 className="w-5 h-5" />
-                        </button>
+                        {showDeleted ? (
+                          <button
+                            onClick={() => handleRestore(project.id!)}
+                            className="inline-flex items-center gap-1 px-3 py-2 text-sm font-semibold text-[#062516] hover:bg-emerald-50 rounded-lg transition-colors"
+                            title="Restore"
+                          >
+                            <RotateCcw className="w-4 h-4" />
+                            Restore
+                          </button>
+                        ) : (
+                          <>
+                            <Link
+                              href={`/admin/projects/edit-project/${project.id}`}
+                              className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                              title="Edit"
+                            >
+                              <Edit className="w-5 h-5" />
+                            </Link>
+                            <button
+                              onClick={() => handleDelete(project.id!)}
+                              className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                              title="Delete"
+                            >
+                              <Trash2 className="w-5 h-5" />
+                            </button>
+                          </>
+                        )}
                       </div>
                     </td>
                   </tr>
@@ -189,7 +229,9 @@ export default function AdminProjectsPage() {
               <div className="bg-gray-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Database className="w-8 h-8 text-gray-300" />
               </div>
-              <p className="text-gray-500 text-lg">No projects found.</p>
+              <p className="text-gray-500 text-lg">
+                {showDeleted ? 'No deleted projects.' : 'No projects found.'}
+              </p>
               <button 
                 onClick={() => setSearchTerm('')}
                 className="text-[#062516] font-semibold mt-2 hover:underline"

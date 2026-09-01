@@ -5,7 +5,6 @@ import {
     getDocs,
     addDoc,
     updateDoc,
-    deleteDoc,
     doc,
     Timestamp,
     serverTimestamp,
@@ -19,26 +18,34 @@ import { Project } from "@/types/project";
 
 const COLLECTION_NAME = "projects";
 
-export const getProjects = async (): Promise<Project[]> => {
+export const isProjectDeleted = (project: { deletedAt?: string | null }): boolean =>
+    Boolean(project.deletedAt);
+
+const mapProjectDoc = (snapshot: { id: string; data: () => Record<string, any> }): Project => {
+    const data = snapshot.data();
+    const orderRaw = data.order;
+    const order =
+        orderRaw === undefined || orderRaw === null || orderRaw === ''
+            ? undefined
+            : Number(orderRaw);
+    return {
+        id: snapshot.id,
+        ...data,
+        order: order !== undefined && !Number.isNaN(order) ? order : undefined,
+        deletedAt: data.deletedAt || null,
+    } as Project;
+};
+
+export const getProjects = async (options?: { deletedOnly?: boolean }): Promise<Project[]> => {
     try {
         const q = query(collection(db, COLLECTION_NAME));
         const querySnapshot = await getDocs(q);
+        const deletedOnly = options?.deletedOnly === true;
         // Client-side sort so docs without `order` still appear (missing → end).
         // Coerce with Number() in case older docs stored order as a string.
         return querySnapshot.docs
-            .map(doc => {
-                const data = doc.data();
-                const orderRaw = data.order;
-                const order =
-                    orderRaw === undefined || orderRaw === null || orderRaw === ''
-                        ? undefined
-                        : Number(orderRaw);
-                return {
-                    id: doc.id,
-                    ...data,
-                    order: order !== undefined && !Number.isNaN(order) ? order : undefined,
-                } as Project;
-            })
+            .map((snapshot) => mapProjectDoc(snapshot))
+            .filter((project) => deletedOnly ? isProjectDeleted(project) : !isProjectDeleted(project))
             .sort((a, b) => (a.order ?? 9999) - (b.order ?? 9999));
     } catch (error) {
         console.error("Error fetching projects:", error);
@@ -46,12 +53,17 @@ export const getProjects = async (): Promise<Project[]> => {
     }
 };
 
-export const getProjectById = async (id: string): Promise<Project | null> => {
+export const getProjectById = async (
+    id: string,
+    options?: { includeDeleted?: boolean }
+): Promise<Project | null> => {
     try {
         const docRef = doc(db, COLLECTION_NAME, id);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-            return { id: docSnap.id, ...docSnap.data() } as Project;
+            const project = mapProjectDoc(docSnap);
+            if (isProjectDeleted(project) && !options?.includeDeleted) return null;
+            return project;
         }
         return null;
     } catch (error) {
@@ -71,14 +83,13 @@ export const getProjectBySlug = async (slug: string): Promise<Project | null> =>
         const q = query(
             collection(db, COLLECTION_NAME),
             where("slug", "==", slug),
-            limit(1)
+            limit(5)
         );
         const querySnapshot = await getDocs(q);
-        if (!querySnapshot.empty) {
-            const doc = querySnapshot.docs[0];
-            return { id: doc.id, ...doc.data() } as Project;
-        }
-        return null;
+        const live = querySnapshot.docs
+            .map((snapshot) => mapProjectDoc(snapshot))
+            .find((project) => !isProjectDeleted(project));
+        return live || null;
     } catch (error) {
         console.error("Error fetching project by slug:", error);
         return null;
@@ -193,6 +204,7 @@ export const getProjectsByBusinessArea = async (businessArea: string): Promise<P
 export const addProject = async (data: Omit<Project, 'id'>) => {
     return await addDoc(collection(db, COLLECTION_NAME), {
         ...data,
+        deletedAt: null,
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp()
     });
@@ -207,7 +219,19 @@ export const updateProject = async (id: string, data: Partial<Project>) => {
 };
 
 export const deleteProject = async (id: string) => {
-    return await deleteDoc(doc(db, COLLECTION_NAME, id));
+    const docRef = doc(db, COLLECTION_NAME, id);
+    return await updateDoc(docRef, {
+        deletedAt: new Date().toISOString(),
+        updatedAt: serverTimestamp(),
+    });
+};
+
+export const restoreProject = async (id: string) => {
+    const docRef = doc(db, COLLECTION_NAME, id);
+    return await updateDoc(docRef, {
+        deletedAt: null,
+        updatedAt: serverTimestamp(),
+    });
 };
 
 export const uploadProjectImage = async (file: File, path: string): Promise<string> => {

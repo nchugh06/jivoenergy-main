@@ -20,8 +20,11 @@ export default function EditProjectPage() {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const data = await getProjectById(id);
-        if (data) {
+        const data = await getProjectById(id, { includeDeleted: true });
+        if (data?.deletedAt) {
+          alert("Restore this project before editing");
+          router.push('/admin/projects');
+        } else if (data) {
           setProject(data);
         } else {
           alert("Project not found");
