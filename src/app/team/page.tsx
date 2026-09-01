@@ -1,92 +1,37 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Linkedin } from 'lucide-react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-
-interface TeamMember {
-  name: string;
-  role?: string;
-  image: string;
-  linkedin?: string;
-}
+import { TeamMember, TEAM_SECTIONS } from '@/types/team';
 
 const Team = () => {
-  const mentor: TeamMember = {
-    name: 'Rajesh Chugh',
-    role: 'CEO',
-    image: '/team/update/Rajesh-Chugh.jpg',
-    linkedin: 'https://www.linkedin.com/in/rajeshchugh74/'
-  };
+  const [members, setMembers] = useState<TeamMember[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const cco: TeamMember = {
-    name: 'Jorge Lascas',
-    role: 'CCO',
-    image: '/team/update/Jorge-Lascas.jpg',
-    linkedin: 'https://www.linkedin.com/in/jorgemslascas/'
-  };
-
-  const projectDevelopment: TeamMember[] = [
-    // { name: 'Jorge Lascas', image: '/team/update/Jorge.jpg', linkedin: 'https://www.linkedin.com/in/jorgemslascas/' },
-    { name: 'Beatrice', image: '/team/update/Beatrice.jpg', linkedin: '' },
-    { name: 'Nishank', image: '/team/update/Nishank.jpg', linkedin: '' },
-    { name: 'Naresh', image: '/team/update/Naresh.jpg', linkedin: '' },
-    { name: 'Ivan', image: '/team/update/Ivan.jpg', linkedin: '' },
-    { name: 'Samuel T', image: '/team/update/Samuel-T.jpg', linkedin: '' },
-    { name: 'Francis', image: '/team/update/Francis.jpg', linkedin: '' },
-    { name: 'Eric', image: '/team/update/Eric.jpg', linkedin: '' },
-
-
-
-    // { name: 'Patrice Yamintare Kounkorgo', image: '/team/update/Patrice.jpg', linkedin: 'https://www.linkedin.com/in/yamintare-patrice-kounkorgo-058405179/' },
-    // { name: 'Boyd', image: '' },
-  ];
-
-  const projectExecution: TeamMember[] = [
-    { name: 'Prayas', image: '/team/update/Prayas.jpg', linkedin: '' },
-    { name: 'Manvendra', image: '/team/update/Manvendra.jpg', linkedin: '' },
-    // { name: 'Ankit Srivastava', image: '/team/update/Ankit.jpg', linkedin: 'https://www.linkedin.com/in/ankit-srivastava14/' },
-    { name: 'Tushar', image: '/team/update/Tushar.jpg', linkedin: '' },
-    { name: 'Vivek', image: '/team/update/Vivek.jpg', linkedin: '' },
-    { name: 'Samuel W', image: '/team/update/Samuel.jpg', linkedin: '' },
-    { name: 'Nitesh', image: '/team/update/Nitesh.jpg', linkedin: '' },
-    { name: 'Shashi', image: '/team/update/Shashi.jpg', linkedin: '' },
-    { name: 'Rohit', image: '/team/update/Rohit.jpg', linkedin: '' },
-    { name: 'Akshay', image: '/team/update/Akshay.jpg', linkedin: '' },
-    { name: 'Pauline', image: '/team/update/Pauline.jpg', linkedin: '' },
-    // { name: 'Ashok Kumar', image: '/team/update/Ashok.jpg', linkedin: 'https://www.linkedin.com/in/ashok-kumar-74a07064/' },    
-    { name: 'Nitin', image: '/team/update/Nitin.jpg', linkedin: '' },
-    { name: 'Ravi', image: '/team/update/Ravi.jpg', linkedin: '' },
-    { name: 'Grace', image: '/team/update/Grace.jpg', linkedin: '' },
-    { name: 'Patrice', image: '/team/update/Patrice.jpg', linkedin: '' },
-    { name: 'Jaideep', image: '/team/update/Jaideep.jpg', linkedin: '' },
-    { name: 'Arun', image: '/team/update/Arun.jpg', linkedin: '' },
-  ];
-
-  const projectSupport: TeamMember[] = [
-  ];
-
-  const projectCorporate: TeamMember[] = [
-    { name: 'Ujwal', image: '/team/update/Ujwal.jpg', linkedin: '' },
-    { name: 'Aakanksha', image: '/team/update/Aakanksha.jpg', linkedin: '' },
-    { name: 'Geetika', image: '/team/update/Geetika.jpg', linkedin: '' },
-    { name: 'Abhishek', image: '/team/update/Abhishek.jpg', linkedin: '' },
-    { name: 'Chavvi', image: '/team/update/Chavvi.jpg', linkedin: '' },
-    // { name: 'Harshit', image: '/team/update/Harshit.jpg', linkedin: '' },
-    { name: 'Anuradha', image: '/team/update/Anuradha.jpg', linkedin: '' },
-    { name: 'Monika', image: '/team/update/Monika.jpg', linkedin: '' },
-    { name: 'Gayatri', image: '/team/update/Gayatri.jpg', linkedin: '' },
-    { name: 'Dikshita', image: '/team/update/Dikshita.jpg', linkedin: '' },
-    { name: 'Radhika', image: '/team/update/Radhika.jpg', linkedin: '' },
-    // { name: 'Shivalika Nagpal', image: '/team/update/Shivalika.jpg', linkedin: 'https://www.linkedin.com/in/shivalikanagpal/' },
-    { name: 'Martha', image: '/team/update/Martha.jpg', linkedin: '' },
-    // { name: 'Nidhi', image: '/team/update/nidhi.jpg' },
-    // { name: 'Chavvi Ahuja', image: '/team/update/Chavvi.jpg', linkedin: 'https://www.linkedin.com/in/chavvi-ahuja-68507b20a/' },
-    // { name: 'Harshit', image: '' },
-  ];
+  useEffect(() => {
+    let cancelled = false;
+    const load = async () => {
+      try {
+        const res = await fetch('/api/team', { cache: 'no-store' });
+        if (!res.ok) throw new Error('Failed to load team');
+        const data = await res.json();
+        if (!cancelled) setMembers(data.items || []);
+      } catch (error) {
+        console.error('Error loading team:', error);
+        if (!cancelled) setMembers([]);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    };
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -151,116 +96,74 @@ const Team = () => {
     </MotionDiv>
   );
 
+  const leadership = members.filter((member) => member.section === 'leadership');
+  const groupSections = TEAM_SECTIONS.filter((section) => section.id !== 'leadership');
+
   return (
     <div className="min-h-screen bg-white font-sans selection:bg-[#175d33] selection:text-[#062516] overflow-x-hidden">
       <Navbar />
 
       <div className="container mx-auto px-4 py-8 md:py-12 mt-20">
+        {loading ? (
+          <div className="flex justify-center py-24">
+            <div className="w-10 h-10 border-4 border-[#062516] border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        ) : (
+          <>
+            {leadership.map((member) => (
+              <motion.div
+                key={member.id}
+                className="flex flex-col items-center mt-20 mb-5"
+              >
+                <div
+                  className={`relative w-28 h-28 md:w-32 md:h-32 overflow-hidden rounded-full shadow-xl group mb-4 ${member.linkedin ? 'cursor-pointer' : ''}`}
+                  onClick={() => member.linkedin && window.open(member.linkedin, '_blank')}
+                >
+                  {member.image ? (
+                    <Image src={member.image} alt={member.name} fill quality={100} sizes="(max-width: 768px) 112px, 128px" className="object-cover object-top transition-transform group-hover:scale-110" />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-[#062516]/5 text-[#062516]/20">
+                      <span className="text-4xl font-bold font-serif">{member.name.charAt(0)}</span>
+                    </div>
+                  )}
+                  {member.linkedin ? (
+                    <div className="absolute inset-0 bg-[#062516]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <Linkedin className="w-10 h-10 text-white" />
+                    </div>
+                  ) : null}
+                </div>
+                <div className="text-center">
+                  <h1 className="text-2xl md:text-3xl font-black text-[#062516]">{member.name}</h1>
+                  {member.role ? <h2 className="text-center">{member.role}</h2> : null}
+                </div>
+              </motion.div>
+            ))}
 
-        {/* Mentor Leader */}
-        <motion.div
-          className="flex flex-col items-center mt-20 mb-5"
-        >
-          <div
-            className="relative w-28 h-28 md:w-32 md:h-32 overflow-hidden rounded-full shadow-xl cursor-pointer group mb-4"
-            onClick={() => mentor.linkedin && window.open(mentor.linkedin, '_blank')}
-          >
-            {/* border-4 border-[#175d33] */}
-            <Image src={mentor.image} alt={mentor.name} fill quality={100} sizes="(max-width: 768px) 112px, 128px" className="object-cover object-top transition-transform group-hover:scale-110" />
-            <div className="absolute inset-0 bg-[#062516]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <Linkedin className="w-10 h-10 text-white" />
+            <div className="space-y-12 max-w-7xl mx-auto">
+              {groupSections.map((section) => {
+                const sectionMembers = members.filter((member) => member.section === section.id);
+                if (!sectionMembers.length) return null;
+                return (
+                  <section key={section.id} className={section.id === 'corporate' || section.id === 'support' ? 'mb-10' : undefined}>
+                    <h3 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">
+                      {section.label}
+                    </h3>
+                    <MotionDiv
+                      variants={containerVariants}
+                      initial="hidden"
+                      animate="visible"
+                      className="flex flex-wrap justify-center gap-3 sm:gap-4"
+                    >
+                      {sectionMembers.map((member) => (
+                        <MemberCard key={member.id} member={member} size="small" />
+                      ))}
+                    </MotionDiv>
+                  </section>
+                );
+              })}
             </div>
-          </div>
-          <div className="text-center">
-            <h1 className="text-2xl md:text-3xl font-black text-[#062516]">{mentor.name}</h1>
-            <h2 className="text-center">{mentor.role}</h2>
-          </div>
-        </motion.div>
-
-        {/* CCO */}
-        <motion.div
-          className="flex flex-col items-center mt-20 mb-5"
-        >
-          <div
-            className="relative w-28 h-28 md:w-32 md:h-32 overflow-hidden rounded-full shadow-xl cursor-pointer group mb-4"
-            onClick={() => cco.linkedin && window.open(cco.linkedin, '_blank')}
-          >
-            {/* border-4 border-[#175d33] */}
-            <Image src={cco.image} alt={cco.name} fill quality={100} sizes="(max-width: 768px) 112px, 128px" className="object-cover object-top transition-transform group-hover:scale-110" />
-            <div className="absolute inset-0 bg-[#062516]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <Linkedin className="w-10 h-10 text-white" />
-            </div>
-          </div>
-          <div className="text-center">
-            <h1 className="text-2xl md:text-3xl font-black text-[#062516]">{cco.name}</h1>
-            <h2 className="text-center">{cco.role}</h2>
-          </div>
-        </motion.div>
-
-
-        <div className="space-y-12 max-w-7xl mx-auto">
-          {/* Project Execution */}
-          <section>
-            <h3 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">
-              Execution
-            </h3>
-            <MotionDiv
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="flex flex-wrap justify-center gap-3 sm:gap-4"
-            >
-              {projectExecution.map((member, index) => (
-                <MemberCard key={index} member={member} size="small" />
-              ))}
-            </MotionDiv>
-          </section>
-
-          {/* Project Development */}
-          <section>
-            <h3 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">Development</h3>
-            <MotionDiv
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="flex flex-wrap justify-center gap-3 sm:gap-4"
-            >
-              {projectDevelopment.map((member, index) => (
-                <MemberCard key={index} member={member} size="small" />
-              ))}
-            </MotionDiv>
-          </section>
-
-          {/* Project Support */}
-          {/* <section className='mb-10'>
-            <h3 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">Support</h3>
-            <MotionDiv
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="flex flex-wrap justify-center gap-3 sm:gap-4"
-            >
-              {projectSupport.map((member, index) => (
-                <MemberCard key={index} member={member} size="small" />
-              ))}
-            </MotionDiv>
-          </section> */}
-
-          {/* Project Corporate */}
-          <section className='mb-10'>
-            <h3 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">Corporate</h3>
-            <MotionDiv
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="flex flex-wrap justify-center gap-3 sm:gap-4"
-            >
-              {projectCorporate.map((member, index) => (
-                <MemberCard key={index} member={member} size="small" />
-              ))}
-            </MotionDiv>
-          </section>
-        </div>
+          </>
+        )}
       </div>
 
       <Footer />

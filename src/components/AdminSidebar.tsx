@@ -18,6 +18,7 @@ const AdminSidebar = () => {
     { name: 'Media', href: '/admin/media', icon: Newspaper },
     { name: 'Job Openings', href: '/admin/jobs', icon: ClipboardList },
     { name: 'Partners', href: '/admin/partners', icon: Handshake },
+    { name: 'Team', href: '/admin/team', icon: Users },
     { name: 'Project Gallery', href: '/admin/gallery', icon: Youtube },
     { name: 'Careers', href: '/admin/careers', icon: Briefcase },
   ];
