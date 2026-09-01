@@ -28,7 +28,7 @@ export default function AdminTeamPage() {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [showDeleted, setShowDeleted] = useState(false);
-  const [sectionFilter, setSectionFilter] = useState<'' | TeamSection>('');
+  const [sectionFilter, setSectionFilter] = useState<TeamSection>(TEAM_SECTIONS[0].id);
 
   const fetchItems = async (
     search = searchTerm,
@@ -157,13 +157,6 @@ export default function AdminTeamPage() {
           />
         </div>
         <div className="flex rounded-lg border border-gray-200 overflow-hidden w-full lg:w-auto flex-wrap">
-          <button
-            type="button"
-            onClick={() => setSectionFilter('')}
-            className={`px-3 py-2 text-sm font-semibold ${!sectionFilter ? 'bg-[#062516] text-white' : 'bg-white text-gray-600 hover:bg-gray-50'}`}
-          >
-            All
-          </button>
           {TEAM_SECTIONS.map((section) => (
             <button
               key={section.id}
