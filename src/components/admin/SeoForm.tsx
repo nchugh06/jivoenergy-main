@@ -53,7 +53,8 @@ const SeoForm: React.FC<SeoFormProps> = ({
   ) => {
     const { name, value } = e.target;
     if (e.target instanceof HTMLInputElement && e.target.type === 'checkbox') {
-      setFormData((prev) => ({ ...prev, [name]: e.target.checked }));
+      const checked = e.target.checked;
+      setFormData((prev) => ({ ...prev, [name]: checked }));
       return;
     }
     setFormData((prev) => ({ ...prev, [name]: value }));
