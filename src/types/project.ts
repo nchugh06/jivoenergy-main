@@ -43,6 +43,7 @@ export interface Project {
   // Metadata
   createdAt?: any; // Firestore Timestamp
   updatedAt?: any;
+  deletedAt?: string | null;
 }
 
 export interface ProjectCountry {

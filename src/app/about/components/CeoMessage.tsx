@@ -45,10 +45,10 @@ export default function CeoMessage() {
           {/* Message emerges from the portrait */}
           <div className="ceo-message__panel p-6 sm:p-8 lg:p-10 ">
             <div className="ceo-message__inner flex flex-col justify-between h-full">
-              <div className="ceo-message__label inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#085D36] mb-4">
+              <h2 className="ceo-message__label inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#085D36] mb-4">
                 <span className="h-0.5 w-10 bg-[#085D36] inline-block" />
                 CEO&apos;s Message
-              </div>
+              </h2>
 
               <div className="space-y-4">
                 <p className="ceo-message__quote text-gray-700 max-w-2xl leading-7 italic">

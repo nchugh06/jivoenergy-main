@@ -11,9 +11,9 @@ export default function ContactHome() {
           {/* <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[#b7d8af]">
             Get in touch
           </p> */}
-          <h5 className="mt-0 text-2xl font-semibold leading-tight text-white sm:text-2xl lg:text-3xl">
+          <h2 className="mt-0 text-2xl font-semibold leading-tight text-white sm:text-2xl lg:text-3xl">
             Get in touch with our experts to discuss your next renewable energy project.
-          </h5>
+          </h2>
           <div className="mt-6 md:mt-10 flex justify-center lg:justify-start">
             <Link
               href="/contact"

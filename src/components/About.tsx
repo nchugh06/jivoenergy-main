@@ -18,7 +18,7 @@ const About = () => {
             />
           </div>
           <div className="min-w-0">
-            <h3 className="section-title text-center text-[#062516]">Why Choose JIVO Energy</h3>
+            <h2 className="section-title section-title-lock text-center text-[#062516]">Why Choose JIVO Energy</h2>
             <p className="about-stats__description">
               <span className="font-bold text-[#062516]">JIVO Energy</span> is one of the fastest growing renewable energy companies with a track record of over
               100 MWp of solar power and 60 MWh of battery storage.

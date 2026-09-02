@@ -52,7 +52,7 @@ const Footer = () => {
           <div className="grid grid-cols-2 gap-8 lg:contents">
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <p className="text-lg font-semibold mb-4">Quick Links</p>
             <ul className="space-y-2">
               <li>
                 <Link href="/about" className="text-gray-400 hover:text-white transition-colors duration-200">
@@ -74,7 +74,7 @@ const Footer = () => {
 
           {/* Resources */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Resources</h3>
+            <p className="text-lg font-semibold mb-4">Resources</p>
             <ul className="space-y-2">
               <li>
                 <Link href="/media" className="text-gray-400 hover:text-white transition-colors duration-200">
@@ -102,7 +102,7 @@ const Footer = () => {
           </div>
 
           <div className="md:col-span-2 min-w-0">
-            <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
+            <p className="text-lg font-semibold mb-4">Contact Us</p>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-gray-400 text-sm items-start">
               <li>
                 <span className="block text-white font-medium">India</span>

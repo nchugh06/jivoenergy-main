@@ -96,9 +96,9 @@ export default function RegionProjectsClient({ regionId }: RegionProjectsClientP
         ) : (
           <section className="">
             <div className="container mx-auto px-6">
-              <h3 className="section-title-spl text-center text-[#062516] mb-10">
+              <h1 className="section-title-spl section-title-lock text-center text-[#062516] mb-10">
                 Our Project in {region.label}
-              </h3>
+              </h1>
 
               {projects.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">

@@ -779,7 +779,7 @@ export default function AfricaPresenceMap() {
     >
       <div className="africa-presence-section__inner">
         <div className="africa-presence-section__head">
-          <h3 className="section-title-spl">JIVO Energy in Africa</h3>
+          <h2 className="section-title-spl section-title-lock">JIVO Energy in Africa</h2>
         </div>
         <div
           ref={sectionRef}
@@ -817,7 +817,7 @@ export default function AfricaPresenceMap() {
                     alt=""
                   />
                 ) : null}
-                <h2 className="africa-presence__name">{selectedName}</h2>
+                <h3 className="africa-presence__name">{selectedName}</h3>
               </div>
               <dl className="africa-presence__meta">
                 <div>

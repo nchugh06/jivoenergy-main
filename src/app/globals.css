@@ -359,6 +359,16 @@ video {
   h3.section-title-spl {
     font-size: 1.75rem;
   }
+
+  /* Keep the current h3 title size when the tag is changed for SEO */
+  h1.section-title.section-title-lock,
+  h1.section-title-spl.section-title-lock,
+  h2.section-title.section-title-lock,
+  h2.section-title-spl.section-title-lock,
+  h3.section-title.section-title-lock,
+  h3.section-title-spl.section-title-lock {
+    font-size: 1.75rem;
+  }
 }
 
 /* Page banners: mobile-first clamp, then Tailwind lg (64rem) */

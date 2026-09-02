@@ -1,8 +1,9 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import {
-  YOUTUBE_CHANNEL_URL,
-  YOUTUBE_VIDEOS,
-} from "@/data/youtubeVideos";
+import { YOUTUBE_CHANNEL_URL } from "@/lib/gallery";
+import { GalleryVideo } from "@/types/gallery";
 import "./ProjectReviews.css";
 
 type ProjectReviewsProps = {
@@ -10,32 +11,39 @@ type ProjectReviewsProps = {
   variant?: "home" | "project";
 };
 
-function normalizeCountry(value: string) {
-  return value
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/&/g, "and")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
-}
-
-function countriesMatch(a: string, b: string) {
-  return normalizeCountry(a) === normalizeCountry(b);
-}
-
 export default function ProjectReviews({
   country,
   variant = "project",
 }: ProjectReviewsProps) {
   const isHome = variant === "home";
-  const videos = country
-    ? YOUTUBE_VIDEOS.filter(
-      (video) => video.country != null && countriesMatch(video.country, country)
-    )
-    : YOUTUBE_VIDEOS;
+  const [videos, setVideos] = useState<GalleryVideo[]>([]);
+  const [loaded, setLoaded] = useState(false);
 
-  if (!videos.length) return null;
+  useEffect(() => {
+    let cancelled = false;
+    const load = async () => {
+      try {
+        const params = new URLSearchParams();
+        if (country) params.set("country", country);
+        const url = params.toString() ? `/api/gallery?${params.toString()}` : "/api/gallery";
+        const res = await fetch(url, { cache: "no-store" });
+        if (!res.ok) throw new Error("Failed to load gallery videos");
+        const data = await res.json();
+        if (!cancelled) setVideos(data.items || []);
+      } catch (error) {
+        console.error("Error loading gallery videos:", error);
+        if (!cancelled) setVideos([]);
+      } finally {
+        if (!cancelled) setLoaded(true);
+      }
+    };
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, [country]);
+
+  if (!loaded || !videos.length) return null;
 
   return (
     <section
@@ -47,7 +55,7 @@ export default function ProjectReviews({
         <div className={`project-reviews__head project-reviews__head--${variant}`}>
           {isHome ? (
             <>
-              <h3 className="section-title">Project Gallery</h3>
+              <h2 className="section-title section-title-lock">Project Gallery</h2>
               <a
                 className="project-reviews__channel"
                 href={YOUTUBE_CHANNEL_URL}
@@ -59,7 +67,7 @@ export default function ProjectReviews({
               </a>
             </>
           ) : (
-            <h3 className="project-news__title">Watch Project Videos</h3>
+            <h2 className="project-news__title">Watch Project Videos</h2>
           )}
         </div>
 
@@ -68,19 +76,21 @@ export default function ProjectReviews({
             <a
               key={video.id}
               className="project-reviews__card"
-              href={`https://www.youtube.com/watch?v=${video.id}`}
+              href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Watch ${video.title} on YouTube`}
             >
               <span className="project-reviews__thumb">
-                <Image
-                  src={video.thumbnail}
-                  alt=""
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
+                {video.thumbnail ? (
+                  <Image
+                    src={video.thumbnail}
+                    alt=""
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                ) : null}
                 <span className="project-reviews__play" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M8 5.14v13.72L19 12 8 5.14z" />
