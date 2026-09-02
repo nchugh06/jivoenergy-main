@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { revalidateTag } from 'next/cache';
 import { getAuth, getDb } from '@/lib/firebaseAdmin';
 import { SEO_COLLECTION, isSeoDeleted, normalizeSeoWrite, slugifySeo, toSeoPage } from '@/lib/seo';
 import { SeoSlugTakenError, assertSeoSlugAvailable, claimSeoSlug, isLiveSeoPathTaken } from '@/lib/seoSlug';
@@ -78,6 +79,7 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
       updatedAt: now,
     });
 
+    revalidateTag('seo', 'max');
     return NextResponse.json({
       item: { id, ...payload, deletedAt: null, createdAt, updatedAt: now },
     });
@@ -108,6 +110,7 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
       updatedAt: now,
     });
 
+    revalidateTag('seo', 'max');
     return NextResponse.json({ success: true, deletedAt: now });
   } catch (error) {
     console.error('Error deleting SEO page:', error);

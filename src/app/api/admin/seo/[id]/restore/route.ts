@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { revalidateTag } from 'next/cache';
 import { getAuth, getDb } from '@/lib/firebaseAdmin';
 import { SEO_COLLECTION, isSeoDeleted, toSeoPage } from '@/lib/seo';
 import { SeoSlugTakenError, claimSeoSlug } from '@/lib/seoSlug';
@@ -54,6 +55,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
       updatedAt: now,
     });
 
+    revalidateTag('seo', 'max');
     const restored = await docRef.get();
     return NextResponse.json({
       item: toSeoPage(restored.id, restored.data() as Record<string, any>),

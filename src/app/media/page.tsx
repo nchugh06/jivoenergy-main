@@ -1,29 +1,15 @@
-'use client'
-import Image from 'next/image';
-import Media from '@/components/Media';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import type { Metadata } from 'next';
+import { getPageMetadata } from '@/lib/seoMetadata';
+import MediaPageClient from './MediaPageClient';
+
+export async function generateMetadata(): Promise<Metadata> {
+  return getPageMetadata('media', '/media', {
+    title: 'JIVO Energy Newsroom | Renewable Energy News Africa',
+    description:
+      'Read the latest JIVO Energy news, project updates and media coverage across solar power, battery storage and renewable energy in Africa.',
+  });
+}
 
 export default function MediaPage() {
-  return (
-    <main className="relative min-h-screen w-full bg-[#062516]">
-      <Navbar />
-      <section className="page-hero">
-        <Image
-          src="/assets/banners/Media.jpg"
-          alt="Media Banner"
-          fill
-          className="object-cover"
-          priority
-        />
-        {/* <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/25 to-[#04301C]/25"></div> */}
-      </section>
-      {/* <div className='pt-20'>
-        
-      </div> */}
-      
-      <Media />
-      <Footer />
-    </main>
-  )
+  return <MediaPageClient />;
 }

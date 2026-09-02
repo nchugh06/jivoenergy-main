@@ -1,44 +1,15 @@
-"use client"
-import Image from "next/image"
-import Navbar from "@/components/Navbar"
-import About from "@/components/About"
-import Projects from "@/components/Projects"
-import CoreValues from "@/components/CoreValues"
-import Services from "@/components/services"
-import Impact from "@/components/Impact"
-import ContactForm from "@/components/ContactForm"
-import Footer from "@/components/Footer"
-import Media from "@/components/Media"
-import GlobeViz from "@/components/GlobeViz";
-import GreenGlobe from "@/components/GreenGlobe";
+import type { Metadata } from 'next';
+import { getPageMetadata } from '@/lib/seoMetadata';
+import HomePageClient from './HomePageClient';
 
-export default function Home() {
-  return (
-    <div className="min-h-screen bg-white flex flex-col">
-        
-      
-      <Navbar />
-      <main className="flex flex-col items-center w-full">
-        <section id="hero-section" className="page-hero page-hero--home bg-black">
-          <div className="absolute inset-0 z-0 hidden md:block">
-            <GlobeViz />
-          </div>
-          <div className="absolute inset-0 z-0 block md:hidden bg-[#062516]">
-            <GlobeViz />
-          </div>
-          
-        </section>
-        <About />
-        <Projects />
-        <CoreValues />
-        <Services />
-        <Impact />
-        <Media />
-        <ContactForm />
-      </main>
-      <Footer /> 
-     
-    </div>
+export async function generateMetadata(): Promise<Metadata> {
+  return getPageMetadata('home', '/', {
+    title: 'JIVO Energy | Renewable Energy Solutions in Africa',
+    description:
+      'JIVO Energy delivers renewable energy infrastructure across Africa, including Solar PV, BESS, hybrid energy, transmission and sustainable energy solutions.',
+  });
+}
 
-  )
+export default function HomeAliasPage() {
+  return <HomePageClient />;
 }

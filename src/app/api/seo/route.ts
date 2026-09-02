@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { getDb } from '@/lib/firebaseAdmin';
-import { SEO_COLLECTION, isSeoDeleted, slugifySeo, sortSeoPages, toSeoPage } from '@/lib/seo';
+import { slugifySeo } from '@/lib/seo';
+import { getPublishedSeoBySlug } from '@/lib/getSeoBySlug';
 
 export async function GET(req: Request) {
   try {
@@ -10,18 +10,12 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: 'slug is required' }, { status: 400 });
     }
 
-    const snapshot = await getDb().collection(SEO_COLLECTION).get();
-    const items = sortSeoPages(
-      snapshot.docs
-        .map((doc) => toSeoPage(doc.id, doc.data() as Record<string, any>))
-        .filter((item) => item.published && !isSeoDeleted(item) && item.slug === slug)
-    );
-
-    if (!items.length) {
+    const item = await getPublishedSeoBySlug(slug);
+    if (!item) {
       return NextResponse.json({ error: 'Not found' }, { status: 404 });
     }
 
-    return NextResponse.json({ item: items[0] });
+    return NextResponse.json({ item });
   } catch (error) {
     console.error('Error fetching SEO by slug:', error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });

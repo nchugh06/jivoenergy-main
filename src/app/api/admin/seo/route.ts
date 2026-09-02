@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { revalidateTag } from 'next/cache';
 import { getAuth, getDb } from '@/lib/firebaseAdmin';
 import {
   SEO_COLLECTION,
@@ -98,6 +99,7 @@ export async function POST(req: Request) {
     }
 
     const item = await createSeoDocument(payload);
+    revalidateTag('seo', 'max');
     return NextResponse.json({ item }, { status: 201 });
   } catch (error) {
     if (error instanceof SeoSlugTakenError) {

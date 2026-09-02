@@ -1,9 +1,12 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BusinessAreaDetailClient from './BusinessAreaDetailClient';
+import { slugFromPath } from '@/lib/seo';
+import { getPageMetadata } from '@/lib/seoMetadata';
 import solarPV from '../../../../public/assets/banners/SolarPV.jpg';
 import BESS from '../../../../public/assets/banners/BESS.jpg';
 import transmission from '../../../../public/assets/banners/TransmissionDistribution.jpg';
@@ -180,6 +183,49 @@ const businessAreasData: {
     technicalDetails: []
   }
 };
+
+const BUSINESS_AREA_SEO: Record<string, { title: string; description: string }> = {
+  'solar-pv': {
+    title: 'Solar PV Solutions & EPC Services | JIVO Energy',
+    description:
+      'JIVO Energy provides Solar PV solutions, solar farm development, EPC, grid integration, commissioning, O&M and performance optimization across Africa.',
+  },
+  bess: {
+    title: 'Battery Energy Storage Systems (BESS) | JIVO Energy',
+    description:
+      'JIVO Energy provides BESS solutions for grid stability, backup power, peak shaving, load shifting, renewable integration and energy reliability across Africa.',
+  },
+  'transmission-distribution': {
+    title: 'Transmission & Distribution Solutions | JIVO Energy',
+    description:
+      'JIVO Energy delivers transmission and distribution infrastructure, substations, grid interconnection, power evacuation and electrical network solutions across Africa.',
+  },
+  'hybrid-energy': {
+    title: 'Hybrid Energy Systems & Solutions | JIVO Energy',
+    description:
+      'JIVO Energy designs hybrid energy systems combining Solar PV, BESS, grid and DG to deliver reliable, efficient and sustainable power across Africa.',
+  },
+  'biogas-biomethane': {
+    title: 'Biogas & Biomethane Solutions | JIVO Energy',
+    description:
+      'JIVO Energy develops biogas and biomethane solutions that convert organic waste into renewable energy, green fuel and sustainable power for industries.',
+  },
+  'waste-management': {
+    title: 'Waste Management & Waste-to-Energy | JIVO Energy',
+    description:
+      'JIVO Energy develops waste management and waste-to-energy solutions that convert municipal, industrial and organic waste into renewable power and resources.',
+  },
+};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const path = `/business-areas/${slug}`;
+  return getPageMetadata(slugFromPath(path), path, BUSINESS_AREA_SEO[slug]);
+}
 
 export default async function BusinessAreaDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
