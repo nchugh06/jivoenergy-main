@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: SITE_DEFAULT_SEO.metaTitle,
   description: SITE_DEFAULT_SEO.metaDescription,
+  authors: [{ name: "JIVO Energy", url: SITE_URL }],
+  creator: "JIVO Energy",
+  publisher: "JIVO Energy",
   icons: {
     icon: "/favicon.ico",
   },
