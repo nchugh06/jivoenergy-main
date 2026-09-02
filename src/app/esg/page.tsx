@@ -98,9 +98,9 @@ export default function SustainabilityPage() {
       <section className="py-5 md:py-5">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h3 className="section-title-spl text-center text-[#062516] mb-10">
+            <h1 className="section-title-spl section-title-lock text-center text-[#062516] mb-10">
               Our Commitment
-            </h3>
+            </h1>
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -145,8 +145,8 @@ export default function SustainabilityPage() {
               viewport={{ once: true }}
               variants={fadeUp}
             >
-              <h3 className="section-title text-[#062516]">QHSE</h3>
-              <h4 className="text-xl font-semibold text-gray-800 mb-4">Quality, Health, Safety, and Environment</h4>
+              <h2 className="section-title section-title-lock text-[#062516]">QHSE</h2>
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">Quality, Health, Safety, and Environment</h3>
               <p className="text-gray-600 leading-relaxed mb-6">
                 Quality, Health, Safety, and Environment (QHSE) are fundamental to JIVO’s project execution and operational culture. We are committed to delivering high-quality renewable energy projects while ensuring safe working conditions, environmental protection, and full compliance with applicable standards and regulations.
               </p>
@@ -185,8 +185,8 @@ export default function SustainabilityPage() {
               viewport={{ once: true }}
               variants={fadeUp}
             >
-              <h3 className="section-title text-[#062516] mb-6">Social Responsibility</h3>
-              <h4 className="text-xl font-semibold text-gray-800 mb-4">Empowering Communities</h4>
+              <h2 className="section-title section-title-lock text-[#062516] mb-6">Social Responsibility</h2>
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">Empowering Communities</h3>
               <p className="text-gray-600 leading-relaxed mb-6">
                 Our responsibility extends beyond business. We believe in empowering communities, supporting education, and contributing to social well-being.
               </p>
@@ -225,7 +225,7 @@ export default function SustainabilityPage() {
               viewport={{ once: true }}
               variants={fadeUp}
             >
-              <h3 className="section-title text-[#062516] mb-6">Sustainability Focus</h3>
+              <h2 className="section-title section-title-lock text-[#062516] mb-6">Sustainability Focus</h2>
               <p className="text-gray-600 leading-relaxed mb-6">
                 Sustainability is integrated into JIVO Energy’s procurement and project delivery approach. Our procurement practices balance economic efficiency with environmental responsibility and social value, ensuring responsible decision-making across the entire project lifecycle.
               </p>
@@ -238,7 +238,7 @@ export default function SustainabilityPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h3 className="section-title text-center text-[#062516] mb-6">Our First Voluntary CSR Initiative</h3>
+            <h2 className="section-title section-title-lock text-center text-[#062516] mb-6">Our First Voluntary CSR Initiative</h2>
             <motion.p
               className="text-lg text-gray-700 leading-relaxed"
               initial="hidden"
@@ -284,7 +284,7 @@ export default function SustainabilityPage() {
       <section className="py-16 bg-[#F5FBF5]">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h3 className="section-title-spl text-[#062516] mb-8">Quality Assurance</h3>
+            <h2 className="section-title-spl section-title-lock text-[#062516] mb-8">Quality Assurance</h2>
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -312,7 +312,7 @@ export default function SustainabilityPage() {
               viewport={{ once: true }}
               variants={fadeUp}
             >
-              <h3 className="section-title-spl text-[#062516] mb-6">Environmental Social Metrics</h3>
+              <h2 className="section-title-spl section-title-lock text-[#062516] mb-6">Environmental Social Metrics</h2>
               <p className="text-gray-600 leading-relaxed mb-6">
                 At JIVO, we track and manage environmental and social performance through defined metrics that support responsible project delivery and continuous improvement. Our approach includes monitoring resource efficiency, emissions reduction, waste management, health and safety performance, and community engagement outcomes across our operations.
               </p>
@@ -347,7 +347,7 @@ export default function SustainabilityPage() {
       {/* Photo Gallery Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h3 className="section-title-spl text-[#062516] text-center mb-12">Gallery</h3>
+          <h2 className="section-title-spl section-title-lock text-[#062516] text-center mb-12">Gallery</h2>
           <motion.div
             id="esg-gallery"
             className="esg-gallery"

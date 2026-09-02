@@ -149,7 +149,7 @@ const Contact = () => {
 
       {/* Main Content - Optimized spacing */}
       <div className="max-w-7xl mx-auto px-4 py-5">
-        <h3 className="section-title-spl text-center text-[#062516] mb-10">Contact Us</h3>
+        <h1 className="section-title-spl section-title-lock text-center text-[#062516] mb-10">Contact Us</h1>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Column - Office Locations & Social */}
           <div className="space-y-6">
@@ -160,7 +160,7 @@ const Contact = () => {
                   key={index}
                   className="bg-white rounded-lg shadow p-4 hover:shadow-md transition-shadow duration-300"
                 >
-                  <h3 className="text-lg font-bold text-[#062516] mb-2">{office.country}</h3>
+                  <h2 className="text-lg font-bold text-[#062516] mb-2">{office.country}</h2>
                   <p className="text-sm text-gray-700 mb-2 whitespace-pre-line">{office.address}</p>
                 </div>
               ))}
@@ -168,7 +168,7 @@ const Contact = () => {
 
             {/* Social Connect Section - More compact */}
             <div className="bg-[#F5FBF5] rounded-lg p-4">
-              <h3 className="text-lg font-bold text-[#062516] mb-4">Connect with us</h3>
+              <h2 className="text-lg font-bold text-[#062516] mb-4">Connect with us</h2>
               <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
                 <a 
                   href="mailto:info@jivoenergy.com" 
@@ -203,7 +203,7 @@ const Contact = () => {
 
           {/* Right Column - Contact Form */}
           <div className="bg-white rounded-lg shadow-lg p-6">
-            <h3 className="text-2xl font-bold text-[#062516] mb-4">Have an Enquiry?</h3>
+            <h2 className="text-2xl font-bold text-[#062516] mb-4">Have an Enquiry?</h2>
             <p className="text-gray-600 mb-6">
               Send us your enquiry and our team will respond to you shortly.
             </p>

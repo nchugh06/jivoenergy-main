@@ -134,9 +134,9 @@ export default function GalleryPage() {
                     {/* Content */}
                     <div className="p-6">
                       <div className="mb-2">
-                        <h3 className="text-xl font-bold text-[#062516] group-hover:text-[#051e12] transition-colors duration-300">
+                        <h2 className="text-xl font-bold text-[#062516] group-hover:text-[#051e12] transition-colors duration-300">
                           {country.title}
-                        </h3>
+                        </h2>
                         <p className="text-sm text-[#062516]/70 font-medium">
                           {country.subtitle}
                         </p>
@@ -171,9 +171,9 @@ export default function GalleryPage() {
             className="text-center mt-16"
           >
             <div className="bg-white rounded-2xl shadow-xl p-8 max-w-2xl mx-auto">
-              <h3 className="text-2xl font-bold text-[#062516] mb-4">
+              <h2 className="text-2xl font-bold text-[#062516] mb-4">
                 Ready to Explore More?
-              </h3>
+              </h2>
               <p className="text-gray-600 mb-6">
                 Discover how we're making a difference across the globe through sustainable energy solutions.
               </p>

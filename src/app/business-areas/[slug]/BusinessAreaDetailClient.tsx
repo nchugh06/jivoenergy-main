@@ -137,7 +137,7 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
         {/* Content Grid */}
         <div className="grid grid-cols-1 gap-6 items-start mb-6 bg">
           <div className="mb-0">
-            <h3 className="section-title-spl text-center text-[#062516]">{displayTitle}</h3>
+            <h1 className="section-title-spl section-title-lock text-center text-[#062516]">{displayTitle}</h1>
           </div>
           {/* Description Section */}
           <div className="space-y-6">
@@ -150,7 +150,7 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
         {/* Technical Description Section */}
         {area.bessStandaloneDescription && (
           <div className="mb-8">
-            <h3 className="text-2xl font-bold text-[#062516] mb-4 text-center">Standalone BESS Systems</h3>
+            <h2 className="text-2xl font-bold text-[#062516] mb-4 text-center">Standalone BESS Systems</h2>
             <div className="space-y-6">
               <div className="text-gray-600 leading-relaxed space-y-4">
                 {renderRichText(area.bessStandaloneDescription)}
@@ -168,12 +168,12 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
             viewport={{ once: true, margin: '-80px' }}
             variants={containerVariants}
           >
-            <motion.h3
+            <motion.h2
               variants={headingVariants}
               className="text-2xl font-bold text-[#062516] mb-8 text-center"
             >
               Key Capabilities
-            </motion.h3>
+            </motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {area.features.map((feature, featureIndex) => (
                 <motion.div
@@ -213,12 +213,12 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
               viewport={{ once: true, margin: '-80px' }}
               variants={containerVariants}
             >
-              <motion.h3
+              <motion.h2
                 variants={headingVariants}
                 className="text-2xl font-bold text-[#062516] mb-8 text-center"
               >
                 Technical Expertise
-              </motion.h3>
+              </motion.h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {area.technicalDetails.map((td, tIndex) => (
                   <motion.div
@@ -240,9 +240,9 @@ export default function BusinessAreaDetailClient({ slug, area }: BusinessAreaDet
         {/* Projects Section — image + subtitle carousel */}
         {!loading && projects.length > 0 && (
           <div className="mb-16">
-            <h3 className="text-2xl font-bold text-[#062516] mb-0 text-center py-10">
+            <h2 className="text-2xl font-bold text-[#062516] mb-0 text-center py-10">
               Landmark Projects
-            </h3>
+            </h2>
 
             <div className="relative px-2">
               <Swiper

@@ -89,15 +89,15 @@ const Certificate = () => {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-5">
-        <motion.h3
-          className="section-title-spl text-center text-[#062516] mb-10"
+        <motion.h1
+          className="section-title-spl section-title-lock text-center text-[#062516] mb-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
         >
           Certifications
-        </motion.h3>
+        </motion.h1>
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6"
           initial="hidden"
@@ -123,9 +123,9 @@ const Certificate = () => {
               </div>
 
               <div className="p-4 flex flex-col items-center flex-grow w-full border-t border-gray-50">
-                <h3 className="text-sm font-bold text-[#062516] line-clamp-2 min-h-[40px]">
+                <h2 className="text-sm font-bold text-[#062516] line-clamp-2 min-h-[40px]">
                   {cert.title}
-                </h3>
+                </h2>
               </div>
             </motion.a>
           ))}

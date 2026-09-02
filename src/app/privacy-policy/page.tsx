@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 function PolicySection({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section className="space-y-4">
-      <h4 className="text-2xl md:text-3xl font-bold text-[#085D36]">{title}</h4>
+      <h2 className="text-2xl md:text-3xl font-bold text-[#085D36]">{title}</h2>
       <div className="space-y-4 text-gray-600 leading-relaxed">{children}</div>
     </section>
   );
@@ -33,9 +33,9 @@ export default function PrivacyPolicy() {
 
       <section className="bg-gray-50 pt-28 pb-16 md:pt-32 md:pb-24">
         <div className="container mx-auto px-4">
-          <h3 className="section-title-spl text-center text-[#062516] mb-10">
+          <h1 className="section-title-spl section-title-lock text-center text-[#062516] mb-10">
             Privacy Policy
-          </h3>
+          </h1>
 
           <div className="mb-8 space-y-1 text-gray-600">
             <p>Effective Date: [12 June 2026]</p>
@@ -58,7 +58,7 @@ export default function PrivacyPolicy() {
             <PolicySection title="2. Information We Collect">
               <p>We may collect the following categories of personal information, depending on how you interact with us:</p>
               <div className="space-y-3 rounded-lg border border-gray-200 bg-white/70 p-4">
-                <h5 className="text-xl font-semibold text-gray-800">2.1 Information You Provide</h5>
+                <h3 className="text-xl font-semibold text-gray-800">2.1 Information You Provide</h3>
                 <p>
                   Contact and business enquiry data: full name, email address, phone number, company / organisation name, designation or role, area of interest, country/location, and any information included in your message or communication.
                 </p>
@@ -70,7 +70,7 @@ export default function PrivacyPolicy() {
                 </p>
               </div>
               <div className="space-y-3 rounded-lg border border-gray-200 bg-white/70 p-4">
-                <h5 className="text-xl font-semibold text-gray-800">2.2 Automatically Collected Information</h5>
+                <h3 className="text-xl font-semibold text-gray-800">2.2 Automatically Collected Information</h3>
                 <p>
                   When you visit our website, we may automatically collect technical and usage information such as IP address, browser type and version, device identifiers and device information, operating system, pages visited, date and time of access, referring website information, approximate location derived from technical identifiers, cookie identifiers and similar online identifiers.
                 </p>

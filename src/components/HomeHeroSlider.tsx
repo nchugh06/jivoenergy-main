@@ -70,7 +70,7 @@ export default function HomeHeroSlider() {
     if (videoReady && videoRef.current) {
       try {
         const p = videoRef.current.play();
-        if (p && typeof p.catch === "function") p.catch(() => {});
+        if (p && typeof p.catch === "function") p.catch(() => { });
       } catch (e) {
         // ignore playback errors (browsers may still block autoplay)
       }
@@ -117,22 +117,22 @@ export default function HomeHeroSlider() {
                 className="absolute top-1/2 left-0 right-0 z-10 -translate-y-1/2 px-4"
               >
                 <div className="mx-auto max-w-4xl px-4 text-center">
-                  <motion.h2
+                  <motion.h1
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
                     className="text-3xl font-bold leading-tight text-green sm:text-4xl"
                   >
                     {slides[index].captionTitle}
-                  </motion.h2>
-                  <motion.h5
+                  </motion.h1>
+                  <motion.p
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
-                    className="mt-2 text-center text-sm leading-relaxed text-white sm:text-xl"
+                    className="mt-2 text-center text-sm leading-relaxed text-white sm:text-xl" style={{ textAlign: "center" }}
                   >
                     {slides[index].captionSubtitle}
-                  </motion.h5>
+                  </motion.p>
                 </div>
               </motion.div>
             </div>

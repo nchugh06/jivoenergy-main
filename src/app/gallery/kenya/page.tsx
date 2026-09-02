@@ -134,17 +134,17 @@ export default function KenyaGallery() {
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div>
-                <h3 className="section-title-spl text-[#062516] mb-4">About Our Work</h3>
+                <h2 className="section-title-spl section-title-lock text-[#062516] mb-4">About Our Work</h2>
                 <p className="text-gray-600 leading-relaxed mb-6">
                   {countryInfo.description}
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-gray-50 rounded-lg p-4">
-                    <h4 className="font-semibold text-[#062516] mb-2">Projects</h4>
+                    <h3 className="font-semibold text-[#062516] mb-2">Projects</h3>
                     <p className="text-sm text-gray-600">{countryInfo.projects}</p>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-4">
-                    <h4 className="font-semibold text-[#062516] mb-2">Impact</h4>
+                    <h3 className="font-semibold text-[#062516] mb-2">Impact</h3>
                     <p className="text-sm text-gray-600">{countryInfo.impact}</p>
                   </div>
                 </div>

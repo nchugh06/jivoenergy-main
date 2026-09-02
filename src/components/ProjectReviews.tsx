@@ -55,7 +55,7 @@ export default function ProjectReviews({
         <div className={`project-reviews__head project-reviews__head--${variant}`}>
           {isHome ? (
             <>
-              <h3 className="section-title">Project Gallery</h3>
+              <h2 className="section-title section-title-lock">Project Gallery</h2>
               <a
                 className="project-reviews__channel"
                 href={YOUTUBE_CHANNEL_URL}
@@ -67,7 +67,7 @@ export default function ProjectReviews({
               </a>
             </>
           ) : (
-            <h3 className="project-news__title">Watch Project Videos</h3>
+            <h2 className="project-news__title">Watch Project Videos</h2>
           )}
         </div>
 

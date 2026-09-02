@@ -79,9 +79,9 @@ const Achievements = () => {
   return (
     <section className="achievements">
       <div className="achievements__container">
-        <h3 className="section-title text-center text-[#062516]">
+        <h2 className="section-title section-title-lock text-center text-[#062516]">
           What Sets Us Apart
-        </h3>
+        </h2>
 
         <div className="achievements__grid">
           <div className="achievements__media">

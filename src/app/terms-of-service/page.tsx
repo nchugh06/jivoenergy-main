@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 function TermsSection({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section className="space-y-4">
-      <h4 className="text-2xl md:text-3xl font-bold text-[#085D36]">{title}</h4>
+      <h2 className="text-2xl md:text-3xl font-bold text-[#085D36]">{title}</h2>
       <div className="space-y-4 text-gray-600 leading-relaxed">{children}</div>
     </section>
   );
@@ -33,9 +33,9 @@ export default function TermsOfService() {
 
       <section className="bg-gray-50 pt-28 pb-16 md:pt-32 md:pb-24">
         <div className="container mx-auto px-4">
-          <h3 className="section-title-spl text-center text-[#062516] mb-10">
+          <h1 className="section-title-spl section-title-lock text-center text-[#062516] mb-10">
             Terms of Service
-          </h3>
+          </h1>
 
           <div className="mb-8 space-y-1 text-gray-600">
             <p>Effective Date: [12 June 2026]</p>

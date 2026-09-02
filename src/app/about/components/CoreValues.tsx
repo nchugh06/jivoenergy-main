@@ -41,7 +41,7 @@ export default function CoreValues() {
   return (
     <section className="py-16 px-6 md:px-12 bg-white">
       <div className="max-w-7xl mx-auto">
-        <h3 className="section-title-spl text-center text-[#062516] mb-10">Our Core Values</h3>
+        <h2 className="section-title-spl section-title-lock text-center text-[#062516] mb-10">Our Core Values</h2>
         <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {coreValues.map((value, index) => (
             <ScrollReveal

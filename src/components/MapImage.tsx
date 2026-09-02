@@ -7,9 +7,9 @@ const MapImage = () => {
     return (
         <section id="map-section" className="relative w-full overflow-hidden bg-[#d2e4d6]">
             <div className="text-center py-8 pb-8 bg-[#d2e4d6]">
-                <h3 className="section-title-spl text-center text-[#062516]">
+                <h2 className="section-title-spl section-title-lock text-center text-[#062516]">
                     JIVO Energy in Africa
-                </h3>
+                </h2>
             </div>
             <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
                 <div className="relative w-full overflow-hidden rounded-2xl min-h-[420px] sm:min-h-[520px] lg:min-h-[620px]">

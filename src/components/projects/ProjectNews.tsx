@@ -62,7 +62,7 @@ const ProjectNews = ({ country }: ProjectNewsProps) => {
         <section className="bg-pistachio-green">
             <div className="max-w-7xl mx-auto px-4 py-16">
                 <div className="mb-12">
-                    <h3 className="section-title-spl text-center text-[#062516]">Project Related News</h3>
+                    <h2 className="section-title-spl section-title-lock text-center text-[#062516]">Project Related News</h2>
                 </div>
                 <div className="project-news">
                     {items.map((item) => (
@@ -81,7 +81,7 @@ const ProjectNews = ({ country }: ProjectNewsProps) => {
                                 />
                             </div>
                             <div className="project-news__content">
-                                <h4 className="project-news__title">{item.title}</h4>
+                                <h3 className="project-news__title">{item.title}</h3>
                                 <p className="project-news__description">{item.description}</p>
                                 {item.link && (
                                     <button

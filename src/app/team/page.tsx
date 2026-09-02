@@ -102,6 +102,7 @@ const Team = () => {
   return (
     <div className="min-h-screen bg-white font-sans selection:bg-[#175d33] selection:text-[#062516] overflow-x-hidden">
       <Navbar />
+      <h1 className="sr-only">Our Team</h1>
 
       <div className="container mx-auto px-4 py-8 md:py-12 mt-20">
         {loading ? (
@@ -133,8 +134,8 @@ const Team = () => {
                   ) : null}
                 </div>
                 <div className="text-center">
-                  <h1 className="text-2xl md:text-3xl font-black text-[#062516]">{member.name}</h1>
-                  {member.role ? <h2 className="text-center">{member.role}</h2> : null}
+                  <h2 className="text-2xl md:text-3xl font-black text-[#062516]">{member.name}</h2>
+                  {member.role ? <p className="text-center">{member.role}</p> : null}
                 </div>
               </motion.div>
             ))}
@@ -145,9 +146,9 @@ const Team = () => {
                 if (!sectionMembers.length) return null;
                 return (
                   <section key={section.id} className={section.id === 'corporate' || section.id === 'support' ? 'mb-10' : undefined}>
-                    <h3 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">
+                    <h2 className="text-sm md:text-base font-black text-[#062516]/40 uppercase tracking-[0.3em] text-center mb-8 border-b border-gray-100 pb-2">
                       {section.label}
-                    </h3>
+                    </h2>
                     <MotionDiv
                       variants={containerVariants}
                       initial="hidden"

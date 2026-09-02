@@ -95,7 +95,7 @@ const Media = ({ limit }: MediaProps) => {
       <Suspense fallback={null}>
         <MediaQueryOpener items={items} onOpenIframe={setActiveLink} />
       </Suspense>
-      <h3 className="section-title-spl text-center text-[#062516] mb-10">JIVO Energy Newsroom</h3>
+      <h1 className="section-title-spl section-title-lock text-center text-[#062516] mb-10">JIVO Energy Newsroom</h1>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-96 h-96 bg-green-400 rounded-full blur-3xl"></div>
@@ -148,9 +148,9 @@ const Media = ({ limit }: MediaProps) => {
               
               {/* Content */}
               <div className="p-5 sm:p-8 min-h-0 sm:min-h-72 flex flex-col">
-                <h3 className="text-xl md:text-2xl font-bold text-[#062516] mb-4 group-hover:text-green-600 transition-colors duration-300 line-clamp-2">
+                <h2 className="text-xl md:text-2xl font-bold text-[#062516] mb-4 group-hover:text-green-600 transition-colors duration-300 line-clamp-2">
                   {card.title}
-                </h3>
+                </h2>
                 <p className="text-gray-700 mb-6 leading-relaxed flex-1 overflow-hidden">
                   {card.description}
                 </p>

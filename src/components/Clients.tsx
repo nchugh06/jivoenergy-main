@@ -33,7 +33,7 @@ export default function Clients() {
   return (
     <section className="bg-[#fefefe] py-10 md:py-16 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h3 className="section-title text-center text-[#062516]">Our Clients</h3>
+        <h2 className="section-title section-title-lock text-center text-[#062516]">Our Clients</h2>
 
         <div className="mt-6 md:mt-10 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
           <div className="flex items-center gap-6 w-max animate-marquee">

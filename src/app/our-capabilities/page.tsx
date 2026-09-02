@@ -93,9 +93,9 @@ const Capabilities = () => {
                   <div className="text-[#062516] text-6xl font-bold mb-4">
                     {capability.id}
                   </div>
-                  <h3 className="section-title-spl text-[#062516] mb-4">
+                  <h2 className="section-title-spl section-title-lock text-[#062516] mb-4">
                     {capability.title}
-                  </h3>
+                  </h2>
                   <p className="text-gray-600 text-lg">
                     {capability.description}
                   </p>

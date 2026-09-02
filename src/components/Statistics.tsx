@@ -96,12 +96,12 @@ function StatCard({
 
   return (
     <div className="content">
-      <h3 className="stat-number" style={{ color }}>
+      <p className="stat-number" style={{ color }}>
         {stat.value}
-      </h3>
-      <h3 className="stat-description text-bold" style={{ color }}>
+      </p>
+      <p className="stat-description text-bold" style={{ color }}>
         {stat.label}
-      </h3>
+      </p>
     </div>
   );
 }

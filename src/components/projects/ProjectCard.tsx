@@ -54,9 +54,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               {project.country}
             </div>
 
-            <h3 className="text-xl font-bold text-[#062516] mb-2 line-clamp-2 leading-tight min-h-13">
+            <h2 className="text-xl font-bold text-[#062516] mb-2 line-clamp-2 leading-tight min-h-13">
               {project.title}
-            </h3>
+            </h2>
 
             <div className="flex flex-wrap gap-2 mb-4">
               {project.capacity && (

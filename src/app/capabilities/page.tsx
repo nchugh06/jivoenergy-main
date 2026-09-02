@@ -125,7 +125,7 @@ export default function Capabilities() {
       <div className="py-5">
         <div className="capabilities-intro-wrap">
           <div className="capabilities-intro">
-            <h3 className="section-title-spl text-center">Our Capabilities</h3>
+            <h1 className="section-title-spl section-title-lock text-center">Our Capabilities</h1>
          
           </div>
         </div>
@@ -162,7 +162,7 @@ export default function Capabilities() {
 
                     <div className="capabilities-body">
                       <span className="capabilities-step">{item.id}</span>
-                      <h3 className="mt-3 text-2xl font-semibold text-[#062516]">{item.title}</h3>
+                      <h2 className="mt-3 text-2xl font-semibold text-[#062516]">{item.title}</h2>
                       <p className="capabilities-intro-text">{item.intro}</p>
                       <ul className="capabilities-points">
                         {item.points.map((point) => (

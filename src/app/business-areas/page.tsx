@@ -310,9 +310,9 @@ const BusinessAreas = () => {
       <div className="">
         <div className="ba-intro-wrap max-w-7xl mx-auto px-4">
           <div className="ba-intro mb-16">
-            <h3 className="section-title-spl text-center text-[#062516] mb-10">
+            <h1 className="section-title-spl section-title-lock text-center text-[#062516] mb-10">
               Business Areas
-            </h3>
+            </h1>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -386,12 +386,12 @@ const BusinessAreas = () => {
                     sizes="(max-width: 1023px) 100vw, 600px"
                   />
                 </div>
-                <h3 className="section-title-spl text-[#062516] mb-10">
+                <h2 className="section-title-spl section-title-lock text-[#062516] mb-10">
                   {area.title}
-                </h3>
-                <h3 className="ba-scroll-section-kicker text-left text-gray-700 font-medium mt-2">
+                </h2>
+                <p className="ba-scroll-section-kicker text-left text-gray-700 font-medium mt-2">
                   {area.imageTitle}
-                </h3>
+                </p>
                 <p className="ba-scroll-section-desc text-gray-600 leading-relaxed">
                   {area.description}
                 </p>
@@ -407,9 +407,9 @@ const BusinessAreas = () => {
         </div>
 
         <div className="ba-cta max-w-7xl mx-auto px-4 mt-24 text-center">
-          <h3 className="section-title-spl text-[#062516] mb-6">
+          <h2 className="section-title-spl section-title-lock text-[#062516] mb-6">
             Ready to Transform Your Energy Future?
-          </h3>
+          </h2>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
             Contact us today to learn more about our services and how we can help
             you achieve your energy goals.

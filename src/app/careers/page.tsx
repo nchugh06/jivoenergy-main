@@ -281,7 +281,7 @@ const Careers = () => {
       {/* Introduction Section */}
       <section className="py-5 px-4 max-w-7xl mx-auto">
         <div className="text-center max-w-7xl mx-auto mb-16">
-          <h3 className="section-title-spl text-center text-[#062516] mb-10">Careers</h3>
+          <h1 className="section-title-spl section-title-lock text-center text-[#062516] mb-10">Careers</h1>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -307,7 +307,7 @@ const Careers = () => {
         >
           <article className="careers-why__cell careers-why__inclusive">
             <Users className="careers-why__icon" />
-            <h4 className="careers-why__name">Inclusive Environment</h4>
+            <h3 className="careers-why__name">Inclusive Environment</h3>
             <p className="careers-why__desc">
               Fostering a supportive, inclusive, and collaborative work environment.
             </p>
@@ -323,11 +323,11 @@ const Careers = () => {
 
           <div className="careers-why__cell careers-why__title">
             <p className="careers-why__kicker">Growth &amp; Stability</p>
-            <h3 className="careers-why__heading">
+            <h2 className="careers-why__heading">
               <span>Why</span>
               <span>Work</span>
               <span>With Us?</span>
-            </h3>
+            </h2>
             <p className="careers-why__lede">
               Working with JIVO Energy means becoming part of a stable, growth-oriented company that values
               professionalism and long-term career development. We are committed to promoting work-life balance
@@ -337,7 +337,7 @@ const Careers = () => {
 
           <article className="careers-why__cell careers-why__growth">
             <TrendingUp className="careers-why__icon" />
-            <h4 className="careers-why__name">Professional Growth</h4>
+            <h3 className="careers-why__name">Professional Growth</h3>
             <p className="careers-why__desc">
               Providing opportunities for continuous professional growth and skills development.
             </p>
@@ -345,7 +345,7 @@ const Careers = () => {
 
           <article className="careers-why__cell careers-why__innovation">
             <Lightbulb className="careers-why__icon" />
-            <h4 className="careers-why__name">Innovation &amp; Ownership</h4>
+            <h3 className="careers-why__name">Innovation &amp; Ownership</h3>
             <p className="careers-why__desc">
               Encouraging innovation, ownership, and creativity.
             </p>
@@ -353,7 +353,7 @@ const Careers = () => {
 
           <article className="careers-why__cell careers-why__recognition">
             <Award className="careers-why__icon" />
-            <h4 className="careers-why__name">Recognition &amp; Rewards</h4>
+            <h3 className="careers-why__name">Recognition &amp; Rewards</h3>
             <p className="careers-why__desc">
               Recognising and rewarding strong performance and dedication.
             </p>
@@ -362,7 +362,7 @@ const Careers = () => {
 
         {/* Our Culture & Values */}
         <div className="careers-values mb-24">
-          <h3 className="section-title text-center text-[#062516]">Our Culture & Values</h3>
+          <h2 className="section-title section-title-lock text-center text-[#062516]">Our Culture & Values</h2>
           <div className="careers-values__grid">
             {CULTURE_VALUES.map((value, index) => {
               const isEven = index % 2 === 0;
@@ -376,7 +376,7 @@ const Careers = () => {
                   <span className="careers-values__icon">
                     <Icon />
                   </span>
-                  <h4 className="careers-values__name">{value.title}</h4>
+                  <h3 className="careers-values__name">{value.title}</h3>
                   <p className="careers-values__desc">{value.desc}</p>
                 </div>
               );
@@ -415,9 +415,9 @@ const Careers = () => {
         >
           <div className="bg-[#F5FBF5] text-white p-10 rounded-2xl relative overflow-hidden">
             <div className="relative z-10 text-[#062516]">
-              <h3 className="section-title mb-6 flex items-center">
+              <h2 className="section-title section-title-lock mb-6 flex items-center">
                 Life at JIVO Energy
-              </h3>
+              </h2>
               <ul className="space-y-4">
                 {[
                   "Collaborative culture",
@@ -437,9 +437,9 @@ const Careers = () => {
           </div>
 
           <div className="bg-[#062516] text-white p-10 rounded-2xl relative overflow-hidden">
-            <h3 className="section-title mb-6 flex items-center">
+            <h2 className="section-title section-title-lock mb-6 flex items-center">
               Employee Benefits
-            </h3>
+            </h2>
             <ul className="space-y-4">
               {[
                 "Health insurance / medical coverage",
@@ -468,7 +468,7 @@ const Careers = () => {
             viewport={{ once: true }}
             variants={fadeUp}
           >
-            <h3 className="section-title text-center text-[#062516]">Current Job Openings</h3>
+            <h2 className="section-title section-title-lock text-center text-[#062516]">Current Job Openings</h2>
             <p className="careers-jobs__note">
               Be part of a future-focused team where innovation, collaboration, and purpose come together to create exceptional work.
               Ready to take the next step in your career?
@@ -499,7 +499,7 @@ const Careers = () => {
               >
                 <span className="careers-job-card__accent" aria-hidden="true" />
                 <div className="careers-job-card__body">
-                  <h4>{job.title}</h4>
+                  <h3>{job.title}</h3>
                   <div className="careers-job-card__meta">
                     <div className="careers-job-card__meta-item">
                       <span className="careers-job-card__meta-icon">
@@ -558,10 +558,10 @@ const Careers = () => {
             viewport={{ once: true }}
             variants={fadeUp}
           >
-            <h3 className="careers-apply__title">
+            <h2 className="careers-apply__title">
               Be Part of Our
               <span>Growth Story</span>
-            </h3>
+            </h2>
             <div className="careers-apply__rule" aria-hidden="true">
               <span />
               <i />
@@ -582,7 +582,7 @@ const Careers = () => {
           >
             <form onSubmit={handleSubmit} className="careers-apply__form">
               <div className="careers-apply__form-head">
-                <h4>Submit Your Application</h4>
+                <h3>Submit Your Application</h3>
               </div>
 
               <div className="careers-apply__row careers-apply__row--2">

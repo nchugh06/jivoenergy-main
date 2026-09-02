@@ -34,7 +34,7 @@ export default function MediaHome() {
 
       <div className="media-home-shell">
         <div className="media-home-title">
-          <h3 className="section-title">Latest JIVO Energy News</h3>
+          <h2 className="section-title section-title-lock">Latest JIVO Energy News</h2>
         </div>
 
           {loading ? (

@@ -46,9 +46,9 @@ export default function VisionMission() {
         <div className="grid gap-8 lg:grid-cols-2">
           <div className="vision-card grid gap-6 lg:grid-cols-[1fr_0.95fr] items-start rounded-[32px] bg-white p-6 md:p-8 shadow-lg border border-slate-200">
             <div className="space-y-5">
-              <span className="inline-flex rounded-full bg-[#E8F7E8] px-4 py-2 text-sm font-semibold text-[#0F5A1F]">
+              <h2 className="inline-flex rounded-full bg-[#E8F7E8] px-4 py-2 text-sm font-semibold text-[#0F5A1F]">
                 Our Vision
-              </span>
+              </h2>
               <p className="text-[#062516]" style={{ textAlign: "left" }}>
                 To lead the transition toward a cleaner, smarter, and more sustainable world by driving sustainable infrastructure and clean energy transformation. We strive to deliver innovative, reliable, and high-impact solutions that empower communities, industries, and utilities while creating a greener, more resilient future for generations to come.
               </p>
@@ -69,9 +69,9 @@ export default function VisionMission() {
 
           <div className="mission-card grid gap-6 lg:grid-cols-[1fr_0.95fr] items-start rounded-[32px] bg-white p-6 md:p-8 shadow-lg border border-slate-200">
             <div className="space-y-5 text-left">
-              <span className="inline-flex rounded-full bg-[#E8F7E8] px-4 py-2 text-sm font-semibold text-[#0F5A1F]">
+              <h2 className="inline-flex rounded-full bg-[#E8F7E8] px-4 py-2 text-sm font-semibold text-[#0F5A1F]">
                 Our Mission
-              </span>
+              </h2>
               <p className="text-[#062516]" style={{ textAlign: "left" }}>
                 Our mission is to deliver sustainable energy and infrastructure solutions that create long-term value for our clients, communities, and stakeholders. Through excellence in project development, engineering, EPC execution, operations and maintenance, and environmental responsibility, we support renewable energy adoption, infrastructure modernization, and climate goals while maintaining the highest standards of safety, integrity, quality, and customer satisfaction.
               </p>

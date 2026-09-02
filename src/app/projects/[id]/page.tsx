@@ -92,14 +92,14 @@ const ProjectDetailPage = () => {
         </div>
         <div className="grid grid-cols-1 gap-6 items-start mb-6">
           <div className="mb-0">
-            <h3 className="section-title-spl text-center text-[#062516] px-1">
+            <h1 className="section-title-spl section-title-lock text-center text-[#062516] px-1">
               {project.detailProjectName?.trim() || project.title}
-            </h3>
+            </h1>
           </div>
           <div className="project-mesh-block">
             <div className="project-mesh">
               <div className="project-mesh__cell project-mesh__overview italic md:not-italic">
-                <h3 className="section-title-spl">Project Overview</h3>
+                <h2 className="section-title-spl section-title-lock">Project Overview</h2>
                 <div
                   className="prose max-w-none md:prose-lg text-gray-700 leading-relaxed space-y-4"
                   dangerouslySetInnerHTML={{ __html: project.description }}
@@ -151,7 +151,7 @@ const ProjectDetailPage = () => {
         {project.galleryUrls && project.galleryUrls.length > 0 && (
           <div className="mt-16">
             <div className="mb-12">
-              <h3 className="section-title-spl text-center text-[#062516]">Visual Progress</h3>
+              <h2 className="section-title-spl section-title-lock text-center text-[#062516]">Visual Progress</h2>
             </div>
             <ProjectGallery urls={project.galleryUrls} title={project.title} />
           </div>

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function CompanyOverview() {
   return (
     <section className="py-5 px-6 max-w-7xl mx-auto">{/* md:px-12 */}
-      <h3 className="section-title text-center text-[#062516] mb-10">About JIVO Energy</h3>
+      <h1 className="section-title section-title-lock text-center text-[#062516] mb-10">About JIVO Energy</h1>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

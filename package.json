@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "deploy": "vercel --prod",
-    "seed:team": "node scripts/seed-team.mjs"
+    "seed:team": "node scripts/seed-team.mjs",
+    "seed:seo": "node scripts/seed-seo.mjs"
   },
   "dependencies": {
     "@tiptap/core": "^3.16.0",

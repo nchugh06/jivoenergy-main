@@ -74,12 +74,12 @@ const Partners = () => {
         viewport={{ once: true, margin: '-80px' }}
         variants={containerVariants}
       >
-        <motion.h3
+        <motion.h2
           variants={headingVariants}
-          className="section-title-spl text-center text-[#062516] mb-10"
+          className="section-title-spl section-title-lock text-center text-[#062516] mb-10"
         >
           {title}
-        </motion.h3>
+        </motion.h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 justify-items-center items-center">
           {items.map((partner) => (
             <motion.div
@@ -107,6 +107,7 @@ const Partners = () => {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar />
+      <h1 className="sr-only">Partners</h1>
       
       {/* Hero Section */}
       <section className="page-hero">

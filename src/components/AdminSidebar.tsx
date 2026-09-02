@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Users, Briefcase, LogOut, Layers, Newspaper, ClipboardList, Handshake, Youtube } from 'lucide-react';
+import { Users, Briefcase, LogOut, Layers, Newspaper, ClipboardList, Handshake, Youtube, SearchCode } from 'lucide-react';
 import { signOut } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
@@ -19,6 +19,7 @@ const AdminSidebar = () => {
     { name: 'Job Openings', href: '/admin/jobs', icon: ClipboardList },
     { name: 'Partners', href: '/admin/partners', icon: Handshake },
     { name: 'Team', href: '/admin/team', icon: Users },
+    { name: 'SEO', href: '/admin/seo', icon: SearchCode },
     { name: 'Project Gallery', href: '/admin/gallery', icon: Youtube },
     { name: 'Careers', href: '/admin/careers', icon: Briefcase },
   ];

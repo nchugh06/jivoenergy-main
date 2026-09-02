@@ -71,7 +71,7 @@ export default function BusinessAreasServices({
   return (
     <section className="bg-pistachio-green py-10 md:py-18 our-services">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h3 className="section-title text-center text-[#062516]">Our Business Areas</h3>
+        <h2 className="section-title section-title-lock text-center text-[#062516]">Our Business Areas</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service) => (
