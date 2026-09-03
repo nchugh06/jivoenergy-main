@@ -32,7 +32,7 @@ export async function GET() {
       inspect('FIREBASE_PROJECT_ID', process.env.FIREBASE_PROJECT_ID),
       inspect('FIREBASE_CLIENT_EMAIL', process.env.FIREBASE_CLIENT_EMAIL),
       inspect('FIREBASE_STORAGE_BUCKET', process.env.FIREBASE_STORAGE_BUCKET),
-      inspect('FIREBASE_PRIVATE_KEY', process.env.FIREBASE_PRIVATE_KEY, { mask: true }),
+      inspect('FIREBASE_PRIVATE_KEY', process.env.FIREBASE_PRIVATE_KEY),
     ],
   });
 }
