@@ -53,6 +53,9 @@ export async function getPageMetadata(
   return {
     title,
     description,
+    authors: [{ name: 'JIVO Energy', url: SITE_URL }],
+    creator: 'JIVO Energy',
+    publisher: 'JIVO Energy',
     keywords: cms?.keywords || undefined,
     alternates: {
       canonical,
