@@ -57,11 +57,12 @@ const metrics = [
 const galleryImages = [
   { src: "/esg/1766384012371.jpg", width: 1280, height: 720 },
   { src: "/esg/1766384012520.jpg", width: 960, height: 1280 },
+  { src: "/esg/IMG_0462.jpg", width: 1280, height: 720 },
   { src: "/esg/1766384012528.jpg", width: 960, height: 1280 },
   { src: "/esg/1766384012546.jpg", width: 963, height: 1280 },
-  { src: "/esg/1766384012549.jpg", width: 960, height: 1280 },
   { src: "/esg/IMG_0478.jpg", width: 3520, height: 1980 },
   { src: "/esg/1766384013654.jpg", width: 1280, height: 960 },
+  { src: "/esg/1766384012549.jpg", width: 960, height: 1280 },
 ];
 
 export default function SustainabilityPage() {
@@ -83,16 +84,16 @@ export default function SustainabilityPage() {
       <Navbar />
 
       <section className="page-hero">
-              <Image
-                src="/assets/banners/ESG.jpg"
-                alt="ESG Banner"
-                fill
-                className="object-cover"
-                priority
-              />
-              {/* <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/25 to-[#04301C]/25"></div> */}
-              
-            </section>
+        <Image
+          src="/assets/banners/ESG.jpg"
+          alt="ESG Banner"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* <div className="absolute inset-0 bg-gradient-to-br from-[#085D36]/25 to-[#04301C]/25"></div> */}
+
+      </section>
 
       {/* Introduction Section */}
       <section className="py-5 md:py-5">
@@ -130,12 +131,12 @@ export default function SustainabilityPage() {
               variants={fadeUp}
             >
               <div className="relative h-[400px] w-full rounded-2xl overflow-hidden shadow-xl">
-                 <Image
-                    src="/esg/QHSE.jpg"
-                    alt="QHSE"
-                    fill
-                    className="object-cover"
-                 />
+                <Image
+                  src="/esg/QHSE.jpg"
+                  alt="QHSE"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </motion.div>
             <motion.div
@@ -170,12 +171,12 @@ export default function SustainabilityPage() {
               variants={fadeUp}
             >
               <div className="relative h-[400px] w-full rounded-2xl overflow-hidden shadow-xl">
-                 <Image
-                    src="/esg/Social.jpg"
-                    alt="CSR Activity"
-                    fill
-                    className="object-cover"
-                 />
+                <Image
+                  src="/esg/Social.jpg"
+                  alt="CSR Activity"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </motion.div>
             <motion.div
@@ -209,13 +210,13 @@ export default function SustainabilityPage() {
               viewport={{ once: true }}
               variants={fadeUp}
             >
-               <div className="relative h-[400px] w-full rounded-2xl overflow-hidden shadow-xl">
-                 <Image
-                    src="/esg/Sustainability.jpg"
-                    alt="Sustainability"
-                    fill
-                    className="object-cover"
-                 />
+              <div className="relative h-[400px] w-full rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src="/esg/Sustainability.jpg"
+                  alt="Sustainability"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </motion.div>
             <motion.div
@@ -233,7 +234,7 @@ export default function SustainabilityPage() {
           </div>
         </div>
       </section>
-      
+
       {/* Initiative Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
@@ -249,33 +250,33 @@ export default function SustainabilityPage() {
               As part of our commitment to social responsibility, JIVO Energy conducted its first voluntary CSR activity in collaboration with Dream Girl Foundation, an organization dedicated to supporting children from less fortunate backgrounds. This initiative was a meaningful step towards encouraging learning, nourishment, and hope among young students.
             </motion.p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-8 items-center">
-             <motion.div
-                className="bg-[#F5FBF5] p-8 rounded-xl shadow-md border-l-4 border-[#085D36]"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-             >
-                <p className="text-gray-600 italic text-lg">
-                  "The smiles, enthusiasm, and gratitude we witnessed reaffirmed our belief that even small actions can create meaningful change. This initiative strengthened our resolve to continue supporting community-driven causes and to build a culture of empathy and responsibility within JIVO Energy."
-                </p>
-             </motion.div>
-             <motion.div
-                className="relative h-[300px] rounded-xl overflow-hidden shadow-md"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-             >
-                <Image
-                   src="/esg/1766384013654.jpg"
-                   alt="Dream Girl Foundation Initiative"
-                   fill
-                   className="object-cover"
-                />
-             </motion.div>
+            <motion.div
+              className="bg-[#F5FBF5] p-8 rounded-xl shadow-md border-l-4 border-[#085D36]"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+            >
+              <p className="text-gray-600 italic text-lg">
+                "The smiles, enthusiasm, and gratitude we witnessed reaffirmed our belief that even small actions can create meaningful change. This initiative strengthened our resolve to continue supporting community-driven causes and to build a culture of empathy and responsibility within JIVO Energy."
+              </p>
+            </motion.div>
+            <motion.div
+              className="relative h-[300px] rounded-xl overflow-hidden shadow-md"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+            >
+              <Image
+                src="/esg/1766384013654.jpg"
+                alt="Dream Girl Foundation Initiative"
+                fill
+                className="object-cover"
+              />
+            </motion.div>
           </div>
         </div>
       </section>
